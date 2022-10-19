@@ -25,7 +25,7 @@ function Modal({ onClose, children }) {
 
 	return (
 		<Backdrop onClick={handleBackdropClick}>
-			<ModalBox className={s.modal}>{children}</ModalBox>
+			<ModalBox>{children}</ModalBox>
 		</Backdrop>
 	);
 }
