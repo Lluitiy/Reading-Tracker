@@ -10,22 +10,35 @@ export const Form = styled.form`
 	 @media screen and (min-width: 768px) {
 		display: flex;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
 	}
 
 `
 export const Upper = styled.div`
     width: 100%;
-    height: 70px;
+    height: fit-content;
+    @media screen and (min-width: 1280px) {
+		width: 346px;
+        margin: 0;
+        margin-right: 16px;
+	}
 
 `
 export const Lower = styled.div`
    
 @media screen and (min-width: 768px) {
 		 display: flex;
-    height: 70px;
+    height: fit-content;
     width: 100%;
     gap: 32px;
-
+    align-items: center;
+        justify-content: center;
+	}
+    @media screen and (min-width: 1280px) {
+		width: fit-content;
+        gap: 16px;
+        margin: 0;
 	}
 `
 
@@ -41,7 +54,9 @@ export const Label = styled.label`
     color: ${p => p.theme.colors.textSecondary};
  @media screen and (min-width: 768px) {
 		width: 152px;
-
+	}
+     @media screen and (min-width: 1280px) {
+		margin: 0;
 	}
 `;
 
@@ -75,8 +90,12 @@ export const NameLabel = styled.label`
     color: ${p => p.theme.colors.textSecondary};
  @media screen and (min-width: 768px) {
 		width: 100%;
-
+            margin-bottom: 24px;
 	}
+     @media screen and (min-width: 1280px) {
+		margin: 0;
+	}
+
 `
 export const AuthorLabel = styled.label`
 	display: flex;
@@ -90,7 +109,10 @@ export const AuthorLabel = styled.label`
     color: ${p => p.theme.colors.textSecondary};
  @media screen and (min-width: 768px) {
 		width: 336px;
-
+	}
+    @media screen and (min-width: 1280px) {
+		width: 250px;
+        margin: 0;
 	}
 `
 
@@ -121,5 +143,11 @@ export const AddBtn = styled.button`
     font-weight: inherit;
     background-color: transparent;
     border: 1px solid ${p => p.theme.colors.textMain};
-
+     @media screen and (min-width: 768px) {
+		margin: 20px auto;
+	}
+    @media screen and (min-width: 1280px) {
+            margin: 0 auto;
+            align-self: flex-end;
+	}
 `
