@@ -1,5 +1,5 @@
 import {postPlanning,patchPlanning,getPlanning} from "Services/Api/Api";
-
+import { createAsyncThunk } from "@reduxjs/toolkit";
 export const startPlanning = createAsyncThunk(
     "planning/startPlanning",
   async (PlanningObject, thunkAPI) => {
@@ -25,7 +25,7 @@ export const addReadingPage = createAsyncThunk(
     }
   );
 
-  export const currentPlanning = createAsyncThunk(
+  export const getcurrentPlanning = createAsyncThunk(
     "planning/getCurrentPlanning",
     async (_, thunkAPI) => {
       try {
