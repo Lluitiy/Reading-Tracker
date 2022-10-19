@@ -8,10 +8,18 @@ import {
 	PURGE,
 	REGISTER,
 } from 'redux-persist';
-import { testReducer } from './SliceTest';
+import { persistedAuthReducer } from './Auth/authSlice';
+import { planningReducer } from './Planning/planningSlice';
+import { userReducer } from './User/userSlice';
+import { booksSlice } from './Books/booksSlice';
 
 export const store = configureStore({
-	reducer: { test: testReducer },
+	reducer: {
+		auth: persistedAuthReducer,
+		book: booksSlice.reducer,
+		planning: planningReducer,
+		user: userReducer,
+	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
 			serializableCheck: {
