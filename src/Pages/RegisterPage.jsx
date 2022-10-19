@@ -10,6 +10,9 @@ function RegisterPage() {
 			validationSchema={userRegisterSchema}
 			initialValues={{ name: '', email: '', password: '' }}
 			formType="sign up"
+			text="Are you with us?"
+			variant="login"
+			navigate="/login"
 		/>
 	);
 }

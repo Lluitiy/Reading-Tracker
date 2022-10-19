@@ -11,6 +11,8 @@ function LoginPage() {
 			validationSchema={userLoginSchema}
 			initialValues={{ email: '', password: '' }}
 			formType="login"
+			variant="register"
+			navigate="/register"
 		/>
 	);
 }
