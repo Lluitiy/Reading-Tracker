@@ -1,9 +1,5 @@
 import styled from '@emotion/styled';
 
-export const Wrap = styled.div`
-	padding: 8px 33px;
-`;
-
 export const Numbers = styled.p`
 	font-weight: 700;
 	font-size: 25px;
