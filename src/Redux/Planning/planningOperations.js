@@ -1,5 +1,8 @@
-import {postPlanning,patchPlanning,getPlanning} from "Services/Api/Api";
+import API from "Services/Api/Api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
+const {postPlanning,patchPlanning,getPlanning} = API
+
 export const startPlanning = createAsyncThunk(
     "planning/startPlanning",
   async (PlanningObject, thunkAPI) => {
