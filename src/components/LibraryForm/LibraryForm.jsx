@@ -1,5 +1,6 @@
 import { Container, Section } from 'components/Common/Common.styled';
 import { useState } from 'react';
+import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
 // import { useDispatch} from 'react-redux';
 import {
 	AddBtn,
@@ -9,38 +10,44 @@ import {
 	Input,
 	Label,
 	Lower,
-
 	NameLabel,
 	Upper,
 	Wrapper,
 } from './LibraryForm.styled';
-import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
 
 const LibraryForm = () => {
-	const [contact, setContact] = useState({ name: '', number: '' });
+	const [newBook, setNewBook] = useState({
+        title: '',
+        author: '',
+        publishYear: '',
+        totalPages: '',
+    });
 
 	// const contacts = useSelector(selectAllContacts)
 	// const dispatch = useDispatch();
 
-	const onInputChange = e => {
-		setContact(prevState => {
+    const handleInputChange = e => {
+		setNewBook(prevState => {
 			return { ...prevState, [e.target.name]: e.target.value };
 		});
 	};
 
-	const onFormSubmit = e => {
+	const handleFormSubmit = e => {
 		e.preventDefault();
-		// const newContact = contact;
 
 		// if (contacts.some(({ name }) => name === newContact.name)) {
 		//     alert(`${newContact.name} is already in contacts!`);
 		//     return;
 		// }
 		// dispatch(addContactThunk(newContact))
+        console.log(newBook)
 		formReset();
 	};
 	const formReset = () => {
-		setContact({ name: '', number: '' });
+		setNewBook({ title: '',
+        author: '',
+        publishYear: '',
+        totalPages: '',});
 	};
 
 	return (
@@ -50,56 +57,56 @@ const LibraryForm = () => {
 					<BackBtn type="button">
 						<BackArrow width="24" height="24" />
 					</BackBtn>
-					<Form onSubmit={onFormSubmit}>
+					<Form onSubmit={handleFormSubmit}>
 						<Upper>
 							<NameLabel>
-								Назва книги
+								Book title
 								<Input
 									placeholder="..."
-									onChange={onInputChange}
-									value={contact.name}
+									onChange={handleInputChange}
+									value={newBook.title}
 									type="text"
-									name="name"
+									name="title"
 									required
 								/>
 							</NameLabel>
 						</Upper>
 						<Lower>
 							<AuthorLabel>
-								Автор книги
+								Author
 								<Input
 									placeholder="..."
-									onChange={onInputChange}
-									value={contact.name}
+									onChange={handleInputChange}
+									value={newBook.author}
 									type="text"
-									name="name"
+									name="author"
 									required
 								/>
 							</AuthorLabel>
 							<Label>
-								Рік випуску
+								Publication date
 								<Input
 									placeholder="..."
-									onChange={onInputChange}
-									value={contact.name}
+									onChange={handleInputChange}
+									value={newBook.publishYear}
 									type="text"
-									name="name"
+									name="publishYear"
 									required
 								/>
 							</Label>
 							<Label>
-								Кількість сторінок
+								Amount of pages
 								<Input
 									placeholder="..."
-									onChange={onInputChange}
-									value={contact.name}
+									onChange={handleInputChange}
+									value={newBook.totalPages}
 									type="text"
-									name="name"
+									name="totalPages"
 									required
 								/>
 							</Label>
 						</Lower>
-						<AddBtn type="submit">Додати</AddBtn>
+						<AddBtn type="submit">Add</AddBtn>
 					</Form>
 				</Wrapper>
 			</Container>

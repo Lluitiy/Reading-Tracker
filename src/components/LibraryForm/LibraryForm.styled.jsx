@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-
 export const Wrapper = styled.div`
     width: 100%;
     height: 100vh;
@@ -13,7 +12,6 @@ export const Form = styled.form`
         align-items: center;
         justify-content: center;
 	}
-
 `
 export const Upper = styled.div`
     width: 100%;
@@ -23,16 +21,14 @@ export const Upper = styled.div`
         margin: 0;
         margin-right: 16px;
 	}
-
 `
 export const Lower = styled.div`
-   
-@media screen and (min-width: 768px) {
-		 display: flex;
-    height: fit-content;
-    width: 100%;
-    gap: 32px;
-    align-items: center;
+    @media screen and (min-width: 768px) {
+	    display: flex;
+        height: fit-content;
+        width: 100%;
+        gap: 32px;
+        align-items: center;
         justify-content: center;
 	}
     @media screen and (min-width: 1280px) {
@@ -52,16 +48,15 @@ export const Label = styled.label`
     line-height: 1.2;
     font-weight: 500;
     color: ${p => p.theme.colors.textSecondary};
- @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
 		width: 152px;
 	}
-     @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1280px) {
 		margin: 0;
 	}
 `;
 
 export const Input = styled.input`
-/* box-sizing: border-box; */
     width:auto;
     height: 42px;
     margin-top: 8px;
@@ -74,9 +69,8 @@ export const Input = styled.input`
     &:active{
         border: none;
         background-color: #ffffff;
-         box-shadow: 0px 1px 2px 0px #1D1D1B26 inset;
-    }
-    	
+        box-shadow: 0px 1px 2px 0px #1D1D1B26 inset;
+    }  	
 `
 export const NameLabel = styled.label`
 	display: flex;
@@ -88,11 +82,11 @@ export const NameLabel = styled.label`
     line-height: 1.2;
     font-weight: 500;
     color: ${p => p.theme.colors.textSecondary};
- @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
 		width: 100%;
             margin-bottom: 24px;
 	}
-     @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1280px) {
 		margin: 0;
 	}
 
@@ -107,7 +101,7 @@ export const AuthorLabel = styled.label`
     line-height: 1.2;
     font-weight: 500;
     color: ${p => p.theme.colors.textSecondary};
- @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
 		width: 336px;
 	}
     @media screen and (min-width: 1280px) {
