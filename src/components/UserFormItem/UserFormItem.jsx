@@ -1,4 +1,11 @@
-import { Field, ErrorMessage } from 'formik';
+import { ErrorMessage } from 'formik';
+import {
+	Input,
+	InputField,
+	Label,
+	FieldInput,
+	Error,
+} from './UserFormItem.styled';
 
 export default function userInput({ name, formType }) {
 	const getType = () => {
@@ -40,10 +47,15 @@ export default function userInput({ name, formType }) {
 	};
 	// Input UserForm
 	return (
-		<label key={name}>
-			<span>{getTitle()}</span>
-			<Field type={getType()} name={name} />
-			<ErrorMessage name={name} render={message => <p>{message}</p>} />
-		</label>
+		<Input key={name}>
+			<InputField>
+				<Label>{getTitle()}</Label>
+				<FieldInput type={getType()} name={name} />
+				<ErrorMessage
+					name={name}
+					render={message => <Error>{message}</Error>}
+				/>
+			</InputField>
+		</Input>
 	);
 }
