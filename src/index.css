@@ -1,11 +1,14 @@
 @import-normalize;
 /* bring in normalize.css styles */
-
+*{
+box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+  font-family:'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+      
 }
 
 code {
