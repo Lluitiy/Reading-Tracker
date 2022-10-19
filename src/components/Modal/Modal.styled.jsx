@@ -22,19 +22,15 @@ export const ModalBox = styled.div`
 	max-width: 280px;
 	text-align: center;
 
-	background-color: #fff;
+	background-color: ${p => p.theme.colors.white};
 
 	@media screen and (min-width: 768px) {
-		.modal {
-			padding: 20px 48px;
-			max-width: 394px;
-		}
+		padding: 20px 48px;
+		max-width: 394px;
 	}
 
 	@media screen and (min-width: 1200px) {
-		.modal {
-			padding: 30px 60px;
-			max-width: 608px;
-		}
+		padding: 30px 60px;
+		max-width: 608px;
 	}
 `;
