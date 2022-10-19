@@ -5,6 +5,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { store, persistor } from 'Redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'components/Constants/theme';
