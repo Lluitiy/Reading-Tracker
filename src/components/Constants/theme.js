@@ -1,6 +1,7 @@
 export const theme = Object.freeze({
 	colors: {
 		white: '#ffffff',
+		borderNav: '#E0E5EB',
 		googleBtn: '#F5F7FA',
 		body: '#F6F7FB',
 		textMain: '#242A37',
