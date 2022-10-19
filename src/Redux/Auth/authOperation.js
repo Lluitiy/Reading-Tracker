@@ -12,7 +12,7 @@ const {
 } = API;
 
 // Register new user
-export const registrationUser = createAsyncThunk(
+export const register = createAsyncThunk(
 	'auth/register',
 	async (user, thunkAPI) => {
 		try {
@@ -26,34 +26,28 @@ export const registrationUser = createAsyncThunk(
 );
 
 // Log a previosly created user
-export const logInUser = createAsyncThunk(
-	'auth/login',
-	async (user, thunkAPI) => {
-		try {
-			const data = await loginUser(user);
-			setToken(data.token);
-			return data;
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error.massage);
-		}
+export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
+	try {
+		const data = await loginUser(user);
+		setToken(data.token);
+		return data;
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error.massage);
 	}
-);
+});
 
 // Unlog active user
-export const logOutUser = createAsyncThunk(
-	'auth/logout',
-	async (_, thunkAPI) => {
-		try {
-			await logoutUser();
-			unsetToken();
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error.massage);
-		}
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+	try {
+		await logoutUser();
+		unsetToken();
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error.massage);
 	}
-);
+});
 
 // Get information about the current user
-export const getCurrentUser = createAsyncThunk(
+export const fetchCurrentUser = createAsyncThunk(
 	'auth/refresh',
 	async (_, thunkAPI) => {
 		const state = thunkAPI.getState();

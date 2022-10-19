@@ -1,15 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-	registrationUser,
-	logInUser,
-	logOutUser,
-	getCurrentUser,
-} from './authOperation';
+import { register, logIn, logOut, fetchCurrentUser } from './authOperation';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 const initialState = {
-	user: { name: null, email: null, id: '' },
+	user: { name: null, email: null },
 	accessToken: null,
 	refreshToken: null,
 	sid: null,
@@ -23,13 +18,13 @@ const authSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: {
-		[registrationUser.fulfilled](state, action) {
+		[register.fulfilled](state, action) {
 			state.user = action.payload.userData;
 			// state.token = action.payload.token;
 			state.isLoggedIn = true;
 		},
 
-		[logInUser.fulfilled](state, action) {
+		[logIn.fulfilled](state, action) {
 			state.user = action.payload.user;
 			state.accessToken = action.payload.accessToken;
 			state.refreshToken = action.payload.refreshToken;
@@ -37,7 +32,7 @@ const authSlice = createSlice({
 			state.isLoggedIn = true;
 		},
 
-		[logOutUser.fulfilled](state, action) {
+		[logOut.fulfilled](state, action) {
 			state.user = action.payload.user;
 			state.accessToken = null;
 			state.refreshToken = null;
@@ -45,15 +40,15 @@ const authSlice = createSlice({
 			state.isLoggedIn = false;
 		},
 
-		[getCurrentUser.pending](state) {
+		[fetchCurrentUser.pending](state) {
 			state.isRefreshing = true;
 		},
 
-		[getCurrentUser.rejected](state) {
+		[fetchCurrentUser.rejected](state) {
 			state.isRefreshing = false;
 		},
 
-		[getCurrentUser.fulfilled](state, action) {
+		[fetchCurrentUser.fulfilled](state, action) {
 			state.user = action.payload;
 			state.isLoggedIn = true;
 			state.isRefreshing = false;
