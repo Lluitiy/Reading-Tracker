@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/TeamSlice/static/css/main.75782aaa.css",
-    "main.js": "/TeamSlice/static/js/main.27f08157.js",
+    "main.css": "/TeamSlice/static/css/main.c30664ab.css",
+    "main.js": "/TeamSlice/static/js/main.a83eebc1.js",
     "static/media/LibraryIcon.svg": "/TeamSlice/static/media/LibraryIcon.d2a67c184c8ddb63853b96ae7b5b31ca.svg",
     "index.html": "/TeamSlice/index.html",
+    "static/media/book.svg": "/TeamSlice/static/media/book.5b773cd36c9a767c125121523371c921.svg",
+    "static/media/backArrow.svg": "/TeamSlice/static/media/backArrow.7621e2b181eca1a605ca8f4a6eab350e.svg",
     "static/media/HomeIcon.svg": "/TeamSlice/static/media/HomeIcon.e1c7a00a03955e5c78b8d2a967b88389.svg",
-    "main.75782aaa.css.map": "/TeamSlice/static/css/main.75782aaa.css.map",
-    "main.27f08157.js.map": "/TeamSlice/static/js/main.27f08157.js.map"
+    "main.c30664ab.css.map": "/TeamSlice/static/css/main.c30664ab.css.map",
+    "main.a83eebc1.js.map": "/TeamSlice/static/js/main.a83eebc1.js.map"
   },
   "entrypoints": [
-    "static/css/main.75782aaa.css",
-    "static/js/main.27f08157.js"
+    "static/css/main.c30664ab.css",
+    "static/js/main.a83eebc1.js"
   ]
 }
