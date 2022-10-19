@@ -2,13 +2,14 @@ import styled from '@emotion/styled';
 
 export const Section = styled.section`
 	color: ${p => p.theme.colors.brand};
-	pad: 8px 0px;
+	padding: 8px 0px;
 	@media screen and (min-width: 768px) {
 		padding: 15px 0px;
 	}
 `;
 
 export const Container = styled.div`
+	box-sizing: border-box;
 	width: 100%;
 	margin: 0px auto;
 	padding: 0px 20px;
