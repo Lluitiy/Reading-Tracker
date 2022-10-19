@@ -18,7 +18,9 @@ const MyTraining = () => {
 					<option value="value3">Значение 3</option>
 				</select>
 			</form>
+			
 		</div>
+
 	);
 };
 
