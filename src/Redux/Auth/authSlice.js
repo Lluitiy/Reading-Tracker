@@ -1,18 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-	registerUser,
-	loginUser,
-	logoutUser,
+	registrationUser,
+	logInUser,
+	logOutUser,
 	getCurrentUser,
 } from './authOperation';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 const initialState = {
-	user: { name: null, email: null },
-	token: null,
+	user: { name: null, email: null, id: '' },
+	accessToken: null,
+	refreshToken: null,
+	sid: null,
 	isLoggedIn: false,
 	isRefreshing: false,
+	// token: null,
 };
 
 const authSlice = createSlice({
@@ -20,21 +23,25 @@ const authSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: {
-		[registerUser.fulfilled](state, action) {
-			state.user = action.payload.user;
-			state.token = action.payload.token;
+		[registrationUser.fulfilled](state, action) {
+			state.user = action.payload.userData;
+			// state.token = action.payload.token;
 			state.isLoggedIn = true;
 		},
 
-		[loginUser.fulfilled](state, action) {
+		[logInUser.fulfilled](state, action) {
 			state.user = action.payload.user;
-			state.token = action.payload.token;
+			state.accessToken = action.payload.accessToken;
+			state.refreshToken = action.payload.refreshToken;
+			state.sid = action.payload.sid;
 			state.isLoggedIn = true;
 		},
 
-		[logoutUser.fulfilled](state, action) {
-			state.user = { name: null, email: null };
-			state.token = null;
+		[logOutUser.fulfilled](state, action) {
+			state.user = action.payload.user;
+			state.accessToken = null;
+			state.refreshToken = null;
+			state.sid = null;
 			state.isLoggedIn = false;
 		},
 
@@ -56,7 +63,7 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-const authPersistConfig = { key: 'auth', storage, whitelist: ['token'] };
+const authPersistConfig = { key: 'auth', storage };
 
 export const persistedAuthReducer = persistReducer(
 	authPersistConfig,
