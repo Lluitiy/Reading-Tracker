@@ -2,7 +2,10 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 100vh;
+
+    @media screen and (max-width: 768px){
+            height: 100vh;
+    }
 `
 export const Form = styled.form`
     width: 100%;
@@ -144,4 +147,9 @@ export const AddBtn = styled.button`
             margin: 0 auto;
             align-self: flex-end;
 	}
+    &:hover,&:focus{
+        border: none;
+        color: ${p => p.theme.colors.white};
+        background-color: ${p => p.theme.colors.brand};
+    }
 `

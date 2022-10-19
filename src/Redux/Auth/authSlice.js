@@ -1,18 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-	registerUser,
-	loginUser,
-	logoutUser,
-	getCurrentUser,
-} from './authOperation';
+import { register, logIn, logOut, fetchCurrentUser } from './authOperation';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 const initialState = {
 	user: { name: null, email: null },
-	token: null,
+	accessToken: null,
+	refreshToken: null,
+	sid: null,
 	isLoggedIn: false,
 	isRefreshing: false,
+	// token: null,
 };
 
 const authSlice = createSlice({
@@ -20,33 +18,37 @@ const authSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: {
-		[registerUser.fulfilled](state, action) {
-			state.user = action.payload.user;
-			state.token = action.payload.token;
+		[register.fulfilled](state, action) {
+			state.user = action.payload.userData;
+			// state.token = action.payload.token;
 			state.isLoggedIn = true;
 		},
 
-		[loginUser.fulfilled](state, action) {
+		[logIn.fulfilled](state, action) {
 			state.user = action.payload.user;
-			state.token = action.payload.token;
+			state.accessToken = action.payload.accessToken;
+			state.refreshToken = action.payload.refreshToken;
+			state.sid = action.payload.sid;
 			state.isLoggedIn = true;
 		},
 
-		[logoutUser.fulfilled](state, action) {
-			state.user = { name: null, email: null };
-			state.token = null;
+		[logOut.fulfilled](state, action) {
+			state.user = action.payload.user;
+			state.accessToken = null;
+			state.refreshToken = null;
+			state.sid = null;
 			state.isLoggedIn = false;
 		},
 
-		[getCurrentUser.pending](state) {
+		[fetchCurrentUser.pending](state) {
 			state.isRefreshing = true;
 		},
 
-		[getCurrentUser.rejected](state) {
+		[fetchCurrentUser.rejected](state) {
 			state.isRefreshing = false;
 		},
 
-		[getCurrentUser.fulfilled](state, action) {
+		[fetchCurrentUser.fulfilled](state, action) {
 			state.user = action.payload;
 			state.isLoggedIn = true;
 			state.isRefreshing = false;
@@ -56,7 +58,7 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-const authPersistConfig = { key: 'auth', storage, whitelist: ['token'] };
+const authPersistConfig = { key: 'auth', storage };
 
 export const persistedAuthReducer = persistReducer(
 	authPersistConfig,

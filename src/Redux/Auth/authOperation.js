@@ -1,68 +1,69 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import API from 'Services/Api/Api';
 
-axios.defaults.baseURL = 'https://bookread-backend.goit.global';
-
-const token = {
-	set(token) {
-		axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-	},
-
-	unset() {
-		axios.defaults.headers.common.Authorization = '';
-	},
-};
+const {
+	registerUser,
+	loginUser,
+	logoutUser,
+	refreshUser,
+	setToken,
+	unsetToken,
+	// authUserGoogle,
+} = API;
 
 // Register new user
-export const registerUser = createAsyncThunk('auth/register', async user => {
-	try {
-		const { data } = await axios.post('/users/signup', user);
-		token.set(data.token);
-		return data;
-	} catch (error) {
-		console.log(error);
+export const register = createAsyncThunk(
+	'auth/register',
+	async (user, thunkAPI) => {
+		try {
+			const data = await registerUser(user);
+			setToken(data.token);
+			return data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.massage);
+		}
 	}
-});
+);
 
 // Log a previosly created user
-export const loginUser = createAsyncThunk('auth/login', async user => {
+export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 	try {
-		const { data } = await axios.post('users/login', user);
-		token.set(data.token);
+		const data = await loginUser(user);
+		setToken(data.token);
 		return data;
 	} catch (error) {
-		console.log(error);
+		return thunkAPI.rejectWithValue(error.massage);
 	}
 });
 
 // Unlog active user
-export const logoutUser = createAsyncThunk('auth/logout', async () => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 	try {
-		await axios.post('users/logout');
-		token.unset();
+		await logoutUser();
+		unsetToken();
 	} catch (error) {
-		console.log(error);
+		return thunkAPI.rejectWithValue(error.massage);
 	}
 });
 
 // Get information about the current user
-export const getCurrentUser = createAsyncThunk(
+export const fetchCurrentUser = createAsyncThunk(
 	'auth/refresh',
 	async (_, thunkAPI) => {
 		const state = thunkAPI.getState();
-		const persistedToken = state.auth.token;
-
-		if (persistedToken === null) {
+		const persistedToken = state.auth.refreshToken;
+		const persistedSid = thunkAPI.getState().auth.sid;
+		if (!persistedToken) {
 			return thunkAPI.rejectWithValue();
 		}
 
-		token.set(persistedToken);
+		setToken(persistedToken);
 
 		try {
-			const { data } = await axios.get('users/current');
+			const data = await refreshUser(persistedSid);
 			return data;
 		} catch (error) {
-			console.log(error);
+			return thunkAPI.rejectWithValue(error.massage);
 		}
 	}
 );

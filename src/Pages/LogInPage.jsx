@@ -1,5 +1,20 @@
-const LogInPage = () => {
-	return <div>LOGIN</div>;
-};
+import UserForm from 'components/UserForm';
+import useLoginUser from 'Hooks/useLoginUser';
+import { userLoginSchema } from 'Utils/validSchema';
 
-export default LogInPage
+function LoginPage() {
+	const { onSubmitForm } = useLoginUser();
+
+	return (
+		<UserForm
+			onSubmitForm={onSubmitForm}
+			validationSchema={userLoginSchema}
+			initialValues={{ email: '', password: '' }}
+			formType="login"
+			variant="register"
+			navigate="/register"
+		/>
+	);
+}
+
+export default LoginPage;
