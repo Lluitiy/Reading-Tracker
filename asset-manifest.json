@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.75782aaa.css",
-    "main.js": "/TeamSlice/static/js/main.b8e7ba7e.js",
+    "main.js": "/TeamSlice/static/js/main.cf9669bd.js",
     "index.html": "/TeamSlice/index.html",
     "main.75782aaa.css.map": "/TeamSlice/static/css/main.75782aaa.css.map",
-    "main.b8e7ba7e.js.map": "/TeamSlice/static/js/main.b8e7ba7e.js.map"
+    "main.cf9669bd.js.map": "/TeamSlice/static/js/main.cf9669bd.js.map"
   },
   "entrypoints": [
     "static/css/main.75782aaa.css",
-    "static/js/main.b8e7ba7e.js"
+    "static/js/main.cf9669bd.js"
   ]
 }
