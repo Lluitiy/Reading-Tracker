@@ -27,9 +27,9 @@ const loginUser = async user => {
 		throw new Error(error.message);
 	}
 };
-const refreshUser = async () => {
+const refreshUser = async persistedSid => {
 	try {
-		const { data } = await contactsAPI.post('/auth/refresh');
+		const { data } = await contactsAPI.post('/auth/refresh', persistedSid);
 		return data;
 	} catch (error) {
 		throw new Error(error.message);
