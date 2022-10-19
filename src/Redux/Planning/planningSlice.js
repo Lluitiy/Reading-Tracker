@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import{startPlanning,addReadingPage,getcurrentPlanning} from '../Planning/planningOperations'
 const initialState = {
 	planning: {
 		books:[],
@@ -25,10 +25,10 @@ const planningSlice = createSlice({
 			state.planning.stats = payload.stats
 		},
 		[addReadingPage.fulfilled](state,{payload}){
-			state.planning.books = books.map(book=>book.id===payload.id?
+			state.planning.books = state.planning.books.map(book=>book.id===payload.id?
 				book.pagesFinished=payload.pagesFinished+payload.page:book)
 		},
-		[getCurrentPlanning.fulfilled](state,{payload}){
+		[getcurrentPlanning.fulfilled](state,{payload}){
 			state.planning.books = payload.books
 			state.planning.startDate =payload.startDate
 			state.planning.endDate =payload.endDate
