@@ -1,7 +1,7 @@
 **Read in other languages: [Русский](README.md), [Polska](README.pl.md),
 [English](README.en.md), [Spanish](README.es.md).**
 
-# React homework template
+# React homework template.
 
 Этот проект был создан при помощи
 [Create React App](https://github.com/facebook/create-react-app). Для знакомства
@@ -74,7 +74,7 @@
 
 ```jsx
 <BrowserRouter basename="/your_repo_name/">
-  <App />
+	<App />
 </BrowserRouter>
 ```
 
