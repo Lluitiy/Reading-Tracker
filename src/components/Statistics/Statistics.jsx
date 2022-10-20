@@ -46,7 +46,7 @@ const data = [
 const checkData = data.length > 0 ? data : [{ name: 'Test', fod: 5, pod: 10 }];
 
 const CastomLabel = ({ x, y, value, type }) => {
-	console.log(x, y);
+	// console.log(x, y);
 	if (value === checkData[checkData.length - 1]?.[type]) {
 		return (
 			<text

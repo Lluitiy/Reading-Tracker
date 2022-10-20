@@ -15,14 +15,25 @@ import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { startPlanning } from 'Redux/Planning/planningOperations';
+import { startPlanning ,getCurrentPlanning} from 'Redux/Planning/planningOperations';
+import { booksId } from 'Redux/Planning/planningSelectors';
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
-
-	const [select, setSelect] = useState(null);
+    const ids =useSelector(booksId)
+	
+	const [select, setSelect] = useState(ids);
+	console.log(select)
 	const books = useSelector(state => state.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
+	
+	const date = new Date();
+   const normalDate = date.toLocaleDateString();
+   const year = String(date.getFullYear());
+   const month = String(date.getMonth() + 1);
+   const day = [...normalDate];
+   const realDay = day[0] + day[1];
+
 
 	const dispatch = useDispatch();
 
@@ -32,6 +43,11 @@ const MyTraining = () => {
 		}
 	}, [accessToken, dispatch]);
 
+	useEffect(() => {
+		if (accessToken) {
+			dispatch(getCurrentPlanning());
+		}
+	}, [accessToken, dispatch]);
 	// const handleSelect = () => {};
 	const onSubmit = e => {
 		e.preventDefault();
@@ -39,7 +55,7 @@ const MyTraining = () => {
 			startPlanning({
 				startDate: startValue,
 				endDate: finishValue,
-				books: [select],
+				books: [...select],
 			})
 		);
 	};
@@ -67,6 +83,7 @@ const MyTraining = () => {
 								console.log(e.target.value);
 								setStartValue(e.target.value);
 							}}
+							min={`${year}-${month}-${realDay}`}
 						></DataInput>
 					</label>
 					<label>
@@ -77,6 +94,7 @@ const MyTraining = () => {
 								console.log(e.target.value);
 								setfinishValue(e.target.value);
 							}}
+							min={`${year}-${month}-${realDay}`}
 						></DataInput>
 					</label>
 				</DateContainer>
@@ -84,8 +102,9 @@ const MyTraining = () => {
 					<Select
 						name="select"
 						onChange={e => {
-							console.log(e.target.value);
-							setSelect(e.target.value);
+							// console.log(e.target.value);
+							setSelect((prevState)=>[...prevState,e.target.value]);
+							// setSelect(e.target.value);
 						}}
 					>
 						<option value="select">Choose books from the library</option>
