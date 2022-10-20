@@ -2,18 +2,21 @@ import {
 	ItemWrapper,
 	ListHeaders,
 } from '../TrainingBookList/TrainingBookList.styled';
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import { getBooks } from 'Redux/Planning/planningSelectors';
-import { getcurrentPlanning } from 'Redux/Planning/planningOperations';
+// import { getcurrentPlanning } from 'Redux/Planning/planningOperations';
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+	// useDispatch,
+	useSelector,
+} from 'react-redux';
 import { getAccessToken } from 'Redux/Auth/authSelectors';
 
 const TrainingBookList = () => {
 	const books = useSelector(getBooks);
 	const token = useSelector(getAccessToken);
 	console.log(token);
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
 	// useEffect(() => {
 	// 	if (token) {
