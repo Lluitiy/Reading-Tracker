@@ -50,10 +50,9 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const fetchCurrentUser = createAsyncThunk(
 	'auth/refresh',
 	async (_, thunkAPI) => {
-		console.log(124)
 		const state = thunkAPI.getState();
 		const persistedToken = state.auth.refreshToken;
-		const persistedSid = state.auth.sid;
+		const persistedSid = { sid: state.auth.sid };
 		if (!persistedToken) {
 			console.log('err')
 			return thunkAPI.rejectWithValue();

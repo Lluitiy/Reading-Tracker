@@ -6,6 +6,7 @@ import {
 	CartesianGrid,
 	Tooltip,
 	LabelList,
+	ResponsiveContainer,
 } from 'recharts';
 import {
 	StatisticsBox,
@@ -69,59 +70,61 @@ const CastomLabel = ({ x, y, value, type }) => {
 export default function Statistics() {
 	return (
 		<>
-			<StatisticsBox>
-				<StatisticsTitle>Amount of pages / day</StatisticsTitle>
-				<LineChart
-					width={811}
-					height={300}
-					data={checkData}
-					margin={{
-						top: 15,
-						right: 45,
-						left: 5,
-						bottom: 5,
-					}}
-				>
-					<CartesianGrid strokeDasharray="0" horizontalPoints={[295]} />
-					<XAxis
-						dataKey="name"
-						hide={true}
-						padding={checkData?.length <= 1 && { left: -760 }}
-					/>
-
-					<Tooltip />
-
-					<Line
-						type="monotone"
-						dataKey="pod"
-						stroke="#000000"
-						fill="#000000"
-						activeDot={{ r: 7 }}
-						height={5}
-						// legendType="none"
-						strokeWidth={2}
-						dot={{ stroke: '#000000', strokeWidth: 4 }}
-						name="PLAN"
+			<ResponsiveContainer min-width={407} height="80%">
+				<StatisticsBox>
+					<StatisticsTitle>Amount of pages / day</StatisticsTitle>
+					<LineChart
+						width={809}
+						height={300}
+						data={checkData}
+						margin={{
+							top: 15,
+							right: 50,
+							left: 5,
+							bottom: 5,
+						}}
 					>
-						<LabelList content={<CastomLabel type="pod" />} />
-					</Line>
-					<Line
-						type="monotone"
-						dataKey="fod"
-						stroke="#FF6B08"
-						fill="#FF6B08"
-						activeDot={{ r: 7 }}
-						// legendType="none"
-						strokeWidth={2}
-						dot={{ stroke: '#FF6B08', strokeWidth: 4 }}
-						name="Act"
-					>
-						<LabelList content={<CastomLabel type="fod" />} />
-					</Line>
-				</LineChart>
+						<CartesianGrid strokeDasharray="0" horizontalPoints={[295]} />
+						<XAxis
+							dataKey="name"
+							hide={true}
+							padding={checkData?.length <= 1 && { left: -760 }}
+						/>
 
-				<StatisticsText>Time</StatisticsText>
-			</StatisticsBox>
+						<Tooltip />
+
+						<Line
+							type="monotone"
+							dataKey="pod"
+							stroke="#000000"
+							fill="#000000"
+							activeDot={{ r: 7 }}
+							height={5}
+							// legendType="none"
+							strokeWidth={2}
+							dot={{ stroke: '#000000', strokeWidth: 4 }}
+							name="PLAN"
+						>
+							<LabelList content={<CastomLabel type="pod" />} />
+						</Line>
+						<Line
+							type="monotone"
+							dataKey="fod"
+							stroke="#FF6B08"
+							fill="#FF6B08"
+							activeDot={{ r: 7 }}
+							// legendType="none"
+							strokeWidth={2}
+							dot={{ stroke: '#FF6B08', strokeWidth: 4 }}
+							name="Act"
+						>
+							<LabelList content={<CastomLabel type="fod" />} />
+						</Line>
+					</LineChart>
+
+					<StatisticsText>Time</StatisticsText>
+				</StatisticsBox>
+			</ResponsiveContainer>
 		</>
 	);
 }
