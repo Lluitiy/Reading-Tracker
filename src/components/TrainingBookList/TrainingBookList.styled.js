@@ -13,7 +13,7 @@ export const ItemWrapper = styled.div`
 		grid-template-columns: 35px 300px 200px 100px 80px;
 	}
 	@media screen and (min-width: 1280px) {
-		grid-template-columns: 40px 580px 380px 120px 80px;
+		grid-template-columns: 40px 355px 220px 110px 150px 1rem;
 	}
 `;
 export const ListHeaders = styled.div`
@@ -24,7 +24,7 @@ export const ListHeaders = styled.div`
 		grid-template-columns: 357px 195px 100px 78px;
 	}
 	@media screen and (min-width: 1280px) {
-		grid-template-columns: 390px 230px 98px 200px;
+		grid-template-columns: 390px 200px 90px 180px 40px;
 	}
 `;
 
