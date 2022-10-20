@@ -9,10 +9,6 @@ export const MobileItemWrapper = styled.div`
     line-height: 1.2;
     background-color: ${p => p.theme.colors.white};
     box-shadow: ${p => p.theme.shadow.box};
-
-    @media screen and (min-width: 768px) {
-        display: none;
-    }
 `
 
 export const Table = styled.table`
@@ -34,8 +30,4 @@ export const IconThumb = styled.div`
     left: 20px;
     width: fit-content;
     height: fit-content;
-     /* @media screen and (min-width: 768px) {
-        display: inline;
-        position: static;
-    } */
 `
