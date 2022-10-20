@@ -21,9 +21,7 @@ const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
     const ids =useSelector(booksId)
-	
-	const [select, setSelect] = useState(ids);
-	console.log(select)
+	const [select, setSelect] = useState();
 	const books = useSelector(state => state.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
 	
@@ -42,6 +40,11 @@ const MyTraining = () => {
 			dispatch(getUserBooksThunk());
 		}
 	}, [accessToken, dispatch]);
+
+	useEffect(()=>{
+		setSelect(ids)
+	},[ids])
+
 
 	useEffect(() => {
 		if (accessToken) {
