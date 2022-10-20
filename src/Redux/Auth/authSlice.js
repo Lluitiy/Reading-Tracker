@@ -20,20 +20,19 @@ const authSlice = createSlice({
 	extraReducers: {
 		[register.fulfilled](state, action) {
 			state.user = action.payload.userData;
-			// state.token = action.payload.token;
 			state.isLoggedIn = true;
 		},
 
 		[logIn.fulfilled](state, action) {
-			state.user = action.payload.user;
+			state.user = action.payload.userData;
 			state.accessToken = action.payload.accessToken;
 			state.refreshToken = action.payload.refreshToken;
 			state.sid = action.payload.sid;
 			state.isLoggedIn = true;
 		},
 
-		[logOut.fulfilled](state, action) {
-			state.user = action.payload.user;
+		[logOut.fulfilled](state) {
+			state.user = null;
 			state.accessToken = null;
 			state.refreshToken = null;
 			state.sid = null;
@@ -53,8 +52,6 @@ const authSlice = createSlice({
 			state.accessToken = action.payload.newAccessToken;
 			state.refreshToken = action.payload.newRefreshToken;
 			state.sid = action.payload.newSid;
-			// state.isLoggedIn = true;
-			// state.isRefreshed = true;
 			state.isRefreshed = false;
 		},
 	},
@@ -62,7 +59,11 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-const authPersistConfig = { key: 'auth', storage, whitelist: ["refreshToken", "sid"]};
+const authPersistConfig = {
+	key: 'auth',
+	storage,
+	whitelist: ['refreshToken', 'sid', 'user'],
+};
 
 export const persistedAuthReducer = persistReducer(
 	authPersistConfig,

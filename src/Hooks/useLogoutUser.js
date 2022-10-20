@@ -7,8 +7,9 @@ function useLogoutUser() {
 	const navigate = useNavigate();
 
 	const logout = () => {
-		dispatch(logOut());
-		navigate('/');
+		dispatch(logOut())
+			.unwrap()
+			.then(() => navigate('/login'));
 	};
 
 	return logout;
