@@ -11,7 +11,7 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from 'components/Constants/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<React.StrictMode>
+	// <React.StrictMode>
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
 				<BrowserRouter basename="TeamSlice">
@@ -21,5 +21,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 				</BrowserRouter>
 			</PersistGate>
 		</Provider>
-	</React.StrictMode>
+	// </React.StrictMode>
 );

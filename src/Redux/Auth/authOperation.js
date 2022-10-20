@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
 	async (user, thunkAPI) => {
 		try {
 			const data = await registerUser(user);
-			setToken(data.token);
+			setToken(data.accessToken);
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.massage);
@@ -25,11 +25,11 @@ export const register = createAsyncThunk(
 	}
 );
 
-// Log a previosly created user
+// Log a previously created user
 export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 	try {
 		const data = await loginUser(user);
-		setToken(data.token);
+		setToken(data.accessToken);
 		return data;
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.massage);
@@ -50,10 +50,12 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const fetchCurrentUser = createAsyncThunk(
 	'auth/refresh',
 	async (_, thunkAPI) => {
+		console.log(124)
 		const state = thunkAPI.getState();
 		const persistedToken = state.auth.refreshToken;
-		const persistedSid = thunkAPI.getState().auth.sid;
+		const persistedSid = state.auth.sid;
 		if (!persistedToken) {
+			console.log('err')
 			return thunkAPI.rejectWithValue();
 		}
 
@@ -61,6 +63,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
 		try {
 			const data = await refreshUser(persistedSid);
+			console.log(data)
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.massage);

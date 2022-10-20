@@ -16,7 +16,7 @@ import { booksSlice } from './Books/booksSlice';
 export const store = configureStore({
 	reducer: {
 		auth: persistedAuthReducer,
-		book: booksSlice.reducer,
+		books: booksSlice.reducer,
 		planning: planningReducer,
 		user: userReducer,
 	},
