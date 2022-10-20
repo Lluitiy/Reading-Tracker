@@ -27,7 +27,7 @@ export const addReadingPage = createAsyncThunk(
 	}
 );
 
-export const getcurrentPlanning = createAsyncThunk(
+export const getCurrentPlanning = createAsyncThunk(
 	'planning/getCurrentPlanning',
 	async (_, thunkAPI) => {
 		try {
