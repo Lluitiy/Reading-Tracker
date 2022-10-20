@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import{startPlanning,addReadingPage,getcurrentPlanning} from '../Planning/planningOperations'
+import {
+	startPlanning,
+	addReadingPage,
+	getcurrentPlanning,
+} from '../Planning/planningOperations';
 const initialState = {
-	planning: {
-		books:[],
-		startDate:'',
-		endDate:'',
-		pagesPerDay:null,
-		duration:null,
-		stats:null
-	},
+	books: [],
+	startDate: '',
+	endDate: '',
+	pagesPerDay: null,
+	duration: null,
+	stats: null,
 };
 
 const planningSlice = createSlice({
@@ -16,26 +18,30 @@ const planningSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: {
-		[startPlanning.fulfilled](state,{payload}){
-			state.planning.books = payload.books
-			state.planning.startDate =payload.startDate
-			state.planning.endDate =payload.endDate
-			state.planning.pagesPerDay =payload.pagesPerDay
-			state.planning.duration =payload.duration
-			state.planning.stats = payload.stats
+		[startPlanning.fulfilled](state, { payload }) {
+			state.books = [...payload.books, ...state.books];
+			state.startDate = payload.startDate;
+			state.endDate = payload.endDate;
+			state.pagesPerDay = payload.pagesPerDay;
+			state.duration = payload.duration;
+			state.stats = payload.stats;
 		},
-		[addReadingPage.fulfilled](state,{payload}){
-			state.planning.books = state.planning.books.map(book=>book.id===payload.id?
-				book.pagesFinished=payload.pagesFinished+payload.page:book)
+		[addReadingPage.fulfilled](state, { payload }) {
+			state.books = state.books.map(book =>
+				book.id === payload.id
+					? (book.pagesFinished = payload.pagesFinished + payload.page)
+					: book
+			);
 		},
-		[getcurrentPlanning.fulfilled](state,{payload}){
-			state.planning.books = payload.books
-			state.planning.startDate =payload.startDate
-			state.planning.endDate =payload.endDate
-			state.planning.pagesPerDay =payload.pagesPerDay
-			state.planning.duration =payload.duration
-			state.planning.stats = payload.stats
-		}
+		[getcurrentPlanning.fulfilled](state, { payload }) {
+			console.log(payload.books);
+			state.books = payload.books;
+			state.startDate = payload.startDate;
+			state.endDate = payload.endDate;
+			state.pagesPerDay = payload.pagesPerDay;
+			state.duration = payload.duration;
+			state.stats = payload.stats;
+		},
 	},
 });
 

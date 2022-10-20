@@ -2,14 +2,8 @@ import styled from '@emotion/styled';
 
 export const MyGoalsContainer = styled.div`
 	color: ${p => p.theme.colors.textSecondary};
-	@media screen and (min-width: 320px) and (max-width: 767px) {
-		/* max-width: 280px; */
-		/* max-height: 296px; */
 
-		/* padding: 30px 44px; */
-	}
-
-	@media screen and (min-width: 768px) and (max-width: 1199px) {
+	@media screen and (min-width: 768px) {
 		/* max-width: 704px; */
 		/* max-height: 105px; */
 		/* padding-left: 28px;
@@ -18,7 +12,7 @@ export const MyGoalsContainer = styled.div`
 		padding-bottom: 8px; */
 	}
 
-	@media screen and (min-width: 1200px) {
+	@media screen and (min-width: 1280px) {
 		/* max-width: 288px; */
 		/* max-height: 304px; */
 
