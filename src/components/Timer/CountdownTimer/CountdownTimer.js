@@ -1,6 +1,6 @@
 import React from 'react';
 import DateTimeDisplay from './DateTimeDisplay/DateTimeDisplay';
-import { useCountdown } from '../../../Hooks/useCountdown/useCountdown';
+import { useCountdown } from 'Hooks/useCountdown';
 
 import { Wrap, Counter, Title, Dots } from './CountdownTimer.styled.jsx';
 
