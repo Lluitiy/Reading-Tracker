@@ -1,12 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addUserBookThunk, getUserBooksThunk } from './booksOperations';
 
 const initialStateBooks = {
-	books: {},
+	
+		goingToRead: [],
+		currentlyReading: [],
+		finishedReading: []
+
 };
 
 export const booksSlice = createSlice({
 	name: 'books',
 	initialState: initialStateBooks,
 	reducers: {},
-	extraReducers: {},
+	extraReducers: {
+		[getUserBooksThunk.fulfilled]: (state, {payload}) => {
+			state.goingToRead = payload.goingToRead;
+			state.currentlyReading = payload.currentlyReading;
+			state.finishedReading = payload.finishedReading;
+		},
+		[addUserBookThunk.fulfilled]: (state, { payload }) => {
+			state.goingToRead = [payload.newBook, ...state.goingToRead]
+		}
+	},
 });
+

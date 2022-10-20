@@ -51,23 +51,34 @@ const authUserGoogle = async () => {
 	}
 };
 
-const postBook = async () => {
+const postUserBook = async (book) => {
 	try {
-		const { data } = await contactsAPI.post('/book');
+		const { data } = await contactsAPI.post('/book', book);
 		return data;
 	} catch (error) {
 		throw new Error(error.message);
 	}
 };
 
-const deleteBook = async id => {
+const getUserBooks = async () => {
+	try {
+		const { data } = await contactsAPI.get('/user/books');
+		return data;
+	} catch (error) {
+		throw new Error(error.message);
+	}
+};
+
+
+const deleteUserBook = async id => {
 	try {
 		return await contactsAPI.delete(`/book/${id}`);
 	} catch (error) {
 		throw new Error(error.message);
 	}
 };
-const editBook = async ({ id, rating, feedback }) => {
+
+const editUserBook = async ({ id, rating, feedback }) => {
 	try {
 		const { data } = await contactsAPI.patch(`/book/review/${id}`, {
 			rating,
@@ -110,23 +121,7 @@ const getPlanning = async () => {
 	}
 };
 
-const postUserBook = async () => {
-	try {
-		const { data } = await contactsAPI.post('/user/books');
-		return data;
-	} catch (error) {
-		throw new Error(error.message);
-	}
-};
 
-const getUserBook = async () => {
-	try {
-		const { data } = await contactsAPI.get('/user/books');
-		return data;
-	} catch (error) {
-		throw new Error(error.message);
-	}
-};
 
 const API = {
 	registerUser,
@@ -135,16 +130,16 @@ const API = {
 	refreshUser,
 	authUserGoogle,
 
-	postBook,
-	deleteBook,
-	editBook,
 
 	postPlanning,
 	patchPlanning,
 	getPlanning,
 
+	getUserBooks,
 	postUserBook,
-	getUserBook,
+	deleteUserBook,
+	editUserBook,
+
 
 	setToken,
 	unsetToken,

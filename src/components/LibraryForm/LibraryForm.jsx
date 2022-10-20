@@ -1,7 +1,7 @@
 import { Container, Section } from 'components/Common/Common.styled';
 import { useState } from 'react';
 import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
-// import { useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {
 	AddBtn,
 	AuthorLabel,
@@ -14,17 +14,18 @@ import {
 	Upper,
 	Wrapper,
 } from './LibraryForm.styled';
+import { addUserBookThunk } from 'Redux/Books/booksOperations';
 
 const LibraryForm = () => {
 	const [newBook, setNewBook] = useState({
         title: '',
         author: '',
         publishYear: '',
-        totalPages: '',
+        pagesTotal: '',
     });
 
 	// const contacts = useSelector(selectAllContacts)
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
     const handleInputChange = e => {
 		setNewBook(prevState => {
@@ -34,20 +35,15 @@ const LibraryForm = () => {
 
 	const handleFormSubmit = e => {
 		e.preventDefault();
-
-		// if (contacts.some(({ name }) => name === newContact.name)) {
-		//     alert(`${newContact.name} is already in contacts!`);
-		//     return;
-		// }
-		// dispatch(addContactThunk(newContact))
-        console.log(newBook)
+		
+		dispatch(addUserBookThunk(newBook))
 		formReset();
 	};
 	const formReset = () => {
 		setNewBook({ title: '',
         author: '',
         publishYear: '',
-        totalPages: '',});
+        pagesTotal: '',});
 	};
 
 	return (
@@ -99,9 +95,9 @@ const LibraryForm = () => {
 								<Input
 									placeholder="..."
 									onChange={handleInputChange}
-									value={newBook.totalPages}
+									value={newBook.pagesTotal}
 									type="text"
-									name="totalPages"
+									name="pagesTotal"
 									required
 								/>
 							</Label>
