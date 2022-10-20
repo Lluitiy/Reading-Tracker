@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const ResultsBox = styled.div`
 	width: 280px;
-	height: 340px;
+	min-height: 340px;
 	padding: 20px;
 
 	background-color: ${p => p.theme.colors.white};
@@ -10,14 +10,13 @@ export const ResultsBox = styled.div`
 
 	@media screen and (min-width: 768px) {
 		width: 704px;
-		height: 309px;
+		min-height: 309px;
 		padding: 28px 96px;
 	}
 
 	@media screen and (min-width: 1280px) {
 		width: 280px;
-		height: 340px;
-		padding: 20px;
+      padding: 20px;
 	}
 `;
 
@@ -35,7 +34,7 @@ export const ResultsForm = styled.form`
 	justify-content: center;
 	flex-direction: column;
 	margin-top: 12px;
-	gap: 20px;
+	gap: 28px;
 	font-size: 12px;
 	color: ${p => p.theme.colors.textMain};
 
@@ -52,7 +51,7 @@ export const ResultsForm = styled.form`
 		justify-content: center;
 		flex-direction: column;
 		margin-top: 12px;
-		gap: 20px;
+		
 		font-size: 12px;
 		color: ${p => p.theme.colors.textMain};
 	}
@@ -69,6 +68,8 @@ export const FormBox = styled.div`
 `;
 
 export const ResultsLabel = styled.label`
+	
+
 	font-size: 11px;
 	color: ${p => p.theme.colors.textSecondary};
 
@@ -78,13 +79,13 @@ export const ResultsLabel = styled.label`
 `;
 export const ResultsInput = styled.input`
 	width: 100%;
+	height: 42px;
 	background: ${p => p.theme.colors.body};
 	border: 1px solid ${p => p.theme.colors.icons};
+	margin-top: 4px;
 
 	@media screen and (min-width: 768px) {
 		width: 110px;
-		height: 42px;
-		margin-top: 4px;
 	}
 `;
 
@@ -106,8 +107,10 @@ export const ResultsBtn = styled.button`
 
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0px;
+      height: 42px;
 	}
 	@media screen and (min-width: 1280px) {
+       height: 40px;
 	}
 	&:hover,
 	&:focus {
