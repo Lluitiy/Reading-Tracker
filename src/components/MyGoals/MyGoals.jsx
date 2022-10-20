@@ -15,12 +15,12 @@ const MyGoals = () => {
 					<Counter>0{/* {duration} */}</Counter>
 					<Text>Amount of days</Text>
 				</li>
-				{
+				{false && (
 					<li>
 						<Counter>{0}</Counter>
 						<Text>Books lefts</Text>
 					</li>
-				}
+				)}
 			</List>
 		</MyGoalsContainer>
 	);
