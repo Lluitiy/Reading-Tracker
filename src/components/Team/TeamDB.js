@@ -5,6 +5,7 @@ import TanyaPhoto from '../../Assets/img/TeamPhoto/Tanya.jpg';
 import PavloPhoto from '../../Assets/img/TeamPhoto/Pavlo.jpeg';
 import ValeriyaPhoto from '../../Assets/img/TeamPhoto/Valeriya.jpeg';
 import MaxPhoto from '../../Assets/img/TeamPhoto/Max.jpeg';
+import AnastasiiaPhoto from '../../Assets/img/TeamPhoto/Anastasiia.jpeg';
 
 export const team = [
 	{
@@ -59,8 +60,8 @@ export const team = [
 	{
 		id: 8,
 		position: 'Developer',
-		name: 'Reizlina Tanya',
-		gitLink: 'https://github.com/Reizlina',
-		photo: NikitaPhoto,
+		name: 'Anastasiia Svechnikova',
+		gitLink: 'https://github.com/Anastasiia-Svechnikova',
+		photo: AnastasiiaPhoto,
 	},
 ];
