@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.7505f281.css",
-    "main.js": "/TeamSlice/static/js/main.3c9222c6.js",
+    "main.js": "/TeamSlice/static/js/main.dceb3968.js",
     "static/media/Max.jpeg": "/TeamSlice/static/media/Max.f7c6330a1ca49b0bfcef.jpeg",
     "static/media/Tanya.jpg": "/TeamSlice/static/media/Tanya.5f1750c00a8fbd3624b9.jpg",
     "static/media/Valeriya.jpeg": "/TeamSlice/static/media/Valeriya.8d180e8f4425f47ddfb1.jpeg",
@@ -10,17 +10,16 @@
     "static/media/Renat.jpg": "/TeamSlice/static/media/Renat.11f1b86a4b03d4ced14a.jpg",
     "static/media/Oleh.jpeg": "/TeamSlice/static/media/Oleh.de98a9b32459fdb676fc.jpeg",
     "static/media/Nikita.jpg": "/TeamSlice/static/media/Nikita.28080fb06147ddc31a31.jpg",
-    "static/media/LibraryIcon.svg": "/TeamSlice/static/media/LibraryIcon.d2a67c184c8ddb63853b96ae7b5b31ca.svg",
     "index.html": "/TeamSlice/index.html",
     "static/media/book.svg": "/TeamSlice/static/media/book.5b773cd36c9a767c125121523371c921.svg",
     "static/media/backArrow.svg": "/TeamSlice/static/media/backArrow.7621e2b181eca1a605ca8f4a6eab350e.svg",
-    "static/media/HomeIcon.svg": "/TeamSlice/static/media/HomeIcon.e1c7a00a03955e5c78b8d2a967b88389.svg",
+    "static/media/HomeIcon.svg": "/TeamSlice/static/media/HomeIcon.26854cad09bc61041f9de25d6034bf88.svg",
     "static/media/delete.svg": "/TeamSlice/static/media/delete.c028471843e0be2d2f1bba58f922130b.svg",
     "main.7505f281.css.map": "/TeamSlice/static/css/main.7505f281.css.map",
-    "main.3c9222c6.js.map": "/TeamSlice/static/js/main.3c9222c6.js.map"
+    "main.dceb3968.js.map": "/TeamSlice/static/js/main.dceb3968.js.map"
   },
   "entrypoints": [
     "static/css/main.7505f281.css",
-    "static/js/main.3c9222c6.js"
+    "static/js/main.dceb3968.js"
   ]
 }
