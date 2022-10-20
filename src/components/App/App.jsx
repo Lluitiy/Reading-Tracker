@@ -8,7 +8,17 @@ import TrainingPage from 'Pages/TrainingPage';
 import TeamPage from 'components/Team/Team';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCurrentUser } from 'Redux/Auth/authOperation';
+
 export const App = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchCurrentUser());
+	}, [dispatch]);
+
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>

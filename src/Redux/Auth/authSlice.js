@@ -9,7 +9,7 @@ const initialState = {
 	refreshToken: null,
 	sid: null,
 	isLoggedIn: false,
-	isRefreshing: false,
+	isRefreshed: false,
 	// token: null,
 };
 
@@ -41,17 +41,21 @@ const authSlice = createSlice({
 		},
 
 		[fetchCurrentUser.pending](state) {
-			state.isRefreshing = true;
+			state.isRefreshed = true;
 		},
 
 		[fetchCurrentUser.rejected](state) {
-			state.isRefreshing = false;
+			state.isLoggedIn = true;
+			state.isRefreshed = false;
 		},
 
 		[fetchCurrentUser.fulfilled](state, action) {
-			state.user = action.payload;
-			state.isLoggedIn = true;
-			state.isRefreshing = false;
+			state.accessToken = action.payload.newAccessToken;
+			state.refreshToken = action.payload.newRefreshToken;
+			state.sid = action.payload.newSid;
+			// state.isLoggedIn = true;
+			// state.isRefreshed = true;
+			state.isRefreshed = false;
 		},
 	},
 });
