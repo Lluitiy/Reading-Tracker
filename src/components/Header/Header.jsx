@@ -1,5 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from 'Redux/Auth/authOperation';
 import { Container } from 'components/Common/Common.styled';
@@ -12,9 +12,11 @@ import {
 	LogoutBtn,
 	NavAlign,
 } from './Header.styled';
+import { getIsLoggedIn } from 'Redux/Auth/authSelectors';
 
 const Header = () => {
 	const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+	const isLoggedIn = useSelector(getIsLoggedIn);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -29,14 +31,18 @@ const Header = () => {
 			<Container>
 				<HeaderWrapper>
 					<Logo>br</Logo>
-					{isTabletOrDesktop && <UserMenu />}
-					<NavAlign>
-						<Nav />
-						{!isTabletOrDesktop && <UserMenu />}
-						<LogoutBtn type="button" onClick={handleLogOut}>
-							Logout
-						</LogoutBtn>
-					</NavAlign>
+					{isLoggedIn && (
+						<>
+							{isTabletOrDesktop && <UserMenu />}
+							<NavAlign>
+								<Nav />
+								{!isTabletOrDesktop && <UserMenu />}
+								<LogoutBtn type="button" onClick={handleLogOut}>
+									Logout
+								</LogoutBtn>
+							</NavAlign>
+						</>
+					)}
 				</HeaderWrapper>
 			</Container>
 		</Head>

@@ -9,6 +9,7 @@ import { deletePlanningBook } from 'Redux/Planning/planningOperations';
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
 import { ReactComponent as TrashIcon } from 'Assets/svg/delete.svg';
 import { useDispatch, useSelector } from 'react-redux';
+
 // import { getAccessToken } from 'Redux/Auth/authSelectors';
 
 const TrainingBookList = () => {
@@ -31,6 +32,7 @@ const TrainingBookList = () => {
 				<span>Year</span>
 				<span>Pages</span>
 			</ListHeaders>
+
 			<ul>
 				{books?.map(({ title, author, publishYear, pagesTotal, _id }) => (
 					<li key={_id}>

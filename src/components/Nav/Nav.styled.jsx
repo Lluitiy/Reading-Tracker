@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { ReactComponent as HomeIcon } from 'Assets/img/HomeIcon.svg';
-import { ReactComponent as LibIcon } from 'Assets/img/LibraryIcon.svg';
+import { ReactComponent as HomeIcon } from 'Assets/svg/HomeIcon.svg';
+import { ReactComponent as LibIcon } from 'Assets/svg/book.svg';
 import { NavLink } from 'react-router-dom';
 
 export const IconLink = styled(NavLink)`

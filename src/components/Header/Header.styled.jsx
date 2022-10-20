@@ -1,4 +1,11 @@
 import styled from '@emotion/styled';
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'Redux/Auth/authSelectors';
+
+const AuthLocation = () => {
+	const isLoggedIn = useSelector(getIsLoggedIn);
+	return isLoggedIn ? 'space-between' : 'center';
+};
 
 export const Head = styled.header`
 	justify-content: center;
@@ -28,7 +35,7 @@ export const Logo = styled.p`
 export const HeaderWrapper = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: ${AuthLocation};
 `;
 
 export const LogoutBtn = styled.button`

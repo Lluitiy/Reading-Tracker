@@ -1,5 +1,5 @@
 import Layout from 'Layout/Layout';
-import HomePage from 'Pages/HomePage';
+// import HomePage from 'Pages/HomePage';
 import LibraryPage from 'Pages/LibraryPage';
 
 import LogInPage from 'Pages/LogInPage';
@@ -22,7 +22,7 @@ export const App = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>
-				<Route index element={<HomePage />} />
+				<Route index element={<LogInPage />} />
 				<Route path="login" element={<LogInPage />} />
 				<Route path="register" element={<RegisterPage />} />
 				<Route path="library" element={<LibraryPage />} />
