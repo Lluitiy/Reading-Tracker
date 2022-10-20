@@ -5,18 +5,15 @@ import LibraryPage from 'Pages/LibraryPage';
 import LogInPage from 'Pages/LogInPage';
 import RegisterPage from 'Pages/RegisterPage';
 import TrainingPage from 'Pages/TrainingPage';
+import TeamPage from 'components/Team/Team';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
-// import { getIsRefreshing } from 'Redux/Auth/authSelectors';
 
 export const App = () => {
 	const dispatch = useDispatch();
-	// const isRefreshed = useSelector(getIsRefreshing);
-	// const refreshToken = useSelector(getIsRefreshing);
 
 	useEffect(() => {
 		dispatch(fetchCurrentUser());
@@ -30,6 +27,7 @@ export const App = () => {
 				<Route path="register" element={<RegisterPage />} />
 				<Route path="library" element={<LibraryPage />} />
 				<Route path="training" element={<TrainingPage />} />
+				<Route path="team" element={<TeamPage />} />
 			</Route>
 			<Route path="*" element={<Navigate to="register" replace />} />
 		</Routes>
