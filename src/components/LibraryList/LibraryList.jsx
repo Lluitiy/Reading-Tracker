@@ -7,7 +7,7 @@ import BOOK_CATEGORY from 'components/Constants/bookCategories';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBooksByCategory } from 'Redux/Books/booksSelectors';
 import { useEffect } from "react"
-import { getIsLoggedIn } from "Redux/Auth/authSelectors"
+import { getAccessToken} from "Redux/Auth/authSelectors"
 import { getUserBooksThunk } from "Redux/Books/booksOperations"
 import { useMemo } from 'react';
 
@@ -16,15 +16,16 @@ const LibraryList = ({ category }) => {
     const fill = useMemo(() => category === BOOK_CATEGORY.currentlyReading ? theme.colors.brand : "#A6ABB9", [category]) 
 
     const books = useSelector(getBooksByCategory(category))
-    const isLoggedIn = useSelector(getIsLoggedIn)
+    const accessToken = useSelector(getAccessToken)
+
     const dispatch = useDispatch()
     
 
     useEffect(() => {
-        if (isLoggedIn) {
+        if (accessToken) {
         dispatch(getUserBooksThunk())
       }   
-    }, [isLoggedIn, dispatch])
+    }, [accessToken, dispatch])
     
 
 	return (
