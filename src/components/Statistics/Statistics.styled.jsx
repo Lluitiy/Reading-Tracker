@@ -1,32 +1,60 @@
 import styled from '@emotion/styled';
 
+export const StatisticsSection = styled.section`
+	display: block;
+
+	@media screen and (min-width: 768px) {
+		display: block;
+	}
+
+	@media screen and (min-width: 1280px) {
+		display: flex;
+		justify-content: space-between;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      
+      
+      /* 
+      padding-top: 37px;
+      padding-left: 40px;
+      padding-right: 16px; */
+	}
+`;
+
 export const StatisticsBox = styled.div`
-	/* margin-left: auto;
-margin-right: auto; */
-
+	width: 280px;
+	padding-left: 22px;
+	padding-right: 22px;
+	/* margin-bottom: 32px; */
+   
 	text-align: end;
-	background-color: #ffffff;
+	background-color: ${p => p.theme.colors.white};
+   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 
-	/* от 768 до 1199 только планшет */
-	@media screen and (min-width: 768px) and (max-width: 1199px) {
+	@media screen and (min-width: 768px) {
 		width: 704px;
 		padding-left: 46px;
 		padding-right: 51px;
 	}
 
-	/* от 1200 только пк */
-	@media screen and (min-width: 1200px) {
-		padding-left: 40px;
-		padding-right: 77px;
+	 @media screen and (min-width: 1280px) {
+      /* display: flex; */
 		width: 928px;
-	}
+      height: 340px;
+      
+      padding-top: 37px;
+		padding-right: 77px;
+      padding-bottom: 51px;
+      padding-left: 40px;
+		
+	} 
 `;
 
 export const StatisticsTitle = styled.h2`
 	display: flex;
 	margin-left: 5px;
 	font-size: 12px;
-	color: #242a37;
+	color: ${p => p.theme.colors.textMain};
 	text-transform: uppercase;
 `;
 
@@ -36,6 +64,6 @@ export const StatisticsText = styled.p`
 	margin-right: 50px;
 	font-size: 12px;
 	font-weight: 600;
-	color: #091e3f;
+	color: ${p => p.theme.colors.counter};
 	text-transform: uppercase;
 `;

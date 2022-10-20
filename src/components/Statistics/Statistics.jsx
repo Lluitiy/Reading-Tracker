@@ -1,4 +1,4 @@
-import React from 'react';
+import Results from 'components/Results/Results';
 import {
 	LineChart,
 	Line,
@@ -9,6 +9,7 @@ import {
 	ResponsiveContainer,
 } from 'recharts';
 import {
+	StatisticsSection,
 	StatisticsBox,
 	StatisticsTitle,
 	StatisticsText,
@@ -46,7 +47,7 @@ const data = [
 const checkData = data.length > 0 ? data : [{ name: 'Test', fod: 5, pod: 10 }];
 
 const CastomLabel = ({ x, y, value, type }) => {
-	console.log(x, y);
+	
 	if (value === checkData[checkData.length - 1]?.[type]) {
 		return (
 			<text
@@ -56,26 +57,24 @@ const CastomLabel = ({ x, y, value, type }) => {
 				dx={8}
 				fontSize={14}
 				textAnchor={'start'}
-				// padding={20}
-				// background={"#a5ea83873"}
 				fill={type === 'pod' ? '#000000' : '#FF6B08'}
 			>
 				{type === 'pod' ? 'PLAN' : 'ACT'}
 			</text>
 		);
 	}
-	// return null;
 };
 
 export default function Statistics() {
 	return (
 		<>
-			<ResponsiveContainer min-width={407} height="80%">
-				<StatisticsBox>
-					<StatisticsTitle>Amount of pages / day</StatisticsTitle>
+		<StatisticsSection>
+			<StatisticsBox>
+				<StatisticsTitle>Amount of pages / day</StatisticsTitle>
+				<ResponsiveContainer width={'99%'} height={215}>
 					<LineChart
 						width={809}
-						height={300}
+						height={215}
 						data={checkData}
 						margin={{
 							top: 15,
@@ -121,10 +120,12 @@ export default function Statistics() {
 							<LabelList content={<CastomLabel type="fod" />} />
 						</Line>
 					</LineChart>
+				</ResponsiveContainer>
+				<StatisticsText>Time</StatisticsText>
+			</StatisticsBox>
+			<Results />
+		</StatisticsSection>
 
-					<StatisticsText>Time</StatisticsText>
-				</StatisticsBox>
-			</ResponsiveContainer>
-		</>
+				</>
 	);
 }
