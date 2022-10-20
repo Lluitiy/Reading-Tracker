@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Section = styled.section`
 	color: ${p => p.theme.colors.textMain};
 	padding: 8px 0px;
-	background-color: ${p => p.theme.colors.body};
+
 	@media screen and (min-width: 768px) {
 		padding: 15px 0px;
 	}

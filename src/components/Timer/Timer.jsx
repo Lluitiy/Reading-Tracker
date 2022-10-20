@@ -3,22 +3,27 @@ import CountdownTimer from '../Timer/CountdownTimer/CountdownTimer';
 import { Section } from 'components/Common/Common.styled';
 import { TimerContainer } from './Timer.styled';
 
-const Timer = () => {
-	const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
-	const NOW_IN_MS = new Date().getTime();
+const backend = {
+	startDate: '2020-12-31',
+	endDate: '2022-11-05',
+};
 
-	const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+const Timer = () => {
+	const GET_EN_YEAR = new Date().getFullYear() + '-12-31';
+	const END_YEAR_MS = new Date(GET_EN_YEAR).getTime();
+
+	const END_TRAINING_MS = new Date(backend.endDate).getTime();
 
 	return (
 		<Section>
 			<TimerContainer>
 				<CountdownTimer
 					title="Years countdown"
-					targetDate={dateTimeAfterThreeDays}
+					targetDate={END_YEAR_MS}
 				></CountdownTimer>
 				<CountdownTimer
 					title="Goals countdown"
-					targetDate={dateTimeAfterThreeDays}
+					targetDate={END_TRAINING_MS}
 				></CountdownTimer>
 			</TimerContainer>
 		</Section>
