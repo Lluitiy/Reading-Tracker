@@ -62,7 +62,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
 		try {
 			const data = await refreshUser(persistedSid);
-			console.log(data)
+			setToken(data.newAccessToken)
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.massage);

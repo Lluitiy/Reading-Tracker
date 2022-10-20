@@ -62,7 +62,7 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-const authPersistConfig = { key: 'auth', storage };
+const authPersistConfig = { key: 'auth', storage, whitelist: ["refreshToken", "sid"]};
 
 export const persistedAuthReducer = persistReducer(
 	authPersistConfig,
