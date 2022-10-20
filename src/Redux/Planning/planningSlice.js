@@ -43,7 +43,7 @@ const planningSlice = createSlice({
 			state.pagesPerDay = payload.planning.pagesPerDay;
 			state.duration = payload.planning.duration;
 			state.stats = payload.planning.stats;
-			// state.booksId = payload.planning.books.map(({_id})=>_id)
+			state.booksId = payload.planning.books.map(({_id})=>_id)
 		},
 	},
 });
