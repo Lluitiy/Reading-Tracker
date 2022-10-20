@@ -85,12 +85,13 @@ export default function Statistics() {
 							bottom: 5,
 						}}
 					>
-						<CartesianGrid strokeDasharray="0" horizontalPoints={[295]} />
+						<CartesianGrid strokeDasharray="0" horizontalPoints={[210]} />
 						<XAxis
 							dataKey="name"
 							hide={true}
 							padding={checkData?.length <= 1 && { left: -760 }}
-						/>
+							/>
+							
 
 						<Tooltip />
 

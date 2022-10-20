@@ -12,6 +12,7 @@ export const StatisticsSection = styled.section`
 		justify-content: space-between;
       margin-top: 40px;
       margin-bottom: 40px;
+      /* height: 340px; */
       
       
       /* 
@@ -23,9 +24,8 @@ export const StatisticsSection = styled.section`
 
 export const StatisticsBox = styled.div`
 	width: 280px;
-	padding-left: 22px;
-	padding-right: 22px;
-	/* margin-bottom: 32px; */
+	padding: 22px;
+	margin-bottom: 32px;
    
 	text-align: end;
 	background-color: ${p => p.theme.colors.white};
@@ -33,8 +33,11 @@ export const StatisticsBox = styled.div`
 
 	@media screen and (min-width: 768px) {
 		width: 704px;
-		padding-left: 46px;
-		padding-right: 51px;
+		padding-left: 49px;
+		padding-right: 30px;
+      padding-top: 35px;
+      margin-bottom: 40px;
+
 	}
 
 	 @media screen and (min-width: 1280px) {
@@ -43,9 +46,10 @@ export const StatisticsBox = styled.div`
       height: 340px;
       
       padding-top: 37px;
-		padding-right: 77px;
-      padding-bottom: 51px;
+		padding-right: 40px;
+      padding-bottom: 32px;
       padding-left: 40px;
+      margin-bottom: 0;
 		
 	} 
 `;
@@ -56,6 +60,12 @@ export const StatisticsTitle = styled.h2`
 	font-size: 12px;
 	color: ${p => p.theme.colors.textMain};
 	text-transform: uppercase;
+
+ @media screen and (min-width: 1280px) {
+  margin-bottom: 8px;
+		
+	} 
+   
 `;
 
 export const StatisticsText = styled.p`
@@ -66,4 +76,9 @@ export const StatisticsText = styled.p`
 	font-weight: 600;
 	color: ${p => p.theme.colors.counter};
 	text-transform: uppercase;
+
+   @media screen and (min-width: 768px) {
+		margin-right: 57px;
+	}
+       
 `;
