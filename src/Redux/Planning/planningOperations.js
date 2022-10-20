@@ -1,7 +1,7 @@
 import API from 'Services/Api/Api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const { postPlanning, patchPlanning, getPlanning } = API;
+const { postPlanning, patchPlanning, getPlanning, deleteUserBook } = API;
 
 export const startPlanning = createAsyncThunk(
 	'planning/startPlanning',
@@ -34,6 +34,16 @@ export const getCurrentPlanning = createAsyncThunk(
 			const data = await getPlanning();
 			console.log(data);
 			return data;
+		} catch (e) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+);
+export const deletePlanningBook = createAsyncThunk(
+	'planning/getCurrentPlanning',
+	async (id, thunkAPI) => {
+		try {
+			return await deleteUserBook(id);
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
 		}

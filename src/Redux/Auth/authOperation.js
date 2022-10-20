@@ -54,7 +54,7 @@ export const fetchCurrentUser = createAsyncThunk(
 		const persistedToken = state.auth.refreshToken;
 		const persistedSid = { sid: state.auth.sid };
 		if (!persistedToken) {
-			console.log('err')
+			console.log('err');
 			return thunkAPI.rejectWithValue();
 		}
 
@@ -62,7 +62,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
 		try {
 			const data = await refreshUser(persistedSid);
-			setToken(data.newAccessToken)
+			setToken(data.newAccessToken);
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.massage);

@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
     width: 100%;
-
-    @media screen and (max-width: 768px){
-            height: 100vh;
+    height: 100vh;
+    @media screen and (min-width: 768px){
+        height: auto;
     }
 `
 export const Form = styled.form`
@@ -87,7 +87,7 @@ export const NameLabel = styled.label`
     color: ${p => p.theme.colors.textSecondary};
     @media screen and (min-width: 768px) {
 		width: 100%;
-            margin-bottom: 24px;
+        margin-bottom: 24px;
 	}
     @media screen and (min-width: 1280px) {
 		margin: 0;
@@ -113,18 +113,16 @@ export const AuthorLabel = styled.label`
 	}
 `
 
-
-
 export const BackBtn = styled.button`
-width: 40px;
-height: 40px;
-padding: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
     background-color: transparent;
     border: none;
 
-     @media screen and (min-width: 768px) {
-		display: none;
-	}
+    @media screen and (min-width: 768px) {
+	    display: none;
+}
 
 `
 export const AddBtn = styled.button`
@@ -144,8 +142,8 @@ export const AddBtn = styled.button`
 		margin: 20px auto;
 	}
     @media screen and (min-width: 1280px) {
-            margin: 0 auto;
-            align-self: flex-end;
+        margin: 0 auto;
+        align-self: flex-end;
 	}
     &:hover,&:focus{
         border: none;

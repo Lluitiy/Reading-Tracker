@@ -16,15 +16,14 @@ import {
 } from './LibraryForm.styled';
 import { addUserBookThunk } from 'Redux/Books/booksOperations';
 
-const LibraryForm = () => {
+const LibraryForm = ({handleFormOpen = null}) => {
 	const [newBook, setNewBook] = useState({
         title: '',
         author: '',
         publishYear: '',
         pagesTotal: '',
-    });
-
-	// const contacts = useSelector(selectAllContacts)
+	});
+	
 	const dispatch = useDispatch();
 
     const handleInputChange = e => {
@@ -50,7 +49,7 @@ const LibraryForm = () => {
 		<Section>
 			<Container>
 				<Wrapper>
-					<BackBtn type="button">
+					<BackBtn type="button" onClick={handleFormOpen}>
 						<BackArrow width="24" height="24" />
 					</BackBtn>
 					<Form onSubmit={handleFormSubmit}>
