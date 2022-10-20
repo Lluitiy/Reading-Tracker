@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
     width: 100%;
-
-    @media screen and (max-width: 768px){
-            height: 100vh;
+    height: 100vh;
+    @media screen and (min-width: 768px){
+        height: auto;
     }
 `
 export const Form = styled.form`
