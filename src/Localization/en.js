@@ -1,4 +1,4 @@
-export default {
+const en = {
 	timer: {
 		title1: 'Years countdown',
 		title2: 'Goals countdown',
@@ -9,3 +9,4 @@ export default {
 	},
 	team: { teamButton: 'Go back' },
 };
+export default en;

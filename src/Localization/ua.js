@@ -1,4 +1,4 @@
-export default {
+const ua = {
 	timer: {
 		title1: 'До закінчення року залишилось',
 		title2: 'До досягнення мети залишилось',
@@ -9,3 +9,5 @@ export default {
 	},
 	team: { teamButton: 'Назад' },
 };
+
+export default ua;
