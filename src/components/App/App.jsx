@@ -2,8 +2,8 @@ import Layout from 'Layout/Layout';
 import HomePage from 'Pages/HomePage';
 import LibraryPage from 'Pages/LibraryPage';
 
-import LogInPage from 'Pages/LogInPage';
-import RegisterPage from 'Pages/RegisterPage';
+import LogInPage from 'Pages/LogInPage/LogInPage';
+import RegisterPage from 'Pages/RegisterPage/RegisterPage';
 import TrainingPage from 'Pages/TrainingPage';
 import TeamPage from 'components/Team/Team';
 import { Navigate, Route, Routes } from 'react-router-dom';

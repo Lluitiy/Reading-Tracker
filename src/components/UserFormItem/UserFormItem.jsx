@@ -7,7 +7,7 @@ import {
 	Error,
 } from './UserFormItem.styled';
 
-export default function userInput({ name, formType }) {
+export default function userInput({ name }) {
 	const getType = () => {
 		switch (name) {
 			case 'name':
@@ -19,7 +19,7 @@ export default function userInput({ name, formType }) {
 			case 'password':
 				return 'password';
 
-			case 'confirm-password':
+			case 'confirm':
 				return 'password';
 
 			default:
@@ -30,27 +30,52 @@ export default function userInput({ name, formType }) {
 	const getTitle = () => {
 		switch (name) {
 			case 'name':
-				return 'What is your name?';
+				return 'Name';
 
 			case 'email':
-				return 'Your e-mail adress?';
+				return 'Email';
 
 			case 'password':
-				return formType === 'login' ? 'Your password?' : 'Create a password!';
+				// return formType === 'login' ? 'Your password?' : 'Create a password!';
+				return 'Password';
 
-			case 'confirm-password':
-				return 'Your password?';
+			case 'confirm':
+				return 'Confirm password';
 
 			default:
 				return 'text';
 		}
 	};
+
+	const getPlaceholder = () => {
+		switch (name) {
+			case 'name':
+				return '...';
+
+			case 'email':
+				return 'qwyour@email.com';
+
+			case 'password':
+				return '...';
+
+			case 'confirm':
+				return '...';
+
+			default:
+				return 'text';
+		}
+	};
+
 	// Input UserForm
 	return (
 		<Input key={name}>
 			<InputField>
 				<Label>{getTitle()}</Label>
-				<FieldInput type={getType()} name={name} />
+				<FieldInput
+					type={getType()}
+					name={name}
+					placeholder={getPlaceholder()}
+				/>
 				<ErrorMessage
 					name={name}
 					render={message => <Error>{message}</Error>}
