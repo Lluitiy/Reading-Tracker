@@ -1,4 +1,4 @@
-import Results from 'components/Results/Results';
+// import Results from 'components/Results/Results';
 import {
 	LineChart,
 	Line,
@@ -19,7 +19,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	showBtn,
-	showResultsSection,
+	// showResultsSection,
 } from '../../Redux/Planning/planningSelectors';
 import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
 
@@ -70,7 +70,7 @@ export default function Statistics() {
 	// const data = useSelector(planFact);
 	// console.log(data)
 	const isShowBtn = useSelector(showBtn);
-	const isShowResultsSection = useSelector(showResultsSection);
+	// const isShowResultsSection = useSelector(showResultsSection);
 	const dispatch = useDispatch();
 
 
@@ -144,7 +144,7 @@ export default function Statistics() {
 					</ResponsiveContainer>
 					<StatisticsText>Time</StatisticsText>
 				</StatisticsBox>
-				{isShowResultsSection && <Results />}
+				{/* {isShowResultsSection && <Results />} */}
 			</StatisticsSection>
 		</>
 	);
