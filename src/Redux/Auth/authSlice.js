@@ -10,7 +10,7 @@ const initialState = {
 	sid: null,
 	isLoggedIn: false,
 	isRefreshed: false,
-	// token: null,
+	isLoading: false,
 };
 
 const authSlice = createSlice({
@@ -20,6 +20,13 @@ const authSlice = createSlice({
 	extraReducers: {
 		[register.fulfilled](state, action) {
 			state.user = action.payload.userData;
+			state.isLoading = false;
+		},
+		[register.pending](state) {
+			state.isLoading = true;
+		},
+		[register.rejected](state) {
+			state.isLoading = false;
 		},
 
 		[logIn.fulfilled](state, action) {
@@ -29,6 +36,12 @@ const authSlice = createSlice({
 			state.sid = action.payload.sid;
 			state.isLoggedIn = true;
 		},
+		[logIn.pending](state) {
+			state.isLoading = true;
+		},
+		[logIn.rejected](state) {
+			state.isLoading = false;
+		},
 
 		[logOut.fulfilled](state) {
 			state.user = null;
@@ -37,21 +50,31 @@ const authSlice = createSlice({
 			state.sid = null;
 			state.isLoggedIn = false;
 		},
+		[logOut.pending](state) {
+			state.isLoading = true;
+		},
+		[logOut.rejected](state) {
+			state.isLoading = false;
+		},
 
 		[fetchCurrentUser.pending](state) {
-			state.isRefreshed = true;
+			state.isRefreshed = false;
+			state.isLoading = true;
 		},
 
 		[fetchCurrentUser.rejected](state) {
-			state.isLoggedIn = true;
-			state.isRefreshed = false;
+			state.isLoggedIn = false;
+			state.isRefreshed = true;
+			state.isLoading = false;
 		},
 
 		[fetchCurrentUser.fulfilled](state, action) {
 			state.accessToken = action.payload.newAccessToken;
 			state.refreshToken = action.payload.newRefreshToken;
 			state.sid = action.payload.newSid;
-			state.isRefreshed = false;
+			state.isRefreshed = true;
+			state.isLoggedIn = true;
+			state.isLoading = false;
 		},
 	},
 });

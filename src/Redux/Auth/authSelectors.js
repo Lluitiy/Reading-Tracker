@@ -1,5 +1,6 @@
 export const getIsLoggedIn = state => state.auth.isLoggedIn;
-export const getIsRefreshing = state => state.auth.isRefreshed;
+export const getIsRefreshed = state => state.auth.isRefreshed;
+export const getIsLoading = state => state.auth.getIsLoading;
 
 export const getRefreshToken = state => state.auth.refreshToken;
 export const getAccessToken = state => state.auth.accessToken;

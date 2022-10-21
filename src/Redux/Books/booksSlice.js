@@ -5,6 +5,7 @@ const initialStateBooks = {
 	goingToRead: [],
 	currentlyReading: [],
 	finishedReading: [],
+	isLoadingBooks: false,
 };
 
 export const booksSlice = createSlice({
@@ -16,7 +17,15 @@ export const booksSlice = createSlice({
 			state.goingToRead = payload.goingToRead;
 			state.currentlyReading = payload.currentlyReading;
 			state.finishedReading = payload.finishedReading;
+			state.isLoadingBooks = false;
 		},
+		[getUserBooksThunk.pending]: state => {
+			state.isLoadingBooks = true;
+		},
+		[getUserBooksThunk.rejected]: state => {
+			state.isLoadingBooks = false;
+		},
+
 		[addUserBookThunk.fulfilled]: (state, { payload }) => {
 			state.goingToRead = [payload.newBook, ...state.goingToRead];
 		},
