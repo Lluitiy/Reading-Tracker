@@ -7,7 +7,7 @@ import {
 
 const initialState = {
 	books: [],
-	booksId: [],
+	booksId:[],
 	startDate: '',
 	endDate: '',
 	pagesPerDay: null,
@@ -28,16 +28,18 @@ const planningSlice = createSlice({
 		showResults(state, { payload }) {
 			state.isShowResults = payload;
 		},
+		// addId(state, { payload }){
+		// 	state.booksId = payload;
+		// }
 	},
 	extraReducers: {
 		[startPlanning.fulfilled](state, { payload }) {
-			// state.books = [...state.books,...payload.books]
 			state.books = payload.books;
-			state.booksId = payload.books.map(({ _id }) => _id);
 			state.startDate = payload.startDate;
 			state.endDate = payload.endDate;
 			state.pagesPerDay = payload.pagesPerDay;
 			state.duration = payload.duration;
+			state.booksId = payload.books.map(({_id})=>_id)
 			state.stats = payload.stats;
 			state.isShowStartTraningBtn = true;
 			for (let i = 1; i <= payload.duration; i += 1) {
@@ -62,7 +64,6 @@ const planningSlice = createSlice({
 			state.pagesPerDay = payload.planning.pagesPerDay;
 			state.duration = payload.planning.duration;
 			state.stats = payload.planning.stats;
-			state.booksId = payload.planning.books.map(({ _id }) => _id);
 		},
 	},
 });

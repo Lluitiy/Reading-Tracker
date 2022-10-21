@@ -1,5 +1,4 @@
 import Results from 'components/Results/Results';
-
 import {
 	LineChart,
 	Line,
@@ -22,7 +21,8 @@ import {
 	showBtn,
 	showResultsSection,
 	planFact,
-} from '../../Redux/Planning/planningSelectors';
+}
+from '../../Redux/Planning/planningSelectors';
 import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
 
 
@@ -70,12 +70,14 @@ const CastomLabel = ({ x, y, index, type, }) => {
 
 export default function Statistics() {
 	// const [data, setData] = useState([]);
+
 	const data = useSelector(planFact);
 	const isShowResultsSection = useSelector(showResultsSection);
 
 	checkData = data.length > 0 && isShowResultsSection ? data : [{ name: 'Day 1', fact: 5, plan: 10 }];
 
 	const isShowBtn = useSelector(showBtn);
+
 
 	const dispatch = useDispatch();
 

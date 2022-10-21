@@ -15,16 +15,17 @@ import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { startPlanning ,getCurrentPlanning} from 'Redux/Planning/planningOperations';
-import { booksId } from 'Redux/Planning/planningSelectors';
+import { startPlanning } from 'Redux/Planning/planningOperations';
+// import { addId } from 'Redux/Planning/planningSlice';
+// import { booksId } from 'Redux/Planning/planningSelectors';
+
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
-    const ids =useSelector(booksId)
-	const [select, setSelect] = useState();
+	
 	const books = useSelector(state => state.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
-	
+	// const ids =  useSelector(booksId)
 	const date = new Date();
    const normalDate = date.toLocaleDateString();
    const year = String(date.getFullYear());
@@ -32,6 +33,9 @@ const MyTraining = () => {
    const day = [...normalDate];
    const realDay = day[0] + day[1];
 
+
+
+   const [select, setSelect] = useState([]);
 
 	const dispatch = useDispatch();
 
@@ -41,27 +45,36 @@ const MyTraining = () => {
 		}
 	}, [accessToken, dispatch]);
 
-	useEffect(()=>{
-		setSelect(ids)
-	},[ids])
+// useEffect(()=>{
+// 	if(ids.length===0){
+// 	setSelect([])
+// 	console.log(select)
+// 	}
+// },[ids])
 
 
-	useEffect(() => {
-		if (accessToken) {
-			dispatch(getCurrentPlanning());
-		}
-	}, [accessToken, dispatch]);
 	// const handleSelect = () => {};
-	const onSubmit = e => {
-		e.preventDefault();
-		dispatch(
-			startPlanning({
-				startDate: startValue,
-				endDate: finishValue,
-				books: [...select],
-			})
-		);
+const onSubmit = e => {
+	e.preventDefault()
+	if(startValue===''||finishValue===''){
+		return
+	}
+const value = e.currentTarget.elements.select.value
+setSelect((prevState)=>[...prevState,value]);
 	};
+console.log(select)
+	useEffect(()=>{
+		if(select.length!==0){
+			// dispatch(addId(select))
+			dispatch(
+				startPlanning({
+					startDate: startValue,
+					endDate: finishValue,
+					books: [...select],
+				})
+			);
+		}	
+	},[select,finishValue,startValue,dispatch])
 
 	return (
 		<div>
@@ -76,7 +89,7 @@ const MyTraining = () => {
 					renderInput={params => <TextField {...params} />}
 				/> */}
 			{/* </LocalizationProvider> */}
-			<form action="" onSubmit={onSubmit}>
+			<form action="" onSubmit={onSubmit} >
 				<DateContainer>
 					<label>
 						<DataInput
@@ -104,13 +117,9 @@ const MyTraining = () => {
 				<SelectContainer>
 					<Select
 						name="select"
-						onChange={e => {
-							// console.log(e.target.value);
-							setSelect((prevState)=>[...prevState,e.target.value]);
-							// setSelect(e.target.value);
-						}}
+						// id='js-select'
 					>
-						<option value="select">Choose books from the library</option>
+						<option disabled={true}>Choose books from the library</option>
 						{books.map(({ title, _id }) => {
 							return (
 								<option key={_id} value={_id}>
@@ -119,7 +128,7 @@ const MyTraining = () => {
 							);
 						})}
 					</Select>
-					<Button type={'submit'}>add</Button>
+					<Button type={'submit'}  >add</Button>
 				</SelectContainer>
 			</form>
 			{/* <Button primary>Start traning</Button> */}
