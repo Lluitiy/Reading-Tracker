@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.7505f281.css",
-    "main.js": "/TeamSlice/static/js/main.6856fbc7.js",
+    "main.js": "/TeamSlice/static/js/main.23d83251.js",
     "static/js/405.12a49b92.chunk.js": "/TeamSlice/static/js/405.12a49b92.chunk.js",
     "static/js/323.b2118444.chunk.js": "/TeamSlice/static/js/323.b2118444.chunk.js",
     "static/js/483.0824d454.chunk.js": "/TeamSlice/static/js/483.0824d454.chunk.js",
@@ -15,6 +15,7 @@
     "static/media/desktop.jpg": "/TeamSlice/static/media/desktop.7ffc5bcb023f6197e7f6.jpg",
     "static/media/tablet.jpg": "/TeamSlice/static/media/tablet.ba632e13521f0f51ceb7.jpg",
     "static/media/Tanya.jpg": "/TeamSlice/static/media/Tanya.5f1750c00a8fbd3624b9.jpg",
+    "static/media/googleicon.svg": "/TeamSlice/static/media/googleicon.19cfe5f9edb07e65c80a1ac0ff3c288e.svg",
     "static/media/Valeriya.jpeg": "/TeamSlice/static/media/Valeriya.8d180e8f4425f47ddfb1.jpeg",
     "static/media/Anastasiia.jpeg": "/TeamSlice/static/media/Anastasiia.421d3d7022e140bb5a30.jpeg",
     "static/media/Pavlo.jpeg": "/TeamSlice/static/media/Pavlo.2c60465eda856ec344cd.jpeg",
@@ -34,7 +35,7 @@
     "static/media/delete.svg": "/TeamSlice/static/media/delete.c028471843e0be2d2f1bba58f922130b.svg",
     "static/media/flag.svg": "/TeamSlice/static/media/flag.e775a9204a6e357c27946a0968624272.svg",
     "main.7505f281.css.map": "/TeamSlice/static/css/main.7505f281.css.map",
-    "main.6856fbc7.js.map": "/TeamSlice/static/js/main.6856fbc7.js.map",
+    "main.23d83251.js.map": "/TeamSlice/static/js/main.23d83251.js.map",
     "405.12a49b92.chunk.js.map": "/TeamSlice/static/js/405.12a49b92.chunk.js.map",
     "323.b2118444.chunk.js.map": "/TeamSlice/static/js/323.b2118444.chunk.js.map",
     "483.0824d454.chunk.js.map": "/TeamSlice/static/js/483.0824d454.chunk.js.map",
@@ -44,6 +45,6 @@
   },
   "entrypoints": [
     "static/css/main.7505f281.css",
-    "static/js/main.6856fbc7.js"
+    "static/js/main.23d83251.js"
   ]
 }
