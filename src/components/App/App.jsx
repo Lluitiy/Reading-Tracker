@@ -62,7 +62,14 @@ export const App = () => {
 							</PrivateRoute>
 						}
 					/>
-					<Route path="team" element={<TeamPage />} />
+					<Route
+						path="team"
+						element={
+							<PrivateRoute redirect={'/login'}>
+								<TeamPage />
+							</PrivateRoute>
+						}
+					/>
 				</Route>
 				<Route path="*" element={<Navigate to="register" replace />} />
 			</Routes>
