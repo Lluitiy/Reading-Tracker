@@ -9,7 +9,6 @@ const TrainingPage = () => {
 	return (
 		<Section>
 			<Container>
-				{' '}
 				<div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
 					<div>
 						<MyTraining />
