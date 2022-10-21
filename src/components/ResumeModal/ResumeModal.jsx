@@ -2,20 +2,25 @@ import React, { useState } from 'react';
 import RatingStars from './RatingStars';
 
 export const ResumeModal = ({ onClose }) => {
-	const [resume, setResume] = useState('');
+	const [feedback, setFeedback] = useState('');
+	const [rating, setRating] = useState(0);
 
+	const changeRating = e => {
+		setRating(Math.ceil(e));
+	};
 	// Неконтрольована форма - запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
-		setResume(event.currentTarget.elements.resume.value);
-		// console.log('Submit. Need Id', resume);
+		setFeedback(event.currentTarget.elements.resume.value);
+
+		console.log({rating, feedback});
 		event.currentTarget.reset();
 		onClose();
 	};
 
 	// контрольована форма - для відслідковування введенного
 	const handleInputChange = event => {
-		setResume(event.target.value);
+		setFeedback(event.target.value);
 		// console.log('Input', resume);
 	};
 
@@ -24,12 +29,12 @@ export const ResumeModal = ({ onClose }) => {
 			<label>
 				<h3>Choose book rating</h3>
 
-				<RatingStars />
+				<RatingStars value={rating} changeHandler={changeRating} />
 				<p>Resume</p>
 				<input
 					type="text"
 					name="resume"
-					value={resume}
+					value={feedback}
 					onChange={handleInputChange}
 				></input>
 				<button type="button" onClick={onClose}>
