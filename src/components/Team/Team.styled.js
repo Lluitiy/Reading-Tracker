@@ -35,7 +35,7 @@ export const ItemCard = styled.li`
 		width: 290px;
 	}
 	@media screen and (min-width: 1280px) {
-		margin: 0 10px;
+		margin: 10px;
 	}
 `;
 

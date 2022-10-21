@@ -1,7 +1,6 @@
-//import React, { useState, useContext } from "react";
 import LocalizedStrings from 'react-localization';
 import localization from '../Localization';
-// import Localization from 'Localization';
+
 import { useLanguageContext } from '../components/contexts/LanguageContext';
 
 export default function useTranslation() {
