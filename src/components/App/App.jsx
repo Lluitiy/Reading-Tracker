@@ -27,7 +27,14 @@ export const App = () => {
 		isRefreshed && (
 			<Routes>
 				<Route path="/" element={<Layout />}>
-					<Route index element={<LibraryPage />} />
+					<Route
+						index
+						element={
+							<PrivateRoute redirect={'/login'}>
+								<LibraryPage />
+							</PrivateRoute>
+						}
+					/>
 
 					<Route
 						path="login"
