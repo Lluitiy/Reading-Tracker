@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkteam_slice=self.webpackChunkteam_slice||[]).push([[90],{7090:function(e,r,f){f.r(r);var c=f(184);r.default=function(){return(0,c.jsx)("div",{children:"rfrrfrfrf"})}}}]);
+//# sourceMappingURL=90.e22fd90b.chunk.js.map
