@@ -2,6 +2,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 import { getIsLoggedIn } from 'Redux/Auth/authSelectors';
 
+import LanguageHandler from 'Hooks/useLanguageHandler';
 import Logo from './Logo/Logo';
 import Nav from './Nav/Nav';
 import UserMenu from './UserMenu/UserMenu';
@@ -20,6 +21,7 @@ const Header = () => {
 			<Container>
 				<HeaderWrapper>
 					<Logo />
+					<LanguageHandler />
 					{isLoggedIn && (
 						<>
 							{isTabletOrDesktop && <UserMenu />}

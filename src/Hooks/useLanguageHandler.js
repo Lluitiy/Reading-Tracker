@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguageContext } from '../components/contexts/LanguageContext';
+import { useLanguageContext } from 'components/contexts/LanguageContext';
 
 export default function LanguageHandler() {
 	const { language, changeLanguage } = useLanguageContext();
