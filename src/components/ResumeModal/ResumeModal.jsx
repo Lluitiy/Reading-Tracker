@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import RatingStars from './RatingStars';
+import {
+	Form,
+	RatingTextS,
+	ResumeTextS,
+	TextAreaS,
+	ButtonContainerS,
+	ButtonBackS,
+	ButtonSaveS,
+} from './Resume.styled';
 
 export const ResumeModal = ({ onClose }) => {
 	const [feedback, setFeedback] = useState('');
@@ -11,38 +20,40 @@ export const ResumeModal = ({ onClose }) => {
 	// Неконтрольована форма - запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
+		setResume(event.currentTarget.elements.resume.value);
 		setFeedback(event.currentTarget.elements.resume.value);
-
-		console.log({rating, feedback});
 		event.currentTarget.reset();
 		onClose();
 	};
 
 	// контрольована форма - для відслідковування введенного
 	const handleInputChange = event => {
+		setResume(event.target.value);
 		setFeedback(event.target.value);
-		// console.log('Input', resume);
 	};
 
 	return (
-		<form onSubmit={handleSubmit} autoComplete="off">
+		<Form onSubmit={handleSubmit} autoComplete="off">
 			<label>
-				<h3>Choose book rating</h3>
-
-				<RatingStars value={rating} changeHandler={changeRating} />
-				<p>Resume</p>
-				<input
-					type="text"
+				<RatingTextS>Choose book rating</RatingTextS>
+				<RatingStars />
+				<ResumeTextS>Resume</ResumeTextS>
+				<TextAreaS
 					name="resume"
-					value={feedback}
+					rows="5"
+					cols="33"
+					placeholder="Start your comment here."
+					value={resume}
 					onChange={handleInputChange}
-				></input>
-				<button type="button" onClick={onClose}>
-					Back
-				</button>
-				<button type="submit">Save</button>
+				/>
+				<ButtonContainerS>
+					<ButtonBackS type="button" onClick={onClose}>
+						Back
+					</ButtonBackS>
+					<ButtonSaveS type="submit">Save</ButtonSaveS>
+				</ButtonContainerS>
 			</label>
-		</form>
+		</Form>
 	);
 };
 
