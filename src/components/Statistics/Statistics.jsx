@@ -18,12 +18,11 @@ import {
 } from './Statistics.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	planFact,
 	showBtn,
 	showResultsSection,
 } from '../../Redux/Planning/planningSelectors';
 import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
-import { useState } from 'react';
+
 
 const data = [
 	{
