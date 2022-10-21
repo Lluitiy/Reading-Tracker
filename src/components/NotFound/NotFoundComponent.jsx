@@ -1,18 +1,33 @@
-import { Section, Container } from 'components/Common/Common.styled';
-import { Img, ButtonWrap } from './NotFoundComponent.styled';
-import Button from 'components/Button/Button';
-import NotFoundPic from '../../Assets/png/notFound.png';
+import { Section } from 'components/Common/Common.styled';
+import { Link } from 'react-router-dom';
+import {
+	Img,
+	ButtonWrap,
+	NotFoundWrap,
+	Button,
+	SecondButton,
+	Title,
+	Text,
+} from './NotFoundComponent.styled';
+
+import NotFoundPicSmall from '../../Assets/png/404-img.png';
 
 const NotFoundComponent = () => {
 	return (
 		<Section>
-			<Container>
-				<Img src={NotFoundPic} alt="Not Found" />
+			<NotFoundWrap>
+				<Img src={NotFoundPicSmall} alt="Not Found" />
+				<Title>We are sorry</Title>
+				<Text>We seem to have lost this page, try one of these instead.</Text>
 				<ButtonWrap>
-					<Button>Library</Button>
-					<Button>Training</Button>
+					<Link to="/library">
+						<Button>Library</Button>
+					</Link>
+					<Link to="/training">
+						<SecondButton>Training</SecondButton>
+					</Link>
 				</ButtonWrap>
-			</Container>
+			</NotFoundWrap>
 		</Section>
 	);
 };

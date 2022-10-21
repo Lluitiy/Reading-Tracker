@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'components/Private/PrivateRoute';
 import PublicRoute from 'components/Public/PublicRoute';
 
-import HomePage from 'Pages/HomePage';
+// import HomePage from 'Pages/HomePage';
 import Layout from 'Layout/Layout';
 import LogInPage from 'Pages/LogInPage';
 import RegisterPage from 'Pages/RegisterPage';
@@ -57,7 +57,7 @@ export const App = () => {
 						path="library"
 						element={
 							<PrivateRoute redirect={'/login'}>
-								<HomePage />
+								<LibraryPage />
 							</PrivateRoute>
 						}
 					/>
