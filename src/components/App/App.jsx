@@ -15,6 +15,7 @@ import { getIsRefreshed } from 'Redux/Auth/authSelectors';
 const LibraryPage = lazy(() => import('Pages/LibraryPage'));
 const TrainingPage = lazy(() => import('Pages/TrainingPage'));
 const TeamPage = lazy(() => import('components/Team/Team'));
+const StatisticsPage = lazy(() => import('Pages/StatisticsPage'));
 
 export const App = () => {
 	const dispatch = useDispatch();
@@ -66,6 +67,14 @@ export const App = () => {
 						element={
 							<PrivateRoute redirect={'/login'}>
 								<TrainingPage />
+							</PrivateRoute>
+						}
+					/>
+					<Route
+						path="statistics"
+						element={
+							<PrivateRoute restricted redirect="/statistics">
+								<StatisticsPage />
 							</PrivateRoute>
 						}
 					/>
