@@ -23,7 +23,7 @@ const finishedBooks = [
 		_id: '63510c853551fd60da50fce2',
 	},
 	{
-		author: 'Proust',
+		author: 'Proust ggggg gggggggggg ggggggggggggg',
 		pagesFinished: 0,
 		pagesTotal: 56,
 		publishYear: 1999,

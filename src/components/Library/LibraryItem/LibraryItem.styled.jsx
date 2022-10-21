@@ -35,7 +35,7 @@ export const FinishedReadingItemWrapper = styled.div`
     }
     `
 
-export const BookTitle = styled.span`
+export const OverflowText = styled.p`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -50,8 +50,9 @@ export const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
+    width: 127px;
     height: 40px;
+    margin: 10px auto;
 
     background-color: ${p => p.theme.colors.bookIcons};
     border: none;
@@ -59,8 +60,11 @@ export const Button = styled.button`
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
-
-        @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 768px) {
+        margin: 0;
+        width: 80px;
+    }
+    @media screen and (min-width: 1280px) {
         width: 130px;
     }
 `
