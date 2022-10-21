@@ -1,14 +1,13 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+
 import PrivateRoute from 'components/Private/PrivateRoute';
 import PublicRoute from 'components/Public/PublicRoute';
-
-// import HomePage from 'Pages/HomePage';
+import LogInPage from 'Pages/LogInPage/LogInPage';
+import RegisterPage from 'Pages/RegisterPage/RegisterPage';
+import HomePage from 'Pages/HomePage';
 import Layout from 'Layout/Layout';
-import LogInPage from 'Pages/LogInPage';
-import RegisterPage from 'Pages/RegisterPage';
-
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 import { getIsRefreshed } from 'Redux/Auth/authSelectors';
 
@@ -30,16 +29,16 @@ export const App = () => {
 					<Route
 						index
 						element={
-							<PrivateRoute redirect={'/login'}>
-								<LibraryPage />
-							</PrivateRoute>
+							<PublicRoute restricted redirect={'/library'}>
+								<HomePage />
+							</PublicRoute>
 						}
 					/>
 
 					<Route
 						path="login"
 						element={
-							<PublicRoute restricted redirect="/">
+							<PublicRoute restricted redirect="/library">
 								<LogInPage />
 							</PublicRoute>
 						}
@@ -48,7 +47,7 @@ export const App = () => {
 					<Route
 						path="register"
 						element={
-							<PublicRoute restricted redirect="/">
+							<PublicRoute restricted redirect="/library">
 								<RegisterPage />
 							</PublicRoute>
 						}
@@ -56,7 +55,7 @@ export const App = () => {
 					<Route
 						path="library"
 						element={
-							<PrivateRoute redirect={'/login'}>
+							<PrivateRoute redirect={'/'}>
 								<LibraryPage />
 							</PrivateRoute>
 						}
@@ -64,7 +63,7 @@ export const App = () => {
 					<Route
 						path="training"
 						element={
-							<PrivateRoute redirect={'/login'}>
+							<PrivateRoute redirect={'/'}>
 								<TrainingPage />
 							</PrivateRoute>
 						}
@@ -72,13 +71,13 @@ export const App = () => {
 					<Route
 						path="team"
 						element={
-							<PrivateRoute redirect={'/login'}>
+							<PrivateRoute redirect={'/'}>
 								<TeamPage />
 							</PrivateRoute>
 						}
 					/>
 				</Route>
-				<Route path="*" element={<Navigate to="register" replace />} />
+				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		)
 	);
