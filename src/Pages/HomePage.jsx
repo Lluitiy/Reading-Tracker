@@ -1,7 +1,17 @@
-import NotFound from './NotFound';
+import { useMediaQuery } from 'react-responsive';
+import MobilPage from 'components/MobilPage';
+import LoginPage from 'Pages/LogInPage/LogInPage';
 
-const HomePage = () => {
-	return <NotFound />;
-};
+export default function HomePage() {
+	const isTablet = useMediaQuery({
+		query: '(min-width: 768px)',
+	});
 
-export default HomePage;
+	return <>{isTablet ? <LoginPage /> : <MobilPage />}</>;
+}
+
+//!! import NotFound from './NotFound';
+
+// const HomePage = () => {
+// 	return <NotFound />;
+// };
