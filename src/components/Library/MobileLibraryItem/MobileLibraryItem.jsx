@@ -4,8 +4,11 @@ import {
 	Table,
 	TableRow,
 	TableHeader,
+	TableDetail,
 } from './MobileLibraryItem.styled';
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
+import { Button, OverflowText, StarList } from '../LibraryItem/LibraryItem.styled';
+import createRatingStars from 'Utils/RatingStars';
 
 const MobileLibraryItem = ({
 	title,
@@ -13,6 +16,7 @@ const MobileLibraryItem = ({
 	publishYear,
 	fill,
 	pagesTotal,
+	isFinishedReading
 }) => {
 	return (
 		<MobileItemWrapper>
@@ -20,23 +24,31 @@ const MobileLibraryItem = ({
 				{' '}
 				<BookIcon fill={fill} width={22} height={17} />
 			</IconThumb>
-			<span>{title}</span>
+			<OverflowText>{title}</OverflowText>
 			<Table>
 				<tbody>
 					<TableRow>
 						<TableHeader>Author</TableHeader>
-						<td>{author}</td>
+						<TableDetail>{author}</TableDetail>
 					</TableRow>
 					<TableRow>
 						<TableHeader>Year</TableHeader>
-						<td>{publishYear}</td>
+						<TableDetail>{publishYear}</TableDetail>
 					</TableRow>
 					<TableRow>
 						<TableHeader>Pages</TableHeader>
-						<td>{pagesTotal}</td>
+						<TableDetail>{pagesTotal}</TableDetail>
 					</TableRow>
+					{isFinishedReading &&
+						<>
+						<TableRow>
+						<TableHeader>Rating</TableHeader>
+						<TableDetail><StarList>{createRatingStars(3)}</StarList></TableDetail>
+						</TableRow>
+						</>}
 				</tbody>
 			</Table>
+			{isFinishedReading && <Button>Resume</Button>}
 		</MobileItemWrapper>
 	);
 };
