@@ -19,7 +19,7 @@ const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
 	
-	const books = useSelector(state => state.books.goingToRead);
+	const books = useSelector(state => state.books.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
 	const ids =  useSelector(booksId)
 	const date = new Date();
