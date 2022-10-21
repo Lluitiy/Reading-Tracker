@@ -50,7 +50,7 @@ console.log(isLibraryEmpty)
 			)}
 		</>
 	) : (
-		<MobileLibrary />
+		<MobileLibrary isLibraryEmpty={isLibraryEmpty} />
 	);
 };
 export default LibraryPage;

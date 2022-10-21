@@ -5,7 +5,7 @@ import { theme } from 'components/Constants/theme';
 import { Guide, OkBtn, SubTitle, Title, Wrapper } from './EmptyLibraryInfo.styled';
 
 
-const EmptyLibraryInfo = () => {
+const EmptyLibraryInfo = ({openFormHandler= null}) => {
 
     return (
         <Wrapper>
@@ -21,7 +21,7 @@ const EmptyLibraryInfo = () => {
                     <Guide><VectorIcon style={{marginRight: 5}}/> Set a goal, choose period, start training.</Guide>
                 </li>
             </ul>
-            <OkBtn type='button'>Ok</OkBtn>
+            <OkBtn onClick={openFormHandler} type='button'>Ok</OkBtn>
         </Wrapper>
     )
 }
