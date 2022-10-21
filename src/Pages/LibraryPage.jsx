@@ -26,7 +26,6 @@ const LibraryPage = () => {
 	const isLibraryEmpty =
 		Object.values(allBooks).every(el => el.length === 0) &&
 		status === STATUS.fulfilled;
-console.log(isLibraryEmpty)
 	
 	useEffect(() => {
 		if (accessToken) {
