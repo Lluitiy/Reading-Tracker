@@ -16,3 +16,9 @@ export const ItemWrapper = styled.div`
     grid-template-columns: 40px 580px 380px 120px 80px;
     }
 ` 
+export const StarList = styled.ul`
+    width: fit-content;
+    display: flex;
+`
+
+
