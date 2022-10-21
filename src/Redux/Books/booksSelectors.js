@@ -1,6 +1,6 @@
 export const getBooksByCategory = category => state => {
-	return state.books[category];
+	return state.books.books[category];
 };
-export const getAllBooks = state => state.books;
+export const getAllBooks = state => state.books.books;
+export const getBooksStatus = state => state.books.status;
 
-export const getIsLoadingBooks = state => state.books.isLoadingBooks;

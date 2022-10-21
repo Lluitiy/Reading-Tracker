@@ -5,6 +5,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { store, persistor } from 'Redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import LanguageContextProvider from 'components/contexts/LanguageContext';
 
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		<PersistGate loading={null} persistor={persistor}>
 			<BrowserRouter basename="TeamSlice">
 				<ThemeProvider theme={theme}>
-					<App />
+					<LanguageContextProvider>
+						<App />
+					</LanguageContextProvider>
 				</ThemeProvider>
 			</BrowserRouter>
 		</PersistGate>

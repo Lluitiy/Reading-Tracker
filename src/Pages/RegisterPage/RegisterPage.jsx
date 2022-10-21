@@ -13,8 +13,10 @@ import {
 	Subtitle,
 	ListItem,
 } from './RegisterPage.styled';
+import useTranslation from 'Hooks/useTranslations';
 
 function RegisterPage() {
+	const translation = useTranslation();
 	const { onSubmitForm } = userRegisterUser();
 
 	const isTablet = useMediaQuery({
@@ -33,9 +35,9 @@ function RegisterPage() {
 							password: '',
 							confirm: '',
 						}}
-						formType="Register"
-						text="Are you with us?"
-						variant="login"
+						formType={translation.register.register}
+						text={translation.register.text}
+						variant={translation.register.login}
 						navigate="/login"
 					/>
 				</FormBox>
@@ -45,25 +47,19 @@ function RegisterPage() {
 						<Title>Books Reading</Title>
 						<List>
 							<MainListItem>
-								<Subtitle>Will help you to</Subtitle>
+								<Subtitle>{translation.header.title1}</Subtitle>
 								<List>
-									<ListItem>
-										Create your goal faster and proceed to read
-									</ListItem>
-									<ListItem>
-										Divide process proportionally for each day
-									</ListItem>
-									<ListItem>Track your success</ListItem>
+									<ListItem>{translation.header.p1}</ListItem>
+									<ListItem>{translation.header.p2}</ListItem>
+									<ListItem>{translation.header.p3}</ListItem>
 								</List>
 							</MainListItem>
 							<MainListItem>
-								<Subtitle>You may also </Subtitle>
+								<Subtitle>{translation.header.title2}</Subtitle>
 								<List>
-									<ListItem>Pose your own independent point of view</ListItem>
-									<ListItem>
-										Improve your professional skills according to new knowledge
-									</ListItem>
-									<ListItem>Become an interesting interlocutor</ListItem>
+									<ListItem>{translation.header.p4}</ListItem>
+									<ListItem>{translation.header.p5}</ListItem>
+									<ListItem>{translation.header.p6}</ListItem>
 								</List>
 							</MainListItem>
 						</List>

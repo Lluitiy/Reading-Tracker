@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
 	startPlanning,
-	addReadingPage,
 	getCurrentPlanning,
 } from '../Planning/planningOperations';
 
 const initialState = {
 	books: [],
-	booksId:[],
+	booksId: [],
 	startDate: '',
 	endDate: '',
 	pagesPerDay: null,
@@ -28,9 +27,10 @@ const planningSlice = createSlice({
 		showResults(state, { payload }) {
 			state.isShowResults = payload;
 		},
-		// addId(state, { payload }){
-		// 	state.booksId = payload;
-		// }
+		clean(state, { payload }) {
+			state.booksId = payload;
+			state.books = payload;
+		},
 	},
 	extraReducers: {
 		[startPlanning.fulfilled](state, { payload }) {
@@ -39,7 +39,7 @@ const planningSlice = createSlice({
 			state.endDate = payload.endDate;
 			state.pagesPerDay = payload.pagesPerDay;
 			state.duration = payload.duration;
-			state.booksId = payload.books.map(({_id})=>_id)
+			state.booksId = payload.books.map(({ _id }) => _id);
 			state.stats = payload.stats;
 			state.isShowStartTraningBtn = true;
 			for (let i = 1; i <= payload.duration; i += 1) {
@@ -49,13 +49,6 @@ const planningSlice = createSlice({
 					plan: payload.pagesPerDay * i,
 				});
 			}
-		},
-		[addReadingPage.fulfilled](state, { payload }) {
-			state.books = state.books.map(book =>
-				book.id === payload.id
-					? (book.pagesFinished = payload.pagesFinished + payload.page)
-					: book
-			);
 		},
 		[getCurrentPlanning.fulfilled](state, { payload }) {
 			state.books = payload.planning.books;
@@ -69,4 +62,5 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { showStartTraningBtn, showResults } = planningSlice.actions;
+export const { showStartTraningBtn, showResults, clean } =
+	planningSlice.actions;

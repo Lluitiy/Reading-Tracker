@@ -7,8 +7,13 @@ import {
 	TableDetail,
 } from './MobileLibraryItem.styled';
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
-import { Button, OverflowText, StarList } from '../LibraryItem/LibraryItem.styled';
+import {
+	Button,
+	OverflowText,
+	StarList,
+} from '../LibraryItem/LibraryItem.styled';
 import createRatingStars from 'Utils/RatingStars';
+import useTranslation from 'Hooks/useTranslations';
 
 const MobileLibraryItem = ({
 	title,
@@ -16,8 +21,10 @@ const MobileLibraryItem = ({
 	publishYear,
 	fill,
 	pagesTotal,
-	isFinishedReading
+	isFinishedReading,
 }) => {
+	const translation = useTranslation();
+
 	return (
 		<MobileItemWrapper>
 			<IconThumb>
@@ -28,27 +35,34 @@ const MobileLibraryItem = ({
 			<Table>
 				<tbody>
 					<TableRow>
-						<TableHeader>Author</TableHeader>
+						<TableHeader>{translation.mobileLibraryItem.author}</TableHeader>
 						<TableDetail>{author}</TableDetail>
 					</TableRow>
 					<TableRow>
-						<TableHeader>Year</TableHeader>
+						<TableHeader>{translation.mobileLibraryItem.year}</TableHeader>
 						<TableDetail>{publishYear}</TableDetail>
 					</TableRow>
 					<TableRow>
-						<TableHeader>Pages</TableHeader>
+						<TableHeader>{translation.mobileLibraryItem.pages}</TableHeader>
 						<TableDetail>{pagesTotal}</TableDetail>
 					</TableRow>
-					{isFinishedReading &&
+					{isFinishedReading && (
 						<>
-						<TableRow>
-						<TableHeader>Rating</TableHeader>
-						<TableDetail><StarList>{createRatingStars(3)}</StarList></TableDetail>
-						</TableRow>
-						</>}
+							<TableRow>
+								<TableHeader>
+									{translation.mobileLibraryItem.rating}
+								</TableHeader>
+								<TableDetail>
+									<StarList>{createRatingStars(3)}</StarList>
+								</TableDetail>
+							</TableRow>
+						</>
+					)}
 				</tbody>
 			</Table>
-			{isFinishedReading && <Button>Resume</Button>}
+			{isFinishedReading && (
+				<Button>{translation.mobileLibraryItem.btn}</Button>
+			)}
 		</MobileItemWrapper>
 	);
 };

@@ -1,10 +1,12 @@
 import React from 'react';
 import DateTimeDisplay from './DateTimeDisplay/DateTimeDisplay';
 import { useCountdown } from 'Hooks/useCountdown';
+import useTranslation from 'Hooks/useTranslations';
 
 import { Wrap, Counter, Title, Dots } from './CountdownTimer.styled.jsx';
 
 const CountdownTimer = ({ targetDate, title }) => {
+	const translation = useTranslation();
 	const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
 	if (days + hours + minutes + seconds <= 0) {
@@ -14,13 +16,29 @@ const CountdownTimer = ({ targetDate, title }) => {
 			<Wrap>
 				<Title>{title}</Title>
 				<Counter>
-					<DateTimeDisplay value={days} type={'Days'} isDanger={days <= 3} />
+					<DateTimeDisplay
+						value={days}
+						type={translation.timer.days}
+						isDanger={days <= 3}
+					/>
 					<Dots>:</Dots>
-					<DateTimeDisplay value={hours} type={'Hours'} isDanger={false} />
+					<DateTimeDisplay
+						value={hours}
+						type={translation.timer.hours}
+						isDanger={false}
+					/>
 					<Dots>:</Dots>
-					<DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
+					<DateTimeDisplay
+						value={minutes}
+						type={translation.timer.min}
+						isDanger={false}
+					/>
 					<Dots>:</Dots>
-					<DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
+					<DateTimeDisplay
+						value={seconds}
+						type={translation.timer.sec}
+						isDanger={false}
+					/>
 				</Counter>
 			</Wrap>
 		);

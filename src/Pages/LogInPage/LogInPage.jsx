@@ -13,8 +13,10 @@ import {
 	Mark,
 	Border,
 } from './LogInPage.styled';
+import useTranslation from 'Hooks/useTranslations';
 
 function LoginPage() {
+	const translation = useTranslation();
 	const { onSubmitForm } = useLoginUser();
 
 	return (
@@ -30,20 +32,17 @@ function LoginPage() {
 						onSubmitForm={onSubmitForm}
 						validationSchema={userLoginSchema}
 						initialValues={{ email: '', password: '' }}
-						formType="login"
-						variant="register"
+						formType={translation.register.login}
+						variant={translation.register.register}
 						navigate="/register"
 					/>
 				</FormBox>
 
 				<TextBox>
 					<Mark />
-					<Text>
-						Books are the ships of thoughts, wandering through the waves of
-						time.
-					</Text>
+					<Text>{translation.header.quote}</Text>
 					<Border />
-					<Author>Francis Bacon</Author>
+					<Author>{translation.header.author}</Author>
 				</TextBox>
 			</Wrapper>
 		</Container>

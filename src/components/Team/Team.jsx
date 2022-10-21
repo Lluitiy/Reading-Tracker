@@ -13,8 +13,11 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { team } from './TeamDB';
 
+import useTranslation from 'Hooks/useTranslations';
+
 const TeamPage = () => {
 	const navigate = useNavigate();
+	const translation = useTranslation();
 
 	const AllTeam = () =>
 		team.map(({ id, name, gitLink, photo, position }) => {
@@ -37,9 +40,8 @@ const TeamPage = () => {
 				<List>
 					<AllTeam />
 				</List>
-
 				<Button type="button" onClick={() => navigate(-1)}>
-					Go back
+					{translation.team.teamButton}
 				</Button>
 			</Container>
 		</Section>
