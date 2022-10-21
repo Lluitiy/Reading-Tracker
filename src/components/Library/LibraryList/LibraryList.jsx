@@ -27,7 +27,7 @@ const finishedBooks = [
 		pagesFinished: 0,
 		pagesTotal: 56,
 		publishYear: 1999,
-		title: 'Lost time',
+		title: 'Lost gggggggggggggggggggggggggggggtime',
 		rating: 5,
 		_id: '63510c853551fd50fce2',
 	},
@@ -71,6 +71,7 @@ const LibraryList = ({ category }) => {
 											publishYear={publishYear}
 											pagesTotal={pagesTotal}
 											fill={fill}
+											isFinishedReading={isFinishedReadingList}
 										/>
 									) : (
 										<MobileLibraryItem
@@ -79,6 +80,7 @@ const LibraryList = ({ category }) => {
 											publishYear={publishYear}
 											pagesTotal={pagesTotal}
 											fill={fill}
+											isFinishedReading={isFinishedReadingList}
 										/>
 									)}
 								</li>

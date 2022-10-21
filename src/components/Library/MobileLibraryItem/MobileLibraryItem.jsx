@@ -13,6 +13,7 @@ const MobileLibraryItem = ({
 	publishYear,
 	fill,
 	pagesTotal,
+	isFinishedReading
 }) => {
 	return (
 		<MobileItemWrapper>
@@ -35,6 +36,7 @@ const MobileLibraryItem = ({
 						<TableHeader>Pages</TableHeader>
 						<td>{pagesTotal}</td>
 					</TableRow>
+
 				</tbody>
 			</Table>
 		</MobileItemWrapper>
