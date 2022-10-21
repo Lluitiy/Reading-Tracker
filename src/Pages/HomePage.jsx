@@ -1,5 +1,7 @@
+import NotFound from './NotFound';
+
 const HomePage = () => {
-	return <div>qwe</div>;
+	return <NotFound />;
 };
 
 export default HomePage;
