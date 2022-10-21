@@ -1,10 +1,8 @@
-// import { Section } from 'components/Common/Common.styled';
 import { Link } from 'react-router-dom';
 import { Text, Span, Container } from './Footer.styled';
 
 const Footer = () => {
 	return (
-		// <Section>
 		<Container>
 			<Text>
 				"Books Reading" by
@@ -13,7 +11,6 @@ const Footer = () => {
 				</Link>
 			</Text>
 		</Container>
-		//</Section>
 	);
 };
 
