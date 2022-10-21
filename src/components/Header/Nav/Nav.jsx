@@ -1,4 +1,5 @@
 import { Navi, IconLink, IconLib, IconHome } from './Nav.styled';
+import LanguageHandler from 'Hooks/useLanguageHandler';
 
 const Nav = () => {
 	return (
@@ -9,6 +10,7 @@ const Nav = () => {
 			<IconLink to={'/library'}>
 				<IconHome />
 			</IconLink>
+			<LanguageHandler />
 		</Navi>
 	);
 };

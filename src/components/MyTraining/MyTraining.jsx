@@ -11,20 +11,17 @@ import Button from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 
-// import TextField from '@mui/material/TextField';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { startPlanning ,getCurrentPlanning} from 'Redux/Planning/planningOperations';
+
+import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
+
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
-    const ids =useSelector(booksId)
-	const [select, setSelect] = useState();
-	const books = useSelector(state => state.books.goingToRead);
-	const accessToken = useSelector(state => state.auth.accessToken);
 	
+	const books = useSelector(state => state.books.books.goingToRead);
+	const accessToken = useSelector(state => state.auth.accessToken);
+	const ids =  useSelector(booksId)
 	const date = new Date();
    const normalDate = date.toLocaleDateString();
    const year = String(date.getFullYear());
@@ -33,6 +30,9 @@ const MyTraining = () => {
    const realDay = day[0] + day[1];
 
 
+
+
+  
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -41,42 +41,28 @@ const MyTraining = () => {
 		}
 	}, [accessToken, dispatch]);
 
-	useEffect(()=>{
-		setSelect(ids)
-	},[ids])
+const onSubmit = e => {
+	e.preventDefault()
+	if(startValue===''||finishValue===''){
+		return
+	}
+const value = e.currentTarget.elements.select.value
 
 
-	useEffect(() => {
-		if (accessToken) {
-			dispatch(getCurrentPlanning());
-		}
-	}, [accessToken, dispatch]);
-	// const handleSelect = () => {};
-	const onSubmit = e => {
-		e.preventDefault();
-		dispatch(
-			startPlanning({
-				startDate: startValue,
-				endDate: finishValue,
-				books: [...select],
-			})
-		);
-	};
+dispatch(
+	startPlanning({
+		startDate: startValue,
+		endDate: finishValue,
+		books: [...ids,value],
+	})
+ );
+};
+
 
 	return (
 		<div>
 			<Title>My training</Title>
-			{/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-				<DatePicker
-					label="Basic example"
-					value={value}
-					onChange={newValue => {
-						setValue(newValue);
-					}}
-					renderInput={params => <TextField {...params} />}
-				/> */}
-			{/* </LocalizationProvider> */}
-			<form action="" onSubmit={onSubmit}>
+			<form action="" onSubmit={onSubmit} >
 				<DateContainer>
 					<label>
 						<DataInput
@@ -104,13 +90,8 @@ const MyTraining = () => {
 				<SelectContainer>
 					<Select
 						name="select"
-						onChange={e => {
-							// console.log(e.target.value);
-							setSelect((prevState)=>[...prevState,e.target.value]);
-							// setSelect(e.target.value);
-						}}
 					>
-						<option value="select">Choose books from the library</option>
+						<option disabled={true}>Choose books from the library</option>
 						{books.map(({ title, _id }) => {
 							return (
 								<option key={_id} value={_id}>
@@ -119,42 +100,11 @@ const MyTraining = () => {
 							);
 						})}
 					</Select>
-					<Button type={'submit'}>add</Button>
+					<Button type={'submit'}  >add</Button>
 				</SelectContainer>
 			</form>
-			{/* <Button primary>Start traning</Button> */}
 		</div>
 	);
 };
 
 export default MyTraining;
-
-// {
-// 	/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-// 						<DatePicker
-// 							label="Start"
-// 							value={startValue}
-// 							onChange={newValue => {
-// 								setStartValue(newValue);
-// 							}}
-// 							disablePast={true}
-// 							renderInput={params => <TextField {...params} />}
-// 						/>
-// 					</LocalizationProvider> */
-// }
-// {
-// 	/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-// 						<DatePicker
-// 							label="Finish"
-// 							value={finishValue}
-// 							onChange={newValue => {
-// 								setfinishValue(newValue);
-// 							}}
-// 							disablePast={true}
-// 							renderInput={params => <TextField {...params} />}
-// 						/>
-// 					</LocalizationProvider> */
-// }
-// {
-//
-// }

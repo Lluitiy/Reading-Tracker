@@ -11,13 +11,17 @@ import {
 } from './Resume.styled';
 
 export const ResumeModal = ({ onClose }) => {
-	const [resume, setResume] = useState('');
+	const [feedback, setFeedback] = useState('');
+	const [rating, setRating] = useState(0);
 
+	const changeRating = e => {
+		setRating(Math.ceil(e));
+	};
 	// Неконтрольована форма - запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
 		setResume(event.currentTarget.elements.resume.value);
-		console.log('Submit. Need Id', resume);
+		setFeedback(event.currentTarget.elements.resume.value);
 		event.currentTarget.reset();
 		onClose();
 	};
@@ -25,14 +29,13 @@ export const ResumeModal = ({ onClose }) => {
 	// контрольована форма - для відслідковування введенного
 	const handleInputChange = event => {
 		setResume(event.target.value);
-		console.log('Input', resume);
+		setFeedback(event.target.value);
 	};
 
 	return (
 		<Form onSubmit={handleSubmit} autoComplete="off">
 			<label>
 				<RatingTextS>Choose book rating</RatingTextS>
-
 				<RatingStars />
 				<ResumeTextS>Resume</ResumeTextS>
 				<TextAreaS
