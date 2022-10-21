@@ -36,11 +36,11 @@ export const Subtitle = styled.h2`
 `;
 
 export const MainListItem = styled.li`
-	:first-child {
+	:first-of-type {
 		margin-bottom: 24px;
 	}
 	@media screen and (min-width: 768px) {
-		:first-child {
+		:first-of-type {
 			margin-bottom: 32px;
 		}
 	}
@@ -48,7 +48,7 @@ export const MainListItem = styled.li`
 
 export const ListItem = styled.li`
 	display: flex;
-	:not(:last-child) {
+	:not(:last-of-type) {
 		margin-bottom: 12px;
 	}
 `;
@@ -137,50 +137,3 @@ export const RegisterButton = styled.button`
 		background-size: 100%;
 	}
 `;
-
-// export const TransparentLink = styled(Link)`
-// 	text-align: center;
-// 	width: 130px;
-// 	font-weight: 500;
-// 	font-size: 14px;
-// 	line-height: 38px;
-// 	color: ${p => p.theme.colors.textMain};
-// 	border: 1px solid black;
-// 	background: ${p => p.theme.colors.transparent};
-// 	background-position: center;
-// 	transition: background 0.5s ease-in;
-// 	:hover {
-// 		border: 1px solid transparent;
-// 		background: #ff6b08 radial-gradient(circle, #ff6b08 1%, transparent 1%)
-// 			center/15000%;
-// 		color: ${p => p.theme.colors.white};
-// 	}
-// 	:active {
-// 		background-color: #ff6b08;
-// 		background-size: 100%;
-// 	}
-// `;
-
-// export const LinkAccent = styled(Link)`
-// 	text-align: center;
-// 	width: 130px;
-// 	font-weight: 500;
-// 	font-size: 14px;
-// 	line-height: 38px;
-// 	border: none;
-// 	border: 1px solid transparent;
-// 	background-color: ${p => p.theme.colors.brand};
-// 	color: ${p => p.theme.colors.white};
-// 	background-position: center;
-// 	transition: background 0.5s ease-in;
-// 	:hover {
-// 		border: 1px solid black;
-// 		background: transparent radial-gradient(circle, transparent 1%, #ff6b08 1%)
-// 			center/15000%;
-// 		color: ${p => p.theme.colors.textMain};
-// 	}
-// 	:active {
-// 		background-color: transparent;
-// 		background-size: 100%;
-// 	}
-// `;
