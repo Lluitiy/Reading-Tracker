@@ -12,26 +12,26 @@ import { getBooksByCategory } from 'Redux/Books/booksSelectors';
 import ListHeaders from '../ListHeaders/ListHeaders';
 import FinishedReadingListHeaders from '../FinishedReadingListHeaders/FinishedReadingListHeaders';
 
-const finishedBooks = [
-	{
-		author: 'Rilke',
-		pagesFinished: 0,
-		pagesTotal: 267,
-		publishYear: 1999,
-		title: 'Poetry',
-		rating: 3,
-		_id: '63510c853551fd60da50fce2',
-	},
-	{
-		author: 'Proust ggggg gggggggggg ggggggggggggg',
-		pagesFinished: 0,
-		pagesTotal: 56,
-		publishYear: 1999,
-		title: 'Lost gggggggggggggggggggggggggggggtime',
-		rating: 5,
-		_id: '63510c853551fd50fce2',
-	},
-];
+// const finishedBooks = [
+// 	{
+// 		author: 'Rilke',
+// 		pagesFinished: 0,
+// 		pagesTotal: 267,
+// 		publishYear: 1999,
+// 		title: 'Poetry',
+// 		rating: 3,
+// 		_id: '63510c853551fd60da50fce2',
+// 	},
+// 	{
+// 		author: 'Proust ggggg gggggggggg ggggggggggggg',
+// 		pagesFinished: 0,
+// 		pagesTotal: 56,
+// 		publishYear: 1999,
+// 		title: 'Lost gggggggggggggggggggggggggggggtime',
+// 		rating: 5,
+// 		_id: '63510c853551fd50fce2',
+// 	},
+// ];
 
 const LibraryList = ({ category }) => {
 	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
@@ -44,8 +44,9 @@ const LibraryList = ({ category }) => {
 	);
 	const heading = useMemo(() => getHeading(category), [category]);
 	const books = useSelector(getBooksByCategory(category));
-	// const isFinishedReadingList = category === BOOK_CATEGORY.finishedReading;
-	const isFinishedReadingList = true;
+	const isFinishedReadingList = category === BOOK_CATEGORY.finishedReading;
+
+	// const isFinishedReadingList = true;
 
 	return (
 		!!books.length && (
@@ -60,7 +61,7 @@ const LibraryList = ({ category }) => {
 					)}
 					<ul>
 						{/* here must be books */}
-						{finishedBooks.map(
+						{books.map(
 							({ title, author, publishYear, pagesTotal, _id }) => (
 								<li key={_id}>
 									{' '}
