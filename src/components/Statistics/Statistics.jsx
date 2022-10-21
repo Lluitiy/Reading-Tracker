@@ -1,4 +1,4 @@
-// import Results from 'components/Results/Results';
+import Results from 'components/Results/Results';
 import {
 	LineChart,
 	Line,
@@ -19,36 +19,39 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	showBtn,
-	// showResultsSection,
-} from '../../Redux/Planning/planningSelectors';
+	showResultsSection,
+	planFact,
+}
+from '../../Redux/Planning/planningSelectors';
 import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
 
 
-const data = [
-	{
-		name: 'Day 1',
-		fact: 4000,
-		// план кол-во стр за день
-		plan: 0,
-	},
-	{
-		name: 'Day 2',
-		fact: 3000,
-		plan: 1398,
-	
-	},
-	{
-		name: 'Day 3',
-		fact: 2000,
-		plan: 9800,
-	},
-	
-];
+// const data = [
+// 	{
+// 		name: 'Day 1',
+// 		fact: 4000,
+// 		// план кол-во стр за день
+// 		plan: 0,
+// 	},
+// 	{
+// 		name: 'Day 2',
+// 		fact: 3000,
+// 		plan: 1398,
 
-let checkData = data.length > 0 ? data : [{ name: 'Day 1', fact: 5, plan: 10 }];
+// 	},
+// 	{
+// 		name: 'Day 3',
+// 		fact: 2000,
+// 		plan: 9800,
+// 	},
 
-const CastomLabel = ({ x, y, value, type }) => {
-	if (value === checkData[checkData.length - 1]?.[type]) {
+// ];
+
+let checkData = null;
+
+const CastomLabel = ({ x, y, index, type, }) => {
+
+	if (index === checkData.length - 1) {
 		return (
 			<text
 				x={x}
@@ -67,10 +70,15 @@ const CastomLabel = ({ x, y, value, type }) => {
 
 export default function Statistics() {
 	// const [data, setData] = useState([]);
-	// const data = useSelector(planFact);
-	// console.log(data)
+
+	const data = useSelector(planFact);
+	const isShowResultsSection = useSelector(showResultsSection);
+
+	checkData = data.length > 0 && isShowResultsSection ? data : [{ name: 'Day 1', fact: 5, plan: 10 }];
+
 	const isShowBtn = useSelector(showBtn);
-	// const isShowResultsSection = useSelector(showResultsSection);
+
+
 	const dispatch = useDispatch();
 
 
@@ -78,6 +86,7 @@ export default function Statistics() {
 	const handleClickStartTraining = () => {
 		dispatch(showStartTraningBtn(false));
 		dispatch(showResults(true));
+
 	};
 
 	return (
@@ -108,7 +117,7 @@ export default function Statistics() {
 							<XAxis
 								dataKey="name"
 								hide={true}
-								padding={checkData?.length <= 1 && { left: -760 }}
+								padding={checkData?.length <= 1 && { left: -782 }}
 							/>
 
 							<Tooltip />
@@ -144,7 +153,7 @@ export default function Statistics() {
 					</ResponsiveContainer>
 					<StatisticsText>Time</StatisticsText>
 				</StatisticsBox>
-				{/* {isShowResultsSection && <Results />} */}
+				{isShowResultsSection && <Results />}
 			</StatisticsSection>
 		</>
 	);
