@@ -12,11 +12,11 @@ import {
 
 export const ResumeModal = ({ onClose }) => {
 	const [feedback, setFeedback] = useState('');
-	const [rating, setRating] = useState(0);
-
-	const changeRating = e => {
-		setRating(Math.ceil(e));
-	};
+	// const [rating, setRating] = useState(0);
+	const [resume, setResume] = useState('');
+	// const changeRating = e => {
+	// 	setRating(Math.ceil(e));
+	// };
 	// Неконтрольована форма - запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
@@ -31,6 +31,7 @@ export const ResumeModal = ({ onClose }) => {
 		setResume(event.target.value);
 		setFeedback(event.target.value);
 	};
+	console.log('feedback', feedback);
 
 	return (
 		<Form onSubmit={handleSubmit} autoComplete="off">
