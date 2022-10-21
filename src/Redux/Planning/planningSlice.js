@@ -28,9 +28,10 @@ const planningSlice = createSlice({
 		showResults(state, { payload }) {
 			state.isShowResults = payload;
 		},
-		// addId(state, { payload }){
-		// 	state.booksId = payload;
-		// }
+		clean(state,{payload}){
+			state.booksId = payload
+			state.books = payload
+		}
 	},
 	extraReducers: {
 		[startPlanning.fulfilled](state, { payload }) {
@@ -69,4 +70,4 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { showStartTraningBtn, showResults } = planningSlice.actions;
+export const { showStartTraningBtn, showResults,clean } = planningSlice.actions;
