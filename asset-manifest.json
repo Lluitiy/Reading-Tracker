@@ -1,28 +1,36 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.7505f281.css",
-    "main.js": "/TeamSlice/static/js/main.37bb0c1f.js",
+    "main.js": "/TeamSlice/static/js/main.c36b2913.js",
     "static/js/148.0673486f.chunk.js": "/TeamSlice/static/js/148.0673486f.chunk.js",
     "static/js/675.1f3fd7f9.chunk.js": "/TeamSlice/static/js/675.1f3fd7f9.chunk.js",
     "static/js/621.e35340fe.chunk.js": "/TeamSlice/static/js/621.e35340fe.chunk.js",
     "static/js/171.4dd67be8.chunk.js": "/TeamSlice/static/js/171.4dd67be8.chunk.js",
+    "static/media/desktop@2x.jpg": "/TeamSlice/static/media/desktop@2x.837ace8b0b872b5562b4.jpg",
+    "static/media/tablet@2x.jpg": "/TeamSlice/static/media/tablet@2x.653fc551649acd8637bd.jpg",
     "static/media/Max.jpeg": "/TeamSlice/static/media/Max.f7c6330a1ca49b0bfcef.jpeg",
+    "static/media/mobile@2x.jpg": "/TeamSlice/static/media/mobile@2x.ca7cc7ae24a86c9af62b.jpg",
+    "static/media/desktop.jpg": "/TeamSlice/static/media/desktop.7ffc5bcb023f6197e7f6.jpg",
+    "static/media/tablet.jpg": "/TeamSlice/static/media/tablet.ba632e13521f0f51ceb7.jpg",
     "static/media/Tanya.jpg": "/TeamSlice/static/media/Tanya.5f1750c00a8fbd3624b9.jpg",
     "static/media/Valeriya.jpeg": "/TeamSlice/static/media/Valeriya.8d180e8f4425f47ddfb1.jpeg",
     "static/media/Anastasiia.jpeg": "/TeamSlice/static/media/Anastasiia.421d3d7022e140bb5a30.jpeg",
     "static/media/Pavlo.jpeg": "/TeamSlice/static/media/Pavlo.2c60465eda856ec344cd.jpeg",
     "static/media/Renat.jpg": "/TeamSlice/static/media/Renat.11f1b86a4b03d4ced14a.jpg",
+    "static/media/mobile.jpg": "/TeamSlice/static/media/mobile.0a90fd4fb8f9aebfb885.jpg",
     "static/media/Oleh.jpeg": "/TeamSlice/static/media/Oleh.de98a9b32459fdb676fc.jpeg",
     "static/media/Nikita.jpg": "/TeamSlice/static/media/Nikita.28080fb06147ddc31a31.jpg",
     "index.html": "/TeamSlice/index.html",
     "static/media/book.svg": "/TeamSlice/static/media/book.5b773cd36c9a767c125121523371c921.svg",
+    "static/media/marks.svg": "/TeamSlice/static/media/marks.35ca8804f82dc4106ff0d7dc90ddc131.svg",
     "static/media/backArrow.svg": "/TeamSlice/static/media/backArrow.7621e2b181eca1a605ca8f4a6eab350e.svg",
     "static/media/starInactive.svg": "/TeamSlice/static/media/starInactive.d4bb54966169363ac7837ef51bdfc5b5.svg",
     "static/media/HomeIcon.svg": "/TeamSlice/static/media/HomeIcon.26854cad09bc61041f9de25d6034bf88.svg",
+    "static/media/angleQuote.svg": "/TeamSlice/static/media/angleQuote.637449f24d93ac9a13a35b08d8db3fc2.svg",
     "static/media/starActive.svg": "/TeamSlice/static/media/starActive.8e82d73c702f87f80cd119258cb87674.svg",
     "static/media/delete.svg": "/TeamSlice/static/media/delete.c028471843e0be2d2f1bba58f922130b.svg",
     "main.7505f281.css.map": "/TeamSlice/static/css/main.7505f281.css.map",
-    "main.37bb0c1f.js.map": "/TeamSlice/static/js/main.37bb0c1f.js.map",
+    "main.c36b2913.js.map": "/TeamSlice/static/js/main.c36b2913.js.map",
     "148.0673486f.chunk.js.map": "/TeamSlice/static/js/148.0673486f.chunk.js.map",
     "675.1f3fd7f9.chunk.js.map": "/TeamSlice/static/js/675.1f3fd7f9.chunk.js.map",
     "621.e35340fe.chunk.js.map": "/TeamSlice/static/js/621.e35340fe.chunk.js.map",
@@ -30,6 +38,6 @@
   },
   "entrypoints": [
     "static/css/main.7505f281.css",
-    "static/js/main.37bb0c1f.js"
+    "static/js/main.c36b2913.js"
   ]
 }
