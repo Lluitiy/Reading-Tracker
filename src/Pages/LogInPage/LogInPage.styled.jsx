@@ -7,6 +7,7 @@ import desktop from 'Assets/loginRegister/desktop/desktop.jpg';
 import desktop2x from 'Assets/loginRegister/desktop/desktop@2x.jpg';
 
 import marks from 'Assets/svg/marks.svg';
+import google from 'Assets/svg/googleicon.svg';
 
 export const Wrapper = styled.div`
 	@media screen and (min-width: 1280px) {
@@ -151,4 +152,44 @@ export const Author = styled.p`
 	font-weight: 500;
 	text-align: center;
 	color: #898f9f;
+`;
+
+export const GoogleButton = styled.button`
+	margin-top: 32px;
+	margin-bottom: 28px;
+	border-radius: 2px;
+	:hover {
+		background-color: #ebf0f7;
+	}
+	@media screen and (min-width: 768px) {
+		margin-top: 40px;
+	}
+	width: 150px;
+	height: 40px;
+	left: 310px;
+	top: 164px;
+	margin-left: auto;
+	margin-right: auto;
+	background: #f5f7fa;
+	box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
+	border: none;
+`;
+
+export const TextGoogleButton = styled.p`
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 38px;
+	text-align: center;
+	color: #707375;
+	::before {
+		content: '';
+		margin-right: 16px;
+		padding-left: 10px;
+		padding-right: 10px;
+		background-image: url(${google});
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
 `;

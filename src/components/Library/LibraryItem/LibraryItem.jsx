@@ -1,6 +1,12 @@
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
 import createRatingStars from 'Utils/RatingStars';
-import { Button, FinishedReadingItemWrapper, ItemWrapper, OverflowText, StarList } from './LibraryItem.styled';
+import {
+	Button,
+	FinishedReadingItemWrapper,
+	ItemWrapper,
+	OverflowText,
+	StarList,
+} from './LibraryItem.styled';
 const LibraryItem = ({
 	title,
 	author,
@@ -9,7 +15,6 @@ const LibraryItem = ({
 	pagesTotal,
 	isFinishedReading,
 }) => {
-	console.log(isFinishedReading);
 	return isFinishedReading ? (
 		<FinishedReadingItemWrapper>
 			<BookIcon fill={fill} width={22} height={17} />
@@ -19,7 +24,7 @@ const LibraryItem = ({
 			<span>{pagesTotal}</span>
 			<StarList>{createRatingStars(3)}</StarList>
 			<Button>Resume</Button>
-		</FinishedReadingItemWrapper>		
+		</FinishedReadingItemWrapper>
 	) : (
 		<ItemWrapper>
 			<BookIcon fill={fill} width={22} height={17} />

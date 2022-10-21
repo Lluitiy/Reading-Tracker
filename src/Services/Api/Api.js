@@ -51,7 +51,7 @@ const authUserGoogle = async () => {
 	}
 };
 
-const postUserBook = async (book) => {
+const postUserBook = async book => {
 	try {
 		const { data } = await contactsAPI.post('/book', book);
 		return data;
@@ -68,7 +68,6 @@ const getUserBooks = async () => {
 		throw new Error(error.message);
 	}
 };
-
 
 const deleteUserBook = async id => {
 	try {
@@ -121,15 +120,12 @@ const getPlanning = async () => {
 	}
 };
 
-
-
 const API = {
 	registerUser,
 	loginUser,
 	logoutUser,
 	refreshUser,
 	authUserGoogle,
-
 
 	postPlanning,
 	patchPlanning,
@@ -139,7 +135,6 @@ const API = {
 	postUserBook,
 	deleteUserBook,
 	editUserBook,
-
 
 	setToken,
 	unsetToken,
