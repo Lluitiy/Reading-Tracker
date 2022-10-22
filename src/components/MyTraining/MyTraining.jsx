@@ -9,6 +9,7 @@ import {
 	Label,
 	BoxForSvg,
 } from './MyTraining.styled';
+import useTranslation from 'Hooks/useTranslations';
 
 import Button from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +21,9 @@ import { booksId } from 'Redux/Planning/planningSelectors';
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
+	const translation = useTranslation();
 	const [select, setSelect] = useState(null);
+
 
 	const books = useSelector(state => state.books.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
@@ -43,14 +46,15 @@ const MyTraining = () => {
 
 	const onSubmit = e => {
 		e.preventDefault();
-
-		if (!select || startValue === '' || finishValue === '') {
+    
+    if (!select || startValue === '' || finishValue === '') {
 			return alert('rrrrrr');
 		}
 		dispatch(
 			startPlanning({
 				startDate: startValue,
 				endDate: finishValue,
+
 				books: [...ids, select],
 			})
 		);
@@ -58,7 +62,8 @@ const MyTraining = () => {
 
 	return (
 		<div>
-			<Title>My training</Title>
+
+			<Title>{translation.myTraining.title}</Title>
 
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
@@ -105,7 +110,7 @@ const MyTraining = () => {
 							setSelect(e.target.value);
 						}}
 					>
-						<option disabled={true}>Choose books from the library</option>
+						<option disabled={true}>{translation.myTraining.option}</option>
 						{books.map(({ title, _id }) => {
 							return (
 								<option key={_id} value={_id}>
@@ -114,7 +119,7 @@ const MyTraining = () => {
 							);
 						})}
 					</Select>
-					<Button type={'submit'}>add</Button>
+					<Button type={'submit'}>{translation.myTraining.btn}</Button>
 				</SelectContainer>
 			</form>
 		</div>

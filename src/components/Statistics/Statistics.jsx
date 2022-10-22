@@ -17,6 +17,7 @@ import {
 	StartTraningBox,
 } from './Statistics.styled';
 import { useDispatch, useSelector } from 'react-redux';
+import useTranslation from 'Hooks/useTranslations';
 import {
 	selectorShowBtn,
 	selectorShowResults,
@@ -69,6 +70,7 @@ const createNextDay = (prevDate, step) => {
 };
 
 const CastomLabel = ({ x, y, index, type }) => {
+const translation = useTranslation();
 	if (index === checkData.length - 1) {
 		return (
 			<text
@@ -80,13 +82,16 @@ const CastomLabel = ({ x, y, index, type }) => {
 				textAnchor={'start'}
 				fill={type === 'plan' ? '#000000' : '#FF6B08'}
 			>
-				{type === 'plan' ? 'PLAN' : 'FACT'}
+				{type === 'plan'
+					? `${translation.statistics.plan}`
+					: `${translation.statistics.fact}`}
 			</text>
 		);
 	}
 };
 
 export default function Statistics() {
+const translation = useTranslation();
 	const data = useSelector(selectorPlanFact);
 	const isShowResultsSection = useSelector(selectorShowResults);
 	const isShowBtn = useSelector(selectorShowBtn);
@@ -106,8 +111,6 @@ export default function Statistics() {
 			setFirstRender(prev =>prev + 1 )
 			return
 		}
-		
-		
 		
 			if (readedPages) {
 				const changeFact = data.map(fact => {
@@ -173,13 +176,13 @@ export default function Statistics() {
 			{isShowBtn && (
 				<StartTraningBox>
 					<StartTraningBtn type="button" onClick={handleClickStartTraining}>
-						Start traning
+						{translation.statistics.startBtn}
 					</StartTraningBtn>
 				</StartTraningBox>
 			)}
 			<StatisticsSection>
 				<StatisticsBox>
-					<StatisticsTitle>Amount of pages / day</StatisticsTitle>
+					<StatisticsTitle>{translation.statistics.statTitle}</StatisticsTitle>
 					<ResponsiveContainer width={'99%'} height={215}>
 						<LineChart
 							width={809}
@@ -232,7 +235,7 @@ export default function Statistics() {
 							</Line>
 						</LineChart>
 					</ResponsiveContainer>
-					<StatisticsText>Time</StatisticsText>
+					<StatisticsText>{translation.statistics.time}</StatisticsText>
 				</StatisticsBox>
 				{isShowResultsSection && <Results />}
 			</StatisticsSection>

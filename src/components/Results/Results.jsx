@@ -1,11 +1,7 @@
-// // !============Tanya==========
 import ResultsItem from 'components/ResultsItem/ResultsItem';
-// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReadingPage } from 'Redux/Planning/planningOperations';
 import { selectorReadedPages } from 'Redux/Planning/planningSelectors';
-// // !============================
-// import {useState} from 'react'
 import {
 	ResultsBox,
 	ResultsTitle,
@@ -17,10 +13,11 @@ import {
 	StatisticsPageBox,
 	StatisticsPageTitle,
 } from './Results.styled';
+import useTranslation from 'Hooks/useTranslations';
 
 export default function Results() {
    const readedPages = useSelector(selectorReadedPages);
-   
+   	const translation = useTranslation();
 
    
 	//зато работает!
@@ -31,7 +28,6 @@ export default function Results() {
 	const day = [...normalDate];
 	const realDay = day[0] + day[1];
 
-	// !============Tanya==========
 	const dispatch = useDispatch();
 
 	const handleFormSubmit = e => {
@@ -39,15 +35,14 @@ export default function Results() {
 		// !== Лера здесь нужен намбер
 		dispatch(addReadingPage({ pages: Number(e.target.elements[1].value) }));
 	};
-	// !============================
-
+  
 	return (
 		<ResultsBox>
-			<ResultsTitle>Results</ResultsTitle>
+			<ResultsTitle>{translation.results.title}</ResultsTitle>
 			<ResultsForm onSubmit={handleFormSubmit}>
 				<FormBox>
 					<ResultsLabel>
-						Date
+						{translation.results.label1}
 						<ResultsInput
 							type="date"
 							name="date"
@@ -56,14 +51,14 @@ export default function Results() {
 						/>
 					</ResultsLabel>
 					<ResultsLabel>
-						Amount of pages
+					{translation.results.label2}
 						<ResultsInput type="text" name="page" />
 					</ResultsLabel>
 				</FormBox>
-				<ResultsBtn type="submit">Add result</ResultsBtn>
+				<ResultsBtn type="submit">{translation.results.btn}</ResultsBtn>
 			</ResultsForm>
 			<StatisticsPageBox>
-				<StatisticsPageTitle>Statistics</StatisticsPageTitle>
+				<StatisticsPageTitle>{translation.results.stat}</StatisticsPageTitle>
 				<ul>
                {readedPages && readedPages.map((el, i) => <ResultsItem key={i} data={el } /> )}
 				</ul>

@@ -16,7 +16,7 @@ const LogOutBtn = () => {
 		dispatch(logOut())
 			.unwrap()
 			.then(() => {
-				Notify.warning(`Hope to see you Soooon ${userName}`);
+				Notify.warning(`${translation.header.notify} ${userName}`);
 				navigate('/login');
 			});
 	};
