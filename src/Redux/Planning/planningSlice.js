@@ -5,6 +5,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import {
 	startPlanning,
 	getCurrentPlanning,
+	addReadingPage,
 } from '../Planning/planningOperations';
 
 const initialState = {
