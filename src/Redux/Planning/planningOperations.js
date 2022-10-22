@@ -17,10 +17,9 @@ export const startPlanning = createAsyncThunk(
 
 export const addReadingPage = createAsyncThunk(
 	'planning/addReadingPage',
-  
+
 	// !==Лера изменила page на pages, не работало ==========
 	async ({ pages }, thunkAPI) => {
-
 		try {
 			const data = patchPlanning({ pages });
 			return data;

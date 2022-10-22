@@ -32,12 +32,14 @@ import {
 	addPlanFact,
 } from 'Redux/Planning/planningSlice';
 import { useEffect } from 'react';
-import { useState } from 'react';
+
 
 let checkData = null;
 
 const windowWidth = window.innerWidth;
 
+// const getLocalPlanning = localStorage.getItem('persist:planning')
+// const emptyLocalPlanning = getLocalPlanning.length === 67;
 
 const dotsPaddingByWidth = () => {
 	if (windowWidth < 768) {
@@ -93,40 +95,26 @@ export default function Statistics() {
 	const duration = useSelector(selectorDuration);
 	const pagesPerDay = useSelector(selectorPagesPerDay);
 	const getStartDate = useSelector(startDate);
+	const readedPages = useSelector(selectorReadedPages);
 	const dispatch = useDispatch();
 
-	const readedPages = useSelector(selectorReadedPages);
 	
-	const [firstRender, setFirstRender] = useState(0)
-	
-
 	useEffect(() => {
-		console.log(firstRender)
-		if (firstRender < 1) {
-			setFirstRender(prev =>prev + 1 )
-			return
-		}
-		
-		
-		
-			if (readedPages) {
-				const changeFact = data.map(fact => {
-			for (let date of readedPages) {
-				
-				const normalDate = date.time.slice(0, 10);
-				if (fact.name === normalDate) {
-					return (fact = { ...fact, fact: fact.fact + date.pagesCount });
+		if (readedPages) {
+			// считаем, что пришло - странички, мапаем дату и к ней в факт суем странички
+			const totalPages = readedPages.reduce(
+				(total, el) => total + el.pagesCount,
+				0
+			);
+			const updateData = data.map((el, i) => {
+				if (i === 0) {
+					return (el = { ...el, fact: totalPages });
 				}
-				
-			}
-			return fact;
-		});
-		
-		dispatch(addPlanFact(changeFact));
-		
-		 }
-		
-	
+				return el;
+			});
+
+			dispatch(addPlanFact(updateData));
+		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [readedPages]);
@@ -135,6 +123,7 @@ export default function Statistics() {
 		data?.length > 0 && isShowResultsSection
 			? data
 			: [{ name: 'Day 0', fact: 5, plan: 10 }];
+	
 	
 
 	const createObjByPlan = () => {
@@ -179,7 +168,9 @@ export default function Statistics() {
 			)}
 			<StatisticsSection>
 				<StatisticsBox>
-					<StatisticsTitle>Amount of pages / day</StatisticsTitle>
+					<StatisticsTitle>
+						Amount of pages / day <span> {data[0]?.plan && 0}</span>
+					</StatisticsTitle>
 					<ResponsiveContainer width={'99%'} height={215}>
 						<LineChart
 							width={809}
