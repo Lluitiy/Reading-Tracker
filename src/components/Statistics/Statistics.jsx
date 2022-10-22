@@ -34,11 +34,15 @@ import {
 	addPlanFact,
 } from 'Redux/Planning/planningSlice';
 import { useEffect } from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom/dist';
+
+// import { useNavigate } from 'react-router-dom/dist';
+
 let checkData = null;
 
 const windowWidth = window.innerWidth;
+
+// const getLocalPlanning = localStorage.getItem('persist:planning')
+// const emptyLocalPlanning = getLocalPlanning.length === 67;
 
 const dotsPaddingByWidth = () => {
 	if (windowWidth < 768) {
@@ -91,7 +95,7 @@ const CastomLabel = ({ x, y, index, type }) => {
 };
 
 export default function Statistics() {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const translation = useTranslation();
 	const data = useSelector(selectorPlanFact);
 	const isShowResultsSection = useSelector(selectorShowResults);
@@ -99,31 +103,24 @@ export default function Statistics() {
 	const duration = useSelector(selectorDuration);
 	const pagesPerDay = useSelector(selectorPagesPerDay);
 	const getStartDate = useSelector(startDate);
+	const readedPages = useSelector(selectorReadedPages);
 	const dispatch = useDispatch();
 
-	const readedPages = useSelector(selectorReadedPages);
-
-	const [firstRender, setFirstRender] = useState(0);
-
 	useEffect(() => {
-		console.log(firstRender);
-		if (firstRender < 1) {
-			setFirstRender(prev => prev + 1);
-			return;
-		}
-
 		if (readedPages) {
-			const changeFact = data.map(fact => {
-				for (let date of readedPages) {
-					const normalDate = date.time.slice(0, 10);
-					if (fact.name === normalDate) {
-						return (fact = { ...fact, fact: fact.fact + date.pagesCount });
-					}
+			// считаем, что пришло - странички, мапаем дату и к ней в факт суем странички
+			const totalPages = readedPages.reduce(
+				(total, el) => total + el.pagesCount,
+				0
+			);
+			const updateData = data.map((el, i) => {
+				if (i === 0) {
+					return (el = { ...el, fact: totalPages });
 				}
-				return fact;
+				return el;
 			});
 
-			dispatch(addPlanFact(changeFact));
+			dispatch(addPlanFact(updateData));
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -163,7 +160,7 @@ export default function Statistics() {
 		dispatch(showResults(true));
 		dispatch(addPlanFact(createObjByPlan()));
 		// !!!
-		navigate('/statistics');
+		// navigate('/statistics');
 		// TODO
 	};
 
@@ -178,7 +175,10 @@ export default function Statistics() {
 			)}
 			<StatisticsSection>
 				<StatisticsBox>
-					<StatisticsTitle>{translation.statistics.statTitle}</StatisticsTitle>
+					<StatisticsTitle>
+						{translation.statistics.statTitle}
+						<span> {data[0]?.plan && 0}</span>
+					</StatisticsTitle>
 					<ResponsiveContainer width={'99%'} height={215}>
 						<LineChart
 							width={809}

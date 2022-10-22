@@ -39,6 +39,12 @@ const planningSlice = createSlice({
 			state.planFact = payload;
 		},
 
+		resetPagesAndPlan(state) {
+			state.planFact = [];
+			state.readedPages = null;
+			state.showResults = false;
+		},
+
 		clean(state, { payload }) {
 			state.booksId = payload;
 			state.books = payload;
@@ -95,8 +101,13 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { showStartTraningBtn, showResults, clean, addPlanFact } =
-	planningSlice.actions;
+export const {
+	showStartTraningBtn,
+	resetPagesAndPlan,
+	showResults,
+	clean,
+	addPlanFact,
+} = planningSlice.actions;
 
 const planningPersistConfig = {
 	key: 'planning',
