@@ -5,12 +5,14 @@ import {
 	Select,
 	DateContainer,
 	SelectContainer,
+	DataSvg,
+	Label,
+	BoxForSvg,
 } from './MyTraining.styled';
 
 import Button from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
-
 
 import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
@@ -18,21 +20,19 @@ import { booksId } from 'Redux/Planning/planningSelectors';
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
-	
+	const [select, setSelect] = useState(null);
+
 	const books = useSelector(state => state.books.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
-	const ids =  useSelector(booksId)
+	const ids = useSelector(booksId);
+
 	const date = new Date();
-   const normalDate = date.toLocaleDateString();
-   const year = String(date.getFullYear());
-   const month = String(date.getMonth() + 1);
-   const day = [...normalDate];
-   const realDay = day[0] + day[1];
+	const normalDate = date.toLocaleDateString();
+	const year = String(date.getFullYear());
+	const month = String(date.getMonth() + 1);
+	const day = [...normalDate];
+	const realDay = day[0] + day[1];
 
-
-
-
-  
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -41,30 +41,33 @@ const MyTraining = () => {
 		}
 	}, [accessToken, dispatch]);
 
-const onSubmit = e => {
-	e.preventDefault()
-	if(startValue===''||finishValue===''){
-		return
-	}
-const value = e.currentTarget.elements.select.value
+	const onSubmit = e => {
+		e.preventDefault();
 
-
-dispatch(
-	startPlanning({
-		startDate: startValue,
-		endDate: finishValue,
-		books: [...ids,value],
-	})
- );
-};
-
+		if (!select || startValue === '' || finishValue === '') {
+			return alert('rrrrrr');
+		}
+		dispatch(
+			startPlanning({
+				startDate: startValue,
+				endDate: finishValue,
+				books: [...ids, select],
+			})
+		);
+	};
 
 	return (
 		<div>
 			<Title>My training</Title>
-			<form action="" onSubmit={onSubmit} >
+
+			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
-					<label>
+					<Label>
+						<BoxForSvg>
+							<DataSvg />
+							Start
+						</BoxForSvg>
+
 						<DataInput
 							type="date"
 							value={startValue}
@@ -72,10 +75,15 @@ dispatch(
 								console.log(e.target.value);
 								setStartValue(e.target.value);
 							}}
+							required
 							min={`${year}-${month}-${realDay}`}
 						></DataInput>
-					</label>
-					<label>
+					</Label>
+					<Label>
+						<BoxForSvg>
+							<DataSvg />
+							Finish
+						</BoxForSvg>
 						<DataInput
 							type="date"
 							value={finishValue}
@@ -83,13 +91,19 @@ dispatch(
 								console.log(e.target.value);
 								setfinishValue(e.target.value);
 							}}
+							placeholder="finish"
+							required
 							min={`${year}-${month}-${realDay}`}
 						></DataInput>
-					</label>
+					</Label>
 				</DateContainer>
 				<SelectContainer>
 					<Select
 						name="select"
+						onChange={e => {
+							console.log(e.target.value);
+							setSelect(e.target.value);
+						}}
 					>
 						<option disabled={true}>Choose books from the library</option>
 						{books.map(({ title, _id }) => {
@@ -100,7 +114,7 @@ dispatch(
 							);
 						})}
 					</Select>
-					<Button type={'submit'}  >add</Button>
+					<Button type={'submit'}>add</Button>
 				</SelectContainer>
 			</form>
 		</div>
