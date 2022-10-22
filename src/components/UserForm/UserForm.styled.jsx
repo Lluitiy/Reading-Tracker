@@ -1,43 +1,63 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
-export const LoginPage = styled.div`
-	width: 360px;
-	padding: 8% 0 0;
+export const Page = styled.div`
+	width: 280px;
 	margin: auto;
+	@media screen and (min-width: 768px) {
+		width: 400px;
+		margin: auto;
+	}
 `;
 
 export const FormBox = styled.div`
-	position: relative;
-	background: #ffffff;
-	max-width: 360px;
-	margin: 0 auto 100px;
-	padding: 45px;
-	text-align: center;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	padding: 32px 20px;
+
+	@media screen and (min-width: 768px) {
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+		background: #ffffff;
+		padding: 40px;
+	}
 `;
 
 export const Button = styled.button`
-	width: 280px;
+	text-align: center;
+	width: 100%;
 	height: 60px;
-	left: 20px;
-	top: 334px;
+	padding: 0;
 	margin-bottom: 20px;
 	background: #ff6b08;
+
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 20px;
+
+	color: #ffffff;
+	border: none;
+
 	:hover {
 		background-color: #fd781f;
 	}
-	border: none;
+
+	@media screen and (min-width: 768px) {
+		width: 320px;
+	}
 `;
 
 export const NavBox = styled.div`
-	margin-left: auto;
-	margin-right: auto;
 	display: flex;
+	justify-content: center;
 `;
 
 export const NavText = styled.p`
-	padding-right: 5px;
+	margin-right: 4px;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 16px;
+	color: #898f9f;
 `;
 
 export const NavLogin = styled(NavLink)`

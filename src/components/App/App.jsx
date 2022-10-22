@@ -1,16 +1,23 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import {
+	Navigate,
+	Route,
+	Routes,
+	useSearchParams,
+	useNavigate,
+} from 'react-router-dom';
+
 import PrivateRoute from 'components/Private/PrivateRoute';
 import PublicRoute from 'components/Public/PublicRoute';
-
-// import HomePage from 'Pages/HomePage';
+import LogInPage from 'Pages/LogInPage/LogInPage';
+import RegisterPage from 'Pages/RegisterPage/RegisterPage';
+import HomePage from 'Pages/HomePage';
 import Layout from 'Layout/Layout';
-import LogInPage from 'Pages/LogInPage';
-import RegisterPage from 'Pages/RegisterPage';
-
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
-import { getIsRefreshed } from 'Redux/Auth/authSelectors';
+import { qwe } from 'Redux/Auth/authSlice';
+import { getIsRefreshed, getIsLogOut } from 'Redux/Auth/authSelectors';
+import API from 'Services/Api/Api';
 
 const LibraryPage = lazy(() => import('Pages/LibraryPage'));
 const TrainingPage = lazy(() => import('Pages/TrainingPage'));
@@ -20,9 +27,28 @@ const StatisticsPage = lazy(() => import('Pages/StatisticsPage'));
 export const App = () => {
 	const dispatch = useDispatch();
 	const isRefreshed = useSelector(getIsRefreshed);
+	const isLogOut = useSelector(getIsLogOut);
+	const navigate = useNavigate();
+
+	const [serchParams] = useSearchParams();
+	const accessToken = serchParams.get('accessToken');
+	const refreshToken = serchParams.get('refreshToken');
+	const sid = serchParams.get('sid');
+
 	useEffect(() => {
-		dispatch(fetchCurrentUser());
-	}, [dispatch]);
+		if (accessToken) {
+			dispatch(qwe({ accessToken, refreshToken, sid }));
+			API.setToken(accessToken);
+			// throw new Error('Error');
+		}
+		navigate('/libary');
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [accessToken]);
+
+	useEffect(() => {
+		if (!isLogOut) dispatch(fetchCurrentUser());
+	}, [dispatch, isLogOut]);
 
 	return (
 		isRefreshed && (
@@ -31,16 +57,16 @@ export const App = () => {
 					<Route
 						index
 						element={
-							<PrivateRoute redirect={'/login'}>
-								<LibraryPage />
-							</PrivateRoute>
+							<PublicRoute restricted redirect={'/library'}>
+								<HomePage />
+							</PublicRoute>
 						}
 					/>
 
 					<Route
 						path="login"
 						element={
-							<PublicRoute restricted redirect="/">
+							<PublicRoute restricted redirect="/library">
 								<LogInPage />
 							</PublicRoute>
 						}
@@ -49,7 +75,7 @@ export const App = () => {
 					<Route
 						path="register"
 						element={
-							<PublicRoute restricted redirect="/">
+							<PublicRoute restricted redirect="/library">
 								<RegisterPage />
 							</PublicRoute>
 						}
@@ -57,7 +83,7 @@ export const App = () => {
 					<Route
 						path="library"
 						element={
-							<PrivateRoute redirect={'/login'}>
+							<PrivateRoute redirect={'/'}>
 								<LibraryPage />
 							</PrivateRoute>
 						}
@@ -65,7 +91,7 @@ export const App = () => {
 					<Route
 						path="training"
 						element={
-							<PrivateRoute redirect={'/login'}>
+							<PrivateRoute redirect={'/'}>
 								<TrainingPage />
 							</PrivateRoute>
 						}
@@ -73,7 +99,7 @@ export const App = () => {
 					<Route
 						path="statistics"
 						element={
-							<PrivateRoute restricted redirect="/statistics">
+							<PrivateRoute restircted redirect={'/'}>
 								<StatisticsPage />
 							</PrivateRoute>
 						}
@@ -81,13 +107,13 @@ export const App = () => {
 					<Route
 						path="team"
 						element={
-							<PrivateRoute redirect={'/login'}>
+							<PrivateRoute redirect={'/'}>
 								<TeamPage />
 							</PrivateRoute>
 						}
 					/>
 				</Route>
-				<Route path="*" element={<Navigate to="register" replace />} />
+				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		)
 	);

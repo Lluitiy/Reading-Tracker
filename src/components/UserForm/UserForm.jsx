@@ -1,7 +1,7 @@
 import { Formik, Form } from 'formik';
 import userInput from 'components/UserFormItem';
 import {
-	LoginPage,
+	Page,
 	FormBox,
 	Button,
 	NavBox,
@@ -20,7 +20,7 @@ export default function UserForm({
 }) {
 	// UserForm
 	return (
-		<LoginPage>
+		<Page>
 			<FormBox>
 				<Formik
 					onSubmit={onSubmitForm}
@@ -40,6 +40,6 @@ export default function UserForm({
 					</Form>
 				</Formik>
 			</FormBox>
-		</LoginPage>
+		</Page>
 	);
 }

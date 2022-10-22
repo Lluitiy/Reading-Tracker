@@ -1,7 +1,7 @@
 import { Container, Section } from 'components/Common/Common.styled';
 import { useState } from 'react';
 import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
 	AddBtn,
 	AuthorLabel,
@@ -15,18 +15,20 @@ import {
 	Wrapper,
 } from './LibraryForm.styled';
 import { addUserBookThunk } from 'Redux/Books/booksOperations';
+import useTranslation from 'Hooks/useTranslations';
 
-const LibraryForm = ({handleFormOpen = null}) => {
+const LibraryForm = ({ handleFormOpen = null }) => {
+	const translation = useTranslation();
 	const [newBook, setNewBook] = useState({
-        title: '',
-        author: '',
-        publishYear: '',
-        pagesTotal: '',
+		title: '',
+		author: '',
+		publishYear: '',
+		pagesTotal: '',
 	});
-	
+
 	const dispatch = useDispatch();
 
-    const handleInputChange = e => {
+	const handleInputChange = e => {
 		setNewBook(prevState => {
 			return { ...prevState, [e.target.name]: e.target.value };
 		});
@@ -34,15 +36,12 @@ const LibraryForm = ({handleFormOpen = null}) => {
 
 	const handleFormSubmit = e => {
 		e.preventDefault();
-		
-		dispatch(addUserBookThunk(newBook))
+
+		dispatch(addUserBookThunk(newBook));
 		formReset();
 	};
 	const formReset = () => {
-		setNewBook({ title: '',
-        author: '',
-        publishYear: '',
-        pagesTotal: '',});
+		setNewBook({ title: '', author: '', publishYear: '', pagesTotal: '' });
 	};
 
 	return (
@@ -55,7 +54,7 @@ const LibraryForm = ({handleFormOpen = null}) => {
 					<Form onSubmit={handleFormSubmit}>
 						<Upper>
 							<NameLabel>
-								Book title
+								{translation.libraryForm.book}
 								<Input
 									placeholder="..."
 									onChange={handleInputChange}
@@ -68,7 +67,7 @@ const LibraryForm = ({handleFormOpen = null}) => {
 						</Upper>
 						<Lower>
 							<AuthorLabel>
-								Author
+								{translation.libraryForm.author}
 								<Input
 									placeholder="..."
 									onChange={handleInputChange}
@@ -79,7 +78,7 @@ const LibraryForm = ({handleFormOpen = null}) => {
 								/>
 							</AuthorLabel>
 							<Label>
-								Publication date
+								{translation.libraryForm.date}
 								<Input
 									placeholder="..."
 									onChange={handleInputChange}
@@ -90,7 +89,7 @@ const LibraryForm = ({handleFormOpen = null}) => {
 								/>
 							</Label>
 							<Label>
-								Amount of pages
+								{translation.libraryForm.pages}
 								<Input
 									placeholder="..."
 									onChange={handleInputChange}
@@ -101,7 +100,7 @@ const LibraryForm = ({handleFormOpen = null}) => {
 								/>
 							</Label>
 						</Lower>
-						<AddBtn type="submit">Add</AddBtn>
+						<AddBtn type="submit">{translation.libraryForm.btnAdd}</AddBtn>
 					</Form>
 				</Wrapper>
 			</Container>

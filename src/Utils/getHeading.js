@@ -1,4 +1,5 @@
-import BOOK_CATEGORY from "components/Constants/bookCategories";
+import BOOK_CATEGORY from 'components/Constants/bookCategories';
+// import useTranslation from 'Hooks/useTranslations';
 
 const getHeading = category => {
 	switch (category) {
@@ -12,4 +13,4 @@ const getHeading = category => {
 			return 'Other';
 	}
 };
-export default getHeading
+export default getHeading;

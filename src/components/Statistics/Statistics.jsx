@@ -1,4 +1,4 @@
-// import Results from 'components/Results/Results';
+import Results from 'components/Results/Results';
 import {
 	LineChart,
 	Line,
@@ -17,39 +17,61 @@ import {
 	StartTraningBox,
 } from './Statistics.styled';
 import { useDispatch, useSelector } from 'react-redux';
+import useTranslation from 'Hooks/useTranslations';
 import {
-	showBtn,
-	// showResultsSection,
+	selectorShowBtn,
+	selectorShowResults,
+	selectorPlanFact,
+	selectorDuration,
+	selectorPagesPerDay,
+	startDate,
+	selectorReadedPages,
 } from '../../Redux/Planning/planningSelectors';
-import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
+
+import {
+	showResults,
+	showStartTraningBtn,
+	addPlanFact,
+} from 'Redux/Planning/planningSlice';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom/dist';
+let checkData = null;
 
+const windowWidth = window.innerWidth;
 
-const data = [
-	{
-		name: 'Day 1',
-		fact: 4000,
-		// план кол-во стр за день
-		plan: 0,
-	},
-	{
-		name: 'Day 2',
-		fact: 3000,
-		plan: 1398,
-	
-	},
-	{
-		name: 'Day 3',
-		fact: 2000,
-		plan: 9800,
-	},
-	
-];
+const dotsPaddingByWidth = () => {
+	if (windowWidth < 768) {
+		return -180;
+	}
+	if (windowWidth >= 768 && windowWidth < 1280) {
+		return -562;
+	}
+	return -782;
+};
 
-let checkData = data.length > 0 ? data : [{ name: 'Day 1', fact: 5, plan: 10 }];
+const normaliseDate = date => {
+	const newDate = new Date(date);
+	let day = newDate.getDate();
+	if (day < 10) day = '0' + day;
 
-const CastomLabel = ({ x, y, value, type }) => {
-	if (value === checkData[checkData.length - 1]?.[type]) {
+	let month = newDate.getMonth() + 1;
+	if (month < 10) month = '0' + month;
+
+	const year = newDate.getFullYear();
+
+	return `${year}-${month}-${day}`;
+};
+
+const createNextDay = (prevDate, step) => {
+	const newDate = new Date(prevDate);
+	const nextDay = newDate.setDate(newDate.getDate() + step);
+	return normaliseDate(nextDay);
+};
+
+const CastomLabel = ({ x, y, index, type }) => {
+	const translation = useTranslation();
+	if (index === checkData.length - 1) {
 		return (
 			<text
 				x={x}
@@ -60,26 +82,89 @@ const CastomLabel = ({ x, y, value, type }) => {
 				textAnchor={'start'}
 				fill={type === 'plan' ? '#000000' : '#FF6B08'}
 			>
-				{type === 'plan' ? 'PLAN' : 'FACT'}
+				{type === 'plan'
+					? `${translation.statistics.plan}`
+					: `${translation.statistics.fact}`}
 			</text>
 		);
 	}
 };
 
 export default function Statistics() {
-	// const [data, setData] = useState([]);
-	// const data = useSelector(planFact);
-	// console.log(data)
-	const isShowBtn = useSelector(showBtn);
-
+	const navigate = useNavigate();
+	const translation = useTranslation();
+	const data = useSelector(selectorPlanFact);
+	const isShowResultsSection = useSelector(selectorShowResults);
+	const isShowBtn = useSelector(selectorShowBtn);
+	const duration = useSelector(selectorDuration);
+	const pagesPerDay = useSelector(selectorPagesPerDay);
+	const getStartDate = useSelector(startDate);
 	const dispatch = useDispatch();
-	const navigate = useNavigate()
+
+	const readedPages = useSelector(selectorReadedPages);
+
+	const [firstRender, setFirstRender] = useState(0);
+
+	useEffect(() => {
+		console.log(firstRender);
+		if (firstRender < 1) {
+			setFirstRender(prev => prev + 1);
+			return;
+		}
+
+		if (readedPages) {
+			const changeFact = data.map(fact => {
+				for (let date of readedPages) {
+					const normalDate = date.time.slice(0, 10);
+					if (fact.name === normalDate) {
+						return (fact = { ...fact, fact: fact.fact + date.pagesCount });
+					}
+				}
+				return fact;
+			});
+
+			dispatch(addPlanFact(changeFact));
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [readedPages]);
+
+	checkData =
+		data?.length > 0 && isShowResultsSection
+			? data
+			: [{ name: 'Day 0', fact: 5, plan: 10 }];
+
+	const createObjByPlan = () => {
+		const objPlanFact = [];
+
+		const startDate = new Date(getStartDate);
+
+		for (let i = 1; i <= duration; i += 1) {
+			if (i === 1) {
+				objPlanFact.push({
+					name: normaliseDate(startDate),
+					fact: 0,
+					plan: pagesPerDay * i,
+				});
+			} else {
+				objPlanFact.push({
+					name: createNextDay(startDate, i - 1),
+					fact: 0,
+					plan: pagesPerDay * i,
+				});
+			}
+		}
+
+		return objPlanFact;
+	};
 
 	const handleClickStartTraining = () => {
 		dispatch(showStartTraningBtn(false));
 		dispatch(showResults(true));
-		navigate('/statistics')
-		
+		dispatch(addPlanFact(createObjByPlan()));
+		// !!!
+		navigate('/statistics');
+		// TODO
 	};
 
 	return (
@@ -87,13 +172,13 @@ export default function Statistics() {
 			{isShowBtn && (
 				<StartTraningBox>
 					<StartTraningBtn type="button" onClick={handleClickStartTraining}>
-						Start traning
+						{translation.statistics.startBtn}
 					</StartTraningBtn>
 				</StartTraningBox>
 			)}
 			<StatisticsSection>
 				<StatisticsBox>
-					<StatisticsTitle>Amount of pages / day</StatisticsTitle>
+					<StatisticsTitle>{translation.statistics.statTitle}</StatisticsTitle>
 					<ResponsiveContainer width={'99%'} height={215}>
 						<LineChart
 							width={809}
@@ -110,7 +195,9 @@ export default function Statistics() {
 							<XAxis
 								dataKey="name"
 								hide={true}
-								padding={checkData?.length <= 1 && { left: -760 }}
+								padding={
+									checkData?.length <= 1 && { left: dotsPaddingByWidth() }
+								}
 							/>
 
 							<Tooltip />
@@ -144,9 +231,9 @@ export default function Statistics() {
 							</Line>
 						</LineChart>
 					</ResponsiveContainer>
-					<StatisticsText>Time</StatisticsText>
+					<StatisticsText>{translation.statistics.time}</StatisticsText>
 				</StatisticsBox>
-				{/* {isShowResultsSection && <Results />} */}
+				{isShowResultsSection && <Results />}
 			</StatisticsSection>
 		</>
 	);
