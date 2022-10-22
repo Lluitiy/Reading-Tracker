@@ -4,9 +4,9 @@ import { Section } from 'components/Common/Common.styled';
 import MyTraining from './../components/MyTraining/MyTraining';
 import Statistics from 'components/Statistics/Statistics';
 import TrainingBookList from 'components/TrainingBookList/TrainingBookList';
-// import Timer from 'components/Timer/Timer';
+
+
 const TrainingPage = () => {
-	
 
 	return (
 		<Section>
@@ -18,7 +18,6 @@ const TrainingPage = () => {
 					</div>
 					<MyGoals />
 				</div>
-				{/* <Timer /> */}
 				<Statistics />
 			</Container>
 		</Section>

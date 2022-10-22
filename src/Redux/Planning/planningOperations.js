@@ -17,9 +17,9 @@ export const startPlanning = createAsyncThunk(
 
 export const addReadingPage = createAsyncThunk(
 	'planning/addReadingPage',
-	async ({ page, id }, thunkAPI) => {
+	async ({pages}, thunkAPI) => {
 		try {
-			const data = patchPlanning(page);
+			const data = patchPlanning({pages});
 			return data;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);

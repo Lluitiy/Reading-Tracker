@@ -12,8 +12,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 
 
+
 import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
+import { showResults } from 'Redux/Planning/planningSlice';
 
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
@@ -31,24 +33,24 @@ const MyTraining = () => {
 
 
 
-
-  
+ 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (accessToken) {
 			dispatch(getUserBooksThunk());
+			dispatch(showResults(false))
 		}
 	}, [accessToken, dispatch]);
 
 const onSubmit = e => {
 	e.preventDefault()
-	if(startValue===''||finishValue===''){
+	const clone =ids.some(id=>id===e.currentTarget.elements.select.value)
+	if(startValue===''||finishValue===''||clone===true){
 		return
 	}
+
 const value = e.currentTarget.elements.select.value
-
-
 dispatch(
 	startPlanning({
 		startDate: startValue,
@@ -75,12 +77,11 @@ dispatch(
 							min={`${year}-${month}-${realDay}`}
 						></DataInput>
 					</label>
-					<label>
+					<label >
 						<DataInput
 							type="date"
 							value={finishValue}
 							onChange={e => {
-								console.log(e.target.value);
 								setfinishValue(e.target.value);
 							}}
 							min={`${year}-${month}-${realDay}`}

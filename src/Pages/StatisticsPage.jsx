@@ -1,9 +1,21 @@
-
+import Timer from 'components/Timer/Timer';
+import TrainingBookList from 'components/TrainingBookList/TrainingBookList';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentPlanning } from 'Redux/Planning/planningOperations';
+import Results from '../components/Results/Results'
 
 const StatisticsPage = () => {
+	const dispatch = useDispatch()
+
+	useEffect(()=>{
+		dispatch((getCurrentPlanning()))
+	},[dispatch])
 	return (
 		<div>
-rfrrfrfrf
+<Timer />
+<TrainingBookList />
+<Results/>
 		</div>
 	);
 };

@@ -16,6 +16,8 @@ const initialState = {
 	isShowStartTraningBtn: false,
 	isShowResults: false,
 	planFact: [],
+	isLoading: false,
+	errorMassage:false
 };
 
 const planningSlice = createSlice({
@@ -51,12 +53,22 @@ const planningSlice = createSlice({
 				});
 			}
 		},
-		[addReadingPage.fulfilled](state, { payload }) {
-			state.books = state.books.map(book =>
-				book.id === payload.id
-					? (book.pagesFinished = payload.pagesFinished + payload.page)
-					: book
-			);
+		[startPlanning.pending](state) {
+			state.isLoading = true;
+		},
+		[startPlanning.rejected](state) {
+			state.isLoading = false;
+			state.errorMassage = true
+		},
+		[addReadingPage.pending](state) {
+			state.isLoading = true;
+		},
+		[addReadingPage.fulfilled](state) {
+			state.isLoading = false;
+		},
+		[addReadingPage.rejected](state) {
+			state.isLoading = false;
+
 		},
 		[getCurrentPlanning.fulfilled](state, { payload }) {
 			state.books = payload.planning.books;
@@ -65,6 +77,13 @@ const planningSlice = createSlice({
 			state.pagesPerDay = payload.planning.pagesPerDay;
 			state.duration = payload.planning.duration;
 			state.stats = payload.planning.stats;
+			state.isLoading = false;
+		},
+		[getCurrentPlanning.pending](state){
+			state.isLoading = true;
+		},
+		[getCurrentPlanning.rejected](state) {
+			state.isLoading = false;
 		},
 	},
 });

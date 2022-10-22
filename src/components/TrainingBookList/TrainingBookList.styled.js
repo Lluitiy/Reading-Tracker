@@ -38,3 +38,36 @@ export const IconThumb = styled.div`
 		position: static;
 	}
 `;
+
+export const CheckBox = styled.div`
+ input{
+	opacity:0;
+	position:absolute;
+	width:15px;
+    height:15px;
+    & + label {
+		position:relative;
+		width:15px;
+	    height:15px;
+		border:1px solid #A6ABB9;
+		display: flex;
+		justify-content:center;
+		align-items:center;
+	&  > svg{
+    display:none;
+	}
+	}
+	&:checked + label{
+		border: 1px solid #FF6B08;
+		background-image:url('Assets/svg/CheckBox.svg');
+		background-size:contain;
+		fill:green;
+
+	& > svg{
+		display:block;
+	}
+	}
+}
+`
+
+

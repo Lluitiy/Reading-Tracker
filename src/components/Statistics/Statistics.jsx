@@ -22,6 +22,7 @@ import {
 	// showResultsSection,
 } from '../../Redux/Planning/planningSelectors';
 import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
+import { useNavigate } from 'react-router-dom/dist';
 
 
 const data = [
@@ -70,14 +71,15 @@ export default function Statistics() {
 	// const data = useSelector(planFact);
 	// console.log(data)
 	const isShowBtn = useSelector(showBtn);
-	// const isShowResultsSection = useSelector(showResultsSection);
+
 	const dispatch = useDispatch();
-
-
+	const navigate = useNavigate()
 
 	const handleClickStartTraining = () => {
 		dispatch(showStartTraningBtn(false));
 		dispatch(showResults(true));
+		navigate('/statistics')
+		
 	};
 
 	return (

@@ -1,11 +1,13 @@
 import {
 	ItemWrapper,
 	ListHeaders,
+	CheckBox
 } from '../TrainingBookList/TrainingBookList.styled';
-import { booksId, endDate, getBooks, startDate } from 'Redux/Planning/planningSelectors';
+import { booksId, endDate, getBooks, showResultsSection, startDate } from 'Redux/Planning/planningSelectors';
 import {  startPlanning } from 'Redux/Planning/planningOperations';
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
 import { ReactComponent as TrashIcon } from 'Assets/svg/delete.svg';
+import { ReactComponent as CheckIcon } from 'Assets/svg/CheckBox.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { clean } from 'Redux/Planning/planningSlice';
 
@@ -16,6 +18,10 @@ const TrainingBookList = () => {
 	const ids = useSelector(booksId);
 	const finishValue = useSelector(endDate)
 	const startValue = useSelector(startDate)
+	const isShowResultsSection = useSelector(showResultsSection);
+
+
+
 const click =(_id)=>{
 	const del = ids.filter(id=>id !==_id)
 					if(del.length===0){
@@ -26,9 +32,8 @@ const click =(_id)=>{
 					startDate: startValue,
 					endDate: finishValue,
 					books: del}))
-					console.log(del)
 }
-	console.log(ids)
+
 	
 
 	return (
@@ -39,19 +44,22 @@ const click =(_id)=>{
 				<span>Year</span>
 				<span>Pages</span>
 			</ListHeaders>
-
-			<ul id='planning-list'>
-				{books.length!==0&&books.map(({ title, author, publishYear, pagesTotal, _id }) => (
+			<ul id='planning-list' >
+				{books.length!==0&&books.map(({ title, author, publishYear, pagesTotal, _id ,pagesFinished}) => (
 					<li key={_id}>
 						<ItemWrapper>
-							<BookIcon fill={{}} width={22} height={17} />
+						{!isShowResultsSection&&<BookIcon fill={{}} width={22} height={17} />}
+							{isShowResultsSection&&<CheckBox>
+								{pagesFinished===pagesTotal?<input type='checkbox' id={ _id} checked disabled/>:<input type='checkbox' id={ _id} disabled/>}
+								<label htmlFor={ _id}><CheckIcon /></label>
+									</CheckBox>}
 							<span>{title}</span>
 							<span>{author}</span>
 							<span>{publishYear}</span>
 							<span>{pagesTotal}</span>
-							<span onClick={()=>click(_id)}>
+							{!isShowResultsSection&&<span onClick={()=>click(_id)}>
 								<TrashIcon fill="black" width={22} height={17} />
-							</span>
+							</span>}
 						</ItemWrapper>
 					</li>
 				))}
