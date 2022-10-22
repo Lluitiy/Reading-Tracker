@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/90.e22fd90b.chunk.js","mappings":"gIAUA,UARuB,WACtB,OACC,sCAID,C","sources":["Pages/StatisticsPage.jsx"],"sourcesContent":["\n\nconst StatisticsPage = () => {\n\treturn (\n\t\t<div>\nrfrrfrfrf\n\t\t</div>\n\t);\n};\n\nexport default StatisticsPage;"],"names":[],"sourceRoot":""}
