@@ -11,16 +11,20 @@ import vector from '../../Assets/svg/angleQuote.svg';
 export const Wrapper = styled.div`
 	@media screen and (min-width: 1280px) {
 		display: flex;
+		justify-content: center;
+		height: 790px;
 	}
 `;
 
 export const FormBox = styled.div`
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
 	padding-top: 32px;
 	padding-bottom: 44px;
 	height: 100%;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+	min-width: 320px;
 	background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
 		url(${mobile});
 	@media screen and (min-device-pixel-ratio: 2),
@@ -52,8 +56,8 @@ export const FormBox = styled.div`
 	}
 	@media screen and (min-width: 1280px) {
 		padding: 0;
-		width: 549px;
-		height: 790px;
+		min-width: 549px;
+		height: 100%;
 		background-image: linear-gradient(
 				rgba(9, 30, 63, 0.8),
 				rgba(9, 30, 63, 0.8)
@@ -79,12 +83,11 @@ export const TextBox = styled.div`
 	align-items: center;
 	@media screen and (min-width: 767px) {
 		padding-top: 64px;
-		padding-bottom: 88px;
 	}
 	@media screen and (min-width: 1280px) {
 		padding-top: 179px;
 		padding-left: 127px;
-		padding-bottom: 239px;
+		padding-right: 157px;
 	}
 `;
 
