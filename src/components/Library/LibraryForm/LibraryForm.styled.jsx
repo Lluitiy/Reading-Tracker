@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Field, Form } from 'formik';
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -7,7 +8,7 @@ export const Wrapper = styled.div`
         height: auto;
     }
 `
-export const Form = styled.form`
+export const NewBookForm = styled(Form)`
     width: 100%;
 	 @media screen and (min-width: 768px) {
 		display: flex;
@@ -41,6 +42,16 @@ export const Lower = styled.div`
 	}
 `
 
+export const Error = styled.p`
+    margin-top: 5px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.12;
+  color: red;
+  text-align: center;
+`;
+
+
 export const Label = styled.label`
 	display: flex;
     flex-direction: column;
@@ -59,7 +70,7 @@ export const Label = styled.label`
 	}
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
     width:auto;
     height: 42px;
     margin-top: 8px;

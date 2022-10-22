@@ -1,48 +1,32 @@
 import { Container, Section } from 'components/Common/Common.styled';
-import { useState } from 'react';
 import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
 	AddBtn,
 	AuthorLabel,
 	BackBtn,
-	Form,
+	NewBookForm,
 	Input,
 	Label,
 	Lower,
 	NameLabel,
 	Upper,
 	Wrapper,
+	Error,
 } from './LibraryForm.styled';
 import { addUserBookThunk } from 'Redux/Books/booksOperations';
+import { Formik, ErrorMessage } from 'formik';
+import { booksFormSchema } from 'Utils/validSchema';
 
-const LibraryForm = ({handleFormOpen = null}) => {
-	const [newBook, setNewBook] = useState({
-        title: '',
-        author: '',
-        publishYear: '',
-        pagesTotal: '',
-	});
-	
+const LibraryForm = ({ handleFormOpen = null }) => {
 	const dispatch = useDispatch();
 
-    const handleInputChange = e => {
-		setNewBook(prevState => {
-			return { ...prevState, [e.target.name]: e.target.value };
-		});
-	};
-
-	const handleFormSubmit = e => {
-		e.preventDefault();
-		
-		dispatch(addUserBookThunk(newBook))
-		formReset();
-	};
-	const formReset = () => {
-		setNewBook({ title: '',
-        author: '',
-        publishYear: '',
-        pagesTotal: '',});
+	const handleFormSubmit = (
+		{ title, author, publishYear, pagesTotal },
+		{ resetForm }
+	) => {
+		dispatch(addUserBookThunk({ title, author, publishYear, pagesTotal }));
+		resetForm();
 	};
 
 	return (
@@ -52,57 +36,56 @@ const LibraryForm = ({handleFormOpen = null}) => {
 					<BackBtn type="button" onClick={handleFormOpen}>
 						<BackArrow width="24" height="24" />
 					</BackBtn>
-					<Form onSubmit={handleFormSubmit}>
-						<Upper>
-							<NameLabel>
-								Book title
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.title}
-									type="text"
-									name="title"
-									required
-								/>
-							</NameLabel>
-						</Upper>
-						<Lower>
-							<AuthorLabel>
-								Author
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.author}
-									type="text"
-									name="author"
-									required
-								/>
-							</AuthorLabel>
-							<Label>
-								Publication date
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.publishYear}
-									type="text"
-									name="publishYear"
-									required
-								/>
-							</Label>
-							<Label>
-								Amount of pages
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.pagesTotal}
-									type="text"
-									name="pagesTotal"
-									required
-								/>
-							</Label>
-						</Lower>
-						<AddBtn type="submit">Add</AddBtn>
-					</Form>
+					<Formik
+						onSubmit={handleFormSubmit}
+						initialValues={{
+							title: '',
+							author: '',
+							publishYear: '',
+							pagesTotal: '',
+						}}
+						validationSchema={booksFormSchema}
+					>
+						<NewBookForm>
+							<Upper>
+								<NameLabel>
+									Book title
+									<Input placeholder="..." type="text" name="title" />
+									<ErrorMessage
+										name="title"
+										render={message => <Error>{message}</Error>}
+									/>
+								</NameLabel>
+							</Upper>
+							<Lower>
+								<AuthorLabel>
+									Author
+									<Input placeholder="..." type="text" name="author" />
+									<ErrorMessage
+										name="author"
+										render={message => <Error>{message}</Error>}
+									/>
+								</AuthorLabel>
+								<Label>
+									Publication date
+									<Input placeholder="..." type="text" name="publishYear" />
+									<ErrorMessage
+										name="publishYear"
+										render={() => <Error>Are you sure?</Error>}
+									/>
+								</Label>
+								<Label>
+									Amount of pages
+									<Input placeholder="..." type="text" name="pagesTotal" />
+									<ErrorMessage
+										name="pagesTotal"
+										render={() => <Error>Are you sure?</Error>}
+									/>
+								</Label>
+							</Lower>
+							<AddBtn type="submit">Add</AddBtn>
+						</NewBookForm>
+					</Formik>
 				</Wrapper>
 			</Container>
 		</Section>

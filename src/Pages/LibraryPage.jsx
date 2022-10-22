@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 import { getAllBooks, getBooksStatus } from 'Redux/Books/booksSelectors';
 import EmptyLibraryInfo from 'components/Library/EmptyLibraryInfo/EmptyLibraryInfo';
+import API from 'Services/Api/Api';
 
 const LibraryPage = () => {
 	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
@@ -33,6 +34,20 @@ const LibraryPage = () => {
 		}
 	}, [accessToken, dispatch]);
 
+	const send = () => {
+		API.postPlanning({
+  startDate: "2022-10-21",
+  endDate: "2022-10-23",
+  books: [
+    "63528fed3551fd60da51062b"
+  ]
+		}).then((r)=>console.log('patch', r))
+// 		API.patchPlanning({
+//   pages: 10
+// 		}).then((r)=>console.log('patch', r))
+		// API.getPlanning().then(console.log)
+	}
+
 	return isLoading ? (
 		<Spinner />
 	) : isDesktopOrTablet ? (
@@ -44,7 +59,8 @@ const LibraryPage = () => {
 				<>
 					<LibraryList category={BOOK_CATEGORY.finishedReading} />
 					<LibraryList category={BOOK_CATEGORY.currentlyReading} />
-					<LibraryList category={BOOK_CATEGORY.goingToRead} />
+							<LibraryList category={BOOK_CATEGORY.goingToRead} />
+							<button onClick={send}>bub</button>
 				</>
 			)}
 		</>

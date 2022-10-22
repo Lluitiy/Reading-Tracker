@@ -30,6 +30,7 @@ const authSlice = createSlice({
 		},
 
 		[logIn.fulfilled](state, action) {
+			console.log(action.payload)
 			state.user = action.payload.userData;
 			state.accessToken = action.payload.accessToken;
 			state.refreshToken = action.payload.refreshToken;
