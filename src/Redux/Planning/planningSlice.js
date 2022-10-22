@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import persistReducer from 'redux-persist/es/persistReducer';
+
 import {
 	startPlanning,
 	getCurrentPlanning,
@@ -15,6 +18,7 @@ const initialState = {
 	isShowStartTraningBtn: false,
 	isShowResults: false,
 	planFact: [],
+	readedPages: null,
 };
 
 const planningSlice = createSlice({
@@ -27,6 +31,11 @@ const planningSlice = createSlice({
 		showResults(state, { payload }) {
 			state.isShowResults = payload;
 		},
+
+		addPlanFact(state, { payload }) {
+			state.planFact = payload;
+		},
+
 		clean(state, { payload }) {
 			state.booksId = payload;
 			state.books = payload;
@@ -42,14 +51,12 @@ const planningSlice = createSlice({
 			state.booksId = payload.books.map(({ _id }) => _id);
 			state.stats = payload.stats;
 			state.isShowStartTraningBtn = true;
-			for (let i = 1; i <= payload.duration; i += 1) {
-				state.planFact.push({
-					name: `Day ${i}`,
-					fact: 0,
-					plan: payload.pagesPerDay * i,
-				});
-			}
 		},
+
+		[addReadingPage.fulfilled](state, { payload }) {
+			state.readedPages = payload.planning.stats;
+		},
+
 		[getCurrentPlanning.fulfilled](state, { payload }) {
 			state.books = payload.planning.books;
 			state.startDate = payload.planning.startDate;
@@ -57,10 +64,23 @@ const planningSlice = createSlice({
 			state.pagesPerDay = payload.planning.pagesPerDay;
 			state.duration = payload.planning.duration;
 			state.stats = payload.planning.stats;
+			state.readedPages = payload.planning.stats;
+			state.isShowResults = state.planFact.length > 0 ? true : false;
 		},
 	},
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { showStartTraningBtn, showResults, clean } =
+export const { showStartTraningBtn, showResults, clean, addPlanFact } =
 	planningSlice.actions;
+
+const planningPersistConfig = {
+	key: 'planning',
+	storage,
+	whitelist: ['planFact'],
+};
+
+export const persistedPlanningReducer = persistReducer(
+	planningPersistConfig,
+	planningReducer
+);

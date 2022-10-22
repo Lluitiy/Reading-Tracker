@@ -17,9 +17,12 @@ export const startPlanning = createAsyncThunk(
 
 export const addReadingPage = createAsyncThunk(
 	'planning/addReadingPage',
-	async (page, thunkAPI) => {
+  
+	// !==Лера изменила page на pages, не работало ==========
+	async ({ pages }, thunkAPI) => {
+
 		try {
-			const data = patchPlanning(page);
+			const data = patchPlanning({ pages });
 			return data;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
@@ -32,7 +35,7 @@ export const getCurrentPlanning = createAsyncThunk(
 	async (_, thunkAPI) => {
 		try {
 			const data = await getPlanning();
-			console.log(data);
+			// console.log(data);
 			return data;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
