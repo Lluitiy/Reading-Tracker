@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toggleTheme } from 'Redux/Theme/themeSlice';
 import useToggleTheme from 'Hooks/useToggleTheme';
-import { getIsRefreshed } from 'Redux/Auth/authSelectors';
 
 const ThemeSwitcher = () => {
 	const isLightTheme = useToggleTheme();

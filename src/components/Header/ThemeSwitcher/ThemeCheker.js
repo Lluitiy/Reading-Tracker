@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { themeDark, themeLight } from 'components/Constants/theme';
 // export const themeValue = new Promise(resolve => {
 // 	setTimeout(() => {
