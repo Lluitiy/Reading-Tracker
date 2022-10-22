@@ -1,12 +1,15 @@
 import BOOK_CATEGORY from 'components/Constants/bookCategories';
 import LibraryList from 'components/Library/LibraryList/LibraryList';
 import { useState } from 'react';
+import EmptyLibraryInfo from '../EmptyLibraryInfo/EmptyLibraryInfo';
 import { PlusBtn } from './MobileLibrary.styled';
 
-const { default: LibraryForm } = require('components/Library/LibraryForm/LibraryForm');
+const {
+	default: LibraryForm,
+} = require('components/Library/LibraryForm/LibraryForm');
 
-const MobileLibrary = () => {
-	const [isFormOpen, setIsFormOpen] = useState(true);
+const MobileLibrary = ({ isLibraryEmpty }) => {
+	const [isFormOpen, setIsFormOpen] = useState(false);
 	const toggleFormOpen = () => {
 		setIsFormOpen(prevState => !prevState);
 	};
@@ -14,6 +17,8 @@ const MobileLibrary = () => {
 		<>
 			{isFormOpen ? (
 				<LibraryForm handleFormOpen={toggleFormOpen} />
+			) : isLibraryEmpty ? (
+				<EmptyLibraryInfo openFormHandler={toggleFormOpen} />
 			) : (
 				<>
 					<LibraryList category={BOOK_CATEGORY.finishedReading} />

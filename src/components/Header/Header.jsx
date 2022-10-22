@@ -1,25 +1,38 @@
+import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'Redux/Auth/authSelectors';
+
+import LanguageHandler from 'Hooks/useLanguageHandler';
+import Logo from './Logo/Logo';
+import Nav from './Nav/Nav';
+import UserMenu from './UserMenu/UserMenu';
+import LogOutBtn from './LogOutBtn/LogOutBtn';
+
+import { Head, HeaderWrapper, NavAlign } from './Header.styled';
 import { Container } from 'components/Common/Common.styled';
-import Nav from 'components/Nav/Nav';
-import UserMenu from 'components/UserMenu/UserMenu';
-import {
-	Head,
-	HeaderWrapper,
-	Logo,
-	LogoutBtn,
-	NavAlign,
-} from './Header.styled';
+import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
 
 const Header = () => {
+	const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+	const isLoggedIn = useSelector(getIsLoggedIn);
+
 	return (
 		<Head>
 			<Container>
 				<HeaderWrapper>
-					<Logo>br</Logo>
-					<NavAlign>
-						<UserMenu />
-						<Nav />
-						<LogoutBtn>Logout</LogoutBtn>
-					</NavAlign>
+					<Logo />
+					<LanguageHandler />
+					{isLoggedIn && (
+						<>
+							{isTabletOrDesktop && <UserMenu />}
+							<NavAlign>
+								<ThemeSwitcher />
+								<Nav />
+								{!isTabletOrDesktop && <UserMenu />}
+								<LogOutBtn />
+							</NavAlign>
+						</>
+					)}
 				</HeaderWrapper>
 			</Container>
 		</Head>

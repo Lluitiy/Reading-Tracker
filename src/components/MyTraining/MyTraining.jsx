@@ -15,14 +15,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 
 import { startPlanning } from 'Redux/Planning/planningOperations';
+import { booksId } from 'Redux/Planning/planningSelectors';
 
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
 	const [select, setSelect] = useState(null);
 
-	const books = useSelector(state => state.books.goingToRead);
+	const books = useSelector(state => state.books.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
+	const ids = useSelector(booksId);
+
+	const date = new Date();
+	const normalDate = date.toLocaleDateString();
+	const year = String(date.getFullYear());
+	const month = String(date.getMonth() + 1);
+	const day = [...normalDate];
+	const realDay = day[0] + day[1];
 
 	const dispatch = useDispatch();
 
@@ -35,14 +44,14 @@ const MyTraining = () => {
 	const onSubmit = e => {
 		e.preventDefault();
 
-		if (!select) {
+		if (!select || startValue === '' || finishValue === '') {
 			return alert('rrrrrr');
 		}
 		dispatch(
 			startPlanning({
 				startDate: startValue,
 				endDate: finishValue,
-				books: [select],
+				books: [...ids, select],
 			})
 		);
 	};
@@ -66,8 +75,8 @@ const MyTraining = () => {
 								console.log(e.target.value);
 								setStartValue(e.target.value);
 							}}
-							placeholder="start"
 							required
+							min={`${year}-${month}-${realDay}`}
 						></DataInput>
 					</Label>
 					<Label>
@@ -84,7 +93,7 @@ const MyTraining = () => {
 							}}
 							placeholder="finish"
 							required
-							// min={Date.now()}
+							min={`${year}-${month}-${realDay}`}
 						></DataInput>
 					</Label>
 				</DateContainer>
@@ -95,9 +104,8 @@ const MyTraining = () => {
 							console.log(e.target.value);
 							setSelect(e.target.value);
 						}}
-						required
 					>
-						<option value="select">Choose books from the library</option>
+						<option disabled={true}>Choose books from the library</option>
 						{books.map(({ title, _id }) => {
 							return (
 								<option key={_id} value={_id}>

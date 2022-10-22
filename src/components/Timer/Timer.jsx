@@ -3,6 +3,7 @@ import CountdownTimer from '../Timer/CountdownTimer/CountdownTimer';
 // import { Wrap } from './Timer.styled.jsx';
 // import { Section } from 'components/Common/Common.styled';
 import { TimerContainer } from './Timer.styled';
+import useTranslation from 'Hooks/useTranslations';
 
 const backend = {
 	startDate: '2020-12-31',
@@ -10,6 +11,7 @@ const backend = {
 };
 
 const Timer = () => {
+	const translation = useTranslation();
 	const GET_EN_YEAR = new Date().getFullYear() + '-12-31';
 	const END_YEAR_MS = new Date(GET_EN_YEAR).getTime();
 	// const endDate = useSelector(state => state.planning.endDate);
@@ -17,6 +19,7 @@ const Timer = () => {
 	const END_TRAINING_MS = new Date(backend.endDate).getTime();
 
 	return (
+<<<<<<< HEAD
 		// <Section>
 		<TimerContainer>
 			<CountdownTimer
@@ -29,6 +32,20 @@ const Timer = () => {
 			></CountdownTimer>
 		</TimerContainer>
 		// </Section>
+=======
+		<Section>
+			<TimerContainer>
+				<CountdownTimer
+					title={translation.timer.title1}
+					targetDate={END_YEAR_MS}
+				></CountdownTimer>
+				<CountdownTimer
+					title={translation.timer.title2}
+					targetDate={END_TRAINING_MS}
+				></CountdownTimer>
+			</TimerContainer>
+		</Section>
+>>>>>>> bc180b377a464b630bb381e105483bc4762d0355
 	);
 };
 
