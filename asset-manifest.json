@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.7505f281.css",
-    "main.js": "/TeamSlice/static/js/main.e7f90833.js",
-    "static/js/405.45377071.chunk.js": "/TeamSlice/static/js/405.45377071.chunk.js",
-    "static/js/114.407e92b4.chunk.js": "/TeamSlice/static/js/114.407e92b4.chunk.js",
+    "main.js": "/TeamSlice/static/js/main.a311b2a7.js",
+    "static/js/893.f9757615.chunk.js": "/TeamSlice/static/js/893.f9757615.chunk.js",
+    "static/js/114.5ad29394.chunk.js": "/TeamSlice/static/js/114.5ad29394.chunk.js",
     "static/js/461.eb440a24.chunk.js": "/TeamSlice/static/js/461.eb440a24.chunk.js",
-    "static/js/743.80ffb20b.chunk.js": "/TeamSlice/static/js/743.80ffb20b.chunk.js",
+    "static/js/743.b214c6a8.chunk.js": "/TeamSlice/static/js/743.b214c6a8.chunk.js",
     "static/js/171.4dd67be8.chunk.js": "/TeamSlice/static/js/171.4dd67be8.chunk.js",
     "static/js/778.98a800a8.chunk.js": "/TeamSlice/static/js/778.98a800a8.chunk.js",
+    "static/js/478.7c956705.chunk.js": "/TeamSlice/static/js/478.7c956705.chunk.js",
     "static/media/desktop@2x.jpg": "/TeamSlice/static/media/desktop@2x.837ace8b0b872b5562b4.jpg",
     "static/media/tablet@2x.jpg": "/TeamSlice/static/media/tablet@2x.653fc551649acd8637bd.jpg",
     "static/media/Max.jpeg": "/TeamSlice/static/media/Max.f7c6330a1ca49b0bfcef.jpeg",
@@ -29,6 +30,7 @@
     "static/media/book.svg": "/TeamSlice/static/media/book.5b773cd36c9a767c125121523371c921.svg",
     "static/media/marks.svg": "/TeamSlice/static/media/marks.35ca8804f82dc4106ff0d7dc90ddc131.svg",
     "static/media/backArrow.svg": "/TeamSlice/static/media/backArrow.7621e2b181eca1a605ca8f4a6eab350e.svg",
+    "static/media/okey.svg": "/TeamSlice/static/media/okey.31378f366c4b89bde472487687605ea9.svg",
     "static/media/CheckBox.svg": "/TeamSlice/static/media/CheckBox.578ed447a4c8d370d7670dc4bd3db23a.svg",
     "static/media/starInactive.svg": "/TeamSlice/static/media/starInactive.d4bb54966169363ac7837ef51bdfc5b5.svg",
     "static/media/HomeIcon.svg": "/TeamSlice/static/media/HomeIcon.26854cad09bc61041f9de25d6034bf88.svg",
@@ -38,16 +40,17 @@
     "static/media/flag.svg": "/TeamSlice/static/media/flag.e775a9204a6e357c27946a0968624272.svg",
     "static/media/arrowDown.svg": "/TeamSlice/static/media/arrowDown.5115d85961bffeb5ab2667388aa745c4.svg",
     "main.7505f281.css.map": "/TeamSlice/static/css/main.7505f281.css.map",
-    "main.e7f90833.js.map": "/TeamSlice/static/js/main.e7f90833.js.map",
-    "405.45377071.chunk.js.map": "/TeamSlice/static/js/405.45377071.chunk.js.map",
-    "114.407e92b4.chunk.js.map": "/TeamSlice/static/js/114.407e92b4.chunk.js.map",
+    "main.a311b2a7.js.map": "/TeamSlice/static/js/main.a311b2a7.js.map",
+    "893.f9757615.chunk.js.map": "/TeamSlice/static/js/893.f9757615.chunk.js.map",
+    "114.5ad29394.chunk.js.map": "/TeamSlice/static/js/114.5ad29394.chunk.js.map",
     "461.eb440a24.chunk.js.map": "/TeamSlice/static/js/461.eb440a24.chunk.js.map",
-    "743.80ffb20b.chunk.js.map": "/TeamSlice/static/js/743.80ffb20b.chunk.js.map",
+    "743.b214c6a8.chunk.js.map": "/TeamSlice/static/js/743.b214c6a8.chunk.js.map",
     "171.4dd67be8.chunk.js.map": "/TeamSlice/static/js/171.4dd67be8.chunk.js.map",
-    "778.98a800a8.chunk.js.map": "/TeamSlice/static/js/778.98a800a8.chunk.js.map"
+    "778.98a800a8.chunk.js.map": "/TeamSlice/static/js/778.98a800a8.chunk.js.map",
+    "478.7c956705.chunk.js.map": "/TeamSlice/static/js/478.7c956705.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7505f281.css",
-    "static/js/main.e7f90833.js"
+    "static/js/main.a311b2a7.js"
   ]
 }
