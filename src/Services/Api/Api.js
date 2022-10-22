@@ -51,7 +51,7 @@ const authUserGoogle = async () => {
 	}
 };
 
-const postUserBook = async (book) => {
+const postUserBook = async book => {
 	try {
 		const { data } = await contactsAPI.post('/book', book);
 		return data;
@@ -68,7 +68,6 @@ const getUserBooks = async () => {
 		throw new Error(error.message);
 	}
 };
-
 
 const deleteUserBook = async id => {
 	try {
@@ -103,9 +102,10 @@ const postPlanning = async ({ startDate, endDate, books }) => {
 	}
 };
 
-const patchPlanning = async ({ pages }) => {
+// !==Лера изменила  pages, убрала дестуктуризацию, с ней не работает..
+const patchPlanning = async pages => {
 	try {
-		const { data } = await contactsAPI.patch('/planning', { pages });
+		const { data } = await contactsAPI.patch('/planning', pages);
 		return data;
 	} catch (error) {
 		throw new Error(error.message);
@@ -121,15 +121,12 @@ const getPlanning = async () => {
 	}
 };
 
-
-
 const API = {
 	registerUser,
 	loginUser,
 	logoutUser,
 	refreshUser,
 	authUserGoogle,
-
 
 	postPlanning,
 	patchPlanning,
@@ -139,7 +136,6 @@ const API = {
 	postUserBook,
 	deleteUserBook,
 	editUserBook,
-
 
 	setToken,
 	unsetToken,
