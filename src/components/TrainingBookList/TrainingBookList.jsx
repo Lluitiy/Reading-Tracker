@@ -13,8 +13,10 @@ import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
 import { ReactComponent as TrashIcon } from 'Assets/svg/delete.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { clean } from 'Redux/Planning/planningSlice';
+import useTranslation from 'Hooks/useTranslations';
 
 const TrainingBookList = () => {
+	const translation = useTranslation();
 	let books = useSelector(getBooks);
 	const dispatch = useDispatch();
 	const ids = useSelector(booksId);
@@ -39,10 +41,10 @@ const TrainingBookList = () => {
 	return (
 		<div>
 			<ListHeaders>
-				<span>Book Title</span>
-				<span>Author</span>
-				<span>Year</span>
-				<span>Pages</span>
+				<span>{translation.trainingBookList.title}</span>
+				<span>{translation.trainingBookList.author}</span>
+				<span>{translation.trainingBookList.year}</span>
+				<span>{translation.trainingBookList.pages}</span>
 			</ListHeaders>
 
 			<ul id="planning-list">

@@ -21,10 +21,9 @@ import {
 	showBtn,
 	showResultsSection,
 	planFact,
-}
-from '../../Redux/Planning/planningSelectors';
+} from '../../Redux/Planning/planningSelectors';
 import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
-
+import useTranslation from 'Hooks/useTranslations';
 
 // const data = [
 // 	{
@@ -49,8 +48,8 @@ import { showResults, showStartTraningBtn } from 'Redux/Planning/planningSlice';
 
 let checkData = null;
 
-const CastomLabel = ({ x, y, index, type, }) => {
-
+const CastomLabel = ({ x, y, index, type }) => {
+	const translation = useTranslation();
 	if (index === checkData.length - 1) {
 		return (
 			<text
@@ -62,7 +61,9 @@ const CastomLabel = ({ x, y, index, type, }) => {
 				textAnchor={'start'}
 				fill={type === 'plan' ? '#000000' : '#FF6B08'}
 			>
-				{type === 'plan' ? 'PLAN' : 'FACT'}
+				{type === 'plan'
+					? `${translation.statistics.plan}`
+					: `${translation.statistics.fact}`}
 			</text>
 		);
 	}
@@ -70,23 +71,23 @@ const CastomLabel = ({ x, y, index, type, }) => {
 
 export default function Statistics() {
 	// const [data, setData] = useState([]);
+	const translation = useTranslation();
 
 	const data = useSelector(planFact);
 	const isShowResultsSection = useSelector(showResultsSection);
 
-	checkData = data.length > 0 && isShowResultsSection ? data : [{ name: 'Day 1', fact: 5, plan: 10 }];
+	checkData =
+		data.length > 0 && isShowResultsSection
+			? data
+			: [{ name: 'Day 1', fact: 5, plan: 10 }];
 
 	const isShowBtn = useSelector(showBtn);
 
-
 	const dispatch = useDispatch();
-
-
 
 	const handleClickStartTraining = () => {
 		dispatch(showStartTraningBtn(false));
 		dispatch(showResults(true));
-
 	};
 
 	return (
@@ -94,13 +95,13 @@ export default function Statistics() {
 			{isShowBtn && (
 				<StartTraningBox>
 					<StartTraningBtn type="button" onClick={handleClickStartTraining}>
-						Start traning
+						{translation.statistics.startBtn}
 					</StartTraningBtn>
 				</StartTraningBox>
 			)}
 			<StatisticsSection>
 				<StatisticsBox>
-					<StatisticsTitle>Amount of pages / day</StatisticsTitle>
+					<StatisticsTitle>{translation.statistics.statTitle}</StatisticsTitle>
 					<ResponsiveContainer width={'99%'} height={215}>
 						<LineChart
 							width={809}
@@ -151,7 +152,7 @@ export default function Statistics() {
 							</Line>
 						</LineChart>
 					</ResponsiveContainer>
-					<StatisticsText>Time</StatisticsText>
+					<StatisticsText>{translation.statistics.time}</StatisticsText>
 				</StatisticsBox>
 				{isShowResultsSection && <Results />}
 			</StatisticsSection>

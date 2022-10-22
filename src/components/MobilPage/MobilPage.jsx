@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Container } from 'components/Common/Common.styled';
 import { ReactComponent as AngleQuote } from 'Assets/svg/angleQuote.svg';
+import useTranslation from 'Hooks/useTranslations';
 import {
 	Section,
 	Title,
@@ -16,56 +17,55 @@ import {
 } from './MobilPage.styled';
 
 export default function MobilPage() {
+	const translation = useTranslation();
 	return (
 		<Container>
 			<Section>
 				<Title>Books Reading</Title>
 				<List>
 					<MainListItem>
-						<Subtitle>Will help you to</Subtitle>
+						<Subtitle>{translation.header.title1}</Subtitle>
 						<List>
 							<ListItem>
 								<IconWrapper>
 									<AngleQuote />
 								</IconWrapper>
-								<Text>Create your goal faster and proceed to read</Text>
+								<Text>{translation.header.p1}</Text>
 							</ListItem>
 							<ListItem>
 								<IconWrapper>
 									<AngleQuote />
 								</IconWrapper>
-								<Text>Divide process proportionally for each day</Text>
+								<Text>{translation.header.p2}</Text>
 							</ListItem>
 							<ListItem>
 								<IconWrapper>
 									<AngleQuote />
 								</IconWrapper>
-								<Text>Track your success</Text>
+								<Text>{translation.header.p3}</Text>
 							</ListItem>
 						</List>
 					</MainListItem>
 					<MainListItem>
-						<Subtitle>You may also</Subtitle>
+						<Subtitle>{translation.header.title1}</Subtitle>
 						<List>
 							<ListItem>
 								<IconWrapper>
 									<AngleQuote />
 								</IconWrapper>
-								<Text>Pose your own independent point of view</Text>
+								<Text>{translation.header.p4}</Text>
 							</ListItem>
 							<ListItem>
 								<IconWrapper>
 									<AngleQuote />
 								</IconWrapper>
-								<Text>
-									Improve your professional skills according to new knowledge
-								</Text>
+								<Text>{translation.header.p5}</Text>
 							</ListItem>
 							<ListItem>
 								<IconWrapper>
 									<AngleQuote />
 								</IconWrapper>
-								<Text>Become an interesting interlocutor</Text>
+								<Text>{translation.header.p6}</Text>
 							</ListItem>
 						</List>
 					</MainListItem>
@@ -73,12 +73,12 @@ export default function MobilPage() {
 				<ButtonList>
 					<li>
 						<NavLink to="/login" exact="true">
-							<LoginButton>Log in</LoginButton>
+							<LoginButton>{translation.header.mobBtnLog}</LoginButton>
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="/register" exact="true">
-							<RegisterButton>Register</RegisterButton>
+							<RegisterButton>{translation.header.mobBtnReg}</RegisterButton>
 						</NavLink>
 					</li>
 				</ButtonList>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import RatingStars from './RatingStars';
+import useTranslation from 'Hooks/useTranslations';
 
 export const ResumeModal = ({ onClose }) => {
 	const [feedback, setFeedback] = useState('');
 	const [rating, setRating] = useState(0);
+	const translation = useTranslation();
 
 	const changeRating = e => {
 		setRating(Math.ceil(e));
@@ -13,7 +15,7 @@ export const ResumeModal = ({ onClose }) => {
 		event.preventDefault();
 		setFeedback(event.currentTarget.elements.resume.value);
 
-		console.log({rating, feedback});
+		console.log({ rating, feedback });
 		event.currentTarget.reset();
 		onClose();
 	};
@@ -27,10 +29,10 @@ export const ResumeModal = ({ onClose }) => {
 	return (
 		<form onSubmit={handleSubmit} autoComplete="off">
 			<label>
-				<h3>Choose book rating</h3>
+				<h3>{translation.resumeModal.title}</h3>
 
 				<RatingStars value={rating} changeHandler={changeRating} />
-				<p>Resume</p>
+				<p>{translation.resumeModal.resume}</p>
 				<input
 					type="text"
 					name="resume"
@@ -38,9 +40,9 @@ export const ResumeModal = ({ onClose }) => {
 					onChange={handleInputChange}
 				></input>
 				<button type="button" onClick={onClose}>
-					Back
+					{translation.resumeModal.btnBack}
 				</button>
-				<button type="submit">Save</button>
+				<button type="submit">{translation.resumeModal.btnSave}</button>
 			</label>
 		</form>
 	);
