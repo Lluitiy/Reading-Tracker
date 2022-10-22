@@ -14,6 +14,7 @@ import useTranslation from 'Hooks/useTranslations';
 const MyGoals = () => {
 	const ids = useSelector(booksId);
 	const state = useSelector(state => state.planning);
+  const translation = useTranslation();
 
 	const booksLefts = 0;
 	return (
