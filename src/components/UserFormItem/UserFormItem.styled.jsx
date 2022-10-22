@@ -30,7 +30,7 @@ export const FieldInput = styled(Field)`
 	height: 42px;
 	padding-left: 8px;
 	background: #f5f7fa;
-	color: #a6abb9;
+	color: black;
 	box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
 	border: none;
 
