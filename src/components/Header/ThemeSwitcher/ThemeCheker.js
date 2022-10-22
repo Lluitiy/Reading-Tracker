@@ -10,7 +10,6 @@ import { themeDark, themeLight } from 'components/Constants/theme';
 import { Notify } from 'notiflix';
 export const theme = () => {
 	const tema = JSON.parse(localStorage.getItem('persist:theme'));
-	console.log('qwe', tema.theme);
-	Notify.success(`${tema.theme === 'true' ? true : false}`);
-	return tema.theme === 'true' ? themeLight : themeDark;
+	Notify.success(`${tema?.theme === 'true' ? true : false}`);
+	return tema?.theme === 'true' ? themeLight : themeDark;
 };
