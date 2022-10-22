@@ -1,4 +1,3 @@
-// // !============Tanya==========
 import Modal from 'components/Modal';
 import ResultsItem from 'components/Results/ResultsItem/ResultsItem';
 import { useState } from 'react';
@@ -28,6 +27,7 @@ import {
 } from './Results.styled';
 import { useEffect } from 'react';
 import { resetPagesAndPlan } from 'Redux/Planning/planningSlice';
+import useTranslation from 'Hooks/useTranslations';
 
 export default function Results() {
 	const [isShowModal, setIsShowModal] = useState(false);
@@ -35,6 +35,7 @@ export default function Results() {
 	const readedPages = useSelector(selectorReadedPages);
 	const data = useSelector(selectorPlanFact);
 	const navigate = useNavigate();
+	const translation = useTranslation();
 
 	//зато работает!
 	const date = new Date();
@@ -43,8 +44,6 @@ export default function Results() {
 	const month = String(date.getMonth() + 1);
 	const day = [...normalDate];
 	const realDay = day[0] + day[1];
-
-	// !============Tanya==========
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -52,13 +51,10 @@ export default function Results() {
 			const totalReadedPages = readedPages?.reduce(
 				(total, el) => total + el.pagesCount,
 				0
-         );
-         if (data.length > 0 && data[data.length - 1].plan === totalReadedPages) {
-            
+			);
+			if (data.length > 0 && data[data.length - 1].plan === totalReadedPages) {
 				setIsShowModalEndReading(true);
-			
-         }
-			
+			}
 		};
 
 		checkTotalPlan();
@@ -73,12 +69,10 @@ export default function Results() {
 			setIsShowModal(true);
 		}
 	};
-	// !============================
 
-   const handleDoneBtnClick = () => {
-      
-      setIsShowModalEndReading(false);
-     
+	const handleDoneBtnClick = () => {
+		setIsShowModalEndReading(false);
+
 		dispatch(resetPagesAndPlan());
 		// navigate('/library');
 	};
@@ -86,11 +80,11 @@ export default function Results() {
 	return (
 		<>
 			<ResultsBox>
-				<ResultsTitle>Results</ResultsTitle>
+				<ResultsTitle>{translation.results.title}</ResultsTitle>
 				<ResultsForm onSubmit={handleFormSubmit}>
 					<FormBox>
 						<ResultsLabel>
-							Date
+							{translation.results.label1}
 							<ResultsInput
 								type="date"
 								name="date"
@@ -99,14 +93,14 @@ export default function Results() {
 							/>
 						</ResultsLabel>
 						<ResultsLabel>
-							Amount of pages
+							{translation.results.label2}
 							<ResultsInput type="text" name="page" />
 						</ResultsLabel>
 					</FormBox>
-					<ResultsBtn type="submit">Add result</ResultsBtn>
+					<ResultsBtn type="submit">{translation.results.btn}</ResultsBtn>
 				</ResultsForm>
 				<StatisticsPageBox>
-					<StatisticsPageTitle>Statistics</StatisticsPageTitle>
+					<StatisticsPageTitle>{translation.results.stat}</StatisticsPageTitle>
 				</StatisticsPageBox>
 				<ResultsPageList>
 					{readedPages &&

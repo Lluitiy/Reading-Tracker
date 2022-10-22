@@ -17,6 +17,7 @@ import {
 	StartTraningBox,
 } from './Statistics.styled';
 import { useDispatch, useSelector } from 'react-redux';
+import useTranslation from 'Hooks/useTranslations';
 import {
 	selectorShowBtn,
 	selectorShowResults,
@@ -26,6 +27,7 @@ import {
 	startDate,
 	selectorReadedPages,
 } from '../../Redux/Planning/planningSelectors';
+
 import {
 	showResults,
 	showStartTraningBtn,
@@ -33,6 +35,7 @@ import {
 } from 'Redux/Planning/planningSlice';
 import { useEffect } from 'react';
 
+// import { useNavigate } from 'react-router-dom/dist';
 
 let checkData = null;
 
@@ -71,6 +74,7 @@ const createNextDay = (prevDate, step) => {
 };
 
 const CastomLabel = ({ x, y, index, type }) => {
+	const translation = useTranslation();
 	if (index === checkData.length - 1) {
 		return (
 			<text
@@ -82,13 +86,17 @@ const CastomLabel = ({ x, y, index, type }) => {
 				textAnchor={'start'}
 				fill={type === 'plan' ? '#000000' : '#FF6B08'}
 			>
-				{type === 'plan' ? 'PLAN' : 'FACT'}
+				{type === 'plan'
+					? `${translation.statistics.plan}`
+					: `${translation.statistics.fact}`}
 			</text>
 		);
 	}
 };
 
 export default function Statistics() {
+	// const navigate = useNavigate();
+	const translation = useTranslation();
 	const data = useSelector(selectorPlanFact);
 	const isShowResultsSection = useSelector(selectorShowResults);
 	const isShowBtn = useSelector(selectorShowBtn);
@@ -98,7 +106,6 @@ export default function Statistics() {
 	const readedPages = useSelector(selectorReadedPages);
 	const dispatch = useDispatch();
 
-	
 	useEffect(() => {
 		if (readedPages) {
 			// считаем, что пришло - странички, мапаем дату и к ней в факт суем странички
@@ -123,8 +130,6 @@ export default function Statistics() {
 		data?.length > 0 && isShowResultsSection
 			? data
 			: [{ name: 'Day 0', fact: 5, plan: 10 }];
-	
-	
 
 	const createObjByPlan = () => {
 		const objPlanFact = [];
@@ -153,8 +158,10 @@ export default function Statistics() {
 	const handleClickStartTraining = () => {
 		dispatch(showStartTraningBtn(false));
 		dispatch(showResults(true));
-
 		dispatch(addPlanFact(createObjByPlan()));
+		// !!!
+		// navigate('/statistics');
+		// TODO
 	};
 
 	return (
@@ -162,14 +169,15 @@ export default function Statistics() {
 			{isShowBtn && (
 				<StartTraningBox>
 					<StartTraningBtn type="button" onClick={handleClickStartTraining}>
-						Start traning
+						{translation.statistics.startBtn}
 					</StartTraningBtn>
 				</StartTraningBox>
 			)}
 			<StatisticsSection>
 				<StatisticsBox>
 					<StatisticsTitle>
-						Amount of pages / day <span> {data[0]?.plan && 0}</span>
+						{translation.statistics.statTitle}
+						<span> {data[0]?.plan && 0}</span>
 					</StatisticsTitle>
 					<ResponsiveContainer width={'99%'} height={215}>
 						<LineChart
@@ -223,7 +231,7 @@ export default function Statistics() {
 							</Line>
 						</LineChart>
 					</ResponsiveContainer>
-					<StatisticsText>Time</StatisticsText>
+					<StatisticsText>{translation.statistics.time}</StatisticsText>
 				</StatisticsBox>
 				{isShowResultsSection && <Results />}
 			</StatisticsSection>

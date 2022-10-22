@@ -43,6 +43,37 @@ export const IconThumb = styled.div`
 		position: static;
 	}
 `;
+
+export const CheckBox = styled.div`
+	input {
+		opacity: 0;
+		position: absolute;
+		width: 15px;
+		height: 15px;
+		& + label {
+			position: relative;
+			width: 15px;
+			height: 15px;
+			border: 1px solid #a6abb9;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			& > svg {
+				display: none;
+			}
+		}
+		&:checked + label {
+			border: 1px solid #ff6b08;
+			background-image: url('Assets/svg/CheckBox.svg');
+			background-size: contain;
+			fill: green;
+
+			& > svg {
+				display: block;
+			}
+		}
+	}
+`;
 export const List = styled.ul`
 	@media screen and (min-width: 768px) {
 		width: 704px;

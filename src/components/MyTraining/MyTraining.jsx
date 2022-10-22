@@ -9,18 +9,19 @@ import {
 	Label,
 	BoxForSvg,
 } from './MyTraining.styled';
+import useTranslation from 'Hooks/useTranslations';
 
 import Button from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
-
 import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
+import { showResults } from 'Redux/Planning/planningSlice';
 
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
-	const [select, setSelect] = useState(null);
+	const translation = useTranslation();
 
 	const books = useSelector(state => state.books.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
@@ -38,28 +39,33 @@ const MyTraining = () => {
 	useEffect(() => {
 		if (accessToken) {
 			dispatch(getUserBooksThunk());
+			dispatch(showResults(false));
 		}
 	}, [accessToken, dispatch]);
 
 	const onSubmit = e => {
 		e.preventDefault();
-
-		if (!select || startValue === '' || finishValue === '') {
-			return alert('rrrrrr');
+		const clone = ids.some(id => id === e.currentTarget.elements.select.value);
+		if (startValue === '' || finishValue === '') {
+			return alert('All fields must be filled!');
 		}
+		if (clone) {
+			alert('You already added this book');
+			return;
+		}
+		const value = e.currentTarget.elements.select.value;
 		dispatch(
 			startPlanning({
 				startDate: startValue,
 				endDate: finishValue,
-				books: [...ids, select],
+				books: [...ids, value],
 			})
 		);
 	};
 
 	return (
 		<div>
-			<Title>My training</Title>
-
+			<Title>{translation.myTraining.title}</Title>
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
 					<Label>
@@ -67,7 +73,6 @@ const MyTraining = () => {
 							<DataSvg />
 							Start
 						</BoxForSvg>
-
 						<DataInput
 							type="date"
 							value={startValue}
@@ -88,7 +93,6 @@ const MyTraining = () => {
 							type="date"
 							value={finishValue}
 							onChange={e => {
-								console.log(e.target.value);
 								setfinishValue(e.target.value);
 							}}
 							placeholder="finish"
@@ -98,14 +102,8 @@ const MyTraining = () => {
 					</Label>
 				</DateContainer>
 				<SelectContainer>
-					<Select
-						name="select"
-						onChange={e => {
-							console.log(e.target.value);
-							setSelect(e.target.value);
-						}}
-					>
-						<option disabled={true}>Choose books from the library</option>
+					<Select name="select">
+						<option disabled={true}>{translation.myTraining.option}</option>
 						{books.map(({ title, _id }) => {
 							return (
 								<option key={_id} value={_id}>
@@ -114,7 +112,7 @@ const MyTraining = () => {
 							);
 						})}
 					</Select>
-					<Button type={'submit'}>add</Button>
+					<Button type={'submit'}>{translation.myTraining.btn}</Button>
 				</SelectContainer>
 			</form>
 		</div>
