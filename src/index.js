@@ -10,6 +10,7 @@ import LanguageContextProvider from 'components/contexts/LanguageContext';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { themeDark, themeLight } from 'components/Constants/theme';
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 				<BrowserRouter basename="TeamSlice">
 					<ThemeProvider theme={true ? themeLight : themeDark}>
 						<LanguageContextProvider>
-							<App />
+							<ErrorBoundary>
+								<App />
+							</ErrorBoundary>
 						</LanguageContextProvider>
 					</ThemeProvider>
 				</BrowserRouter>

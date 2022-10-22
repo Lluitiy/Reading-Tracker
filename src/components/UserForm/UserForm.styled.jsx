@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const Page = styled.div`
 	width: 280px;
+	margin: auto;
 	@media screen and (min-width: 768px) {
 		width: 400px;
 		margin: auto;

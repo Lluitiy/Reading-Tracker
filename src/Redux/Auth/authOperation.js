@@ -54,7 +54,6 @@ export const fetchCurrentUser = createAsyncThunk(
 		const persistedSid = { sid: state.auth.sid };
 
 		if (!persistedToken) {
-			console.log('err');
 			return thunkAPI.rejectWithValue();
 		}
 

@@ -39,6 +39,7 @@ export const App = () => {
 		if (accessToken) {
 			dispatch(qwe({ accessToken, refreshToken, sid }));
 			API.setToken(accessToken);
+			// throw new Error('Error');
 		}
 		navigate('/libary');
 
