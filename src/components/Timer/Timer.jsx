@@ -19,33 +19,16 @@ const Timer = () => {
 	const END_TRAINING_MS = new Date(backend.endDate).getTime();
 
 	return (
-<<<<<<< HEAD
-		// <Section>
 		<TimerContainer>
 			<CountdownTimer
-				title="Years countdown"
+				title={translation.timer.title1}
 				targetDate={END_YEAR_MS}
 			></CountdownTimer>
 			<CountdownTimer
-				title="Goals countdown"
+				title={translation.timer.title2}
 				targetDate={END_TRAINING_MS}
 			></CountdownTimer>
 		</TimerContainer>
-		// </Section>
-=======
-		<Section>
-			<TimerContainer>
-				<CountdownTimer
-					title={translation.timer.title1}
-					targetDate={END_YEAR_MS}
-				></CountdownTimer>
-				<CountdownTimer
-					title={translation.timer.title2}
-					targetDate={END_TRAINING_MS}
-				></CountdownTimer>
-			</TimerContainer>
-		</Section>
->>>>>>> bc180b377a464b630bb381e105483bc4762d0355
 	);
 };
 
