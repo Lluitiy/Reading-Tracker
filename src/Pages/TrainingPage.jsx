@@ -2,7 +2,6 @@ import StartTrainningWrapper from 'components/StartTrainningWrapper/StartTrainni
 import { Container } from 'components/Common/Common.styled';
 import { Section } from 'components/Common/Common.styled';
 import Statistics from 'components/Statistics/Statistics';
-
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getCurrentPlanning } from 'Redux/Planning/planningOperations';

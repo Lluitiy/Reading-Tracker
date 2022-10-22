@@ -19,6 +19,8 @@ const initialState = {
 	isShowStartTraningBtn: false,
 	isShowResults: false,
 	planFact: [],
+	isLoading: false,
+	errorMassage: false,
 	readedPages: null,
 };
 
@@ -54,8 +56,22 @@ const planningSlice = createSlice({
 			state.isShowStartTraningBtn = true;
 		},
 
+		[startPlanning.pending](state) {
+			state.isLoading = true;
+		},
+		[startPlanning.rejected](state) {
+			state.isLoading = false;
+			state.errorMassage = true;
+		},
+		[addReadingPage.pending](state) {
+			state.isLoading = true;
+		},
 		[addReadingPage.fulfilled](state, { payload }) {
+			state.isLoading = false;
 			state.readedPages = payload.planning.stats;
+		},
+		[addReadingPage.rejected](state) {
+			state.isLoading = false;
 		},
 
 		[getCurrentPlanning.fulfilled](state, { payload }) {
@@ -67,6 +83,13 @@ const planningSlice = createSlice({
 			state.stats = payload.planning.stats;
 			state.readedPages = payload.planning.stats;
 			state.isShowResults = state.planFact.length > 0 ? true : false;
+			state.isLoading = false;
+		},
+		[getCurrentPlanning.pending](state) {
+			state.isLoading = true;
+		},
+		[getCurrentPlanning.rejected](state) {
+			state.isLoading = false;
 		},
 	},
 });

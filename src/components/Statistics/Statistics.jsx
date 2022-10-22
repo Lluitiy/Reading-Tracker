@@ -27,6 +27,7 @@ import {
 	startDate,
 	selectorReadedPages,
 } from '../../Redux/Planning/planningSelectors';
+
 import {
 	showResults,
 	showStartTraningBtn,
@@ -34,11 +35,10 @@ import {
 } from 'Redux/Planning/planningSlice';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom/dist';
 let checkData = null;
 
 const windowWidth = window.innerWidth;
-
 
 const dotsPaddingByWidth = () => {
 	if (windowWidth < 768) {
@@ -70,7 +70,7 @@ const createNextDay = (prevDate, step) => {
 };
 
 const CastomLabel = ({ x, y, index, type }) => {
-const translation = useTranslation();
+	const translation = useTranslation();
 	if (index === checkData.length - 1) {
 		return (
 			<text
@@ -91,7 +91,8 @@ const translation = useTranslation();
 };
 
 export default function Statistics() {
-const translation = useTranslation();
+	const navigate = useNavigate();
+	const translation = useTranslation();
 	const data = useSelector(selectorPlanFact);
 	const isShowResultsSection = useSelector(selectorShowResults);
 	const isShowBtn = useSelector(selectorShowBtn);
@@ -101,35 +102,29 @@ const translation = useTranslation();
 	const dispatch = useDispatch();
 
 	const readedPages = useSelector(selectorReadedPages);
-	
-	const [firstRender, setFirstRender] = useState(0)
-	
+
+	const [firstRender, setFirstRender] = useState(0);
 
 	useEffect(() => {
-		console.log(firstRender)
+		console.log(firstRender);
 		if (firstRender < 1) {
-			setFirstRender(prev =>prev + 1 )
-			return
+			setFirstRender(prev => prev + 1);
+			return;
 		}
-		
-			if (readedPages) {
-				const changeFact = data.map(fact => {
-			for (let date of readedPages) {
-				
-				const normalDate = date.time.slice(0, 10);
-				if (fact.name === normalDate) {
-					return (fact = { ...fact, fact: fact.fact + date.pagesCount });
+
+		if (readedPages) {
+			const changeFact = data.map(fact => {
+				for (let date of readedPages) {
+					const normalDate = date.time.slice(0, 10);
+					if (fact.name === normalDate) {
+						return (fact = { ...fact, fact: fact.fact + date.pagesCount });
+					}
 				}
-				
-			}
-			return fact;
-		});
-		
-		dispatch(addPlanFact(changeFact));
-		
-		 }
-		
-	
+				return fact;
+			});
+
+			dispatch(addPlanFact(changeFact));
+		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [readedPages]);
@@ -138,7 +133,6 @@ const translation = useTranslation();
 		data?.length > 0 && isShowResultsSection
 			? data
 			: [{ name: 'Day 0', fact: 5, plan: 10 }];
-	
 
 	const createObjByPlan = () => {
 		const objPlanFact = [];
@@ -167,8 +161,10 @@ const translation = useTranslation();
 	const handleClickStartTraining = () => {
 		dispatch(showStartTraningBtn(false));
 		dispatch(showResults(true));
-
 		dispatch(addPlanFact(createObjByPlan()));
+		// !!!
+		navigate('/statistics');
+		// TODO
 	};
 
 	return (

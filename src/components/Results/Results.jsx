@@ -16,10 +16,9 @@ import {
 import useTranslation from 'Hooks/useTranslations';
 
 export default function Results() {
-   const readedPages = useSelector(selectorReadedPages);
-   	const translation = useTranslation();
+	const readedPages = useSelector(selectorReadedPages);
+	const translation = useTranslation();
 
-   
 	//зато работает!
 	const date = new Date();
 	const normalDate = date.toLocaleDateString();
@@ -27,15 +26,13 @@ export default function Results() {
 	const month = String(date.getMonth() + 1);
 	const day = [...normalDate];
 	const realDay = day[0] + day[1];
-
 	const dispatch = useDispatch();
-
 	const handleFormSubmit = e => {
 		e.preventDefault();
 		// !== Лера здесь нужен намбер
 		dispatch(addReadingPage({ pages: Number(e.target.elements[1].value) }));
 	};
-  
+
 	return (
 		<ResultsBox>
 			<ResultsTitle>{translation.results.title}</ResultsTitle>
@@ -51,7 +48,7 @@ export default function Results() {
 						/>
 					</ResultsLabel>
 					<ResultsLabel>
-					{translation.results.label2}
+						{translation.results.label2}
 						<ResultsInput type="text" name="page" />
 					</ResultsLabel>
 				</FormBox>
@@ -60,7 +57,8 @@ export default function Results() {
 			<StatisticsPageBox>
 				<StatisticsPageTitle>{translation.results.stat}</StatisticsPageTitle>
 				<ul>
-               {readedPages && readedPages.map((el, i) => <ResultsItem key={i} data={el } /> )}
+					{readedPages &&
+						readedPages.map((el, i) => <ResultsItem key={i} data={el} />)}
 				</ul>
 			</StatisticsPageBox>
 		</ResultsBox>
