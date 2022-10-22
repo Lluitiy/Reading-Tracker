@@ -1,29 +1,69 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Title, MyGoalsContainer, List, Counter, Text } from './MyGoals.styled';
+import {
+	Title,
+	MyGoalsContainer,
+	List,
+	Counter,
+	Text,
+	Item,
+} from './MyGoals.styled';
 
 const MyGoals = () => {
 	const state = useSelector(state => state.planning);
+	const amountOfBooks = state.books?.length;
+	const amountOfDays = state.duration * amountOfBooks;
+	const booksLefts = 0;
 	return (
 		<MyGoalsContainer>
 			<Title>My goals</Title>
-			<List>
+			{false ? (
+				<List startTraining>
+					<Item startTraining>
+						<Counter startTraining>{amountOfBooks}</Counter>
+						<Text>Amount of books</Text>
+					</Item>
+					<Item startTraining>
+						<Counter startTraining>{amountOfDays}</Counter>
+						<Text>Amount of days</Text>
+					</Item>
+
+					<Item startTraining>
+						<Counter active startTraining>
+							{booksLefts}
+						</Counter>
+						<Text>Books lefts</Text>
+					</Item>
+				</List>
+			) : (
+				<List>
+					<Item>
+						<Counter>{amountOfBooks}</Counter>
+						<Text>Amount of books</Text>
+					</Item>
+					<Item>
+						<Counter>{amountOfDays}</Counter>
+						<Text>Amount of days</Text>
+					</Item>
+				</List>
+			)}
+			{/* <List>
 				<li>
-					<Counter>{state.books.length}</Counter>
+					<Counter>{amountOfBooks}</Counter>
 					<Text>Amount of books</Text>
 				</li>
 				<li>
-					<Counter>{state.duration * state.books.length}</Counter>
+					<Counter>{amountOfDays}</Counter>
 					<Text>Amount of days</Text>
 				</li>
 				{false && (
 					<li>
-						<Counter>{0}</Counter>
+						<Counter active>{booksLefts}</Counter>
 						<Text>Books lefts</Text>
 					</li>
 				)}
-			</List>
+			</List> */}
 		</MyGoalsContainer>
 	);
 };

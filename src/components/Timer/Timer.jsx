@@ -1,6 +1,7 @@
 import CountdownTimer from '../Timer/CountdownTimer/CountdownTimer';
+// import { useSelector } from 'react-redux';
 // import { Wrap } from './Timer.styled.jsx';
-import { Section } from 'components/Common/Common.styled';
+// import { Section } from 'components/Common/Common.styled';
 import { TimerContainer } from './Timer.styled';
 
 const backend = {
@@ -11,22 +12,23 @@ const backend = {
 const Timer = () => {
 	const GET_EN_YEAR = new Date().getFullYear() + '-12-31';
 	const END_YEAR_MS = new Date(GET_EN_YEAR).getTime();
-
+	// const endDate = useSelector(state => state.planning.endDate);
+	// const END_TRAINING_MS = new Date(endDate).getTime();
 	const END_TRAINING_MS = new Date(backend.endDate).getTime();
 
 	return (
-		<Section>
-			<TimerContainer>
-				<CountdownTimer
-					title="Years countdown"
-					targetDate={END_YEAR_MS}
-				></CountdownTimer>
-				<CountdownTimer
-					title="Goals countdown"
-					targetDate={END_TRAINING_MS}
-				></CountdownTimer>
-			</TimerContainer>
-		</Section>
+		// <Section>
+		<TimerContainer>
+			<CountdownTimer
+				title="Years countdown"
+				targetDate={END_YEAR_MS}
+			></CountdownTimer>
+			<CountdownTimer
+				title="Goals countdown"
+				targetDate={END_TRAINING_MS}
+			></CountdownTimer>
+		</TimerContainer>
+		// </Section>
 	);
 };
 
@@ -35,7 +37,7 @@ export default Timer;
 // !______ Для тестів________
 
 // import Timer from 'components/Timer/Timer';
-// import { useDispatch } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 // import { useEffect } from 'react';
 // import { getcurrentPlanning } from 'Redux/Planning/planningOperations';
 

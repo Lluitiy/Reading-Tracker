@@ -1,22 +1,17 @@
-import MyGoals from 'components/MyGoals/MyGoals';
+import StartTrainningWrapper from 'components/StartTrainningWrapper/StartTrainningWrapper';
 import { Container } from 'components/Common/Common.styled';
 import { Section } from 'components/Common/Common.styled';
-import MyTraining from './../components/MyTraining/MyTraining';
+
 import Statistics from 'components/Statistics/Statistics';
-import TrainingBookList from 'components/TrainingBookList/TrainingBookList';
+
 import Timer from 'components/Timer/Timer';
+// import BasicDatePicker from './../components/MyTraining/DataPicker';
 const TrainingPage = () => {
 	return (
 		<Section>
 			<Container>
-				{' '}
-				<div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
-					<div>
-						<MyTraining />
-						<TrainingBookList />
-					</div>
-					<MyGoals />
-				</div>
+				<StartTrainningWrapper />
+				{/* <BasicDatePicker /> */}
 				<Timer />
 				<Statistics />
 			</Container>
