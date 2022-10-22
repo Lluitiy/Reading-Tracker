@@ -8,7 +8,6 @@ const {
 	refreshUser,
 	setToken,
 	unsetToken,
-	// authUserGoogle,
 } = API;
 
 // Register new user
@@ -53,6 +52,7 @@ export const fetchCurrentUser = createAsyncThunk(
 		const state = thunkAPI.getState();
 		const persistedToken = state.auth.refreshToken;
 		const persistedSid = { sid: state.auth.sid };
+
 		if (!persistedToken) {
 			console.log('err');
 			return thunkAPI.rejectWithValue();

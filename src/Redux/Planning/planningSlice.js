@@ -4,7 +4,6 @@ import persistReducer from 'redux-persist/es/persistReducer';
 
 import {
 	startPlanning,
-	addReadingPage,
 	getCurrentPlanning,
 } from '../Planning/planningOperations';
 
@@ -32,9 +31,11 @@ const planningSlice = createSlice({
 		showResults(state, { payload }) {
 			state.isShowResults = payload;
 		},
+
 		addPlanFact(state, { payload }) {
 			state.planFact = payload;
 		},
+
 		clean(state, { payload }) {
 			state.booksId = payload;
 			state.books = payload;
@@ -51,9 +52,11 @@ const planningSlice = createSlice({
 			state.stats = payload.stats;
 			state.isShowStartTraningBtn = true;
 		},
+
 		[addReadingPage.fulfilled](state, { payload }) {
 			state.readedPages = payload.planning.stats;
 		},
+
 		[getCurrentPlanning.fulfilled](state, { payload }) {
 			state.books = payload.planning.books;
 			state.startDate = payload.planning.startDate;

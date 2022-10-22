@@ -1,4 +1,4 @@
-export const theme = Object.freeze({
+export const theme = {
 	colors: {
 		white: '#ffffff',
 		borderNav: '#E0E5EB',
@@ -21,4 +21,4 @@ export const theme = Object.freeze({
 		counter: ' 4px 4px 8px rgba(36, 42, 55, 0.15);',
 	},
 	transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-});
+};

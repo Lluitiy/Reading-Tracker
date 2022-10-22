@@ -19,6 +19,11 @@ export const List = styled.ul`
 		align-items: flex-start;
 		flex-direction: row;
 	}
+	@media screen and (min-width: 1280px) {
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
 `;
 
 export const ItemCard = styled.li`
@@ -28,6 +33,9 @@ export const ItemCard = styled.li`
 
 	@media screen and (min-width: 768px) {
 		width: 290px;
+	}
+	@media screen and (min-width: 1280px) {
+		margin: 10px;
 	}
 `;
 

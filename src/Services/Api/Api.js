@@ -69,14 +69,6 @@ const getUserBooks = async () => {
 	}
 };
 
-const deleteUserBook = async id => {
-	try {
-		return await contactsAPI.delete(`/book/${id}`);
-	} catch (error) {
-		throw new Error(error.message);
-	}
-};
-
 const editUserBook = async ({ id, rating, feedback }) => {
 	try {
 		const { data } = await contactsAPI.patch(`/book/review/${id}`, {
@@ -134,7 +126,6 @@ const API = {
 
 	getUserBooks,
 	postUserBook,
-	deleteUserBook,
 	editUserBook,
 
 	setToken,
