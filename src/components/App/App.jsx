@@ -98,7 +98,7 @@ export const App = () => {
 					<Route
 						path="statistics"
 						element={
-							<PrivateRoute restricted redirect="/statistics">
+							<PrivateRoute restircted redirect={'/'}>
 								<StatisticsPage />
 							</PrivateRoute>
 						}

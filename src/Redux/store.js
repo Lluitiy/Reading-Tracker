@@ -12,6 +12,7 @@ import { persistedAuthReducer } from './Auth/authSlice';
 import { planningReducer } from './Planning/planningSlice';
 import { userReducer } from './User/userSlice';
 import { booksSlice } from './Books/booksSlice';
+import { persisistedThemeReducer } from './Theme/themeSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
 		books: booksSlice.reducer,
 		planning: planningReducer,
 		user: userReducer,
+		theme: persisistedThemeReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({

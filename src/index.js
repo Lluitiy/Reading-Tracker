@@ -9,20 +9,20 @@ import LanguageContextProvider from 'components/contexts/LanguageContext';
 
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
-import { theme } from 'components/Constants/theme';
+import { themeDark, themeLight } from 'components/Constants/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	// <React.StrictMode>
-	<Provider store={store}>
-		<PersistGate loading={null} persistor={persistor}>
-			<BrowserRouter basename="TeamSlice">
-				<ThemeProvider theme={theme}>
-					<LanguageContextProvider>
-						<App />
-					</LanguageContextProvider>
-				</ThemeProvider>
-			</BrowserRouter>
-		</PersistGate>
-	</Provider>
-	// </React.StrictMode>
+	<React.StrictMode>
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<BrowserRouter basename="TeamSlice">
+					<ThemeProvider theme={true ? themeLight : themeDark}>
+						<LanguageContextProvider>
+							<App />
+						</LanguageContextProvider>
+					</ThemeProvider>
+				</BrowserRouter>
+			</PersistGate>
+		</Provider>
+	</React.StrictMode>
 );

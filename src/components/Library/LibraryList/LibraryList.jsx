@@ -4,8 +4,7 @@ import MobileLibraryItem from '../MobileLibraryItem/MobileLibraryItem';
 import LibraryItem from '../LibraryItem/LibraryItem';
 import { Container, Section } from 'components/Common/Common.styled';
 import { useMediaQuery } from 'react-responsive';
-import { Header} from './LibraryList.styled';
-import { theme } from 'components/Constants/theme';
+import { Header } from './LibraryList.styled';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { getBooksByCategory } from 'Redux/Books/booksSelectors';
@@ -36,10 +35,7 @@ import FinishedReadingListHeaders from '../FinishedReadingListHeaders/FinishedRe
 const LibraryList = ({ category }) => {
 	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
 	const fill = useMemo(
-		() =>
-			category === BOOK_CATEGORY.currentlyReading
-				? theme.colors.brand
-				: '#A6ABB9',
+		() => (category === BOOK_CATEGORY.currentlyReading ? '#FF6B08' : '#A6ABB9'),
 		[category]
 	);
 	const heading = useMemo(() => getHeading(category), [category]);
@@ -54,39 +50,40 @@ const LibraryList = ({ category }) => {
 				<Container>
 					<Header>{heading}</Header>
 					{isDesktopOrTablet && (
-						<>{isFinishedReadingList ?
-							<FinishedReadingListHeaders/>:
-							<ListHeaders/>}
+						<>
+							{isFinishedReadingList ? (
+								<FinishedReadingListHeaders />
+							) : (
+								<ListHeaders />
+							)}
 						</>
 					)}
 					<ul>
 						{/* here must be books */}
-						{books.map(
-							({ title, author, publishYear, pagesTotal, _id }) => (
-								<li key={_id}>
-									{' '}
-									{isDesktopOrTablet ? (
-										<LibraryItem
-											title={title}
-											author={author}
-											publishYear={publishYear}
-											pagesTotal={pagesTotal}
-											fill={fill}
-											isFinishedReading={isFinishedReadingList}
-										/>
-									) : (
-										<MobileLibraryItem
-											title={title}
-											author={author}
-											publishYear={publishYear}
-											pagesTotal={pagesTotal}
-											fill={fill}
-											isFinishedReading={isFinishedReadingList}
-										/>
-									)}
-								</li>
-							)
-						)}
+						{books.map(({ title, author, publishYear, pagesTotal, _id }) => (
+							<li key={_id}>
+								{' '}
+								{isDesktopOrTablet ? (
+									<LibraryItem
+										title={title}
+										author={author}
+										publishYear={publishYear}
+										pagesTotal={pagesTotal}
+										fill={fill}
+										isFinishedReading={isFinishedReadingList}
+									/>
+								) : (
+									<MobileLibraryItem
+										title={title}
+										author={author}
+										publishYear={publishYear}
+										pagesTotal={pagesTotal}
+										fill={fill}
+										isFinishedReading={isFinishedReadingList}
+									/>
+								)}
+							</li>
+						))}
 					</ul>
 				</Container>
 			</Section>

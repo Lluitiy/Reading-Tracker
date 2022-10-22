@@ -1,17 +1,18 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleTheme } from 'Redux/Theme/themeSlice';
+import useToggleTheme from 'Hooks/useToggleTheme';
 
 const ThemeSwitcher = () => {
-	const [checked, setChecked] = useState(false);
-	const handleChange = e => {
-		setChecked(!checked);
-		console.log('chekbox', e.target.checked);
+	const isLightTheme = useToggleTheme();
+	const [checked, setChecked] = useState(isLightTheme);
+	const dipsatch = useDispatch();
 
-		console.log(
-			checked
-				? `${p => p.theme.colors.textmain}`
-				: `${p => (p.theme.colors.textmain = '#ffffff')}`
-		);
+	const handleChange = () => {
+		setChecked(!checked);
+		dipsatch(toggleTheme(checked));
 	};
+
 	return (
 		<label className="theme-switch__label">
 			<input
