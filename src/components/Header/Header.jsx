@@ -10,6 +10,7 @@ import LogOutBtn from './LogOutBtn/LogOutBtn';
 
 import { Head, HeaderWrapper, NavAlign } from './Header.styled';
 import { Container } from 'components/Common/Common.styled';
+import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
 
 const Header = () => {
 	const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
@@ -25,6 +26,7 @@ const Header = () => {
 						<>
 							{isTabletOrDesktop && <UserMenu />}
 							<NavAlign>
+								<ThemeSwitcher />
 								<Nav />
 								{!isTabletOrDesktop && <UserMenu />}
 								<LogOutBtn />

@@ -1,24 +1,24 @@
-import MyGoals from 'components/MyGoals/MyGoals';
+import StartTrainningWrapper from 'components/StartTrainningWrapper/StartTrainningWrapper';
 import { Container } from 'components/Common/Common.styled';
 import { Section } from 'components/Common/Common.styled';
-import MyTraining from './../components/MyTraining/MyTraining';
 import Statistics from 'components/Statistics/Statistics';
-import TrainingBookList from 'components/TrainingBookList/TrainingBookList';
-// import Timer from 'components/Timer/Timer';
+
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getCurrentPlanning } from 'Redux/Planning/planningOperations';
+
 const TrainingPage = () => {
-	
+	//! Лера - при загрузке этой страницы мне нужно получить данные с сервера
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getCurrentPlanning());
+	}, [dispatch]);
 
 	return (
 		<Section>
 			<Container>
-				<div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
-					<div>
-						<MyTraining />
-						<TrainingBookList />
-					</div>
-					<MyGoals />
-				</div>
-				{/* <Timer /> */}
+				<StartTrainningWrapper />
 				<Statistics />
 			</Container>
 		</Section>

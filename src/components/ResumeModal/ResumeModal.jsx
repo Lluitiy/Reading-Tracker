@@ -1,50 +1,65 @@
 import React, { useState } from 'react';
 import RatingStars from './RatingStars';
 import useTranslation from 'Hooks/useTranslations';
+import {
+	Form,
+	RatingTextS,
+	ResumeTextS,
+	TextAreaS,
+	ButtonContainerS,
+	ButtonBackS,
+	ButtonSaveS,
+} from './Resume.styled';
 
-export const ResumeModal = ({ onClose }) => {
+export const ResumeModal = ({ onClose }) => {	
+
+  const translation = useTranslation();
 	const [feedback, setFeedback] = useState('');
-	const [rating, setRating] = useState(0);
-	const translation = useTranslation();
-
-	const changeRating = e => {
-		setRating(Math.ceil(e));
-	};
+	// const [rating, setRating] = useState(0);
+	const [resume, setResume] = useState('');
+	// const changeRating = e => {
+	// 	setRating(Math.ceil(e));
+	// };
+  
 	// Неконтрольована форма - запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
+		setResume(event.currentTarget.elements.resume.value);
 		setFeedback(event.currentTarget.elements.resume.value);
 
-		console.log({ rating, feedback });
 		event.currentTarget.reset();
 		onClose();
 	};
 
 	// контрольована форма - для відслідковування введенного
 	const handleInputChange = event => {
+		setResume(event.target.value);
 		setFeedback(event.target.value);
-		// console.log('Input', resume);
 	};
+	console.log('feedback', feedback);
 
 	return (
-		<form onSubmit={handleSubmit} autoComplete="off">
+		<Form onSubmit={handleSubmit} autoComplete="off">
 			<label>
-				<h3>{translation.resumeModal.title}</h3>
-
-				<RatingStars value={rating} changeHandler={changeRating} />
-				<p>{translation.resumeModal.resume}</p>
-				<input
-					type="text"
+				<RatingTextS>{translation.resumeModal.title}</RatingTextS>
+				<RatingStars />
+				<ResumeTextS>{translation.resumeModal.resume}</ResumeTextS>
+				<TextAreaS
 					name="resume"
-					value={feedback}
+					rows="5"
+					cols="33"
+					placeholder="Start your comment here."
+					value={resume}
 					onChange={handleInputChange}
-				></input>
-				<button type="button" onClick={onClose}>
-					{translation.resumeModal.btnBack}
-				</button>
-				<button type="submit">{translation.resumeModal.btnSave}</button>
+				/>
+				<ButtonContainerS>
+					<ButtonBackS type="button" onClick={onClose}>
+						{translation.resumeModal.btnBack}
+					</ButtonBackS>
+					<ButtonSaveS type="submit">{translation.resumeModal.btnSave}</ButtonSaveS>
+				</ButtonContainerS>
 			</label>
-		</form>
+		</Form>
 	);
 };
 

@@ -5,6 +5,9 @@ import {
 	Select,
 	DateContainer,
 	SelectContainer,
+	DataSvg,
+	Label,
+	BoxForSvg,
 } from './MyTraining.styled';
 import useTranslation from 'Hooks/useTranslations';
 
@@ -18,12 +21,14 @@ import { booksId } from 'Redux/Planning/planningSelectors';
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
 	const [finishValue, setfinishValue] = useState('');
-
 	const translation = useTranslation();
+	const [select, setSelect] = useState(null);
+
 
 	const books = useSelector(state => state.books.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
 	const ids = useSelector(booksId);
+
 	const date = new Date();
 	const normalDate = date.toLocaleDateString();
 	const year = String(date.getFullYear());
@@ -41,26 +46,33 @@ const MyTraining = () => {
 
 	const onSubmit = e => {
 		e.preventDefault();
-		if (startValue === '' || finishValue === '') {
-			return;
+    
+    if (!select || startValue === '' || finishValue === '') {
+			return alert('rrrrrr');
 		}
-		const value = e.currentTarget.elements.select.value;
-
 		dispatch(
 			startPlanning({
 				startDate: startValue,
 				endDate: finishValue,
-				books: [...ids, value],
+
+				books: [...ids, select],
 			})
 		);
 	};
 
 	return (
 		<div>
+
 			<Title>{translation.myTraining.title}</Title>
+
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
-					<label>
+					<Label>
+						<BoxForSvg>
+							<DataSvg />
+							Start
+						</BoxForSvg>
+
 						<DataInput
 							type="date"
 							value={startValue}
@@ -68,10 +80,15 @@ const MyTraining = () => {
 								console.log(e.target.value);
 								setStartValue(e.target.value);
 							}}
+							required
 							min={`${year}-${month}-${realDay}`}
 						></DataInput>
-					</label>
-					<label>
+					</Label>
+					<Label>
+						<BoxForSvg>
+							<DataSvg />
+							Finish
+						</BoxForSvg>
 						<DataInput
 							type="date"
 							value={finishValue}
@@ -79,12 +96,20 @@ const MyTraining = () => {
 								console.log(e.target.value);
 								setfinishValue(e.target.value);
 							}}
+							placeholder="finish"
+							required
 							min={`${year}-${month}-${realDay}`}
 						></DataInput>
-					</label>
+					</Label>
 				</DateContainer>
 				<SelectContainer>
-					<Select name="select">
+					<Select
+						name="select"
+						onChange={e => {
+							console.log(e.target.value);
+							setSelect(e.target.value);
+						}}
+					>
 						<option disabled={true}>{translation.myTraining.option}</option>
 						{books.map(({ title, _id }) => {
 							return (

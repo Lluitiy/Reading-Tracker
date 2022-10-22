@@ -1,13 +1,11 @@
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
 import createRatingStars from 'Utils/RatingStars';
 import { Button, FinishedReadingItemWrapper, ItemWrapper, OverflowText, StarList } from './LibraryItem.styled';
- import { useState } from 'react';
+import { useState } from 'react';
 import Modal from 'components/Modal';
 import { ResumeModal } from 'components/ResumeModal/ResumeModal';
 // import Modal from '../components/Modal/Modal';
 // import { ResumeModal } from '../components/ResumeModal/ResumeModal';
-
-
 
 const LibraryItem = ({
 	title,
@@ -28,7 +26,6 @@ const LibraryItem = ({
 		setModalOpen(false);
 	};
 
-
 	return isFinishedReading ? (
 		<FinishedReadingItemWrapper>
 			<BookIcon fill={fill} width={22} height={17} />
@@ -37,6 +34,7 @@ const LibraryItem = ({
 			<span>{publishYear}</span>
 			<span>{pagesTotal}</span>
 			<StarList>{createRatingStars(3)}</StarList>
+
 			<Button onClick={openModal}>Resume</Button>
 			{modalOpen && (
 			<Modal onClose={closeModal}>

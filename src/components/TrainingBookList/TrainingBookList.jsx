@@ -1,7 +1,9 @@
 import {
 	ItemWrapper,
 	ListHeaders,
+	List,
 } from '../TrainingBookList/TrainingBookList.styled';
+
 import {
 	booksId,
 	endDate,
@@ -46,24 +48,23 @@ const TrainingBookList = () => {
 				<span>{translation.trainingBookList.year}</span>
 				<span>{translation.trainingBookList.pages}</span>
 			</ListHeaders>
-
-			<ul id="planning-list">
+			<List id="planning-list">
 				{books.length !== 0 &&
-					books.map(({ title, author, publishYear, pagesTotal, _id }) => (
+					books?.map(({ title, author, publishYear, pagesTotal, _id }) => (
 						<li key={_id}>
 							<ItemWrapper>
-								<BookIcon fill={{}} width={22} height={17} />
+								<BookIcon width={22} height={17} />
 								<span>{title}</span>
 								<span>{author}</span>
 								<span>{publishYear}</span>
 								<span>{pagesTotal}</span>
 								<span onClick={() => click(_id)}>
-									<TrashIcon fill="black" width={22} height={17} />
+									<TrashIcon width={22} height={17} />
 								</span>
 							</ItemWrapper>
 						</li>
 					))}
-			</ul>
+			</List>
 		</div>
 	);
 };

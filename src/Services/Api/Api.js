@@ -94,9 +94,10 @@ const postPlanning = async ({ startDate, endDate, books }) => {
 	}
 };
 
-const patchPlanning = async ({ pages }) => {
+// !==Лера изменила  pages, убрала дестуктуризацию, с ней не работает..
+const patchPlanning = async pages => {
 	try {
-		const { data } = await contactsAPI.patch('/planning', { pages });
+		const { data } = await contactsAPI.patch('/planning', pages);
 		return data;
 	} catch (error) {
 		throw new Error(error.message);

@@ -1,8 +1,9 @@
 import UserForm from 'components/UserForm';
 import useLoginUser from 'Hooks/useLoginUser';
-import { Container } from 'components/Common/Common.styled';
 import { userLoginSchema } from 'Utils/validSchema';
 import {
+	GoogleButton,
+	TextGoogleButton,
 	Wrapper,
 	FormBox,
 	Text,
@@ -18,27 +19,29 @@ function LoginPage() {
 	const { onSubmitForm } = useLoginUser();
 
 	return (
-		<Container>
-			<Wrapper>
-				<FormBox>
-					<UserForm
-						onSubmitForm={onSubmitForm}
-						validationSchema={userLoginSchema}
-						initialValues={{ email: '', password: '' }}
-						formType={translation.register.login}
-						variant={translation.register.register}
-						navigate="/register"
-					/>
-				</FormBox>
-
-				<TextBox>
-					<Mark />
-					<Text>{translation.header.quote}</Text>
-					<Border />
-					<Author>{translation.header.author}</Author>
-				</TextBox>
-			</Wrapper>
-		</Container>
+		<Wrapper>
+			<FormBox>
+				<GoogleButton type="button">
+					<a href="https://bookread-backend.goit.global/auth/google">
+						<TextGoogleButton>Google</TextGoogleButton>
+					</a>
+				</GoogleButton>
+				<UserForm
+					onSubmitForm={onSubmitForm}
+					validationSchema={userLoginSchema}
+					initialValues={{ email: '', password: '' }}
+					formType={translation.register.login}
+					variant={translation.register.register}
+					navigate="/register"
+				/>
+			</FormBox>
+			<TextBox>
+				<Mark />
+				<Text>{translation.header.quote}</Text>
+				<Border />
+				<Author>{translation.header.author}</Author>
+			</TextBox>
+		</Wrapper>
 	);
 }
 

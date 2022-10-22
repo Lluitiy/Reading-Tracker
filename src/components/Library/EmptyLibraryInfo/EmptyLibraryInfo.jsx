@@ -1,7 +1,6 @@
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
 import { ReactComponent as VectorIcon } from 'Assets/svg/vector.svg';
 import { ReactComponent as FlagIcon } from 'Assets/svg/flag.svg';
-import { theme } from 'components/Constants/theme';
 import {
 	Guide,
 	OkBtn,
@@ -19,10 +18,7 @@ const EmptyLibraryInfo = ({ openFormHandler = null }) => {
 				<li>
 					<Title>{translation.libraryEmpty.step1}</Title>
 					<SubTitle>
-						<BookIcon
-							style={{ marginRight: 5 }}
-							fill={theme.colors.textSecondary}
-						/>
+						<BookIcon style={{ marginRight: 5 }} fill={'#FF6B08'} />
 						{translation.libraryEmpty.text1}
 					</SubTitle>
 					<Guide>
