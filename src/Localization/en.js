@@ -12,6 +12,9 @@ const en = {
 		p5: 'Improve your professional skills according to new knowledge',
 		p6: 'Become an interesting interlocutor',
 		logout: 'Logout',
+		notify: 'Hope to see you Soooon ',
+		mobBtnLog: 'Log in',
+		mobBtnReg: 'Register',
 	},
 	register: {
 		login: 'login',
@@ -60,6 +63,45 @@ const en = {
 		text4: 'Set a goal, choose period, start training.',
 		btn: 'Ok',
 	},
+	myGoals: {
+		title: 'My goals',
+		text1: 'Amount of books',
+		text2: 'Amount of days',
+		text3: 'Books lefts',
+	},
+	myTraining: {
+		title: 'My training',
+		option: 'Choose books from the library',
+		btn: 'Add',
+	},
+	results: {
+		title: 'Results',
+		label1: 'Date',
+		label2: 'Amount of pages',
+		btn: 'Add result',
+		stat: 'Statistics',
+	},
+	resumeModal: {
+		title: 'Choose book rating',
+		resume: 'Resume',
+		btnBack: 'Back',
+		btnSave: 'Save',
+	},
+	statistics: {
+		startBtn: 'Start traning',
+		statTitle: 'Amount of pages / day',
+		time: 'Time',
+		plan: 'PLAN',
+		fact: 'FACT',
+	},
+	notFound: {
+		title: 'We are sorry',
+		text: 'We seem to have lost this page, try one of these instead.',
+		btnLib: 'Library',
+		btnTrai: 'Training',
+		btnLog: 'Login',
+		btnReg: 'Registration',
+	},
 	timer: {
 		title1: 'Years countdown',
 		title2: 'Goals countdown',
@@ -68,9 +110,48 @@ const en = {
 		min: 'Mins',
 		sec: 'Seconds',
 	},
+	trainingBookList: {
+		title: 'Book Title',
+		author: 'Author',
+		year: 'Year',
+		pages: 'Pages',
+	},
 	team: {
 		footerText: '"Books Reading" by',
 		teamButton: 'Go back',
+		git: 'GitHub link',
+		pavlo: {
+			position: 'Team Lead',
+			name: 'Pavlo Vovzhynskyy',
+		},
+		tanya: {
+			position: 'Scrum Master',
+			name: 'Davydenko Tanya',
+		},
+		nikita: {
+			position: 'Developer',
+			name: 'Nikita Krutoholov',
+		},
+		renat: {
+			position: 'Developer',
+			name: 'Veliiev  Renat',
+		},
+		oleh: {
+			position: 'Developer',
+			name: 'Oleh Poliakov',
+		},
+		maksym: {
+			position: 'Developer',
+			name: 'Maksym  Shostak',
+		},
+		valeriya: {
+			position: 'Developer',
+			name: 'Valeriya Druchinina',
+		},
+		anastasiia: {
+			position: 'Developer',
+			name: 'Anastasiia Svechnikova',
+		},
 	},
 };
 export default en;

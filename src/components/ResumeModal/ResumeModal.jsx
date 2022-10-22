@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RatingStars from './RatingStars';
+import useTranslation from 'Hooks/useTranslations';
 import {
 	Form,
 	RatingTextS,
@@ -10,18 +11,22 @@ import {
 	ButtonSaveS,
 } from './Resume.styled';
 
-export const ResumeModal = ({ onClose }) => {
+export const ResumeModal = ({ onClose }) => {	
+
+  const translation = useTranslation();
 	const [feedback, setFeedback] = useState('');
 	// const [rating, setRating] = useState(0);
 	const [resume, setResume] = useState('');
 	// const changeRating = e => {
 	// 	setRating(Math.ceil(e));
 	// };
+  
 	// Неконтрольована форма - запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
 		setResume(event.currentTarget.elements.resume.value);
 		setFeedback(event.currentTarget.elements.resume.value);
+
 		event.currentTarget.reset();
 		onClose();
 	};
@@ -36,9 +41,9 @@ export const ResumeModal = ({ onClose }) => {
 	return (
 		<Form onSubmit={handleSubmit} autoComplete="off">
 			<label>
-				<RatingTextS>Choose book rating</RatingTextS>
+				<RatingTextS>{translation.resumeModal.title}</RatingTextS>
 				<RatingStars />
-				<ResumeTextS>Resume</ResumeTextS>
+				<ResumeTextS>{translation.resumeModal.resume}</ResumeTextS>
 				<TextAreaS
 					name="resume"
 					rows="5"
@@ -49,9 +54,9 @@ export const ResumeModal = ({ onClose }) => {
 				/>
 				<ButtonContainerS>
 					<ButtonBackS type="button" onClick={onClose}>
-						Back
+						{translation.resumeModal.btnBack}
 					</ButtonBackS>
-					<ButtonSaveS type="submit">Save</ButtonSaveS>
+					<ButtonSaveS type="submit">{translation.resumeModal.btnSave}</ButtonSaveS>
 				</ButtonContainerS>
 			</label>
 		</Form>

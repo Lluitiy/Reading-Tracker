@@ -55,7 +55,6 @@ export const fetchCurrentUser = createAsyncThunk(
 		const persistedTheme = state.theme.theme;
 		console.log('persistedTheme', persistedTheme);
 		if (!persistedToken) {
-			console.log('err');
 			return thunkAPI.rejectWithValue();
 		}
 

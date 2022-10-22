@@ -6,11 +6,12 @@ import { Provider } from 'react-redux';
 import { store, persistor } from 'Redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import LanguageContextProvider from 'components/contexts/LanguageContext';
-
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'components/Header/ThemeSwitcher/ThemeCheker';
 console.log('Qwe', theme()); // console.log('themeValue', themeValue);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
 	// <React.StrictMode>
 	<Provider store={store}>
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 			<BrowserRouter basename="TeamSlice">
 				<ThemeProvider theme={theme()}>
 					<LanguageContextProvider>
-						<App />
+						<ErrorBoundary>
+							<App />
+						</ErrorBoundary>
 					</LanguageContextProvider>
 				</ThemeProvider>
 			</BrowserRouter>
