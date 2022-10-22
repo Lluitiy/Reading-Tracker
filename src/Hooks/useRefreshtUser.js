@@ -4,7 +4,7 @@ import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 import { getIsRefreshed } from 'Redux/Auth/authSelectors';
 
 function useRefreshCurrentUser() {
-	const isRefreshing = useSelector(state => getIsRefreshed(state));
+	const isRefreshing = useSelector(getIsRefreshed);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
