@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.7505f281.css",
-    "main.js": "/TeamSlice/static/js/main.d1c57073.js",
+    "main.js": "/TeamSlice/static/js/main.d465ed63.js",
     "static/js/405.0493d665.chunk.js": "/TeamSlice/static/js/405.0493d665.chunk.js",
     "static/js/458.1fc7922c.chunk.js": "/TeamSlice/static/js/458.1fc7922c.chunk.js",
     "static/js/483.0824d454.chunk.js": "/TeamSlice/static/js/483.0824d454.chunk.js",
@@ -37,7 +37,7 @@
     "static/media/flag.svg": "/TeamSlice/static/media/flag.e775a9204a6e357c27946a0968624272.svg",
     "static/media/arrowDown.svg": "/TeamSlice/static/media/arrowDown.5115d85961bffeb5ab2667388aa745c4.svg",
     "main.7505f281.css.map": "/TeamSlice/static/css/main.7505f281.css.map",
-    "main.d1c57073.js.map": "/TeamSlice/static/js/main.d1c57073.js.map",
+    "main.d465ed63.js.map": "/TeamSlice/static/js/main.d465ed63.js.map",
     "405.0493d665.chunk.js.map": "/TeamSlice/static/js/405.0493d665.chunk.js.map",
     "458.1fc7922c.chunk.js.map": "/TeamSlice/static/js/458.1fc7922c.chunk.js.map",
     "483.0824d454.chunk.js.map": "/TeamSlice/static/js/483.0824d454.chunk.js.map",
@@ -47,6 +47,6 @@
   },
   "entrypoints": [
     "static/css/main.7505f281.css",
-    "static/js/main.d1c57073.js"
+    "static/js/main.d465ed63.js"
   ]
 }
