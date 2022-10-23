@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API from 'Services/Api/Api';
 import RatingStars from './RatingStars';
 import {
 	ButtonBackS,
@@ -11,19 +12,19 @@ import {
 	Wrapper,
 } from './ResumeModal.styled';
 
-export const ResumeModal = ({ onClose }) => {
-	const [feedback, setFeedback] = useState('');
+export const ResumeModal = ({ onClose, id }) => {
+	const [feedback, setFeedback] = useState(' ');
 	const [rating, setRating] = useState(0);
+
 
 	const changeRating = e => {
 		setRating(Math.ceil(e));
 	};
-	// Неконтрольована форма - запис при сабміті
+	//  запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
-		setFeedback(event.currentTarget.elements.resume.value);
-
-		console.log({ rating, feedback });
+		console.log({id, rating, feedback });
+		API.editUserBook({id,rating,feedback}).then(console.log)
 		event.currentTarget.reset();
 		onClose();
 	};
@@ -31,7 +32,6 @@ export const ResumeModal = ({ onClose }) => {
 	// контрольована форма - для відслідковування введенного
 	const handleInputChange = event => {
 		setFeedback(event.target.value);
-		// console.log('Input', resume);
 	};
 
 	return (

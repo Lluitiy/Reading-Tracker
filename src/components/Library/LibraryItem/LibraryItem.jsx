@@ -16,6 +16,8 @@ const LibraryItem = ({
 	fill,
 	pagesTotal,
 	isFinishedReading,
+	rating,
+	id
 }) => {
 
 	const [modalOpen, setModalOpen] = useState(false);
@@ -26,7 +28,7 @@ const LibraryItem = ({
 	const closeModal = () => {
 		setModalOpen(false);
 	};
-
+	console.log(rating)
 
 	return isFinishedReading ? (
 		<FinishedReadingItemWrapper>
@@ -35,11 +37,11 @@ const LibraryItem = ({
 			<OverflowText>{author}</OverflowText>
 			<span>{publishYear}</span>
 			<span>{pagesTotal}</span>
-			<StarList>{createRatingStars(3)}</StarList>
+			<StarList>{createRatingStars(rating)}</StarList>
 			<Button onClick={openModal}>Resume</Button>
 			{modalOpen && (
 			<Modal onClose={closeModal}>
- 					<ResumeModal onClose={closeModal} />
+ 					<ResumeModal id={id} onClose={closeModal} />
 			</Modal>
 			)}
 		</FinishedReadingItemWrapper>		

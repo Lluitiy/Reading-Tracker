@@ -70,6 +70,7 @@ const LibraryList = ({ category }) => {
 
 	
 	const books = useSelector(getBooksByCategory(category));
+	console.log(books)
 	const isFinishedReadingList = category === BOOK_CATEGORY.finishedReading;
 
 	// const isFinishedReadingList = true;
@@ -88,30 +89,36 @@ const LibraryList = ({ category }) => {
 					<ul>
 						{/* here must be books */}
 						{books.map(
-							({ title, author, publishYear, pagesTotal, _id }) => (
-								<li key={_id}>
+							({ title, author, publishYear,rating= 0, pagesTotal, _id: id }) => {
+								
+								return(
+								<li key={id}>
 									{' '}
 									{isDesktopOrTablet ? (
-										<LibraryItem
+											<LibraryItem
+												rating={rating}
 											title={title}
 											author={author}
 											publishYear={publishYear}
 											pagesTotal={pagesTotal}
 											fill={fill}
 											isFinishedReading={isFinishedReadingList}
+											id={id}
 										/>
 									) : (
-										<MobileLibraryItem
+												<MobileLibraryItem
+													rating={rating}
 											title={title}
 											author={author}
 											publishYear={publishYear}
 											pagesTotal={pagesTotal}
 											fill={fill}
-											isFinishedReading={isFinishedReadingList}
+												isFinishedReading={isFinishedReadingList}
+												id={id}
 										/>
 									)}
 								</li>
-							)
+							)}
 						)}
 					</ul>
 				</Container>

@@ -19,7 +19,10 @@ const MobileLibraryItem = ({
 	publishYear,
 	fill,
 	pagesTotal,
-	isFinishedReading
+	isFinishedReading,
+	rating,
+	id
+
 }) => {
 	const [modalOpen, setModalOpen] = useState(false);
 	const openModal = () => {
@@ -29,7 +32,7 @@ const MobileLibraryItem = ({
 	const closeModal = () => {
 		setModalOpen(false);
 	};
-
+	
 
 	return (
 		<MobileItemWrapper>
@@ -64,7 +67,7 @@ const MobileLibraryItem = ({
 			{isFinishedReading && <Button onClick={openModal}>Resume</Button>}
 			{modalOpen && (
 			<Modal onClose={closeModal}>
- 					<ResumeModal onClose={closeModal} />
+ 					<ResumeModal id={id} onClose={closeModal} />
 			</Modal>
 			)}
 		</MobileItemWrapper>
