@@ -38,7 +38,7 @@ export const DateContainer = styled.div`
 	}
 `;
 export const DataInput = styled.input`
-	border: 1px solid #a6abb9;
+	border: 1px solid ${p => p.theme.colors.icons};
 	/* position: relative; */
 	padding: 12px, 45px;
 	width: 100%;
@@ -80,6 +80,7 @@ export const Select = styled.select`
 	padding: 12px;
 	width: 100%;
 	color: ${p => p.theme.colors.icons};
+	background-color: ${p => p.theme.colors.transparent};
 	box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0;
@@ -101,7 +102,7 @@ export const Label = styled.label`
 	position: relative;
 `;
 export const BoxForSvg = styled.div`
-	/* border: 1px solid #a6abb9; */
+	/* border: 1px solid ${p => p.theme.colors.icon}; */
 	display: flex;
 	align-items: center;
 	width: 200px;
