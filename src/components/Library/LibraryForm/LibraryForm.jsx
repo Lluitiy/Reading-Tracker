@@ -1,47 +1,34 @@
 import { Container, Section } from 'components/Common/Common.styled';
-import { useState } from 'react';
 import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
 import { useDispatch } from 'react-redux';
 import {
 	AddBtn,
 	AuthorLabel,
 	BackBtn,
-	Form,
+	NewBookForm,
 	Input,
 	Label,
 	Lower,
 	NameLabel,
 	Upper,
 	Wrapper,
+	Error,
 } from './LibraryForm.styled';
 import { addUserBookThunk } from 'Redux/Books/booksOperations';
 import useTranslation from 'Hooks/useTranslations';
+import { Formik, ErrorMessage } from 'formik';
+import { booksFormSchema } from 'Utils/validSchema';
 
 const LibraryForm = ({ handleFormOpen = null }) => {
 	const translation = useTranslation();
-	const [newBook, setNewBook] = useState({
-		title: '',
-		author: '',
-		publishYear: '',
-		pagesTotal: '',
-	});
-
 	const dispatch = useDispatch();
 
-	const handleInputChange = e => {
-		setNewBook(prevState => {
-			return { ...prevState, [e.target.name]: e.target.value };
-		});
-	};
-
-	const handleFormSubmit = e => {
-		e.preventDefault();
-
-		dispatch(addUserBookThunk(newBook));
-		formReset();
-	};
-	const formReset = () => {
-		setNewBook({ title: '', author: '', publishYear: '', pagesTotal: '' });
+	const handleFormSubmit = (
+		{ title, author, publishYear, pagesTotal },
+		{ resetForm }
+	) => {
+		dispatch(addUserBookThunk({ title, author, publishYear, pagesTotal }));
+		resetForm();
 	};
 
 	return (
@@ -51,57 +38,56 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 					<BackBtn type="button" onClick={handleFormOpen}>
 						<BackArrow width="24" height="24" />
 					</BackBtn>
-					<Form onSubmit={handleFormSubmit}>
-						<Upper>
-							<NameLabel>
-								{translation.libraryForm.book}
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.title}
-									type="text"
-									name="title"
-									required
-								/>
-							</NameLabel>
-						</Upper>
-						<Lower>
-							<AuthorLabel>
-								{translation.libraryForm.author}
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.author}
-									type="text"
-									name="author"
-									required
-								/>
-							</AuthorLabel>
-							<Label>
-								{translation.libraryForm.date}
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.publishYear}
-									type="text"
-									name="publishYear"
-									required
-								/>
-							</Label>
-							<Label>
-								{translation.libraryForm.pages}
-								<Input
-									placeholder="..."
-									onChange={handleInputChange}
-									value={newBook.pagesTotal}
-									type="text"
-									name="pagesTotal"
-									required
-								/>
-							</Label>
-						</Lower>
-						<AddBtn type="submit">{translation.libraryForm.btnAdd}</AddBtn>
-					</Form>
+					<Formik
+						onSubmit={handleFormSubmit}
+						initialValues={{
+							title: '',
+							author: '',
+							publishYear: '',
+							pagesTotal: '',
+						}}
+						validationSchema={booksFormSchema}
+					>
+						<NewBookForm>
+							<Upper>
+								<NameLabel>
+									{translation.libraryForm.book}
+									<Input placeholder="..." type="text" name="title" />
+									<ErrorMessage
+										name="title"
+										render={() => <Error>Enter the title</Error>}
+									/>
+								</NameLabel>
+							</Upper>
+							<Lower>
+								<AuthorLabel>
+									{translation.libraryForm.author}
+									<Input placeholder="..." type="text" name="author" />
+									<ErrorMessage
+										name="author"
+										render={() => <Error>Enter the author</Error>}
+									/>
+								</AuthorLabel>
+								<Label>
+									{translation.libraryForm.date}
+									<Input placeholder="..." type="text" name="publishYear" />
+									<ErrorMessage
+										name="publishYear"
+										render={() => <Error>Min 1000AC</Error>}
+									/>
+								</Label>
+								<Label>
+									{translation.libraryForm.pages}
+									<Input placeholder="..." type="text" name="pagesTotal" />
+									<ErrorMessage
+										name="pagesTotal"
+										render={() => <Error>Max 5000</Error>}
+									/>
+								</Label>
+							</Lower>
+							<AddBtn type="submit">{translation.libraryForm.btnAdd}</AddBtn>
+						</NewBookForm>
+					</Formik>
 				</Wrapper>
 			</Container>
 		</Section>

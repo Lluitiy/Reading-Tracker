@@ -6,6 +6,7 @@ export const Input = styled.div`
 `;
 
 export const InputField = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 `;
@@ -40,6 +41,10 @@ export const FieldInput = styled(Field)`
 `;
 
 export const Error = styled.p`
+	position: absolute;
+	bottom: -16px;
+	 left: 8px;
+
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 1.12;
