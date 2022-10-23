@@ -49,10 +49,9 @@ const en = {
 		pages: 'Pages',
 	},
 	libraryListHeaders: {
-		going: 'Going to read',
-		reading: 'Reading now',
-		done: 'Already read',
-		other: 'Other',
+		goingToRead: 'Going to read',
+		currentlyReading: 'Reading now',
+		finishedReading: 'Already read',
 	},
 	libraryEmpty: {
 		step1: 'Step 1.',

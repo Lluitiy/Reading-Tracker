@@ -2,7 +2,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 import { getIsLoggedIn } from 'Redux/Auth/authSelectors';
 
-import LanguageHandler from 'Hooks/useLanguageHandler';
+import LanguageHandler from 'components/LanguageHandler/LanguageHandler';
 import Logo from './Logo/Logo';
 import Nav from './Nav/Nav';
 import UserMenu from './UserMenu/UserMenu';
