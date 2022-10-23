@@ -15,6 +15,7 @@ export const themeLight = {
 		backdrop: 'rgba(43, 43, 43, 0.1)',
 		counter: '#091E3F',
 		icon: 'gold',
+		error: '#F25137',
 	},
 	shadow: {
 		modal: '10px 10px 20px rgba(9, 30, 63, 0.2)',
