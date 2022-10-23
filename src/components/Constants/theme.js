@@ -25,21 +25,21 @@ export const themeLight = {
 };
 export const themeDark = {
 	colors: {
-		white: '#242A37',
-		borderNav: '#091E3F',
+		white: '#0a1a36',
+		borderNav: '#0a1a36',
 		googleBtn: '#091E3F',
-		body: '#6D7A8D',
+		body: '#091E3F',
 		textMain: '#ffffff',
 		textSecondary: '#B1B5C2',
 		black: '#ffffff',
-		icons: '#FF6B08',
-		bookIcons: '#6D7A8D',
-		trainingGrey: '#F6F7FB',
+		icons: '#F6F7FB',
+		bookIcons: '#FF6B08',
+		trainingGrey: '#0a1a36',
 		brand: '#FF6B08',
 		transparent: 'transparent',
 		backdrop: 'rgba(43, 43, 43, 0.1)',
 		counter: '#F5F7FA',
-		icon: '#932bbf',
+		icon: '#E0E5EB',
 	},
 	shadow: {
 		modal: '10px 10px 20px rgba(9, 30, 63, 0.2)',

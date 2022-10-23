@@ -12,6 +12,7 @@ export const Span = styled.span`
 `;
 
 export const Container = styled.footer`
+	background-color: ${p => p.theme.colors.white};
 	display: flex;
 	justify-content: center;
 	padding: 10px 0px;

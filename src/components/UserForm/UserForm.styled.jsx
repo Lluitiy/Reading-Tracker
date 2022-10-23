@@ -15,7 +15,7 @@ export const FormBox = styled.div`
 
 	@media screen and (min-width: 768px) {
 		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-		background: #ffffff;
+		background: ${p => p.theme.colors.body};
 		padding: 40px;
 	}
 `;
@@ -35,7 +35,7 @@ export const Button = styled.button`
 
 	color: #ffffff;
 	border: none;
-
+	transition: ${p => p.theme.transition};
 	:hover {
 		background-color: #fd781f;
 	}

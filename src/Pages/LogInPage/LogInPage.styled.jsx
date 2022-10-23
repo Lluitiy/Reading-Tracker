@@ -129,7 +129,7 @@ export const Text = styled.p`
 	font-style: normal;
 	font-weight: 500;
 	text-align: center;
-	color: #242a37;
+	color: ${p => p.theme.colors.textMain};
 `;
 
 export const Border = styled.div`
@@ -168,9 +168,10 @@ export const GoogleButton = styled.button`
 	top: 164px;
 	margin-left: auto;
 	margin-right: auto;
-	background: #f5f7fa;
+	background: ${p => p.theme.colors.googleBtn};
 	box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
 	border: none;
+	transition: ${p => p.theme.transition};
 	:hover {
 		background-color: #ebf0f7;
 	}

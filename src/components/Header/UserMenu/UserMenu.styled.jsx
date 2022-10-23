@@ -11,6 +11,7 @@ export const UserIcon = styled.p`
 	border-radius: 50%;
 	width: 33px;
 	height: 33px;
+	color: ${p => p.theme.colors.textMain};
 	background-color: ${p => p.theme.colors.googleBtn};
 `;
 
