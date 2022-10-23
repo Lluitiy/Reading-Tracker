@@ -10,7 +10,6 @@ import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'components/Header/ThemeSwitcher/ThemeCheker';
-console.log('Qwe', theme()); // console.log('themeValue', themeValue);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	// <React.StrictMode>
