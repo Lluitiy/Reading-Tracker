@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Text, Span, Container } from './Footer.styled';
 import useTranslation from 'Hooks/useTranslations';
+import Settings from 'components/Settings/Settings';
 
 const Footer = () => {
 	const translation = useTranslation();
@@ -12,6 +13,7 @@ const Footer = () => {
 					<Span> TeamSlice</Span>
 				</Link>
 			</Text>
+			<Settings />
 		</Container>
 	);
 };
