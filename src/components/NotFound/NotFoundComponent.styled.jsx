@@ -9,7 +9,7 @@ export const NotFoundWrap = styled.form`
 	justify-content: center;
 	text-align: center;
 	box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-	background-color: ${p => p.theme.colors.white};
+	background-color: #ffffff;
 	@media screen and (min-width: 768px) {
 		padding: 30px 0px;
 		width: 600px;
@@ -21,6 +21,7 @@ export const NotFoundWrap = styled.form`
 `;
 
 export const Title = styled.h2`
+	color: #242a37;
 	margin-bottom: 20px;
 	font-weight: 400;
 	font-size: 34px;
@@ -28,6 +29,7 @@ export const Title = styled.h2`
 `;
 
 export const Text = styled.p`
+	color: #242a37;
 	margin-bottom: 40px;
 `;
 
@@ -71,15 +73,15 @@ export const Button = styled.button`
 	line-height: 38px;
 	border: none;
 	border: 1px solid transparent;
-	background-color: ${p => p.theme.colors.brand};
-	color: ${p => p.theme.colors.white};
+	background-color: #ff6b08;
+	color: #ffffff;
 	background-position: center;
 	transition: background 0.3s ease-in;
 	:hover {
 		border: 1px solid black;
 		background: transparent radial-gradient(circle, transparent 1%, #ff6b08 1%)
 			center/15000%;
-		color: ${p => p.theme.colors.textMain};
+		color: #242a37;
 	}
 	:active {
 		background-color: transparent;
@@ -91,44 +93,10 @@ export const Button = styled.button`
 		:hover {
 			border: 1px solid black;
 			background: transparent;
-			color: ${p => p.theme.colors.textMain};
+			color: #242a37;
 		}
 	}
 	@media screen and (min-width: 1280px) {
 		margin-right: 20px;
-	}
-`;
-
-export const SecondButton = styled.button`
-	text-align: center;
-	width: 150px;
-	font-weight: 500;
-	font-size: 18px;
-	line-height: 38px;
-	color: ${p => p.theme.colors.textMain};
-	border: 1px solid black;
-	background: ${p => p.theme.colors.transparent};
-	background-position: center;
-	transition: background 0.3s ease-in;
-	:hover {
-		border: 1px solid transparent;
-		background: #ff6b08 radial-gradient(circle, #ff6b08 1%, transparent 1%)
-			center/15000%;
-		color: ${p => p.theme.colors.white};
-	}
-	:active {
-		background-color: #ff6b08;
-		background-size: 100%;
-	}
-	@media screen and (min-width: 768px) {
-		margin-left: 10px;
-		:hover {
-			border: 1px solid transparent;
-			background: #ff6b08;
-			color: ${p => p.theme.colors.white};
-		}
-	}
-	@media screen and (min-width: 1280px) {
-		margin-left: 20px;
 	}
 `;

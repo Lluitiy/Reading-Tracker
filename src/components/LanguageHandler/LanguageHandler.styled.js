@@ -12,8 +12,8 @@ export const Select = styled.select`
 
 	color: ${p => p.theme.colors.textSecondary};
 	font-weight: bold;
-	background-color: ${p => p.theme.colors.backdrop};
-
+	background-color: ${p => p.theme.colors.googleBtn};
+	transition: ${p => p.theme.transition};
 	&:hover,
 	&:focus {
 		color: ${p => p.theme.colors.white};
