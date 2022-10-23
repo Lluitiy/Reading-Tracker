@@ -15,7 +15,7 @@ export const FormBox = styled.div`
 
 	@media screen and (min-width: 768px) {
 		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-		background: #ffffff;
+		background: ${p => p.theme.colors.body};
 		padding: 40px;
 	}
 `;
@@ -26,16 +26,16 @@ export const Button = styled.button`
 	height: 60px;
 	padding: 0;
 	margin-bottom: 20px;
-	background: #ff6b08;
+	background: ${p => p.theme.colors.brand};
 
 	font-style: normal;
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 20px;
 
-	color: #ffffff;
+	color: ${p => p.theme.colors.white};
 	border: none;
-
+	transition: ${p => p.theme.transition};
 	:hover {
 		background-color: #fd781f;
 	}
@@ -57,7 +57,7 @@ export const NavText = styled.p`
 	font-weight: 500;
 	font-size: 13px;
 	line-height: 16px;
-	color: #898f9f;
+	color: ${p => p.theme.colors.textSecondary};
 `;
 
 export const NavLogin = styled(NavLink)`
@@ -67,5 +67,5 @@ export const NavLogin = styled(NavLink)`
 	line-height: 16px;
 	text-decoration-line: underline;
 	text-align: center;
-	color: #ff6b08;
+	color: ${p => p.theme.colors.brand};
 `;

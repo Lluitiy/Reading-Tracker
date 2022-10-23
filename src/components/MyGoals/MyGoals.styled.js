@@ -129,6 +129,9 @@ export const Item = styled.li`
 		startTraining ? '63px' : '100px'};
 	min-height: ${({ startTraining = false }) =>
 		startTraining ? '97px' : '148px'};
+
+	color: ${p => p.theme.colors.textSecondary};
+
 	@media screen and (min-width: 768px) {
 		min-width: ${({ startTraining = false }) =>
 			startTraining ? '100px' : '100px'};

@@ -64,7 +64,9 @@ const TrainingBookList = () => {
 						}) => (
 							<li key={_id}>
 								<ItemWrapper>
-									{!isShowResultsSection && <BookIcon width={22} height={17} />}
+									{!isShowResultsSection && (
+										<BookIcon fill="#A6ABB9" width={22} height={17} />
+									)}
 									{isShowResultsSection && (
 										<CheckBox>
 											{pagesFinished === pagesTotal ? (

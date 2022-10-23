@@ -15,6 +15,7 @@ export const themeLight = {
 		backdrop: 'rgba(43, 43, 43, 0.1)',
 		counter: '#091E3F',
 		icon: 'gold',
+		error: '#F25137',
 	},
 	shadow: {
 		modal: '10px 10px 20px rgba(9, 30, 63, 0.2)',
@@ -25,21 +26,21 @@ export const themeLight = {
 };
 export const themeDark = {
 	colors: {
-		white: '#242A37',
-		borderNav: '#091E3F',
-		googleBtn: '#091E3F',
-		body: '#6D7A8D',
+		white: '#12151a',
+		borderNav: '#1c2432',
+		googleBtn: '#1c2432',
+		body: '#161c26',
 		textMain: '#ffffff',
 		textSecondary: '#B1B5C2',
-		black: '#ffffff',
-		icons: '#FF6B08',
-		bookIcons: '#6D7A8D',
-		trainingGrey: '#F6F7FB',
+		black: '#ffffffc0',
+		icons: '#ececec',
+		bookIcons: '#FF6B08',
+		trainingGrey: '#0a1a36',
 		brand: '#FF6B08',
 		transparent: 'transparent',
 		backdrop: 'rgba(43, 43, 43, 0.1)',
 		counter: '#F5F7FA',
-		icon: '#932bbf',
+		icon: '#E0E5EB',
 	},
 	shadow: {
 		modal: '10px 10px 20px rgba(9, 30, 63, 0.2)',

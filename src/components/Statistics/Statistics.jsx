@@ -23,9 +23,9 @@ import {
 	selectorShowResults,
 	selectorPlanFact,
 	selectorDuration,
-	selectorPagesPerDay,
 	startDate,
 	selectorReadedPages,
+	getBooks,
 } from '../../Redux/Planning/planningSelectors';
 
 import {
@@ -34,76 +34,21 @@ import {
 	addPlanFact,
 } from 'Redux/Planning/planningSlice';
 import { useEffect } from 'react';
+import { createNextDay, dotsPaddingByWidth, normaliseDate } from './functions/functions';
+import  CastomLabel from './CastomLabel/CastomLabel';
 
-// import { useNavigate } from 'react-router-dom/dist';
-
-let checkData = null;
-
-const windowWidth = window.innerWidth;
-
-// const getLocalPlanning = localStorage.getItem('persist:planning')
-// const emptyLocalPlanning = getLocalPlanning.length === 67;
-
-const dotsPaddingByWidth = () => {
-	if (windowWidth < 768) {
-		return -180;
-	}
-	if (windowWidth >= 768 && windowWidth < 1280) {
-		return -562;
-	}
-	return -782;
-};
-
-const normaliseDate = date => {
-	const newDate = new Date(date);
-	let day = newDate.getDate();
-	if (day < 10) day = '0' + day;
-
-	let month = newDate.getMonth() + 1;
-	if (month < 10) month = '0' + month;
-
-	const year = newDate.getFullYear();
-
-	return `${year}-${month}-${day}`;
-};
-
-const createNextDay = (prevDate, step) => {
-	const newDate = new Date(prevDate);
-	const nextDay = newDate.setDate(newDate.getDate() + step);
-	return normaliseDate(nextDay);
-};
-
-const CastomLabel = ({ x, y, index, type }) => {
-	const translation = useTranslation();
-	if (index === checkData.length - 1) {
-		return (
-			<text
-				x={x}
-				y={y}
-				dy={2}
-				dx={8}
-				fontSize={14}
-				textAnchor={'start'}
-				fill={type === 'plan' ? '#000000' : '#FF6B08'}
-			>
-				{type === 'plan'
-					? `${translation.statistics.plan}`
-					: `${translation.statistics.fact}`}
-			</text>
-		);
-	}
-};
 
 export default function Statistics() {
-	// const navigate = useNavigate();
 	const translation = useTranslation();
+
 	const data = useSelector(selectorPlanFact);
 	const isShowResultsSection = useSelector(selectorShowResults);
 	const isShowBtn = useSelector(selectorShowBtn);
 	const duration = useSelector(selectorDuration);
-	const pagesPerDay = useSelector(selectorPagesPerDay);
 	const getStartDate = useSelector(startDate);
 	const readedPages = useSelector(selectorReadedPages);
+	const books = useSelector(getBooks);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -126,42 +71,44 @@ export default function Statistics() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [readedPages]);
 
-	checkData =
+	const checkData =
 		data?.length > 0 && isShowResultsSection
 			? data
 			: [{ name: 'Day 0', fact: 5, plan: 10 }];
 
 	const createObjByPlan = () => {
-		const objPlanFact = [];
-
 		const startDate = new Date(getStartDate);
+	
+		if (books?.length > 0) {
+			const totalPagesByBooks = books.reduce((total, { pagesTotal }) => total + pagesTotal, 0)
+			const totalPagesPerDay = totalPagesByBooks / duration
+			const objPlanFact = [];
 
-		for (let i = 1; i <= duration; i += 1) {
+			for (let i = 1; i <= duration; i += 1) {
 			if (i === 1) {
 				objPlanFact.push({
 					name: normaliseDate(startDate),
 					fact: 0,
-					plan: pagesPerDay * i,
+					plan: Math.round(totalPagesPerDay * i),
 				});
 			} else {
 				objPlanFact.push({
 					name: createNextDay(startDate, i - 1),
 					fact: 0,
-					plan: pagesPerDay * i,
+					plan: Math.round(totalPagesPerDay * i),
 				});
 			}
 		}
-
+			
 		return objPlanFact;
 	};
+		}
+
 
 	const handleClickStartTraining = () => {
 		dispatch(showStartTraningBtn(false));
 		dispatch(showResults(true));
 		dispatch(addPlanFact(createObjByPlan()));
-		// !!!
-		// navigate('/statistics');
-		// TODO
 	};
 
 	return (
@@ -199,7 +146,7 @@ export default function Statistics() {
 									checkData?.length <= 1 && { left: dotsPaddingByWidth() }
 								}
 							/>
-
+z
 							<Tooltip />
 
 							<Line
@@ -214,7 +161,7 @@ export default function Statistics() {
 								dot={{ stroke: '#000000', strokeWidth: 4 }}
 								name="PLAN"
 							>
-								<LabelList content={<CastomLabel type="plan" />} />
+								<LabelList content={<CastomLabel type="plan" checkData={ checkData} />} />
 							</Line>
 							<Line
 								type="monotone"
@@ -227,7 +174,7 @@ export default function Statistics() {
 								dot={{ stroke: '#FF6B08', strokeWidth: 4 }}
 								name="FACT"
 							>
-								<LabelList content={<CastomLabel type="fact" />} />
+								<LabelList content={<CastomLabel type="fact" checkData={ checkData} />} />
 							</Line>
 						</LineChart>
 					</ResponsiveContainer>

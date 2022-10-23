@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
-import { showResults } from 'Redux/Planning/planningSlice';
 import { DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
 import { ReactComponent as CalenderIcon } from 'Assets/svg/calendar.svg';
@@ -27,14 +26,12 @@ const MyTraining = () => {
 	const dateToday = `${dayjs().get('year')}-${
 		dayjs().get('month') + 1
 	}-${dayjs().get('date')}`;
-
 	const [startValue, setStartValue] = useState('');
 	const [endValue, setEndValue] = useState('');
 
 	useEffect(() => {
 		if (accessToken) {
 			dispatch(getUserBooksThunk());
-			dispatch(showResults(false));
 		}
 	}, [accessToken, dispatch]);
 

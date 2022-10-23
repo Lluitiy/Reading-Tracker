@@ -60,6 +60,7 @@ export const Text = styled.p`
 
 export const GitLink = styled.a`
 	text-decoration: underline;
+	color: ${p => p.theme.colors.textSecondary};
 `;
 
 export const Button = styled.button`
@@ -70,7 +71,7 @@ export const Button = styled.button`
 	font-size: 18px;
 	line-height: 38px;
 	color: ${p => p.theme.colors.textMain};
-	border: 1px solid black;
+	border: 1px solid ${p => p.theme.colors.textMain};
 	background: ${p => p.theme.colors.transparent};
 	background-position: center;
 	transition: background 0.3s ease-in;
