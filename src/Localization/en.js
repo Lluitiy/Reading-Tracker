@@ -97,10 +97,7 @@ const en = {
 	notFound: {
 		title: 'We are sorry',
 		text: 'We seem to have lost this page, try one of these instead.',
-		btnLib: 'Library',
-		btnTrai: 'Training',
-		btnLog: 'Login',
-		btnReg: 'Registration',
+		btnBack: 'Reload',
 	},
 	timer: {
 		title1: 'Years countdown',
