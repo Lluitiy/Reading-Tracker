@@ -3,10 +3,13 @@ import Modal from 'components/Modal';
 import ResultsItem from 'components/Results/ResultsItem/ResultsItem';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReadingPage } from 'Redux/Planning/planningOperations';
+import { addReadingPage, getCurrentPlanning
+ } from 'Redux/Planning/planningOperations';
 import {
 	selectorPlanFact,
 	selectorReadedPages,
+	selectorPagesReaded
+
 } from 'Redux/Planning/planningSelectors';
 
 
@@ -35,13 +38,14 @@ export default function Results() {
 
 	const readedPages = useSelector(selectorReadedPages);
 	const data = useSelector(selectorPlanFact);
+const pagesFinished = useSelector(selectorPagesReaded);
 
 
 	const translation = useTranslation();
 
 	const dispatch = useDispatch();
 
-	const normalDate = normaliseDate(new Date())
+	const normalDate = normaliseDate(new Date());
 
 	useEffect(() => {
 		const checkTotalPlan = () => {
@@ -74,6 +78,11 @@ export default function Results() {
 			setIsShowModal(true);
 		}
 	};
+
+	useEffect(()=>{
+		dispatch(getCurrentPlanning())	
+		},[pagesFinished,dispatch])
+
 
 	const handleDoneBtnClick = () => {
 		setIsShowModalEndReading(false);

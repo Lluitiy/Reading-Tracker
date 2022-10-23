@@ -22,6 +22,7 @@ const initialState = {
 	isLoading: false,
 	errorMassage: false,
 	readedPages: null,
+	pagesReaded: null,
 };
 
 const planningSlice = createSlice({
@@ -46,7 +47,7 @@ const planningSlice = createSlice({
 			state.readedPages = null;
 			//!Ренат, у меня корректно работает с такой чисткой. Но не сломаю ли я тебе, если оставлю?
 			//! если книга прочитана полностью, у меня очищается график и статистика внизу, но новую книгу я добавить не могу, пока не удалю старую(не нажму на мусорку), а если чистить booksId, тогда старая книга остается, но я могу добавить новую и она перерисуется
-			// state.booksId = [];
+			state.booksId = [];
 		},
 
 		clean(state, { payload }) {
@@ -79,6 +80,7 @@ const planningSlice = createSlice({
 		[addReadingPage.fulfilled](state, { payload }) {
 			state.isLoading = false;
 			state.readedPages = payload.planning.stats;
+			state.pagesReaded = payload.book.pagesFinished;
 		},
 		[addReadingPage.rejected](state) {
 			state.isLoading = false;

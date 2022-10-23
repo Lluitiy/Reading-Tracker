@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
-import { showResults } from 'Redux/Planning/planningSlice';
+
 
 const MyTraining = () => {
 	const [startValue, setStartValue] = useState('');
@@ -39,7 +39,7 @@ const MyTraining = () => {
 	useEffect(() => {
 		if (accessToken) {
 			dispatch(getUserBooksThunk());
-			dispatch(showResults(false));
+			
 		}
 	}, [accessToken, dispatch]);
 
