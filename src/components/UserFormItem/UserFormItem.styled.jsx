@@ -14,7 +14,7 @@ export const InputField = styled.div`
 export const Label = styled.label`
 	margin-bottom: 8px;
 
-	color: #ffffff;
+	color: ${p => p.theme.colors.white};
 
 	font-style: normal;
 	font-weight: 600;
@@ -23,14 +23,14 @@ export const Label = styled.label`
 
 	@media screen and (min-width: 768px) {
 		font-weight: 500;
-		color: #898f9f;
+		color: ${p => p.theme.colors.textSecondary};
 	}
 `;
 
 export const FieldInput = styled(Field)`
 	height: 42px;
 	padding-left: 8px;
-	background: #f5f7fa;
+	background: ${p => p.theme.colors.googleBtn};
 	color: black;
 	box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
 	border: none;
@@ -43,11 +43,11 @@ export const FieldInput = styled(Field)`
 export const Error = styled.p`
 	position: absolute;
 	bottom: -16px;
-	 left: 8px;
+	left: 8px;
 
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 1.12;
-	color: red;
+	color: ${p => p.theme.colors.error};
 	text-align: center;
 `;

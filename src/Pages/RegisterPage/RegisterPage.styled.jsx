@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 	@media screen and (min-width: 1280px) {
 		display: flex;
 		justify-content: center;
-		height: 790px;
+		height: 90vh;
 	}
 `;
 
@@ -83,11 +83,14 @@ export const TextBox = styled.div`
 	align-items: center;
 	@media screen and (min-width: 767px) {
 		padding-top: 64px;
+		padding-bottom: 32px;
 	}
 	@media screen and (min-width: 1280px) {
-		padding-top: 179px;
+		display: flex;
+		justify-content: center;
+		padding-top: 0;
+		padding-right: 0;
 		padding-left: 127px;
-		padding-right: 157px;
 	}
 `;
 
@@ -97,7 +100,7 @@ export const Title = styled.h1`
 	font-weight: 400;
 	font-size: 34px;
 	line-height: 1.12;
-	color: #242a37;
+	color: ${p => p.theme.colors.textMain};
 	text-align: center;
 	@media screen and (min-width: 768px) {
 		margin-bottom: 48px;
@@ -124,14 +127,14 @@ export const Subtitle = styled.h2`
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 1.9;
-	color: #242a37;
+	color: ${p => p.theme.colors.textMain};
 `;
 
 export const ListItem = styled.li`
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 1.21;
-	color: #898f9f;
+	color: ${p => p.theme.colors.textSecondary};
 	::before {
 		content: '';
 		margin-right: 12px;
@@ -142,7 +145,7 @@ export const ListItem = styled.li`
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: contain;
-		color: #ff6b08;
+		color: ${p => p.theme.colors.brand};
 	}
 	:not(:last-of-type) {
 		margin-bottom: 12px;
