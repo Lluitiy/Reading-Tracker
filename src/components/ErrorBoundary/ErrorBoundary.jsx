@@ -1,3 +1,4 @@
+import NotFoundComponent from 'components/NotFound/NotFoundComponent';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 
@@ -12,7 +13,7 @@ export default class ErrorBoundary extends Component {
 	render() {
 		const { error } = this.state;
 		const { children } = this.props;
-		return <> {!error ? children : <h1>Таня тут твой компонент</h1>}</>;
+		return <> {!error ? children : <NotFoundComponent />}</>;
 	}
 }
 

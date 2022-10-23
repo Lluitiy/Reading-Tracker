@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleTheme } from 'Redux/Theme/themeSlice';
 import useToggleTheme from 'Hooks/useToggleTheme';
+import { ThemeButton, LightIcon, DarktIcon } from './ThemeSwitcher.styled';
 
 const ThemeSwitcher = () => {
 	const isLightTheme = useToggleTheme();
 	const [checked, setChecked] = useState(isLightTheme);
 	const dipsatch = useDispatch();
-
-	const handleChange = () => {
+	const handleSubmit = () => {
 		setChecked(prevState => !prevState);
 	};
 	useEffect(() => {
@@ -16,19 +16,14 @@ const ThemeSwitcher = () => {
 	}, [checked, dipsatch]);
 
 	return (
-		<form>
-			<label className="theme-switch__label">
-				<input
-					id="themeCheker"
-					type="checkbox"
-					value={checked}
-					checked={checked}
-					onChange={handleChange}
-					className="theme-switch__input"
-				/>
-				<span>Switch theme</span>
-				<button type="submit"> qwe</button>
-			</label>
+		<form onSubmit={handleSubmit}>
+			<ThemeButton type="submit">
+				{checked ? (
+					<LightIcon width={22} height={22} />
+				) : (
+					<DarktIcon width={22} height={22} />
+				)}
+			</ThemeButton>
 		</form>
 	);
 };
