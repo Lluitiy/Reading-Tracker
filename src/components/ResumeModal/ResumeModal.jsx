@@ -26,7 +26,6 @@ export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 	const handleSubmit = event => {
 		event.preventDefault();
 		const review = { id, rating, feedback }
-		console.log(review);
 		dispatch(addBookReview(review))
 		event.currentTarget.reset();
 		onClose();

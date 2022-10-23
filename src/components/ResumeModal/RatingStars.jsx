@@ -2,10 +2,7 @@ import StarRatings from 'react-star-ratings';
 // import { useState } from 'react';
 
 const RatingStars = ({value, changeHandler}) => {
-	// const [value, setValue] = useState(3);
 
-
-	console.log(value)
 	return (
 		<StarRatings
 			rating={value}

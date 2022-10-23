@@ -155,6 +155,7 @@ export const AddBtn = styled.button`
     line-height: inherit;
     font-weight: inherit;
     background-color: transparent;
+    transition:  ${p => p.theme.transition};
     border: 1px solid ${p => p.theme.colors.textMain};
      @media screen and (min-width: 768px) {
 		margin: 20px auto;

@@ -28,7 +28,6 @@ const LibraryItem = ({
 	const closeModal = () => {
 		setModalOpen(false);
 	};
-	console.log(rating)
 
 	return isFinishedReading ? (
 		<FinishedReadingItemWrapper>

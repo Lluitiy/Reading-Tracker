@@ -70,7 +70,6 @@ const LibraryList = ({ category }) => {
 
 	
 	const books = useSelector(getBooksByCategory(category));
-	console.log(books)
 	const isFinishedReadingList = category === BOOK_CATEGORY.finishedReading;
 
 	// const isFinishedReadingList = true;
