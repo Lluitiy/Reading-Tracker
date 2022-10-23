@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.7505f281.css",
-    "main.js": "/TeamSlice/static/js/main.76343214.js",
+    "main.js": "/TeamSlice/static/js/main.43106c44.js",
     "static/js/893.f9757615.chunk.js": "/TeamSlice/static/js/893.f9757615.chunk.js",
     "static/js/114.5ad29394.chunk.js": "/TeamSlice/static/js/114.5ad29394.chunk.js",
     "static/js/461.eb440a24.chunk.js": "/TeamSlice/static/js/461.eb440a24.chunk.js",
@@ -18,12 +18,15 @@
     "static/media/Tanya.jpg": "/TeamSlice/static/media/Tanya.5f1750c00a8fbd3624b9.jpg",
     "static/media/googleicon.svg": "/TeamSlice/static/media/googleicon.19cfe5f9edb07e65c80a1ac0ff3c288e.svg",
     "static/media/Valeriya.jpeg": "/TeamSlice/static/media/Valeriya.8d180e8f4425f47ddfb1.jpeg",
+    "static/media/404-img.png": "/TeamSlice/static/media/404-img.9fd42823f6e4be3a73b0.png",
     "static/media/Anastasiia.jpeg": "/TeamSlice/static/media/Anastasiia.421d3d7022e140bb5a30.jpeg",
     "static/media/Pavlo.jpeg": "/TeamSlice/static/media/Pavlo.2c60465eda856ec344cd.jpeg",
     "static/media/Renat.jpg": "/TeamSlice/static/media/Renat.11f1b86a4b03d4ced14a.jpg",
     "static/media/mobile.jpg": "/TeamSlice/static/media/mobile.0a90fd4fb8f9aebfb885.jpg",
     "static/media/Oleh.jpeg": "/TeamSlice/static/media/Oleh.de98a9b32459fdb676fc.jpeg",
     "static/media/Nikita.jpg": "/TeamSlice/static/media/Nikita.28080fb06147ddc31a31.jpg",
+    "static/media/cloud.svg": "/TeamSlice/static/media/cloud.5a8e0ac0114f20af74edfe5ba08413ba.svg",
+    "static/media/sun.svg": "/TeamSlice/static/media/sun.d7cc0c27158f86eb2e0f67026b504196.svg",
     "static/media/vector.svg": "/TeamSlice/static/media/vector.502932dc73c000f5cc5e2032a9218c16.svg",
     "static/media/calendar.svg": "/TeamSlice/static/media/calendar.8d50f295e4038029c13c32d16996cd41.svg",
     "index.html": "/TeamSlice/index.html",
@@ -40,7 +43,7 @@
     "static/media/flag.svg": "/TeamSlice/static/media/flag.e775a9204a6e357c27946a0968624272.svg",
     "static/media/arrowDown.svg": "/TeamSlice/static/media/arrowDown.5115d85961bffeb5ab2667388aa745c4.svg",
     "main.7505f281.css.map": "/TeamSlice/static/css/main.7505f281.css.map",
-    "main.76343214.js.map": "/TeamSlice/static/js/main.76343214.js.map",
+    "main.43106c44.js.map": "/TeamSlice/static/js/main.43106c44.js.map",
     "893.f9757615.chunk.js.map": "/TeamSlice/static/js/893.f9757615.chunk.js.map",
     "114.5ad29394.chunk.js.map": "/TeamSlice/static/js/114.5ad29394.chunk.js.map",
     "461.eb440a24.chunk.js.map": "/TeamSlice/static/js/461.eb440a24.chunk.js.map",
@@ -51,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.7505f281.css",
-    "static/js/main.76343214.js"
+    "static/js/main.43106c44.js"
   ]
 }
