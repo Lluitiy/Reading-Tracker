@@ -65,3 +65,53 @@ button {
 	display: flex;
 	flex-direction: column;
 }
+
+.kSysTP {
+	border-radius: 1px !important;
+	height: 42px;
+	background-color: transparent !important;
+
+
+}
+
+.kSysTP {
+	@media screen and (min-width: 768px) {
+		width: 250px !important
+	}
+
+
+}
+
+.gByhoA,
+.gYMNLj,
+.ijMeVy::after,
+.gOhvuy,
+.hhYVLo {
+	color: orange !important;
+
+}
+
+.dLXpfR:focus {
+	box-shadow: 0 0 2px orange !important
+}
+
+.jNQyvt:active,
+.jNQyvt:focus {
+	box-shadow: 0 0 2px rgb(255, 165, 0) !important;
+	border: 1px solid rgba(255, 165, 0, 1) !important;
+}
+
+.bScVTi:active,
+.bScVTi:focus {
+	border: 2px solid rgba(255, 165, 0, 1) !important;
+	box-shadow: 0 0 2px rgb(255, 165, 0) !important
+}
+
+.jNQyvt:hover {
+	border: 1px solid rgba(255, 165, 0, 1) !important;
+}
+
+.GRndm,
+.gOhvuy::after {
+	background-color: orange !important;
+}
