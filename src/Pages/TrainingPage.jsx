@@ -10,8 +10,10 @@ const TrainingPage = () => {
 	//! Лера - при загрузке этой страницы мне нужно получить данные с сервера
 	const dispatch = useDispatch();
 
+
 	useEffect(() => {
-		dispatch(getCurrentPlanning());
+	dispatch(getCurrentPlanning()) 
+		
 	}, [dispatch]);
 
 	return (
