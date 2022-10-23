@@ -6,14 +6,18 @@ import { Suspense } from 'react';
 import Spinner from 'components/Spinner/Spinner';
 
 // import SpinnerBoook from 'components/Spinner/SpinnerBook';
-// <SpinnerBoook />
 
 const Layout = () => {
 	return (
 		<>
 			<Header />
 			<Main>
-				<Suspense fallback={<Spinner />}>
+				<Suspense
+					fallback={
+						// <SpinnerBoook />
+						<Spinner />
+					}
+				>
 					<Outlet />
 				</Suspense>
 			</Main>

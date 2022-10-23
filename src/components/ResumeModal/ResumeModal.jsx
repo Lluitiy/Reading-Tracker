@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBookReview } from 'Redux/Books/booksOperations';
 import RatingStars from './RatingStars';
+import useTranslation from 'Hooks/useTranslations';
 import {
 	ButtonBackS,
 	ButtonContainerS,
@@ -17,21 +18,23 @@ export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 	const [feedback, setFeedback] = useState(' ');
 	const [rating, setRating] = useState(initRating);
 	const dispatch = useDispatch()
+		const translation = useTranslation();
 
 
 	const changeRating = e => {
 		setRating(Math.ceil(e));
 	};
-	//  запис при сабміті
+
 	const handleSubmit = event => {
 		event.preventDefault();
 		const review = { id, rating, feedback }
 		dispatch(addBookReview(review))
+
+	
 		event.currentTarget.reset();
 		onClose();
 	};
 
-	// контрольована форма - для відслідковування введенного
 	const handleInputChange = event => {
 		setFeedback(event.target.value);
 	};
@@ -40,11 +43,11 @@ export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 		<Wrapper>
 			<Form onSubmit={handleSubmit} autoComplete="off">
 				<label>
-					<RatingTextS>Choose book rating</RatingTextS>
-					{/* <RatingTextS>{translation.resumeModal.title}</RatingTextS> */}
+
+					<RatingTextS>{translation.resumeModal.title}</RatingTextS>
 					<RatingStars value={rating} changeHandler={changeRating} />
-					{/* <ResumeTextS>{translation.resumeModal.resume}</ResumeTextS> */}
-					<ResumeTextS>Resume</ResumeTextS>
+					<ResumeTextS>{translation.resumeModal.resume}</ResumeTextS>
+
 					<TextAreaS
 						type="text"
 						name="resume"
@@ -53,9 +56,9 @@ export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 					/>
 					<ButtonContainerS>
 						<ButtonBackS type="button" onClick={onClose}>
-							Back
+							{translation.resumeModal.btnBack}
 						</ButtonBackS>
-						<ButtonSaveS type="submit">Save</ButtonSaveS>
+						<ButtonSaveS type="submit">{translation.resumeModal.btnSave}</ButtonSaveS>
 					</ButtonContainerS>
 				</label>
 			</Form>

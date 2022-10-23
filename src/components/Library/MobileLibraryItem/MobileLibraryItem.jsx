@@ -7,11 +7,17 @@ import {
 	TableDetail,
 } from './MobileLibraryItem.styled';
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
-import { Button, OverflowText, StarList } from '../LibraryItem/LibraryItem.styled';
+import {
+	Button,
+	OverflowText,
+	StarList,
+} from '../LibraryItem/LibraryItem.styled';
 import createRatingStars from 'Utils/RatingStars';
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import { ResumeModal } from 'components/ResumeModal/ResumeModal';
+import useTranslation from 'Hooks/useTranslations';
+
 
 const MobileLibraryItem = ({
 	title,
@@ -24,6 +30,7 @@ const MobileLibraryItem = ({
 	id
 
 }) => {
+		const translation = useTranslation();
 	const [modalOpen, setModalOpen] = useState(false);
 	const openModal = () => {
 		setModalOpen(true);
@@ -44,31 +51,33 @@ const MobileLibraryItem = ({
 			<Table>
 				<tbody>
 					<TableRow>
-						<TableHeader>Author</TableHeader>
+						<TableHeader>{translation.mobileLibraryItem.author}</TableHeader>
 						<TableDetail>{author}</TableDetail>
 					</TableRow>
 					<TableRow>
-						<TableHeader>Year</TableHeader>
+						<TableHeader>{translation.mobileLibraryItem.year}</TableHeader>
 						<TableDetail>{publishYear}</TableDetail>
 					</TableRow>
 					<TableRow>
-						<TableHeader>Pages</TableHeader>
+						<TableHeader>{translation.mobileLibraryItem.pages}</TableHeader>
 						<TableDetail>{pagesTotal}</TableDetail>
 					</TableRow>
-					{isFinishedReading &&
+					{isFinishedReading && (
 						<>
 						<TableRow>
-						<TableHeader>Rating</TableHeader>
+						<TableHeader>{translation.mobileLibraryItem.rating}</TableHeader>
 						<TableDetail><StarList>{createRatingStars(rating)}</StarList></TableDetail>
 						</TableRow>
-						</>}
+						</>)
+						}
 				</tbody>
 			</Table>
-			{isFinishedReading && <Button onClick={openModal}>Resume</Button>}
+			{isFinishedReading && <Button onClick={openModal}>{translation.mobileLibraryItem.btn}</Button>}
 			{modalOpen && (
 			<Modal onClose={closeModal}>
  					<ResumeModal initRating={rating} id={id} onClose={closeModal} />
 			</Modal>
+
 			)}
 		</MobileItemWrapper>
 	);

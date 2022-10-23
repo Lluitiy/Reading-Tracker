@@ -1,8 +1,6 @@
 import StarRatings from 'react-star-ratings';
-// import { useState } from 'react';
 
 const RatingStars = ({value, changeHandler}) => {
-
 	return (
 		<StarRatings
 			rating={value}

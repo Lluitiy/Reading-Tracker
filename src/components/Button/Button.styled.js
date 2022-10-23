@@ -7,7 +7,7 @@ export const Mybutton = styled.button`
 	font-size: 16px;
 	line-height: 1.25px;
 	text-align: center;
-	min-width: 120px;
+	min-width: 170px;
 	height: 40px;
 	border: ${({ primary = false }) => {
 		return primary ? 'none' : '1px solid #242A37';
@@ -26,5 +26,11 @@ export const Mybutton = styled.button`
 	&:hover,
 	:focus {
 		transform: scale(1.01);
+	}
+	@media screen and (min-width: 768px) {
+	}
+
+	@media screen and (min-width: 1280px) {
+		min-width: 180px;
 	}
 `;

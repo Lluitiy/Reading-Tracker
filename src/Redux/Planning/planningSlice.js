@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import persistReducer from 'redux-persist/es/persistReducer';
+
 import {
 	startPlanning,
-	addReadingPage,
 	getCurrentPlanning,
+	addReadingPage,
 } from '../Planning/planningOperations';
 
 const initialState = {
 	books: [],
-	booksId:[],
+	booksId: [],
 	startDate: '',
 	endDate: '',
 	pagesPerDay: null,
@@ -16,6 +19,9 @@ const initialState = {
 	isShowStartTraningBtn: false,
 	isShowResults: false,
 	planFact: [],
+	isLoading: false,
+	errorMassage: false,
+	readedPages: null,
 };
 
 const planningSlice = createSlice({
@@ -28,10 +34,21 @@ const planningSlice = createSlice({
 		showResults(state, { payload }) {
 			state.isShowResults = payload;
 		},
-		clean(state,{payload}){
-			state.booksId = payload
-			state.books = payload
-		}
+
+		addPlanFact(state, { payload }) {
+			state.planFact = payload;
+		},
+
+		resetPagesAndPlan(state) {
+			state.planFact = [];
+			state.readedPages = null;
+			state.showResults = false;
+		},
+
+		clean(state, { payload }) {
+			state.booksId = payload;
+			state.books = payload;
+		},
 	},
 	extraReducers: {
 		[startPlanning.fulfilled](state, { payload }) {
@@ -40,24 +57,29 @@ const planningSlice = createSlice({
 			state.endDate = payload.endDate;
 			state.pagesPerDay = payload.pagesPerDay;
 			state.duration = payload.duration;
-			state.booksId = payload.books.map(({_id})=>_id)
+			state.booksId = payload.books.map(({ _id }) => _id);
 			state.stats = payload.stats;
 			state.isShowStartTraningBtn = true;
-			for (let i = 1; i <= payload.duration; i += 1) {
-				state.planFact.push({
-					name: `Day ${i}`,
-					fact: 0,
-					plan: payload.pagesPerDay * i,
-				});
-			}
+		},
+
+		[startPlanning.pending](state) {
+			state.isLoading = true;
+		},
+		[startPlanning.rejected](state) {
+			state.isLoading = false;
+			state.errorMassage = true;
+		},
+		[addReadingPage.pending](state) {
+			state.isLoading = true;
 		},
 		[addReadingPage.fulfilled](state, { payload }) {
-			state.books = state.books.map(book =>
-				book.id === payload.id
-					? (book.pagesFinished = payload.pagesFinished + payload.page)
-					: book
-			);
+			state.isLoading = false;
+			state.readedPages = payload.planning.stats;
 		},
+		[addReadingPage.rejected](state) {
+			state.isLoading = false;
+		},
+
 		[getCurrentPlanning.fulfilled](state, { payload }) {
 			state.books = payload.planning.books;
 			state.startDate = payload.planning.startDate;
@@ -65,9 +87,35 @@ const planningSlice = createSlice({
 			state.pagesPerDay = payload.planning.pagesPerDay;
 			state.duration = payload.planning.duration;
 			state.stats = payload.planning.stats;
+			state.readedPages = payload.planning.stats;
+			state.isShowResults = state.planFact.length > 0 ? true : false;
+			state.isLoading = false;
+		},
+		[getCurrentPlanning.pending](state) {
+			state.isLoading = true;
+		},
+		[getCurrentPlanning.rejected](state) {
+			state.isLoading = false;
 		},
 	},
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { showStartTraningBtn, showResults,clean } = planningSlice.actions;
+export const {
+	showStartTraningBtn,
+	resetPagesAndPlan,
+	showResults,
+	clean,
+	addPlanFact,
+} = planningSlice.actions;
+
+const planningPersistConfig = {
+	key: 'planning',
+	storage,
+	whitelist: ['planFact'],
+};
+
+export const persistedPlanningReducer = persistReducer(
+	planningPersistConfig,
+	planningReducer
+);

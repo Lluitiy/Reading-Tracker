@@ -1,4 +1,4 @@
-export const theme = Object.freeze({
+export const themeLight = {
 	colors: {
 		white: '#ffffff',
 		borderNav: '#E0E5EB',
@@ -14,6 +14,7 @@ export const theme = Object.freeze({
 		transparent: 'transparent',
 		backdrop: 'rgba(43, 43, 43, 0.1)',
 		counter: '#091E3F',
+		icon: 'gold',
 	},
 	shadow: {
 		modal: '10px 10px 20px rgba(9, 30, 63, 0.2)',
@@ -21,4 +22,29 @@ export const theme = Object.freeze({
 		counter: ' 4px 4px 8px rgba(36, 42, 55, 0.15);',
 	},
 	transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-});
+};
+export const themeDark = {
+	colors: {
+		white: '#242A37',
+		borderNav: '#091E3F',
+		googleBtn: '#091E3F',
+		body: '#6D7A8D',
+		textMain: '#ffffff',
+		textSecondary: '#B1B5C2',
+		black: '#ffffff',
+		icons: '#FF6B08',
+		bookIcons: '#6D7A8D',
+		trainingGrey: '#F6F7FB',
+		brand: '#FF6B08',
+		transparent: 'transparent',
+		backdrop: 'rgba(43, 43, 43, 0.1)',
+		counter: '#F5F7FA',
+		icon: '#932bbf',
+	},
+	shadow: {
+		modal: '10px 10px 20px rgba(9, 30, 63, 0.2)',
+		box: '0px 2px 3px rgba(9, 30, 63, 0.1)',
+		counter: ' 4px 4px 8px rgba(36, 42, 55, 0.15);',
+	},
+	transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+};

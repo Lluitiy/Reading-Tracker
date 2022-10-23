@@ -15,10 +15,12 @@ import {
 	Error,
 } from './LibraryForm.styled';
 import { addUserBookThunk } from 'Redux/Books/booksOperations';
+import useTranslation from 'Hooks/useTranslations';
 import { Formik, ErrorMessage } from 'formik';
 import { booksFormSchema } from 'Utils/validSchema';
 
 const LibraryForm = ({ handleFormOpen = null }) => {
+	const translation = useTranslation();
 	const dispatch = useDispatch();
 
 	const handleFormSubmit = (
@@ -49,7 +51,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 						<NewBookForm>
 							<Upper>
 								<NameLabel>
-									Book title
+									{translation.libraryForm.book}
 									<Input placeholder="..." type="text" name="title" />
 									<ErrorMessage
 										name="title"
@@ -59,7 +61,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 							</Upper>
 							<Lower>
 								<AuthorLabel>
-									Author
+									{translation.libraryForm.author}
 									<Input placeholder="..." type="text" name="author" />
 									<ErrorMessage
 										name="author"
@@ -67,7 +69,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 									/>
 								</AuthorLabel>
 								<Label>
-									Publication date
+									{translation.libraryForm.date}
 									<Input placeholder="..." type="text" name="publishYear" />
 									<ErrorMessage
 										name="publishYear"
@@ -75,7 +77,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 									/>
 								</Label>
 								<Label>
-									Amount of pages
+									{translation.libraryForm.pages}
 									<Input placeholder="..." type="text" name="pagesTotal" />
 									<ErrorMessage
 										name="pagesTotal"
@@ -83,7 +85,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 									/>
 								</Label>
 							</Lower>
-							<AddBtn type="submit">Add</AddBtn>
+							<AddBtn type="submit">{translation.libraryForm.btnAdd}</AddBtn>
 						</NewBookForm>
 					</Formik>
 				</Wrapper>

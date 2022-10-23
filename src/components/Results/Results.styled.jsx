@@ -16,7 +16,7 @@ export const ResultsBox = styled.div`
 
 	@media screen and (min-width: 1280px) {
 		width: 280px;
-      padding: 20px;
+		padding: 20px;
 	}
 `;
 
@@ -51,7 +51,7 @@ export const ResultsForm = styled.form`
 		justify-content: center;
 		flex-direction: column;
 		margin-top: 12px;
-		
+
 		font-size: 12px;
 		color: ${p => p.theme.colors.textMain};
 	}
@@ -68,8 +68,6 @@ export const FormBox = styled.div`
 `;
 
 export const ResultsLabel = styled.label`
-	
-
 	font-size: 11px;
 	color: ${p => p.theme.colors.textSecondary};
 
@@ -107,10 +105,38 @@ export const ResultsBtn = styled.button`
 
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0px;
-      height: 42px;
+		height: 42px;
 	}
 	@media screen and (min-width: 1280px) {
-       height: 40px;
+		height: 40px;
+	}
+	&:hover,
+	&:focus {
+	}
+`;
+
+export const ResultsBackBtn = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 240px;
+	height: 40px;
+	margin-bottom: 24px;
+
+	font-size: 16px;
+	line-height: 1.21;
+	font-weight: 600px;
+
+	border: 1px soild ${p => p.theme.colors.black};
+	color: ${p => p.theme.colors.black};
+	background-color: ${p => p.theme.colors.white};
+
+	@media screen and (min-width: 768px) {
+		margin-bottom: 0px;
+		height: 42px;
+	}
+	@media screen and (min-width: 1280px) {
+		height: 40px;
 	}
 	&:hover,
 	&:focus {
@@ -126,9 +152,10 @@ export const StatisticsPageBox = styled.div`
 export const StatisticsPageTitle = styled.h2`
 	display: flex;
 	justify-content: center;
-	font-weight: 600px;
+	font-weight: 700;
 	font-size: 12px;
 	line-height: 1.21;
+
 	color: ${p => p.theme.colors.textMain};
 	text-transform: uppercase;
 
@@ -180,7 +207,7 @@ export const StatisticsPageTitle = styled.h2`
 	@media screen and (min-width: 1280px) {
 		display: flex;
 		justify-content: center;
-		font-weight: 600px;
+		font-weight: 700px;
 		font-size: 12px;
 		line-height: 1.21;
 		color: ${p => p.theme.colors.textMain};
@@ -205,4 +232,49 @@ export const StatisticsPageTitle = styled.h2`
 			background-color: ${p => p.theme.colors.borderNav};
 		}
 	}
+`;
+
+
+export const ResultsPageList = styled.ul`
+margin-top: 4px;`
+
+export const IconWrapper = styled.div`
+	/* margin-left: auto;
+margin-right: auto; */
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
+	/* margin-right: 12px;
+	padding-top: 4px; */
+	width: 49px;
+	height: 45px;
+	margin: 0;
+`;
+
+export const BtnBox = styled.div`
+	margin-top: 24px;
+
+
+	@media screen and (min-width: 768px) {
+		display: flex;
+		justify-content: center;
+		gap: 32px;
+	}
+
+	@media screen and (min-width: 1280px) {
+		display: flex;
+		justify-content: center;
+		gap: 32px;
+	}
+`;
+
+export const ModalBox = styled.div`
+	/* margin-left: auto;
+margin-right: auto; */
+`;
+
+export const ModalText = styled.p`
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 14px;
 `;
