@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 	@media screen and (min-width: 1280px) {
 		display: flex;
 		justify-content: center;
-		height: 790px;
+		height: 90vh;
 	}
 `;
 
@@ -56,7 +56,7 @@ export const FormBox = styled.div`
 		}
 	}
 	@media screen and (min-width: 1280px) {
-		padding: 0;
+		padding: 300px 0;
 		min-width: 549px;
 		height: 100%;
 		background-image: linear-gradient(
@@ -79,17 +79,19 @@ export const FormBox = styled.div`
 `;
 
 export const TextBox = styled.div`
-	/* outline: 2px solid tomato; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	@media screen and (min-width: 768px) {
 		padding-top: 64px;
+		padding-bottom: 32px;
 	}
 	@media screen and (min-width: 1280px) {
-		padding-top: 206px;
+		display: flex;
+		justify-content: center;
+		padding-top: 0;
+		padding-right: 0;
 		padding-left: 167px;
-		padding-right: 167px;
 	}
 `;
 
@@ -155,7 +157,7 @@ export const Author = styled.p`
 	font-style: normal;
 	font-weight: 500;
 	text-align: center;
-	color: #898f9f;
+	color: ${p => p.theme.colors.textSecondary};
 `;
 
 export const GoogleButton = styled.button`
@@ -179,9 +181,6 @@ export const GoogleButton = styled.button`
 	@media screen and (min-width: 768px) {
 		margin-top: 40px;
 	}
-	@media screen and (min-width: 768px) {
-		margin-top: 40px;
-	}
 `;
 
 export const TextGoogleButton = styled.p`
@@ -190,7 +189,7 @@ export const TextGoogleButton = styled.p`
 	font-size: 16px;
 	line-height: 38px;
 	text-align: center;
-	color: #707375;
+	color: ${p => p.theme.colors.textSecondary};
 	::before {
 		content: '';
 		margin-right: 16px;
