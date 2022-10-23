@@ -39,7 +39,6 @@ export const App = () => {
 		if (accessToken) {
 			dispatch(qwe({ accessToken, refreshToken, sid }));
 			API.setToken(accessToken);
-			// throw new Error('Error');
 		}
 		navigate('/libary');
 
@@ -47,6 +46,7 @@ export const App = () => {
 	}, [accessToken]);
 
 	useEffect(() => {
+		// throw new Error('Error');
 		if (!isLogOut) dispatch(fetchCurrentUser());
 	}, [dispatch, isLogOut]);
 

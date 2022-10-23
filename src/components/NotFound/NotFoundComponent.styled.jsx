@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const NotFoundWrap = styled.div`
+export const NotFoundWrap = styled.form`
 	width: 90%;
 	margin: 20px auto;
 	padding: 30px 40px;
