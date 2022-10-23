@@ -32,17 +32,17 @@ export default function userInput({ name }) {
 	const getTitle = () => {
 		switch (name) {
 			case 'name':
-				return 'Name';
+				return `Name\u002a`;
 
 			case 'email':
-				return 'Email';
+				return 'Email\u002a';
 
 			case 'password':
 				// return formType === 'login' ? 'Your password?' : 'Create a password!';
-				return 'Password';
+				return 'Password\u002a';
 
 			case 'confirm':
-				return 'Confirm password';
+				return 'Confirm password\u002a';
 
 			default:
 				return 'text';
