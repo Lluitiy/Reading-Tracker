@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import STATUS from 'components/Constants/status';
-import { addUserBookThunk, getUserBooksThunk } from './booksOperations';
+import { addBookReview, addUserBookThunk, getUserBooksThunk } from './booksOperations';
 
 const initialStateBooks = {
 	books: {		
@@ -32,5 +32,15 @@ export const booksSlice = createSlice({
 		[addUserBookThunk.fulfilled]: (state, { payload }) => {
 			state.books.goingToRead = [payload.newBook, ...state.books.goingToRead];
 		},
+		[addBookReview.pending]:state => {
+			state.status = STATUS.pending
+		},
+		[addBookReview.fulfilled]: (state, { payload }) => {
+			state.status = STATUS.fulfilled
+			state.books.finishedReading = state.books.finishedReading.map(
+				book => book._id === payload._id ? payload : book)
+		}
+			
+		
 	},
 });

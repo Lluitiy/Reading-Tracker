@@ -59,7 +59,7 @@ const MobileLibraryItem = ({
 						<>
 						<TableRow>
 						<TableHeader>Rating</TableHeader>
-						<TableDetail><StarList>{createRatingStars(3)}</StarList></TableDetail>
+						<TableDetail><StarList>{createRatingStars(rating)}</StarList></TableDetail>
 						</TableRow>
 						</>}
 				</tbody>
@@ -67,7 +67,7 @@ const MobileLibraryItem = ({
 			{isFinishedReading && <Button onClick={openModal}>Resume</Button>}
 			{modalOpen && (
 			<Modal onClose={closeModal}>
- 					<ResumeModal id={id} onClose={closeModal} />
+ 					<ResumeModal initRating={rating} id={id} onClose={closeModal} />
 			</Modal>
 			)}
 		</MobileItemWrapper>

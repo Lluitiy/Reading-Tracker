@@ -41,7 +41,7 @@ const LibraryItem = ({
 			<Button onClick={openModal}>Resume</Button>
 			{modalOpen && (
 			<Modal onClose={closeModal}>
- 					<ResumeModal id={id} onClose={closeModal} />
+ 					<ResumeModal initRating={rating} id={id} onClose={closeModal} />
 			</Modal>
 			)}
 		</FinishedReadingItemWrapper>		

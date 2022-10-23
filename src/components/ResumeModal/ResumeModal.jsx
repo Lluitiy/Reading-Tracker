@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import API from 'Services/Api/Api';
+import { useDispatch } from 'react-redux';
+import { addBookReview } from 'Redux/Books/booksOperations';
 import RatingStars from './RatingStars';
 import {
 	ButtonBackS,
@@ -12,9 +13,10 @@ import {
 	Wrapper,
 } from './ResumeModal.styled';
 
-export const ResumeModal = ({ onClose, id }) => {
+export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 	const [feedback, setFeedback] = useState(' ');
-	const [rating, setRating] = useState(0);
+	const [rating, setRating] = useState(initRating);
+	const dispatch = useDispatch()
 
 
 	const changeRating = e => {
@@ -23,8 +25,9 @@ export const ResumeModal = ({ onClose, id }) => {
 	//  запис при сабміті
 	const handleSubmit = event => {
 		event.preventDefault();
-		console.log({id, rating, feedback });
-		API.editUserBook({id,rating,feedback}).then(console.log)
+		const review = { id, rating, feedback }
+		console.log(review);
+		dispatch(addBookReview(review))
 		event.currentTarget.reset();
 		onClose();
 	};
