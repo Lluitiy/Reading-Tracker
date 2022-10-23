@@ -1,4 +1,3 @@
-
 import BOOK_CATEGORY from 'components/Constants/bookCategories';
 import MobileLibraryItem from '../MobileLibraryItem/MobileLibraryItem';
 import LibraryItem from '../LibraryItem/LibraryItem';
@@ -10,28 +9,15 @@ import { useSelector } from 'react-redux';
 import { getBooksByCategory } from 'Redux/Books/booksSelectors';
 import ListHeaders from '../ListHeaders/ListHeaders';
 import FinishedReadingListHeaders from '../FinishedReadingListHeaders/FinishedReadingListHeaders';
-
+import useTranslation from 'Hooks/useTranslations';
 
 const LibraryList = ({ category }) => {
+	const translation = useTranslation();
 	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
 	const fill = useMemo(
 		() => (category === BOOK_CATEGORY.currentlyReading ? '#FF6B08' : '#A6ABB9'),
 		[category]
 	);
-
-
-	const heading = useMemo(() => {
-		switch (category) {
-			case BOOK_CATEGORY.goingToRead:
-				return 'Going to read';
-			case BOOK_CATEGORY.currentlyReading:
-				return 'Reading now';
-			case BOOK_CATEGORY.finishedReading:
-				return 'Already read';
-			default:
-				return 'Other';
-		}
-	}, [category]);
 
 	const books = useSelector(getBooksByCategory(category));
 	const isFinishedReadingList = category === BOOK_CATEGORY.finishedReading;
@@ -40,7 +26,7 @@ const LibraryList = ({ category }) => {
 		!!books.length && (
 			<Section>
 				<Container>
-					<Header>{heading}</Header>
+					<Header>{translation.libraryListHeaders[category]}</Header>
 					{isDesktopOrTablet && (
 						<>
 							{isFinishedReadingList ? (

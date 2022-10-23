@@ -49,10 +49,9 @@ const ua = {
 		pages: 'Стор.',
 	},
 	libraryListHeaders: {
-		going: 'Маю намір прочитати',
-		reading: 'Читаю',
-		done: 'Прочитано',
-		other: 'Інше',
+		goingToRead: 'Маю намір прочитати',
+		currentlyReading: 'Читаю',
+		finishedReading: 'Прочитано',
 	},
 	libraryEmpty: {
 		step1: 'Крок 1.',

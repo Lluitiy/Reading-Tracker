@@ -1,13 +1,14 @@
 import React from 'react';
 import { useLanguageContext } from 'components/contexts/LanguageContext';
+import { Option, Select } from './LanguageHandler.styled';
 
 export default function LanguageHandler() {
 	const { language, changeLanguage } = useLanguageContext();
 
 	return (
-		<select value={language} onChange={e => changeLanguage(e.target.value)}>
-			<option value="en">En- English</option>
-			<option value="ua">UA- Українська</option>
-		</select>
+		<Select value={language} onChange={e => changeLanguage(e.target.value)}>
+			<Option value="en">en</Option>
+			<Option value="ua">ua</Option>
+		</Select>
 	);
 }
