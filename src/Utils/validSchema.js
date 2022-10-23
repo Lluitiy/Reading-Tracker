@@ -11,3 +11,10 @@ export const userRegisterSchema = yup.object({
 	password: yup.string().min(7).max(14).required(),
 	confirm: yup.string().oneOf([yup.ref('password')], 'passwords do not match'),
 });
+
+export const booksFormSchema = yup.object({
+	title: yup.string().required(),
+	author: yup.string().required( ),
+	publishYear: yup.string().min(4).required(),
+	pagesTotal: yup.string().min(1).max(4).required(),
+})

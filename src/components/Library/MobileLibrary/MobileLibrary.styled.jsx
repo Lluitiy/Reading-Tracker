@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 
 export const PlusBtn = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position:fixed;
     bottom: 50px;
     left: 50%;

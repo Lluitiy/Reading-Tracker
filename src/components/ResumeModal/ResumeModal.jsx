@@ -1,65 +1,68 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addBookReview } from 'Redux/Books/booksOperations';
 import RatingStars from './RatingStars';
 import useTranslation from 'Hooks/useTranslations';
 import {
+	ButtonBackS,
+	ButtonContainerS,
+	ButtonSaveS,
 	Form,
 	RatingTextS,
 	ResumeTextS,
 	TextAreaS,
-	ButtonContainerS,
-	ButtonBackS,
-	ButtonSaveS,
-} from './Resume.styled';
+	Wrapper,
+} from './ResumeModal.styled';
 
-export const ResumeModal = ({ onClose }) => {	
+export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
+	const [feedback, setFeedback] = useState(' ');
+	const [rating, setRating] = useState(initRating);
+	const dispatch = useDispatch()
+		const translation = useTranslation();
 
-  const translation = useTranslation();
-	const [feedback, setFeedback] = useState('');
-	// const [rating, setRating] = useState(0);
-	const [resume, setResume] = useState('');
-	// const changeRating = e => {
-	// 	setRating(Math.ceil(e));
-	// };
-  
-	// Неконтрольована форма - запис при сабміті
+
+	const changeRating = e => {
+		setRating(Math.ceil(e));
+	};
+
 	const handleSubmit = event => {
 		event.preventDefault();
-		setResume(event.currentTarget.elements.resume.value);
-		setFeedback(event.currentTarget.elements.resume.value);
+		const review = { id, rating, feedback }
+		dispatch(addBookReview(review))
 
+	
 		event.currentTarget.reset();
 		onClose();
 	};
 
-	// контрольована форма - для відслідковування введенного
 	const handleInputChange = event => {
-		setResume(event.target.value);
 		setFeedback(event.target.value);
 	};
-	console.log('feedback', feedback);
 
 	return (
-		<Form onSubmit={handleSubmit} autoComplete="off">
-			<label>
-				<RatingTextS>{translation.resumeModal.title}</RatingTextS>
-				<RatingStars />
-				<ResumeTextS>{translation.resumeModal.resume}</ResumeTextS>
-				<TextAreaS
-					name="resume"
-					rows="5"
-					cols="33"
-					placeholder="Start your comment here."
-					value={resume}
-					onChange={handleInputChange}
-				/>
-				<ButtonContainerS>
-					<ButtonBackS type="button" onClick={onClose}>
-						{translation.resumeModal.btnBack}
-					</ButtonBackS>
-					<ButtonSaveS type="submit">{translation.resumeModal.btnSave}</ButtonSaveS>
-				</ButtonContainerS>
-			</label>
-		</Form>
+		<Wrapper>
+			<Form onSubmit={handleSubmit} autoComplete="off">
+				<label>
+
+					<RatingTextS>{translation.resumeModal.title}</RatingTextS>
+					<RatingStars value={rating} changeHandler={changeRating} />
+					<ResumeTextS>{translation.resumeModal.resume}</ResumeTextS>
+
+					<TextAreaS
+						type="text"
+						name="resume"
+						value={feedback}
+						onChange={handleInputChange}
+					/>
+					<ButtonContainerS>
+						<ButtonBackS type="button" onClick={onClose}>
+							{translation.resumeModal.btnBack}
+						</ButtonBackS>
+						<ButtonSaveS type="submit">{translation.resumeModal.btnSave}</ButtonSaveS>
+					</ButtonContainerS>
+				</label>
+			</Form>
+		</Wrapper>
 	);
 };
 

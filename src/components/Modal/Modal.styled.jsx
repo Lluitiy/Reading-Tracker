@@ -16,6 +16,8 @@ export const Backdrop = styled.div`
 export const ModalBox = styled.div`
 	width: 100%;
 	max-width: 280px;
+	text-align: center;
+
 	max-height: 395px;
 	padding: 20px 20px 40px;
 	margin: 0 auto;
@@ -23,14 +25,18 @@ export const ModalBox = styled.div`
 	// flex-direction: column;
 	// align-items: center;
 
-	text-align: center;
+
 	background-color: ${p => p.theme.colors.white};
 
 	@media screen and (min-width: 768px) {
-		max-width: 608px;
-		max-height: 399px;
+		max-width: fit-content;
+		padding: 20px 48px;
+		min-width: 394px;
 	}
 
-	@media screen and (min-width: 1200px) {
+	@media screen and (min-width: 1280px) {
+		padding: 30px 60px;
+		min-width: 608px;
 	}
+
 `;

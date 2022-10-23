@@ -4,7 +4,7 @@ import API from 'Services/Api/Api';
 const {
 	getUserBooks,
 	postUserBook,
-	// authUserGoogle,
+	editUserBook,
 } = API;
 
 
@@ -16,6 +16,14 @@ export const addUserBookThunk = createAsyncThunk('books/add', async (book, thunk
 	try {
 		const res = await postUserBook(book);
 		return res
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error.message)
+	}
+})
+export const addBookReview = createAsyncThunk('books/addReview', async (review, thunkAPI) => {
+	try {
+		const res = await editUserBook(review)
+		return res;
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)
 	}

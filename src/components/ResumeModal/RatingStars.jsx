@@ -1,15 +1,12 @@
 import StarRatings from 'react-star-ratings';
-// import { useState } from 'react';
 
-const RatingStars = ({ value, changeHandler }) => {
-	// const [value, setValue] = useState(3);
-	// console.log(value)
+const RatingStars = ({value, changeHandler}) => {
 	return (
 		<StarRatings
 			rating={value}
-			starRatedColor="orange"
+			starRatedColor="#FF6B08"
 			starEmptyColor="grey"
-			starHoverColor="orange"
+			starHoverColor="#FF6B08"
 			changeRating={changeHandler}
 			numberOfStars={5}
 			name="rating"
