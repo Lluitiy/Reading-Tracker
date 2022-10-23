@@ -19,11 +19,10 @@ const LibraryItem = ({
 }) => {
 
 	const [modalOpen, setModalOpen] = useState(false);
-
 	const openModal = () => {
 		setModalOpen(true);
 	};
-
+	
 	const closeModal = () => {
 		setModalOpen(false);
 	};

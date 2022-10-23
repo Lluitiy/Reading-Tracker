@@ -9,6 +9,9 @@ import {
 import { ReactComponent as BookIcon } from 'Assets/svg/book.svg';
 import { Button, OverflowText, StarList } from '../LibraryItem/LibraryItem.styled';
 import createRatingStars from 'Utils/RatingStars';
+import { useState } from 'react';
+import Modal from 'components/Modal';
+import { ResumeModal } from 'components/ResumeModal/ResumeModal';
 
 const MobileLibraryItem = ({
 	title,
@@ -18,6 +21,16 @@ const MobileLibraryItem = ({
 	pagesTotal,
 	isFinishedReading
 }) => {
+	const [modalOpen, setModalOpen] = useState(false);
+	const openModal = () => {
+		setModalOpen(true);
+	};
+	
+	const closeModal = () => {
+		setModalOpen(false);
+	};
+
+
 	return (
 		<MobileItemWrapper>
 			<IconThumb>
@@ -48,7 +61,12 @@ const MobileLibraryItem = ({
 						</>}
 				</tbody>
 			</Table>
-			{isFinishedReading && <Button>Resume</Button>}
+			{isFinishedReading && <Button onClick={openModal}>Resume</Button>}
+			{modalOpen && (
+			<Modal onClose={closeModal}>
+ 					<ResumeModal onClose={closeModal} />
+			</Modal>
+			)}
 		</MobileItemWrapper>
 	);
 };

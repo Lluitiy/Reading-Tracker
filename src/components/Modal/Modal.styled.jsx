@@ -14,23 +14,23 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalBox = styled.div`
-	display: flax;
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 
 	padding: 40px 48px;
-	max-width: 280px;
+	min-width: 280px;
 	text-align: center;
 
 	background-color: ${p => p.theme.colors.white};
 
 	@media screen and (min-width: 768px) {
 		padding: 20px 48px;
-		max-width: 394px;
+		min-width: 394px;
 	}
 
 	@media screen and (min-width: 1200px) {
 		padding: 30px 60px;
-		max-width: 608px;
+		min-width: 608px;
 	}
 `;

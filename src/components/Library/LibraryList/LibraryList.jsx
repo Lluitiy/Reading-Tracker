@@ -1,4 +1,4 @@
-import getHeading from 'Utils/getHeading';
+// import getHeading from 'Utils/getHeading';
 import BOOK_CATEGORY from 'components/Constants/bookCategories';
 import MobileLibraryItem from '../MobileLibraryItem/MobileLibraryItem';
 import LibraryItem from '../LibraryItem/LibraryItem';
@@ -42,7 +42,33 @@ const LibraryList = ({ category }) => {
 				: '#A6ABB9',
 		[category]
 	);
-	const heading = useMemo(() => getHeading(category), [category]);
+	// const heading = (category) => {
+	// 	switch (category) {
+	// 	case BOOK_CATEGORY.goingToRead:
+	// 		return 'Going to read';
+	// 	case BOOK_CATEGORY.currentlyReading:
+	// 		return 'Reading now';
+	// 	case BOOK_CATEGORY.finishedReading:
+	// 		return 'Already read';
+	// 	default:
+	// 		return 'Other';
+	// }
+	// }
+
+	const heading = useMemo(() => {
+		switch (category) {
+			case BOOK_CATEGORY.goingToRead:
+				return 'Going to read';
+			case BOOK_CATEGORY.currentlyReading:
+				return 'Reading now';
+			case BOOK_CATEGORY.finishedReading:
+				return 'Already read';
+			default:
+				return 'Other';
+		}
+	}, [category]);
+
+	
 	const books = useSelector(getBooksByCategory(category));
 	const isFinishedReadingList = category === BOOK_CATEGORY.finishedReading;
 

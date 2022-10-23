@@ -53,7 +53,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 									<Input placeholder="..." type="text" name="title" />
 									<ErrorMessage
 										name="title"
-										render={message => <Error>{message}</Error>}
+										render={() => <Error>Enter the title</Error>}
 									/>
 								</NameLabel>
 							</Upper>
@@ -63,7 +63,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 									<Input placeholder="..." type="text" name="author" />
 									<ErrorMessage
 										name="author"
-										render={message => <Error>{message}</Error>}
+										render={() => <Error>Enter the author</Error>}
 									/>
 								</AuthorLabel>
 								<Label>
@@ -71,7 +71,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 									<Input placeholder="..." type="text" name="publishYear" />
 									<ErrorMessage
 										name="publishYear"
-										render={() => <Error>Are you sure?</Error>}
+										render={() => <Error>Min 1000AC</Error>}
 									/>
 								</Label>
 								<Label>
@@ -79,7 +79,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 									<Input placeholder="..." type="text" name="pagesTotal" />
 									<ErrorMessage
 										name="pagesTotal"
-										render={() => <Error>Are you sure?</Error>}
+										render={() => <Error>Max 5000</Error>}
 									/>
 								</Label>
 							</Lower>

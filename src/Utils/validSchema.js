@@ -13,8 +13,8 @@ export const userRegisterSchema = yup.object({
 });
 
 export const booksFormSchema = yup.object({
-	title: yup.string().required('Enter the title'),
-	author: yup.string().required('Enter the author' ),
+	title: yup.string().required(),
+	author: yup.string().required( ),
 	publishYear: yup.string().min(4).required(),
 	pagesTotal: yup.string().min(1).max(4).required(),
 })

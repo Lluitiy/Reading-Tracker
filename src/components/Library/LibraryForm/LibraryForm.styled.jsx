@@ -43,16 +43,21 @@ export const Lower = styled.div`
 `
 
 export const Error = styled.p`
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
     margin-top: 5px;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 1.12;
-  color: red;
-  text-align: center;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.12;
+    color: red;
+    text-align: center;
 `;
 
 
 export const Label = styled.label`
+    position: relative;
 	display: flex;
     flex-direction: column;
     width: 100%;
@@ -87,6 +92,7 @@ export const Input = styled(Field)`
     }  	
 `
 export const NameLabel = styled.label`
+    position: relative;
 	display: flex;
     flex-direction: column;
     width: 100%;
@@ -106,6 +112,7 @@ export const NameLabel = styled.label`
 
 `
 export const AuthorLabel = styled.label`
+    position: relative;
 	display: flex;
     flex-direction: column;
     width: 100%;

@@ -59,7 +59,7 @@ const LibraryPage = () => {
 				<>
 					<LibraryList category={BOOK_CATEGORY.finishedReading} />
 					<LibraryList category={BOOK_CATEGORY.currentlyReading} />
-							<LibraryList category={BOOK_CATEGORY.goingToRead} />
+					<LibraryList category={BOOK_CATEGORY.goingToRead} />
 							<button onClick={send}>bub</button>
 				</>
 			)}

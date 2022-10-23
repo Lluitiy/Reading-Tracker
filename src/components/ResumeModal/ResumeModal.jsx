@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import RatingStars from './RatingStars';
+import {
+	ButtonBackS,
+	ButtonContainerS,
+	ButtonSaveS,
+	Form,
+	RatingTextS,
+	ResumeTextS,
+	TextAreaS,
+	Wrapper,
+} from './ResumeModal.styled';
 
 export const ResumeModal = ({ onClose }) => {
 	const [feedback, setFeedback] = useState('');
@@ -13,7 +23,7 @@ export const ResumeModal = ({ onClose }) => {
 		event.preventDefault();
 		setFeedback(event.currentTarget.elements.resume.value);
 
-		console.log({rating, feedback});
+		console.log({ rating, feedback });
 		event.currentTarget.reset();
 		onClose();
 	};
@@ -25,24 +35,29 @@ export const ResumeModal = ({ onClose }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} autoComplete="off">
-			<label>
-				<h3>Choose book rating</h3>
-
-				<RatingStars value={rating} changeHandler={changeRating} />
-				<p>Resume</p>
-				<input
-					type="text"
-					name="resume"
-					value={feedback}
-					onChange={handleInputChange}
-				></input>
-				<button type="button" onClick={onClose}>
-					Back
-				</button>
-				<button type="submit">Save</button>
-			</label>
-		</form>
+		<Wrapper>
+			<Form onSubmit={handleSubmit} autoComplete="off">
+				<label>
+					<RatingTextS>Choose book rating</RatingTextS>
+					{/* <RatingTextS>{translation.resumeModal.title}</RatingTextS> */}
+					<RatingStars value={rating} changeHandler={changeRating} />
+					{/* <ResumeTextS>{translation.resumeModal.resume}</ResumeTextS> */}
+					<ResumeTextS>Resume</ResumeTextS>
+					<TextAreaS
+						type="text"
+						name="resume"
+						value={feedback}
+						onChange={handleInputChange}
+					/>
+					<ButtonContainerS>
+						<ButtonBackS type="button" onClick={onClose}>
+							Back
+						</ButtonBackS>
+						<ButtonSaveS type="submit">Save</ButtonSaveS>
+					</ButtonContainerS>
+				</label>
+			</Form>
+		</Wrapper>
 	);
 };
 

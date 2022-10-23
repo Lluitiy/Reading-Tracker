@@ -9,9 +9,9 @@ const RatingStars = ({value, changeHandler}) => {
 	return (
 		<StarRatings
 			rating={value}
-			starRatedColor="orange"
+			starRatedColor="#FF6B08"
 			starEmptyColor="grey"
-			starHoverColor="orange"
+			starHoverColor="#FF6B08"
 			changeRating={changeHandler}
 			numberOfStars={5}
 			name="rating"
