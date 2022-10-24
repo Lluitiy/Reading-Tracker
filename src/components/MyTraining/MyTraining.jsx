@@ -4,6 +4,9 @@ import {
 	Select,
 	DateContainer,
 	SelectContainer,
+	Arrow,
+	CalenderThumb,
+	DateIcon,
 } from './MyTraining.styled';
 import useTranslation from 'Hooks/useTranslations';
 import Button from 'components/Button/Button';
@@ -11,9 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
-import { DatePicker } from 'react-rainbow-components';
+import { Application, DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
-import { ReactComponent as CalenderIcon } from 'Assets/svg/calendar.svg';
 
 const MyTraining = () => {
 	const translation = useTranslation();
@@ -63,27 +65,47 @@ const MyTraining = () => {
 		const userDate = value.toLocaleDateString().split('.').reverse().join('-');
 		setEndValue(userDate);
 	};
+	const theme = {
+		rainbow: {
+			palette: {
+				brand: '#ffa500',
+				boxShadow: '0 0 2px #ffa500',
+			},
+		},
+	};
 	return (
-		<div>
+		<>
 			<Title>{translation.myTraining.title}</Title>
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
-					<DatePicker
-						value={startValue}
-						placeholder="Start"
-						minDate={new Date(dateToday)}
-						onChange={handleChangeStart}
-						required={true}
-						icon={<CalenderIcon />}
-					/>
-					<DatePicker
-						value={endValue}
-						placeholder="End"
-						minDate={new Date(dateToday)}
-						onChange={handleChangeEnd}
-						required={true}
-						icon={<CalenderIcon />}
-					/>
+					<CalenderThumb>
+						<DatePicker
+							value={startValue}
+							placeholder="Start"
+							minDate={new Date(dateToday)}
+							onChange={handleChangeStart}
+							required={true}
+							icon={<Arrow />}
+							variant="double"
+							isCentered={true}
+						/>
+						<DateIcon />
+					</CalenderThumb>
+					<CalenderThumb>
+						<Application theme={theme}>
+							<DatePicker
+								value={endValue}
+								placeholder="End"
+								minDate={new Date(dateToday)}
+								onChange={handleChangeEnd}
+								required={true}
+								icon={<Arrow />}
+								variant="double"
+								isCentered={true}
+							/>
+						</Application>
+						<DateIcon />
+					</CalenderThumb>
 				</DateContainer>
 				<SelectContainer>
 					<Select name="select">
@@ -99,7 +121,7 @@ const MyTraining = () => {
 					<Button type={'submit'}>{translation.myTraining.btn}</Button>
 				</SelectContainer>
 			</form>
-		</div>
+		</>
 	);
 };
 

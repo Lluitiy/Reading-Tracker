@@ -3,15 +3,15 @@ import Modal from 'components/Modal';
 import ResultsItem from 'components/Results/ResultsItem/ResultsItem';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReadingPage, getCurrentPlanning
- } from 'Redux/Planning/planningOperations';
+import {
+	addReadingPage,
+	getCurrentPlanning,
+} from 'Redux/Planning/planningOperations';
 import {
 	selectorPlanFact,
 	selectorReadedPages,
-	selectorPagesReaded
-
+	selectorPagesReaded,
 } from 'Redux/Planning/planningSelectors';
-
 
 import {
 	ResultsBox,
@@ -24,13 +24,15 @@ import {
 	StatisticsPageBox,
 	StatisticsPageTitle,
 	ResultsPageList,
+	ResultsCalenderThumb,
 } from './Results.styled';
 import { useEffect } from 'react';
 import { resetPagesAndPlan } from 'Redux/Planning/planningSlice';
 import useTranslation from 'Hooks/useTranslations';
-import { normaliseDate } from 'components/Statistics/functions/functions';
 import ModalFaster from './ModalsContent/ModalFaster';
 import ModalDone from './ModalsContent/ModalDone';
+import { DatePicker } from 'react-rainbow-components';
+import dayjs from 'dayjs';
 
 export default function Results() {
 	const [isShowModal, setIsShowModal] = useState(false);
@@ -38,15 +40,14 @@ export default function Results() {
 
 	const readedPages = useSelector(selectorReadedPages);
 	const data = useSelector(selectorPlanFact);
-const pagesFinished = useSelector(selectorPagesReaded);
-
+	const pagesFinished = useSelector(selectorPagesReaded);
 
 	const translation = useTranslation();
 
 	const dispatch = useDispatch();
-
-	const normalDate = normaliseDate(new Date());
-
+	const dateToday = `${dayjs().get('year')}-${
+		dayjs().get('month') + 1
+	}-${dayjs().get('date')}`;
 	useEffect(() => {
 		const checkTotalPlan = () => {
 			const totalReadedPages = readedPages?.reduce(
@@ -65,7 +66,8 @@ const pagesFinished = useSelector(selectorPagesReaded);
 		e.preventDefault();
 		const inputValue = Number(e.target.elements[1].value);
 		const unreadPages = data[data.length - 1]?.plan - data[0]?.fact;
-		
+		console.log('inputValue', inputValue);
+		console.log('e.target.elements[1]', e.target.elements[1]);
 		if (inputValue > unreadPages) {
 			return Notify.failure(
 				`You have entered more pages than are left. Unread pages - ${unreadPages} pages. Enter correct data`
@@ -79,10 +81,9 @@ const pagesFinished = useSelector(selectorPagesReaded);
 		}
 	};
 
-	useEffect(()=>{
-		dispatch(getCurrentPlanning())	
-		},[pagesFinished,dispatch])
-
+	useEffect(() => {
+		dispatch(getCurrentPlanning());
+	}, [pagesFinished, dispatch]);
 
 	const handleDoneBtnClick = () => {
 		setIsShowModalEndReading(false);
@@ -96,15 +97,17 @@ const pagesFinished = useSelector(selectorPagesReaded);
 				<ResultsTitle>{translation.results.title}</ResultsTitle>
 				<ResultsForm onSubmit={handleFormSubmit}>
 					<FormBox>
-						<ResultsLabel>
-							{translation.results.label1}
-							<ResultsInput
-								type="date"
-								name="date"
-								min={normalDate}
-								max={normalDate}
+						<ResultsCalenderThumb>
+							<DatePicker
+								label={translation.results.label1}
+								labelAlignment="left"
+								value={new Date(dateToday)}
+								minDate={new Date(dateToday)}
+								maxDate={new Date(dateToday)}
+								icon={'.'}
+								disabled={true}
 							/>
-						</ResultsLabel>
+						</ResultsCalenderThumb>
 						<ResultsLabel>
 							{translation.results.label2}
 							<ResultsInput type="text" name="page" />
@@ -122,12 +125,12 @@ const pagesFinished = useSelector(selectorPagesReaded);
 			</ResultsBox>
 			{isShowModal && (
 				<Modal onClose={() => setIsShowModal(false)}>
-					<ModalFaster onClose={() => setIsShowModal(false) } />
+					<ModalFaster onClose={() => setIsShowModal(false)} />
 				</Modal>
 			)}
 			{isShowModalEndReading && (
 				<Modal onClose={() => setIsShowModalEndReading(false)}>
-					<ModalDone onClose={handleDoneBtnClick}/>
+					<ModalDone onClose={handleDoneBtnClick} />
 				</Modal>
 			)}
 		</>
