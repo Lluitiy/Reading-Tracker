@@ -17,7 +17,7 @@ const ThemeSwitcher = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<ThemeButton type="submit">
+			<ThemeButton type="submit" aria-label="theme mode: day and night">
 				{checked ? (
 					<LightIcon width={22} height={22} />
 				) : (

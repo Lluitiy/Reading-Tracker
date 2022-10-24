@@ -24,7 +24,11 @@ const MobileLibrary = ({ isLibraryEmpty }) => {
 					<LibraryList category={BOOK_CATEGORY.finishedReading} />
 					<LibraryList category={BOOK_CATEGORY.currentlyReading} />
 					<LibraryList category={BOOK_CATEGORY.goingToRead} />
-					<PlusBtn type="button" onClick={toggleFormOpen}>
+					<PlusBtn
+						type="button"
+						onClick={toggleFormOpen}
+						aria-label="Add new book"
+					>
 						+
 					</PlusBtn>
 				</>

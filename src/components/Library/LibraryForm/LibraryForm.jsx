@@ -35,7 +35,7 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 		<Section>
 			<Container>
 				<Wrapper>
-					<BackBtn type="button" onClick={handleFormOpen}>
+					<BackBtn type="button" onClick={handleFormOpen} aria-label="Return button">
 						<BackArrow width="24" height="24" />
 					</BackBtn>
 					<Formik
@@ -52,7 +52,12 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 							<Upper>
 								<NameLabel>
 									{translation.libraryForm.book}
-									<Input placeholder="..." type="text" name="title" />
+									<Input
+										placeholder="..."
+										type="text"
+										name="title"
+										aria-label="Input book name"
+									/>
 									<ErrorMessage
 										name="title"
 										render={() => <Error>Enter the title</Error>}
@@ -62,7 +67,12 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 							<Lower>
 								<AuthorLabel>
 									{translation.libraryForm.author}
-									<Input placeholder="..." type="text" name="author" />
+									<Input
+										placeholder="..."
+										type="text"
+										name="author"
+										aria-label="Input author"
+									/>
 									<ErrorMessage
 										name="author"
 										render={() => <Error>Enter the author</Error>}
@@ -70,7 +80,12 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 								</AuthorLabel>
 								<Label>
 									{translation.libraryForm.date}
-									<Input placeholder="..." type="text" name="publishYear" />
+									<Input
+										placeholder="..."
+										type="text"
+										name="publishYear"
+										aria-label="Input publish year"
+									/>
 									<ErrorMessage
 										name="publishYear"
 										render={() => <Error>Min 1000AC</Error>}
@@ -78,14 +93,21 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 								</Label>
 								<Label>
 									{translation.libraryForm.pages}
-									<Input placeholder="..." type="text" name="pagesTotal" />
+									<Input
+										placeholder="..."
+										type="text"
+										name="pagesTotal"
+										aria-label="Input total book pages"
+									/>
 									<ErrorMessage
 										name="pagesTotal"
 										render={() => <Error>Max 5000</Error>}
 									/>
 								</Label>
 							</Lower>
-							<AddBtn type="submit">{translation.libraryForm.btnAdd}</AddBtn>
+							<AddBtn type="submit" aria-label="Add book to the books list">
+								{translation.libraryForm.btnAdd}
+							</AddBtn>
 						</NewBookForm>
 					</Formik>
 				</Wrapper>

@@ -14,12 +14,11 @@ import {
 	Wrapper,
 } from './ResumeModal.styled';
 
-export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
+export const ResumeModal = ({ onClose, initRating = 0, id }) => {
 	const [feedback, setFeedback] = useState(' ');
 	const [rating, setRating] = useState(initRating);
-	const dispatch = useDispatch()
-		const translation = useTranslation();
-
+	const dispatch = useDispatch();
+	const translation = useTranslation();
 
 	const changeRating = e => {
 		setRating(Math.ceil(e));
@@ -27,10 +26,9 @@ export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		const review = { id, rating, feedback }
-		dispatch(addBookReview(review))
+		const review = { id, rating, feedback };
+		dispatch(addBookReview(review));
 
-	
 		event.currentTarget.reset();
 		onClose();
 	};
@@ -43,7 +41,6 @@ export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 		<Wrapper>
 			<Form onSubmit={handleSubmit} autoComplete="off">
 				<label>
-
 					<RatingTextS>{translation.resumeModal.title}</RatingTextS>
 					<RatingStars value={rating} changeHandler={changeRating} />
 					<ResumeTextS>{translation.resumeModal.resume}</ResumeTextS>
@@ -58,7 +55,9 @@ export const ResumeModal = ({ onClose, initRating = 0, id, }) => {
 						<ButtonBackS type="button" onClick={onClose}>
 							{translation.resumeModal.btnBack}
 						</ButtonBackS>
-						<ButtonSaveS type="submit">{translation.resumeModal.btnSave}</ButtonSaveS>
+						<ButtonSaveS type="submit">
+							{translation.resumeModal.btnSave}
+						</ButtonSaveS>
 					</ButtonContainerS>
 				</label>
 			</Form>
