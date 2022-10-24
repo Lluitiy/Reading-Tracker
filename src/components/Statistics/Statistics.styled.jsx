@@ -68,7 +68,6 @@ export const StatisticsBox = styled.div`
 	}
 
 	@media screen and (min-width: 1280px) {
-		/* display: flex; */
 		width: 928px;
 		height: 340px;
 
@@ -83,6 +82,7 @@ export const StatisticsBox = styled.div`
 export const StatisticsTitle = styled.h2`
 	display: flex;
 	margin-left: 5px;
+
 	font-size: 12px;
 	color: ${p => p.theme.colors.textMain};
 	text-transform: uppercase;
@@ -92,12 +92,17 @@ export const StatisticsTitle = styled.h2`
 	}
 `;
 
+export const StatisticDaysSpan = styled.span`
+margin-left: 5px;
+`;
+
 export const StatisticsText = styled.p`
-	/* margin-left: 782px; */
 	margin-top: 5px;
 	margin-right: 50px;
+
 	font-size: 12px;
 	font-weight: 600;
+	
 	color: ${p => p.theme.colors.counter};
 	text-transform: uppercase;
 

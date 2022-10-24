@@ -2,22 +2,44 @@ import styled from '@emotion/styled';
 
 export const ResultsBox = styled.div`
 	width: 280px;
-	min-height: 340px;
+	height: 340px;
 	padding: 20px;
-
+	
 	background-color: ${p => p.theme.colors.white};
 	box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
+	overflow-y: scroll;
+
 	@media screen and (min-width: 768px) {
 		width: 704px;
-		min-height: 309px;
+		height: 309px;
 		padding: 28px 96px;
 	}
 
 	@media screen and (min-width: 1280px) {
-		width: 280px;
+		width: 288px;
+		height: 340px;
 		padding: 20px;
+		
 	}
+	
+
+	::-webkit-scrollbar {
+    width: 2px; /* ширина для вертикального скролла */
+   
+    background-color: ${p => p.theme.colors.brand};
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: ${p => p.theme.colors.brand};
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: ${p => p.theme.colors.brand};
+}
 `;
 
 export const ResultsTitle = styled.h2`
@@ -35,6 +57,7 @@ export const ResultsForm = styled.form`
 	flex-direction: column;
 	margin-top: 12px;
 	gap: 28px;
+
 	font-size: 12px;
 	color: ${p => p.theme.colors.textMain};
 
@@ -61,9 +84,9 @@ export const FormBox = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-top: 12px;
-	/* margin-left: 5px; */
 	gap: 20px;
 	font-size: 12px;
+
 	color: ${p => p.theme.colors.textMain};
 `;
 
@@ -77,10 +100,12 @@ export const ResultsLabel = styled.label`
 `;
 export const ResultsInput = styled.input`
 	width: 100%;
+	margin-top: 4px;
 	height: 42px;
+
 	background: ${p => p.theme.colors.body};
 	border: 1px solid ${p => p.theme.colors.icons};
-	margin-top: 4px;
+	
 
 	@media screen and (min-width: 768px) {
 		width: 110px;
@@ -152,10 +177,10 @@ export const StatisticsPageBox = styled.div`
 export const StatisticsPageTitle = styled.h2`
 	display: flex;
 	justify-content: center;
+
 	font-weight: 700;
 	font-size: 12px;
 	line-height: 1.21;
-
 	color: ${p => p.theme.colors.textMain};
 	text-transform: uppercase;
 
@@ -207,6 +232,7 @@ export const StatisticsPageTitle = styled.h2`
 	@media screen and (min-width: 1280px) {
 		display: flex;
 		justify-content: center;
+
 		font-weight: 700px;
 		font-size: 12px;
 		line-height: 1.21;
@@ -236,19 +262,6 @@ export const StatisticsPageTitle = styled.h2`
 
 export const ResultsPageList = styled.ul`
 	margin-top: 4px;
-`;
-
-export const IconWrapper = styled.div`
-	/* margin-left: auto;
-margin-right: auto; */
-	/* display: flex;
-	justify-content: center;
-	align-items: center; */
-	/* margin-right: 12px;
-	padding-top: 4px; */
-	width: 49px;
-	height: 45px;
-	margin: 0;
 `;
 
 export const BtnBox = styled.div`

@@ -17,6 +17,7 @@ import { booksId } from 'Redux/Planning/planningSelectors';
 import { Application, DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
 
+
 const MyTraining = () => {
 	const translation = useTranslation();
 

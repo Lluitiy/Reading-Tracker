@@ -29,6 +29,7 @@ export const DateContainer = styled.div`
 	align-items: center;
 	gap: 20px;
 	margin-bottom: 20px;
+
 	@media screen and (min-width: 768px) {
 		margin-bottom: 24px;
 		display: flex;
@@ -63,7 +64,11 @@ export const DataInput = styled.input`
 `;
 export const SelectContainer = styled.div`
 	text-align: center;
+<<<<<<< HEAD:src/components/MyTraining/MyTraining.styled.js
+
+=======
 	margin-bottom: 16px;
+>>>>>>> b87179bcfed76c6739598a14b8c8579e24828e30:src/components/MyTraining/MyTraining.styled.jsx
 	@media screen and (min-width: 768px) {
 		margin-bottom: 40px;
 		display: flex;
