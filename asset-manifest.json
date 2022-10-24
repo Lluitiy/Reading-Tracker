@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.4dddeae4.css",
-    "main.js": "/TeamSlice/static/js/main.768af2be.js",
-    "static/js/519.0bdb69ae.chunk.js": "/TeamSlice/static/js/519.0bdb69ae.chunk.js",
-    "static/js/419.4b04f67e.chunk.js": "/TeamSlice/static/js/419.4b04f67e.chunk.js",
+    "main.js": "/TeamSlice/static/js/main.06982353.js",
+    "static/js/42.06ff6efd.chunk.js": "/TeamSlice/static/js/42.06ff6efd.chunk.js",
+    "static/js/440.1f9b06f4.chunk.js": "/TeamSlice/static/js/440.1f9b06f4.chunk.js",
     "static/js/461.ce96a667.chunk.js": "/TeamSlice/static/js/461.ce96a667.chunk.js",
     "static/js/755.14a75b55.chunk.js": "/TeamSlice/static/js/755.14a75b55.chunk.js",
     "static/js/746.820de549.chunk.js": "/TeamSlice/static/js/746.820de549.chunk.js",
@@ -44,9 +44,9 @@
     "static/media/flag.svg": "/TeamSlice/static/media/flag.e775a9204a6e357c27946a0968624272.svg",
     "static/media/arrowDown.svg": "/TeamSlice/static/media/arrowDown.39c672728ec4b332b555ada15a3c2626.svg",
     "main.4dddeae4.css.map": "/TeamSlice/static/css/main.4dddeae4.css.map",
-    "main.768af2be.js.map": "/TeamSlice/static/js/main.768af2be.js.map",
-    "519.0bdb69ae.chunk.js.map": "/TeamSlice/static/js/519.0bdb69ae.chunk.js.map",
-    "419.4b04f67e.chunk.js.map": "/TeamSlice/static/js/419.4b04f67e.chunk.js.map",
+    "main.06982353.js.map": "/TeamSlice/static/js/main.06982353.js.map",
+    "42.06ff6efd.chunk.js.map": "/TeamSlice/static/js/42.06ff6efd.chunk.js.map",
+    "440.1f9b06f4.chunk.js.map": "/TeamSlice/static/js/440.1f9b06f4.chunk.js.map",
     "461.ce96a667.chunk.js.map": "/TeamSlice/static/js/461.ce96a667.chunk.js.map",
     "755.14a75b55.chunk.js.map": "/TeamSlice/static/js/755.14a75b55.chunk.js.map",
     "746.820de549.chunk.js.map": "/TeamSlice/static/js/746.820de549.chunk.js.map",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.4dddeae4.css",
-    "static/js/main.768af2be.js"
+    "static/js/main.06982353.js"
   ]
 }
