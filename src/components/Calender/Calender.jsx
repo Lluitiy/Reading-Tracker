@@ -1,24 +1,19 @@
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useState } from 'react';
-import { TextField } from '@mui/material';
+import { DatePicker } from 'react-rainbow-components';
+
 const Calender = () => {
-	const [value, setValue] = useState('2022-10-23');
+	const [date, setDate] = useState(new Date('2019-10-25 10:44'));
 
 	return (
-		<form>
-			<LocalizationProvider dateAdapter={AdapterDayjs}>
-				<DatePicker
-					label="Result"
-					value={value}
-					onChange={newValue => {
-						setValue(newValue);
-					}}
-					renderInput={params => <TextField {...params} />}
-				/>
-			</LocalizationProvider>
-		</form>
+		<div style={{ width: '280px' }}>
+			<DatePicker
+				id="datePicker-1"
+				value={date}
+				onChange={value => setDate({ date: value })}
+				hideLabel={true}
+				formatStyle="large"
+			/>
+		</div>
 	);
 };
 

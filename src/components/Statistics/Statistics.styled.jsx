@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 
 export const StartTraningBox = styled.div`
-   display: flex;
-   justify-content: center;
-   max-width: 958px;
-   
-`
+	display: flex;
+	justify-content: center;
+	max-width: 958px;
+`;
 
 export const StartTraningBtn = styled.button`
 	display: flex;
@@ -21,7 +20,12 @@ export const StartTraningBtn = styled.button`
 	border: none;
 	color: ${p => p.theme.colors.white};
 	background-color: ${p => p.theme.colors.brand};
-
+	transition: ${p => p.theme.transition};
+	:hover {
+		border: 1px solid ${p => p.theme.colors.textMain};
+		background: transparent;
+		color: ${p => p.theme.colors.textMain};
+	}
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0px;
 		height: 42px;
@@ -29,17 +33,14 @@ export const StartTraningBtn = styled.button`
 	@media screen and (min-width: 1280px) {
 		height: 40px;
 	}
-	&:hover,
-	&:focus {
-	}
 `;
 export const StatisticsSection = styled.section`
 	display: block;
-   margin-top: 32px;
+	margin-top: 32px;
 
 	@media screen and (min-width: 768px) {
 		display: block;
-      margin-top: 40px;
+		margin-top: 40px;
 	}
 
 	@media screen and (min-width: 1280px) {
@@ -56,7 +57,7 @@ export const StatisticsBox = styled.div`
 	margin-bottom: 32px;
 
 	text-align: end;
-	background-color: ${p => p.theme.colors.white};
+	background-color: ${p => p.theme.colors.grafic};
 	box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 
 	@media screen and (min-width: 768px) {
@@ -68,7 +69,6 @@ export const StatisticsBox = styled.div`
 	}
 
 	@media screen and (min-width: 1280px) {
-		/* display: flex; */
 		width: 928px;
 		height: 340px;
 
@@ -83,6 +83,7 @@ export const StatisticsBox = styled.div`
 export const StatisticsTitle = styled.h2`
 	display: flex;
 	margin-left: 5px;
+
 	font-size: 12px;
 	color: ${p => p.theme.colors.textMain};
 	text-transform: uppercase;
@@ -92,12 +93,17 @@ export const StatisticsTitle = styled.h2`
 	}
 `;
 
+export const StatisticDaysSpan = styled.span`
+margin-left: 5px;
+`;
+
 export const StatisticsText = styled.p`
-	/* margin-left: 782px; */
 	margin-top: 5px;
 	margin-right: 50px;
+
 	font-size: 12px;
 	font-weight: 600;
+	
 	color: ${p => p.theme.colors.counter};
 	text-transform: uppercase;
 

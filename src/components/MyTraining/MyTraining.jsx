@@ -1,105 +1,117 @@
 import React, { useEffect, useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
 	Title,
-	DataInput,
 	Select,
 	DateContainer,
 	SelectContainer,
-	DataSvg,
-	Label,
-	BoxForSvg,
+	Arrow,
+	CalenderThumb,
+	DateIcon,
 } from './MyTraining.styled';
 import useTranslation from 'Hooks/useTranslations';
-
 import Button from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
-import { showResults } from 'Redux/Planning/planningSlice';
+import { Application, DatePicker } from 'react-rainbow-components';
+import dayjs from 'dayjs';
 
 const MyTraining = () => {
-	const [startValue, setStartValue] = useState('');
-	const [finishValue, setfinishValue] = useState('');
 	const translation = useTranslation();
 
 	const books = useSelector(state => state.books.books.goingToRead);
 	const accessToken = useSelector(state => state.auth.accessToken);
 	const ids = useSelector(booksId);
-
-	const date = new Date();
-	const normalDate = date.toLocaleDateString();
-	const year = String(date.getFullYear());
-	const month = String(date.getMonth() + 1);
-	const day = [...normalDate];
-	const realDay = day[0] + day[1];
-
 	const dispatch = useDispatch();
+
+	const dateToday = `${dayjs().get('year')}-${
+		dayjs().get('month') + 1
+	}-${dayjs().get('date')}`;
+	const [startValue, setStartValue] = useState('');
+	const [endValue, setEndValue] = useState('');
 
 	useEffect(() => {
 		if (accessToken) {
 			dispatch(getUserBooksThunk());
-			dispatch(showResults(false));
 		}
 	}, [accessToken, dispatch]);
 
 	const onSubmit = e => {
 		e.preventDefault();
 		const clone = ids.some(id => id === e.currentTarget.elements.select.value);
-		if (startValue === '' || finishValue === '') {
-			return alert('All fields must be filled!');
+		if (startValue === '' || endValue === '') {
+			return Notify.warning(`${translation.myTraining.warningFields}`);
 		}
 		if (clone) {
-			alert('You already added this book');
+			Notify.warning(`${translation.myTraining.warningAdded}`);
 			return;
 		}
 		const value = e.currentTarget.elements.select.value;
+
 		dispatch(
 			startPlanning({
 				startDate: startValue,
-				endDate: finishValue,
+				endDate: endValue,
 				books: [...ids, value],
 			})
 		);
 	};
-
+	const handleChangeStart = value => {
+		const userDate = value.toLocaleDateString().split('.').reverse().join('-');
+		setStartValue(userDate);
+	};
+	const handleChangeEnd = value => {
+		const userDate = value.toLocaleDateString().split('.').reverse().join('-');
+		setEndValue(userDate);
+	};
+	const theme = {
+		rainbow: {
+			palette: {
+				brand: '#ffa500',
+				boxShadow: '0 0 2px #ffa500',
+			},
+			border: {
+				borderRadius: '1px',
+			},
+		},
+	};
 	return (
-		<div>
+		<>
 			<Title>{translation.myTraining.title}</Title>
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
-					<Label>
-						<BoxForSvg>
-							<DataSvg />
-							Start
-						</BoxForSvg>
-						<DataInput
-							type="date"
-							value={startValue}
-							onChange={e => {
-								console.log(e.target.value);
-								setStartValue(e.target.value);
-							}}
-							required
-							min={`${year}-${month}-${realDay}`}
-						></DataInput>
-					</Label>
-					<Label>
-						<BoxForSvg>
-							<DataSvg />
-							Finish
-						</BoxForSvg>
-						<DataInput
-							type="date"
-							value={finishValue}
-							onChange={e => {
-								setfinishValue(e.target.value);
-							}}
-							placeholder="finish"
-							required
-							min={`${year}-${month}-${realDay}`}
-						></DataInput>
-					</Label>
+					<CalenderThumb>
+						<Application theme={theme}>
+							<DatePicker
+								value={startValue}
+								placeholder={translation.myTraining.start}
+								minDate={new Date(dateToday)}
+								onChange={handleChangeStart}
+								required={true}
+								icon={<Arrow />}
+								variant="double"
+								isCentered={true}
+							/>
+						</Application>
+						<DateIcon />
+					</CalenderThumb>
+					<CalenderThumb>
+						<Application theme={theme}>
+							<DatePicker
+								value={endValue}
+								placeholder={translation.myTraining.end}
+								minDate={new Date(dateToday)}
+								onChange={handleChangeEnd}
+								required={true}
+								icon={<Arrow />}
+								variant="double"
+								isCentered={true}
+							/>
+						</Application>
+						<DateIcon />
+					</CalenderThumb>
 				</DateContainer>
 				<SelectContainer>
 					<Select name="select" aria-label="Select training">
@@ -117,7 +129,7 @@ const MyTraining = () => {
 					</Button>
 				</SelectContainer>
 			</form>
-		</div>
+		</>
 	);
 };
 

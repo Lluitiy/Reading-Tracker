@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { booksId } from 'Redux/Planning/planningSelectors';
+import { booksId, showResultsSection } from 'Redux/Planning/planningSelectors';
 import {
 	Title,
 	MyGoalsContainer,
@@ -14,13 +14,16 @@ import useTranslation from 'Hooks/useTranslations';
 const MyGoals = () => {
 	const ids = useSelector(booksId);
 	const state = useSelector(state => state.planning);
-  const translation = useTranslation();
+	const translation = useTranslation();
+	const isShowResultsSection = useSelector(showResultsSection);
+	const booksLefts = state.books.filter(
+		({ pagesTotal, pagesFinished }) => pagesTotal !== pagesFinished
+	);
 
-	const booksLefts = 0;
 	return (
 		<MyGoalsContainer>
 			<Title>{translation.myGoals.title}</Title>
-			{false ? (
+			{isShowResultsSection ? (
 				<List startTraining>
 					<Item startTraining>
 						<Counter startTraining>{ids ? state.books.length : '0'}</Counter>
@@ -34,7 +37,7 @@ const MyGoals = () => {
 					</Item>
 					<Item startTraining>
 						<Counter active startTraining>
-							{booksLefts}
+							{booksLefts.length}
 						</Counter>
 						<Text>{translation.myGoals.text3}</Text>
 					</Item>

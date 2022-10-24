@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { ReactComponent as DataIcon } from '../../Assets/svg/calendar.svg';
-import { ReactComponent as ArrowIcon } from '../../Assets/svg/arrowDown.svg';
+import { ReactComponent as DataIcon } from 'Assets/svg/calendar.svg';
+import { ReactComponent as ArrowIcon } from 'Assets/svg/arrowDown.svg';
+import { ReactComponent as CalenderIcon } from 'Assets/svg/calendar.svg';
 
-export const Title = styled.h1`
+export const Title = styled.h2`
 	display: block;
 	font-family: 'Montserrat';
 	font-style: normal;
@@ -12,8 +13,8 @@ export const Title = styled.h1`
 	text-align: center;
 	margin-bottom: 20px;
 	padding: 18px;
-	background-color: ${p => p.theme.colors.trainingGrey};
-	color: ${p => p.theme.colors.white};
+	background-color: ${p => p.theme.colors.myTrainingBox};
+	color: ${p => p.theme.colors.trainingText};
 	@media screen and (min-width: 768px) {
 		margin-bottom: 28px;
 	}
@@ -23,11 +24,16 @@ export const Title = styled.h1`
 	}
 `;
 export const DateContainer = styled.div`
-	display: block;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
 	margin-bottom: 20px;
+
 	@media screen and (min-width: 768px) {
 		margin-bottom: 24px;
 		display: flex;
+		flex-direction: row;
 		justify-content: flex-start;
 		gap: 40px;
 	}
@@ -56,9 +62,11 @@ export const DataInput = styled.input`
 	@media screen and (min-width: 1280px) {
 	}
 `;
-
 export const SelectContainer = styled.div`
 	text-align: center;
+	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11111! */
+	margin-bottom: 16px;
+	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 	@media screen and (min-width: 768px) {
 		margin-bottom: 40px;
 		display: flex;
@@ -98,6 +106,13 @@ export const DataSvg = styled(DataIcon)`
 	margin-left: 10px;
 	margin-right: 20px;
 `;
+export const CalenderThumb = styled.div`
+	position: relative;
+	width: 280px;
+	@media screen and (min-width: 768px) {
+		width: 250px;
+	}
+`;
 export const Label = styled.label`
 	position: relative;
 `;
@@ -113,12 +128,12 @@ export const BoxForSvg = styled.div`
 	top: 1px;
 	left: 1px;
 `;
-
 export const Arrow = styled(ArrowIcon)`
+	fill: ${p => p.theme.colors.icons};
+`;
+export const DateIcon = styled(CalenderIcon)`
 	position: absolute;
-	/* top: -50%;
-	left: -50%;
-	transform: translateX(); */
-	left: 234px;
-	top: 45%;
+	top: 0;
+	left: 12px;
+	transform: translateY(50%);
 `;

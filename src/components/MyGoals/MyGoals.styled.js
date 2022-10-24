@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const MyGoalsContainer = styled.div`
 	background-color: ${p => p.theme.colors.white};
-	color: ${p => p.theme.colors.textSecondary};
+
 	margin-left: auto;
 	margin-right: auto;
 
@@ -21,12 +21,12 @@ export const MyGoalsContainer = styled.div`
 		margin-bottom: 0px;
 	}
 `;
-export const Title = styled.h1`
+export const Title = styled.h2`
 	display: block;
 
 	padding: 18px 26px;
-	background-color: ${p => p.theme.colors.trainingGrey};
-	color: ${p => p.theme.colors.white};
+	background-color: ${p => p.theme.colors.myTrainingBox};
+	color: ${p => p.theme.colors.trainingText};
 	font-style: normal;
 	font-weight: 600;
 	font-size: 20px;
