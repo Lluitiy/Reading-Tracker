@@ -93,7 +93,7 @@ const en = {
 		btnSave: 'Save',
 	},
 	statistics: {
-		startBtn: 'Start traning',
+		startBtn: 'Start training',
 		statTitle: 'Amount of pages / day',
 		time: 'Time',
 		plan: 'PLAN',
