@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/TeamSlice/static/css/main.4dddeae4.css",
-    "main.js": "/TeamSlice/static/js/main.f9d6e669.js",
+    "main.js": "/TeamSlice/static/js/main.b3fd3769.js",
     "static/js/718.23f59ef7.chunk.js": "/TeamSlice/static/js/718.23f59ef7.chunk.js",
     "static/js/521.ab3759f2.chunk.js": "/TeamSlice/static/js/521.ab3759f2.chunk.js",
     "static/js/438.d397bdde.chunk.js": "/TeamSlice/static/js/438.d397bdde.chunk.js",
     "static/js/755.d99b3722.chunk.js": "/TeamSlice/static/js/755.d99b3722.chunk.js",
     "static/js/746.820de549.chunk.js": "/TeamSlice/static/js/746.820de549.chunk.js",
     "static/js/659.9d806c6a.chunk.js": "/TeamSlice/static/js/659.9d806c6a.chunk.js",
-    "static/js/486.0dbb2fbd.chunk.js": "/TeamSlice/static/js/486.0dbb2fbd.chunk.js",
+    "static/js/486.aa25fa2a.chunk.js": "/TeamSlice/static/js/486.aa25fa2a.chunk.js",
     "static/media/desktop@2x.jpg": "/TeamSlice/static/media/desktop@2x.837ace8b0b872b5562b4.jpg",
     "static/media/tablet@2x.jpg": "/TeamSlice/static/media/tablet@2x.653fc551649acd8637bd.jpg",
     "static/media/Max.jpeg": "/TeamSlice/static/media/Max.f7c6330a1ca49b0bfcef.jpeg",
@@ -44,17 +44,17 @@
     "static/media/flag.svg": "/TeamSlice/static/media/flag.e775a9204a6e357c27946a0968624272.svg",
     "static/media/arrowDown.svg": "/TeamSlice/static/media/arrowDown.39c672728ec4b332b555ada15a3c2626.svg",
     "main.4dddeae4.css.map": "/TeamSlice/static/css/main.4dddeae4.css.map",
-    "main.f9d6e669.js.map": "/TeamSlice/static/js/main.f9d6e669.js.map",
+    "main.b3fd3769.js.map": "/TeamSlice/static/js/main.b3fd3769.js.map",
     "718.23f59ef7.chunk.js.map": "/TeamSlice/static/js/718.23f59ef7.chunk.js.map",
     "521.ab3759f2.chunk.js.map": "/TeamSlice/static/js/521.ab3759f2.chunk.js.map",
     "438.d397bdde.chunk.js.map": "/TeamSlice/static/js/438.d397bdde.chunk.js.map",
     "755.d99b3722.chunk.js.map": "/TeamSlice/static/js/755.d99b3722.chunk.js.map",
     "746.820de549.chunk.js.map": "/TeamSlice/static/js/746.820de549.chunk.js.map",
     "659.9d806c6a.chunk.js.map": "/TeamSlice/static/js/659.9d806c6a.chunk.js.map",
-    "486.0dbb2fbd.chunk.js.map": "/TeamSlice/static/js/486.0dbb2fbd.chunk.js.map"
+    "486.aa25fa2a.chunk.js.map": "/TeamSlice/static/js/486.aa25fa2a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4dddeae4.css",
-    "static/js/main.f9d6e669.js"
+    "static/js/main.b3fd3769.js"
   ]
 }
