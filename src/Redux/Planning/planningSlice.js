@@ -42,7 +42,6 @@ const planningSlice = createSlice({
 		resetPagesAndPlan(state) {
 			state.planFact = [];
 			state.isShowResults = false;
-			state.readedPages = null;
 			state.booksId = [];
 			state.books = [];
 		},

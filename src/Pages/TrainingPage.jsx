@@ -11,23 +11,24 @@ import { useMediaQuery } from 'react-responsive';
 import MobileTrainingPage from 'components/MobileTrainingPage/MobileTrainingPage';
 
 const TrainingPage = () => {
-	//! Лера - при загрузке этой страницы мне нужно получить данные с сервера
-	// const dispatch = useDispatch();
-
-	// useEffect(() => {
-	// dispatch(getCurrentPlanning())
-
-	// }, [dispatch]);
-	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
 
 	const dispatch = useDispatch();
-	const showResults = useSelector(showResultsSection);
 
 	useEffect(() => {
-		if (showResults) {
-			dispatch(getCurrentPlanning());
-		}
-	}, [dispatch, showResults]);
+	dispatch(getCurrentPlanning())
+
+	}, [dispatch]);
+	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
+
+	// const dispatch = useDispatch();
+	const showResults = useSelector(showResultsSection);
+
+	// useEffect(() => {
+	// 	if (showResults) {
+	// 		dispatch(getCurrentPlanning());
+	// 	}
+	// }, [dispatch, showResults]);
+
 
 	return (
 		<Section>

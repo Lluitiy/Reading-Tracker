@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Backdrop, ModalBox } from './Modal.styled';
 
-function Modal({ onClose, children }) {
+function Modal({ onClose, children, offBackdrop=false }) {
 	useEffect(() => {
 		const handeleClickDown = e => {
 			if (e.code === 'Escape') {
@@ -20,7 +20,10 @@ function Modal({ onClose, children }) {
 		// eslint-disable-next-line
 	}, []);
 
+
 	const handleBackdropClick = e => {
+		if (offBackdrop) return;
+
 		if (e.currentTarget === e.target) {
 			onClose();
 		}
@@ -40,6 +43,7 @@ Modal.propTypes = {
 		PropTypes.shape({
 			onClose: PropTypes.func.isRequired,
 			children: PropTypes.node.isRequired,
+			offBackdrop: PropTypes.bool,
 		})
 	),
 };
