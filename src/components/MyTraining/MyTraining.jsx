@@ -73,7 +73,7 @@ const MyTraining = () => {
 				boxShadow: '0 0 2px #ffa500',
 			},
 			border: {
-				borderRadius: '1px',
+				main: '1px solid transparent',
 			},
 		},
 	};
