@@ -136,9 +136,6 @@ export const BackBtn = styled.button`
 	background-color: transparent;
 	border: none;
 
-	@media screen and (min-width: 768px) {
-		display: none;
-	}
 `;
 export const AddBtn = styled.button`
 	display: flex;

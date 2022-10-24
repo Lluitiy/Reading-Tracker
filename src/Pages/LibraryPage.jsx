@@ -14,7 +14,8 @@ import { useEffect } from 'react';
 import { getUserBooksThunk } from 'Redux/Books/booksOperations';
 import { getAllBooks, getBooksStatus } from 'Redux/Books/booksSelectors';
 import EmptyLibraryInfo from 'components/Library/EmptyLibraryInfo/EmptyLibraryInfo';
-// import API from 'Services/Api/Api';
+import { getCurrentPlanning } from 'Redux/Planning/planningOperations';
+
 
 const LibraryPage = () => {
 	const translation = useTranslation();
@@ -33,28 +34,16 @@ const LibraryPage = () => {
 	useEffect(() => {
 		if (accessToken) {
 			dispatch(getUserBooksThunk());
+			dispatch(getCurrentPlanning());
 		}
 	}, [accessToken, dispatch]);
 
-	const send = () => {
-		// 		API.postPlanning({
-		//   startDate: "2022-10-21",
-		//   endDate: "2022-10-23",
-		//   books: [
-		//     "63528fed3551fd60da51062b"
-		//   ]
-		// 		}).then((r)=>console.log('plan', r))
-		// 		API.patchPlanning({
-		//   pages: 23
-		// 		}).then((r)=>console.log('patch', r))
-		// API.getPlanning().then(console.log)
-	};
 
 	return isLoading ? (
 		<Spinner />
 	) : isDesktopOrTablet ? (
 		<>
-			<LibraryForm />
+				<LibraryForm isMobile={ !isDesktopOrTablet} />
 			{isLibraryEmpty ? (
 				<EmptyLibraryInfo />
 			) : (
@@ -65,7 +54,6 @@ const LibraryPage = () => {
 					/>
 					<LibraryList category={BOOK_CATEGORY.currentlyReading} />
 					<LibraryList category={BOOK_CATEGORY.goingToRead} />
-					<button onClick={send}>bub</button>
 				</>
 			)}
 		</>

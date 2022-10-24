@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import STATUS from 'components/Constants/status';
+import { getCurrentPlanning } from 'Redux/Planning/planningOperations';
 import { addBookReview, addUserBookThunk, getUserBooksThunk } from './booksOperations';
 
 const initialStateBooks = {
@@ -18,12 +19,18 @@ export const booksSlice = createSlice({
 	extraReducers: {
 		[getUserBooksThunk.fulfilled]: (state, { payload }) => {
 			state.books.goingToRead = payload.goingToRead;
-			state.books.currentlyReading = payload.currentlyReading;
 			state.books.finishedReading = payload.finishedReading;
 			state.status = STATUS.fulfilled
 		},
 		[getUserBooksThunk.pending]: state => {
 			state.status = STATUS.pending
+		},
+		[getCurrentPlanning.pending]: state => {
+			state.status = STATUS.pending
+		},
+		[getCurrentPlanning.fulfilled]: (state, { payload }) => {
+			state.books.currentlyReading = payload.planning.books;
+			state.status = STATUS.fulfilled
 		},
 		[getUserBooksThunk.rejected]: state => {
 			state.status = STATUS.rejected
