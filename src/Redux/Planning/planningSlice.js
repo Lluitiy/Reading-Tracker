@@ -44,7 +44,6 @@ const planningSlice = createSlice({
 			state.planFact = [];
 			state.readedPages = null;
 			state.isShowResults = false;
-			state.readedPages = null;
 			state.booksId = [];
 			state.books = [];
 		},

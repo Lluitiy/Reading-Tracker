@@ -138,6 +138,7 @@ export default function Statistics() {
 								left: 5,
 								bottom: 5,
 							}}
+							
 						>
 							<CartesianGrid strokeDasharray="0" horizontalPoints={[210]} />
 							<XAxis

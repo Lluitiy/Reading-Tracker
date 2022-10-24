@@ -1,5 +1,5 @@
 export const dotsPaddingByWidth = () => {
-   const windowWidth = window.innerWidth;
+	const windowWidth = window.innerWidth;
 	if (windowWidth < 768) {
 		return -180;
 	}

@@ -12,23 +12,23 @@ import Timer from 'components/Timer/Timer';
 
 const TrainingPage = () => {
 	//! Лера - при загрузке этой страницы мне нужно получить данные с сервера
-	// const dispatch = useDispatch();
-
-
-	// useEffect(() => {
-	// dispatch(getCurrentPlanning()) 
-		
-	// }, [dispatch]);
-
 	const dispatch = useDispatch();
-const showResults = useSelector(showResultsSection)
-
 
 	useEffect(() => {
-		if(showResults){
-		dispatch(getCurrentPlanning());
-	}
-	}, [dispatch,showResults]);
+	dispatch(getCurrentPlanning()) 
+		
+	}, [dispatch]);
+
+
+// 	const dispatch = useDispatch();
+const showResults = useSelector(showResultsSection)
+
+//! Лера - это точно нужно? если да, то плз отдельно от моего, иначе после перезагрузки страницы во время тренировки оно слетает
+	// useEffect(() => {
+	// 	if(showResults){
+	// 	dispatch(getCurrentPlanning());
+	// }
+	// }, [dispatch,showResults]);
 
 
 	return (
