@@ -81,10 +81,7 @@ export const Button = styled.button`
 			center/15000%;
 		color: ${p => p.theme.colors.white};
 	}
-	:active {
-		background-color: #ff6b08;
-		background-size: 100%;
-	}
+
 	@media screen and (min-width: 768px) {
 		margin-left: 44%;
 		:hover {

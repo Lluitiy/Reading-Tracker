@@ -18,13 +18,11 @@ export const register = createAsyncThunk(
 		try {
 			const data = await registerUser(user);
 			setToken(data.accessToken);
-			Notify.success(
-				`🦄 Ви успішно зареєструвалися, ${user.email} залогінтесь!`
-			);
+			Notify.success(`You have successfully registered, ${user.email} login!`);
 			return data;
 		} catch (error) {
 			Notify.failure(
-				`🦄 ${user.email} На жаль, реєстрація була неуспішною!. спробуйте ще раз`
+				`${user.email} Unfortunately, the registration was unsuccessful!. try again`
 			);
 			return thunkAPI.rejectWithValue(error.massage);
 		}
@@ -36,10 +34,10 @@ export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 	try {
 		const data = await loginUser(user);
 		setToken(data.accessToken);
-		Notify.success(`🦄 Ласкаво просимо! ${user.email}`);
+		Notify.success(`Welcome! ${user.email}`);
 		return data;
 	} catch (error) {
-		Notify.failure(`🦄 ${user.email} Увійти до системи не вдалося!`);
+		Notify.failure(`${user.email} Login to the system failed!`);
 		return thunkAPI.rejectWithValue(error.massage);
 	}
 });
@@ -49,11 +47,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 	try {
 		await logoutUser();
 		unsetToken();
-		Notify.success(`🦄 Ви успішно вийшли з профілю`);
 	} catch (error) {
-		Notify.failure(
-			`🦄 На жаль, вихід з профілю не був успішним. Спробуйте ще раз пізніше.`
-		);
 		return thunkAPI.rejectWithValue(error.massage);
 	}
 });

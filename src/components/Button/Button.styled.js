@@ -8,25 +8,22 @@ export const Mybutton = styled.button`
 	line-height: 1.25px;
 	text-align: center;
 	min-width: 170px;
-	height: 40px;
-	border: ${({ primary = false }) => {
-		return primary ? 'none' : '1px solid #242A37';
-	}};
+	height: 42px;
+
 	padding: 10px 47px;
 
-	color: ${({ primary = false, theme }) => {
-		return primary ? theme.colors.white : theme.colors.black;
-	}};
+	color: ${p => p.theme.colors.textMain};
+	border: 1px solid ${p => p.theme.colors.textMain};
+	background-color: ${p => p.theme.colors.transparent};
 
-	background-color: ${({ primary = false, theme }) => {
-		return primary ? theme.colors.brand : theme.colors.transparent;
-	}};
+	transition: ${p => p.theme.transition};
 
-	transition: ${({ theme }) => theme.transition};
-	&:hover,
-	:focus {
-		transform: scale(1.01);
+	:hover {
+		border: 1px solid ${p => p.theme.colors.transparent};
+		background: ${p => p.theme.colors.brand};
+		color: ${p => p.theme.colors.white};
 	}
+
 	@media screen and (min-width: 768px) {
 	}
 

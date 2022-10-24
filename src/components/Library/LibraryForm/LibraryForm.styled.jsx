@@ -79,14 +79,12 @@ export const Input = styled(Field)`
 	height: 42px;
 	margin-top: 8px;
 	padding: 12px;
-
+	color: ${p => p.theme.colors.textMain};
 	background-color: inherit;
 	border: 1px solid #a6abb9;
 	outline: none;
 	&:focus,
 	&:active {
-		border: none;
-		background-color: #ffffff;
 		box-shadow: 0px 1px 2px 0px #1d1d1b26 inset;
 	}
 `;

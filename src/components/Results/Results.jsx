@@ -64,11 +64,9 @@ export default function Results() {
 		e.preventDefault();
 		const inputValue = Number(e.target.elements[1].value);
 		const unreadPages = data[data.length - 1]?.plan - data[0]?.fact;
-		console.log('inputValue', inputValue);
-		console.log('e.target.elements[1]', e.target.elements[1]);
 		if (inputValue > unreadPages) {
 			return Notify.failure(
-				`You have entered more pages than are left. Unread pages - ${unreadPages} pages. Enter correct data`
+				`${translation.results.notify1part} ${unreadPages} ${translation.results.notify2part}`
 			);
 		}
 

@@ -4,7 +4,7 @@ export const ResultsBox = styled.div`
 	width: 280px;
 	height: 340px;
 	padding: 20px;
-	
+
 	background-color: ${p => p.theme.colors.white};
 	box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
@@ -20,26 +20,24 @@ export const ResultsBox = styled.div`
 		width: 288px;
 		height: 340px;
 		padding: 20px;
-		
 	}
-	
 
 	::-webkit-scrollbar {
-    width: 2px; /* ширина для вертикального скролла */
-   
-    background-color: ${p => p.theme.colors.brand};
-}
+		width: 2px; /* ширина для вертикального скролла */
 
-/* ползунок скроллбара */
-::-webkit-scrollbar-thumb {
-    background-color: ${p => p.theme.colors.brand};
-    border-radius: 9em;
-    box-shadow: inset 1px 1px 10px #f3faf7;
-}
+		background-color: ${p => p.theme.colors.brand};
+	}
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: ${p => p.theme.colors.brand};
-}
+	/* ползунок скроллбара */
+	::-webkit-scrollbar-thumb {
+		background-color: ${p => p.theme.colors.brand};
+		border-radius: 9em;
+		box-shadow: inset 1px 1px 10px #f3faf7;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: ${p => p.theme.colors.brand};
+	}
 `;
 
 export const ResultsTitle = styled.h2`
@@ -105,7 +103,8 @@ export const ResultsInput = styled.input`
 
 	background: ${p => p.theme.colors.body};
 	border: 1px solid ${p => p.theme.colors.icons};
-	
+	margin-top: 4px;
+	color: ${p => p.theme.colors.textMain};
 
 	@media screen and (min-width: 768px) {
 		width: 110px;
@@ -116,7 +115,7 @@ export const ResultsBtn = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 240px;
+	width: 100%;
 	height: 40px;
 	margin-bottom: 24px;
 
@@ -127,6 +126,12 @@ export const ResultsBtn = styled.button`
 	border: none;
 	color: ${p => p.theme.colors.white};
 	background-color: ${p => p.theme.colors.brand};
+	transition: ${p => p.theme.transition};
+	:hover {
+		border: 1px solid ${p => p.theme.colors.textMain};
+		background: transparent;
+		color: ${p => p.theme.colors.textMain};
+	}
 
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0px;
@@ -134,9 +139,6 @@ export const ResultsBtn = styled.button`
 	}
 	@media screen and (min-width: 1280px) {
 		height: 40px;
-	}
-	&:hover,
-	&:focus {
 	}
 `;
 
@@ -144,7 +146,7 @@ export const ResultsBackBtn = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 240px;
+	width: 100%;
 	height: 40px;
 	margin-bottom: 24px;
 
@@ -152,9 +154,15 @@ export const ResultsBackBtn = styled.button`
 	line-height: 1.21;
 	font-weight: 600px;
 
-	border: 1px soild ${p => p.theme.colors.black};
-	color: ${p => p.theme.colors.black};
-	background-color: ${p => p.theme.colors.white};
+	border: 1px solid ${p => p.theme.colors.textMain};
+	color: ${p => p.theme.colors.textMain};
+	background-color: ${p => p.theme.colors.transparent};
+	transition: ${p => p.theme.transition};
+	:hover {
+		border: none;
+		background: ${p => p.theme.colors.brand};
+		color: ${p => p.theme.colors.white};
+	}
 
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0px;
@@ -162,9 +170,6 @@ export const ResultsBackBtn = styled.button`
 	}
 	@media screen and (min-width: 1280px) {
 		height: 40px;
-	}
-	&:hover,
-	&:focus {
 	}
 `;
 export const StatisticsPageBox = styled.div`
@@ -264,6 +269,12 @@ export const ResultsPageList = styled.ul`
 	margin-top: 4px;
 `;
 
+export const IconWrapper = styled.div`
+	width: 49px;
+	height: 45px;
+	margin: 0;
+`;
+
 export const BtnBox = styled.div`
 	margin-top: 24px;
 
@@ -280,10 +291,7 @@ export const BtnBox = styled.div`
 	}
 `;
 
-export const ModalBox = styled.div`
-	/* margin-left: auto;
-margin-right: auto; */
-`;
+export const ModalBox = styled.div``;
 
 export const ModalText = styled.p`
 	margin-left: auto;
