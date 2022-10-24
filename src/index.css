@@ -65,3 +65,65 @@ button {
 	display: flex;
 	flex-direction: column;
 }
+
+.kSysTP {
+	/* border-radius: 1px !important; */
+	height: 42px;
+	background-color: transparent !important;
+
+
+}
+
+.kSysTP {
+	@media screen and (min-width: 768px) {
+		width: 250px !important
+	}
+
+
+}
+
+.gByhoA,
+.gYMNLj,
+.ijMeVy::after,
+.gOhvuy,
+.hhYVLo {
+	color: #ffa500 !important;
+
+}
+
+.dLXpfR:focus {
+	box-shadow: 0 0 2px orange !important
+}
+
+.jNQyvt:active,
+.jNQyvt:focus {
+	box-shadow: 0 0 2px rgb(255, 165, 0) !important;
+	border: 1px solid rgba(255, 165, 0, 1) !important;
+}
+
+.bScVTi:active,
+.bScVTi:focus {
+	border: 2px solid rgba(255, 165, 0, 1) !important;
+	box-shadow: 0 0 2px rgb(255, 165, 0) !important
+}
+
+.jNQyvt:hover {
+	border: 1px solid rgba(255, 165, 0, 1) !important;
+}
+
+.GRndm,
+.gOhvuy::after {
+	background-color: orange !important;
+}
+
+.eNxZVL {
+	color: #898F9F !important;
+
+	font-size: 11px !important;
+	margin-bottom: 0.01rem !important;
+	margin-left: 0rem !important;
+}
+
+.bpqEVt[disabled] {
+	height: 42px !important;
+}

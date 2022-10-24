@@ -260,12 +260,9 @@ export const StatisticsPageTitle = styled.h2`
 	}
 `;
 
-
-
 export const ResultsPageList = styled.ul`
 	margin-top: 4px;
 `;
-
 
 export const BtnBox = styled.div`
 	margin-top: 24px;
@@ -292,4 +289,8 @@ export const ModalText = styled.p`
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 14px;
+`;
+export const ResultsCalenderThumb = styled.div`
+	width: 150px;
+	border-radius: 1px !important;
 `;

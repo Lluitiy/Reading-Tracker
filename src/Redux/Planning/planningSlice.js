@@ -22,6 +22,7 @@ const initialState = {
 	isLoading: false,
 	errorMassage: false,
 	readedPages: null,
+	pagesReaded: null,
 };
 
 const planningSlice = createSlice({
@@ -78,6 +79,7 @@ const planningSlice = createSlice({
 		[addReadingPage.fulfilled](state, { payload }) {
 			state.isLoading = false;
 			state.readedPages = payload.planning.stats;
+			state.pagesReaded = payload.book.pagesFinished;
 		},
 		[addReadingPage.rejected](state) {
 			state.isLoading = false;

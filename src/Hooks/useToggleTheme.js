@@ -1,5 +1,5 @@
-const { useSelector } = require('react-redux');
-const { getIsLightTheme } = require('Redux/Theme/themeSelectors');
+import { useSelector } from 'react-redux';
+import { getIsLightTheme } from 'Redux/Theme/themeSelectors';
 
 const useToggleTheme = () => useSelector(getIsLightTheme);
 

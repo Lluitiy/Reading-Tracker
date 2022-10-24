@@ -15,6 +15,7 @@ export const themeLight = {
 		backdrop: 'rgba(43, 43, 43, 0.1)',
 		counter: '#091E3F',
 		icon: 'gold',
+		error: '#F25137',
 	},
 	shadow: {
 		modal: '10px 10px 20px rgba(9, 30, 63, 0.2)',
@@ -25,14 +26,14 @@ export const themeLight = {
 };
 export const themeDark = {
 	colors: {
-		white: '#0a1a36',
-		borderNav: '#0a1a36',
-		googleBtn: '#091E3F',
-		body: '#091E3F',
+		white: '#12151a',
+		borderNav: '#1c2432',
+		googleBtn: '#1c2432',
+		body: '#161c26',
 		textMain: '#ffffff',
 		textSecondary: '#B1B5C2',
-		black: '#ffffff',
-		icons: '#F6F7FB',
+		black: '#ffffffc0',
+		icons: '#ececec',
 		bookIcons: '#FF6B08',
 		trainingGrey: '#0a1a36',
 		brand: '#FF6B08',

@@ -33,7 +33,6 @@ export const getCurrentPlanning = createAsyncThunk(
 	async (_, thunkAPI) => {
 		try {
 			const data = await getPlanning();
-			// console.log(data);
 			return data;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
