@@ -1,7 +1,7 @@
 export const getBooks = state => state.planning.books;
 export const booksId = state => state.planning.booksId;
 export const startDate = state => state.planning.startDate;
-export const endDate = state => state.planning.startDate;
+export const endDate = state => state.planning.endDate;
 export const selectorShowBtn = state => state.planning.isShowStartTraningBtn;
 export const selectorPlanFact = state => state.planning.planFact;
 export const getIsLoadingPlanning = state => state.planning.isLoading;

@@ -9,7 +9,6 @@ import {
 } from '../Planning/planningOperations';
 
 const initialState = {
-	
 	books: [],
 	booksId: [],
 	startDate: '',
@@ -113,7 +112,7 @@ export const {
 const planningPersistConfig = {
 	key: 'planning',
 	storage,
-	whitelist: ['planFact'],
+	whitelist: ['planFact', 'booksId'],
 };
 
 export const persistedPlanningReducer = persistReducer(

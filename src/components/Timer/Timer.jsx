@@ -1,17 +1,17 @@
 import CountdownTimer from '../Timer/CountdownTimer/CountdownTimer';
 import { TimerContainer } from './Timer.styled';
 import useTranslation from 'Hooks/useTranslations';
+import { useSelector } from 'react-redux';
+import { endDate } from 'Redux/Planning/planningSelectors';
 
-const backend = {
-	startDate: '2020-12-31',
-	endDate: '2022-11-05',
-};
 
 const Timer = () => {
 	const translation = useTranslation();
+	const theEnd = useSelector(endDate)
+
 	const GET_EN_YEAR = new Date().getFullYear() + '-12-31';
 	const END_YEAR_MS = new Date(GET_EN_YEAR).getTime();
-	const END_TRAINING_MS = new Date(backend.endDate).getTime();
+	const END_TRAINING_MS = new Date(theEnd).getTime();
 
 	return (
 		<TimerContainer>
