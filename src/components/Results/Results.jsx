@@ -28,9 +28,9 @@ import {
 import { useEffect } from 'react';
 import { resetPagesAndPlan } from 'Redux/Planning/planningSlice';
 import useTranslation from 'Hooks/useTranslations';
-import { normaliseDate } from 'components/Statistics/functions/functions';
 import ModalFaster from './ModalsContent/ModalFaster';
 import ModalDone from './ModalsContent/ModalDone';
+import dayjs from 'dayjs';
 
 export default function Results() {
 	const [isShowModal, setIsShowModal] = useState(false);
@@ -43,9 +43,9 @@ export default function Results() {
 	const translation = useTranslation();
 
 	const dispatch = useDispatch();
-
-	const normalDate = normaliseDate(new Date());
-
+	const dateToday = `${dayjs().get('year')}-${
+		dayjs().get('month') + 1
+	}-${dayjs().get('date')}`;
 	useEffect(() => {
 		const checkTotalPlan = () => {
 			const totalReadedPages = readedPages?.reduce(
@@ -64,7 +64,6 @@ export default function Results() {
 		e.preventDefault();
 		const inputValue = Number(e.target.elements[1].value);
 		const unreadPages = data[data.length - 1]?.plan - data[0]?.fact;
-
 		if (inputValue > unreadPages) {
 			return Notify.failure(
 				`${translation.results.notify1part} ${unreadPages} ${translation.results.notify2part}`
@@ -96,12 +95,7 @@ export default function Results() {
 					<FormBox>
 						<ResultsLabel>
 							{translation.results.label1}
-							<ResultsInput
-								type="date"
-								name="date"
-								min={normalDate}
-								max={normalDate}
-							/>
+							<ResultsInput type="text" value={dateToday} disabled />
 						</ResultsLabel>
 						<ResultsLabel>
 							{translation.results.label2}

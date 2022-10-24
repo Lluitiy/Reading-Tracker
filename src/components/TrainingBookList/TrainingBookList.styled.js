@@ -75,16 +75,29 @@ export const CheckBox = styled.div`
 	}
 `;
 export const List = styled.ul`
+	/* background-color: red; */
 	@media screen and (min-width: 768px) {
 		width: 704px;
 		height: 235px;
 
-		overflow: scroll;
+		overflow-y: scroll;
 	}
 	@media screen and (min-width: 1280px) {
 		width: 928px;
 		height: 150px;
 
-		overflow: scroll;
+		overflow-y: scroll;
+	}
+
+	::-webkit-scrollbar {
+		width: 5px; /* ширина для вертикального скролла */
+		background-color: ${p => p.theme.colors.backdrop};
+	}
+
+	/* ползунок скроллбара */
+	::-webkit-scrollbar-thumb {
+		background-color: ${p => p.theme.colors.trainingGrey};
+		border-radius: 9em;
+		box-shadow: inset 1px 1px 10px #f3faf7;
 	}
 `;
