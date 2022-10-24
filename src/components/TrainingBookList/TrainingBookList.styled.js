@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 export const ListHeaders = styled.div`
-	display: none;
+	/* display: none; */
 
 	@media screen and (min-width: 768px) {
 		padding: 12px 0px;
@@ -75,8 +75,10 @@ export const CheckBox = styled.div`
 	}
 `;
 export const List = styled.ul`
+margin-bottom: 20px;
 	/* background-color: red; */
 	@media screen and (min-width: 768px) {
+		margin-bottom: 0;
 		width: 704px;
 		height: 235px;
 
@@ -101,3 +103,14 @@ export const List = styled.ul`
 		box-shadow: inset 1px 1px 10px #f3faf7;
 	}
 `;
+
+export const TrashButton = styled.button`
+display: flex;
+justify-content: center;
+align-items: flex-start;
+width: 33px;
+height: 33px;
+border: none;
+background-color: inherit;
+
+`

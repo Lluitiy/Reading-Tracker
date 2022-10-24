@@ -1,19 +1,20 @@
 import MyGoals from 'components/MyGoals/MyGoals';
 import MyTraining from 'components/MyTraining/MyTraining';
 import TrainingBookList from 'components/TrainingBookList/TrainingBookList';
+import { useMediaQuery } from 'react-responsive';
 import { Container } from './StartTrainningWrapper.styled';
-import { showResultsSection } from 'Redux/Planning/planningSelectors';
-import { useSelector } from 'react-redux';
+
+// import { useSelector } from 'react-redux';
 
 const StartTrainningWrapper = () => {
-	const showResults = useSelector(showResultsSection);
-
+	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
+console.log(isDesktopOrTablet)
 	return (
 		<Container>
-			<div>
-				{!showResults && <MyTraining />}
-				<TrainingBookList />
-			</div>
+			<div className='fuck'>
+				<MyTraining />
+				<TrainingBookList isMobile={ !isDesktopOrTablet} />
+			</div >
 			<MyGoals />
 		</Container>
 	);
