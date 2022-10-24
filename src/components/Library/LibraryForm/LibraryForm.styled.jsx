@@ -9,14 +9,8 @@ export const Wrapper = styled.div`
 	}
 `;
 export const NewBookForm = styled(Form)`
-<<<<<<< HEAD
-
-    width: 100%;
-	 @media screen and (min-width: 768px) {
-=======
 	width: 100%;
 	@media screen and (min-width: 768px) {
->>>>>>> b87179bcfed76c6739598a14b8c8579e24828e30
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;

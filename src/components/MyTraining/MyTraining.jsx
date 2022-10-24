@@ -70,6 +70,8 @@ const MyTraining = () => {
 			palette: {
 				brand: '#ffa500',
 				boxShadow: '0 0 2px #ffa500',
+			},
+			radii: {
 				borderRadius: '1px',
 			},
 		},
@@ -80,16 +82,18 @@ const MyTraining = () => {
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
 					<CalenderThumb>
-						<DatePicker
-							value={startValue}
-							placeholder="Start"
-							minDate={new Date(dateToday)}
-							onChange={handleChangeStart}
-							required={true}
-							icon={<Arrow />}
-							variant="double"
-							isCentered={true}
-						/>
+						<Application theme={theme}>
+							<DatePicker
+								value={startValue}
+								placeholder="Start"
+								minDate={new Date(dateToday)}
+								onChange={handleChangeStart}
+								required={true}
+								icon={<Arrow />}
+								variant="double"
+								isCentered={true}
+							/>
+						</Application>
 						<DateIcon />
 					</CalenderThumb>
 					<CalenderThumb>
