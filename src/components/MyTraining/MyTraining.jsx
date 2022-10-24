@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
 	Title,
 	Select,
@@ -16,8 +18,9 @@ import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
 import { Application, DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
+import { BackBtn } from 'components/Library/LibraryForm/LibraryForm.styled';
 
-const MyTraining = () => {
+const MyTraining = ({ handleMyTrainingOpen = null, isMobile = false}) => {
 	const translation = useTranslation();
 
 	const books = useSelector(state => state.books.books.goingToRead);
@@ -41,10 +44,10 @@ const MyTraining = () => {
 		e.preventDefault();
 		const clone = ids.some(id => id === e.currentTarget.elements.select.value);
 		if (startValue === '' || endValue === '') {
-			return alert('All fields must be filled!');
+			return Notify.warning(`${translation.myTraining.warningFields}`);
 		}
 		if (clone) {
-			alert('You already added this book');
+			Notify.warning(`${translation.myTraining.warningAdded}`);
 			return;
 		}
 		const value = e.currentTarget.elements.select.value;
@@ -56,6 +59,7 @@ const MyTraining = () => {
 				books: [...ids, value],
 			})
 		);
+		isMobile && handleMyTrainingOpen()
 	};
 	const handleChangeStart = value => {
 		const userDate = value.toLocaleDateString().split('.').reverse().join('-');
@@ -71,13 +75,22 @@ const MyTraining = () => {
 				brand: '#ffa500',
 				boxShadow: '0 0 2px #ffa500',
 			},
-			radii: {
-				borderRadius: '1px',
+			border: {
+				main: '1px solid transparent',
 			},
 		},
 	};
 	return (
 		<>
+			{isMobile && (
+						<BackBtn
+							type="button"
+							onClick={handleMyTrainingOpen}
+							aria-label="Return button"
+						>
+							<BackArrow width="24" height="24" />
+						</BackBtn>
+					)}
 			<Title>{translation.myTraining.title}</Title>
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
@@ -85,7 +98,7 @@ const MyTraining = () => {
 						<Application theme={theme}>
 							<DatePicker
 								value={startValue}
-								placeholder="Start"
+								placeholder={translation.myTraining.start}
 								minDate={new Date(dateToday)}
 								onChange={handleChangeStart}
 								required={true}
@@ -100,7 +113,7 @@ const MyTraining = () => {
 						<Application theme={theme}>
 							<DatePicker
 								value={endValue}
-								placeholder="End"
+								placeholder={translation.myTraining.end}
 								minDate={new Date(dateToday)}
 								onChange={handleChangeEnd}
 								required={true}
@@ -113,7 +126,7 @@ const MyTraining = () => {
 					</CalenderThumb>
 				</DateContainer>
 				<SelectContainer>
-					<Select name="select">
+					<Select name="select" aria-label="Select training">
 						<option disabled={true}>{translation.myTraining.option}</option>
 						{books.map(({ title, _id }) => {
 							return (
@@ -123,7 +136,9 @@ const MyTraining = () => {
 							);
 						})}
 					</Select>
-					<Button type={'submit'}>{translation.myTraining.btn}</Button>
+					<Button type={'submit'} aria-label="Add training button">
+						{translation.myTraining.btn}
+					</Button>
 				</SelectContainer>
 			</form>
 		</>

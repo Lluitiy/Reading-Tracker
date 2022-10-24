@@ -21,7 +21,10 @@ function LoginPage() {
 	return (
 		<Wrapper>
 			<FormBox>
-				<GoogleButton type="button">
+				<GoogleButton
+					type="button"
+					aria-label="sign in with Google account button"
+				>
 					<a href="https://bookread-backend.goit.global/auth/google">
 						<TextGoogleButton>Google</TextGoogleButton>
 					</a>

@@ -5,8 +5,9 @@ export const Text = styled.p`
 	text-align: center;
 	margin-right: 20px;
 	margin-top: 20px;
+	font-size: 13px;
 	@media screen and (min-width: 768px) {
-		margin: 10px 0;
+		margin: 0;
 	}
 `;
 
@@ -16,17 +17,20 @@ export const Span = styled.span`
 	cursor: pointer;
 `;
 
-export const Container = styled.footer`
-	/* position: relative; */
+export const FooterWrap = styled.footer`
 	background-color: ${p => p.theme.colors.white};
+`;
+
+export const Wrap = styled.div`
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 
-	padding: 10px 0px;
-	box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-	/* @media screen and (min-width: 768px) {
+	@media screen and (min-width: 768px) {
+		padding: 10px 0;
+		display: flex;
 		flex-direction: row;
 		align-items: center;
-	} */
+		justify-content: space-between;
+	}
 `;

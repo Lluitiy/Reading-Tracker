@@ -31,7 +31,9 @@ export default function UserForm({
 						{Object.keys(initialValues).map(key =>
 							userInput({ name: key, formType })
 						)}
-						<Button type="submit">{formType}</Button>
+						<Button type="submit" aria-label="Send form button">
+							{formType}
+						</Button>
 
 						<NavBox>
 							<NavText>{text}</NavText>

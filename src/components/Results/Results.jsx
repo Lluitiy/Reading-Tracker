@@ -24,14 +24,13 @@ import {
 	StatisticsPageBox,
 	StatisticsPageTitle,
 	ResultsPageList,
-	ResultsCalenderThumb,
+	CalenderResults,
 } from './Results.styled';
 import { useEffect } from 'react';
 import { resetPagesAndPlan } from 'Redux/Planning/planningSlice';
 import useTranslation from 'Hooks/useTranslations';
 import ModalFaster from './ModalsContent/ModalFaster';
 import ModalDone from './ModalsContent/ModalDone';
-import { DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
 
 export default function Results() {
@@ -71,10 +70,6 @@ export default function Results() {
 		const inputValue = Number(e.target.elements[1].value);
 		const unreadPages = data[data.length - 1]?.plan - data[0]?.fact;
 
-		console.log(inputValue)
-		console.log(typeof inputValue)
-	
-
 		if (Number.isNaN(inputValue)) {
 			Notify.failure(
 				`Enter numbers`
@@ -84,7 +79,7 @@ export default function Results() {
 
 		if (inputValue > unreadPages) {
 			return Notify.failure(
-				`You have entered more pages than are left. Unread pages - ${unreadPages} pages. Enter correct data`
+				`${translation.results.notify1part} ${unreadPages} ${translation.results.notify2part}`
 			);
 		}
 
@@ -118,17 +113,11 @@ export default function Results() {
 				<ResultsTitle>{translation.results.title}</ResultsTitle>
 				<ResultsForm onSubmit={handleFormSubmit}>
 					<FormBox>
-						<ResultsCalenderThumb>
-							<DatePicker
-								label={translation.results.label1}
-								labelAlignment="left"
-								value={new Date(dateToday)}
-								minDate={new Date(dateToday)}
-								maxDate={new Date(dateToday)}
-								icon={'.'}
-								disabled={true}
-							/>
-						</ResultsCalenderThumb>
+						<ResultsLabel>
+							{translation.results.label1}
+							<ResultsInput type="text" value={dateToday} disabled />
+							<CalenderResults />
+						</ResultsLabel>
 						<ResultsLabel>
 							{translation.results.label2}
 							<ResultsInput type="text" name="page" />
@@ -139,11 +128,10 @@ export default function Results() {
 				<StatisticsPageBox>
 					<StatisticsPageTitle>{translation.results.stat}</StatisticsPageTitle>
 				</StatisticsPageBox>
-					<ResultsPageList>
+				<ResultsPageList>
 					{readedPages &&
 						readedPages.map((el, i) => <ResultsItem key={i} data={el} />)}
 				</ResultsPageList>
-			
 			</ResultsBox>
 			{isShowModal && (
 				<Modal onClose={() => setIsShowModal(false)}>

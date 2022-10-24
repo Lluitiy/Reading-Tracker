@@ -9,25 +9,23 @@ import {
 } from '../Results.styled';
 import { ReactComponent as Okey } from 'Assets/svg/okey.svg';
 import { useNavigate } from 'react-router-dom';
+import useTranslation from 'Hooks/useTranslations';
 
-
-
-const ModalFaster = ({onClose}) => {
+const ModalFaster = ({ onClose }) => {
+	const translation = useTranslation();
 	const navigate = useNavigate();
 
 	return (
 		<ModalBox>
 			<Okey />
-			<ModalText>
-				Well done! but you need to be a little bit faster. You can do it
-			</ModalText>
+			<ModalText>{translation.modalFaster.text}</ModalText>
 
 			<BtnBox>
 				<ResultsBtn type="button" onClick={() => navigate('/library')}>
-					New training
+					{translation.modalFaster.btnNew}
 				</ResultsBtn>
 				<ResultsBackBtn type="button" onClick={onClose}>
-					Back
+					{translation.modalFaster.btnBack}
 				</ResultsBackBtn>
 			</BtnBox>
 		</ModalBox>
@@ -35,7 +33,7 @@ const ModalFaster = ({onClose}) => {
 };
 
 ModalFaster.propTypes = {
-	onClose: PropTypes.func.isRequired
+	onClose: PropTypes.func.isRequired,
 };
 
 export default ModalFaster;

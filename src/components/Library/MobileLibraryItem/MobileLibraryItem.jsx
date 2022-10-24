@@ -18,7 +18,6 @@ import Modal from 'components/Modal';
 import { ResumeModal } from 'components/ResumeModal/ResumeModal';
 import useTranslation from 'Hooks/useTranslations';
 
-
 const MobileLibraryItem = ({
 	title,
 	author,
@@ -27,19 +26,17 @@ const MobileLibraryItem = ({
 	pagesTotal,
 	isFinishedReading,
 	rating,
-	id
-
+	id,
 }) => {
-		const translation = useTranslation();
+	const translation = useTranslation();
 	const [modalOpen, setModalOpen] = useState(false);
 	const openModal = () => {
 		setModalOpen(true);
 	};
-	
+
 	const closeModal = () => {
 		setModalOpen(false);
 	};
-	
 
 	return (
 		<MobileItemWrapper>
@@ -64,20 +61,27 @@ const MobileLibraryItem = ({
 					</TableRow>
 					{isFinishedReading && (
 						<>
-						<TableRow>
-						<TableHeader>{translation.mobileLibraryItem.rating}</TableHeader>
-						<TableDetail><StarList>{createRatingStars(rating)}</StarList></TableDetail>
-						</TableRow>
-						</>)
-						}
+							<TableRow>
+								<TableHeader>
+									{translation.mobileLibraryItem.rating}
+								</TableHeader>
+								<TableDetail>
+									<StarList>{createRatingStars(rating)}</StarList>
+								</TableDetail>
+							</TableRow>
+						</>
+					)}
 				</tbody>
 			</Table>
-			{isFinishedReading && <Button onClick={openModal}>{translation.mobileLibraryItem.btn}</Button>}
+			{isFinishedReading && (
+				<Button onClick={openModal} aria-label="Add book resume">
+					{translation.mobileLibraryItem.btn}
+				</Button>
+			)}
 			{modalOpen && (
-			<Modal onClose={closeModal}>
- 					<ResumeModal initRating={rating} id={id} onClose={closeModal} />
-			</Modal>
-
+				<Modal onClose={closeModal}>
+					<ResumeModal initRating={rating} id={id} onClose={closeModal} />
+				</Modal>
 			)}
 		</MobileItemWrapper>
 	);

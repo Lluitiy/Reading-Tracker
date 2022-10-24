@@ -3,6 +3,7 @@ import {
 	ListHeaders,
 	List,
 	CheckBox,
+	TrashButton,
 } from '../TrainingBookList/TrainingBookList.styled';
 import {
 	booksId,
@@ -18,8 +19,9 @@ import { ReactComponent as CheckIcon } from 'Assets/svg/CheckBox.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { clean } from 'Redux/Planning/planningSlice';
 import useTranslation from 'Hooks/useTranslations';
+import MobileTrainingBookItem from 'components/MobileTrainingBookItem/MobileTrainingBookItem';
 
-const TrainingBookList = () => {
+const TrainingBookList = ({isMobile}) => {
 	const translation = useTranslation();
 	let books = useSelector(getBooks);
 	const dispatch = useDispatch();
@@ -28,7 +30,7 @@ const TrainingBookList = () => {
 	const startValue = useSelector(startDate);
 	const isShowResultsSection = useSelector(showResultsSection);
 
-	const click = _id => {
+	const handleClick = _id => {
 		const del = ids.filter(id => id !== _id);
 		if (del.length === 0) {
 			dispatch(clean([]));
@@ -45,12 +47,12 @@ const TrainingBookList = () => {
 
 	return (
 		<div>
-			<ListHeaders>
+			{!isMobile && <ListHeaders>
 				<span>{translation.trainingBookList.title}</span>
 				<span>{translation.trainingBookList.author}</span>
 				<span>{translation.trainingBookList.year}</span>
 				<span>{translation.trainingBookList.pages}</span>
-			</ListHeaders>
+			</ListHeaders>}
 			<List id="planning-list">
 				{books.length !== 0 &&
 					books?.map(
@@ -61,9 +63,21 @@ const TrainingBookList = () => {
 							pagesTotal,
 							_id,
 							pagesFinished,
-						}) => (
+						}) => {
+							return (
 							<li key={_id}>
-								<ItemWrapper>
+								{isMobile ?
+									<MobileTrainingBookItem
+										handleDelete={handleClick}
+										title={title}
+										author={author}
+										publishYear={publishYear}
+										pagesTotal={pagesTotal}
+										pagesFinished={pagesFinished}
+										id={_id}
+									/>
+									:
+									<ItemWrapper>
 									{!isShowResultsSection && (
 										<BookIcon fill="#A6ABB9" width={22} height={17} />
 									)}
@@ -84,13 +98,13 @@ const TrainingBookList = () => {
 									<span>{publishYear}</span>
 									<span>{pagesTotal}</span>
 									{!isShowResultsSection && (
-										<span onClick={() => click(_id)}>
+										<TrashButton type='button' onClick={() => handleClick(_id)}>
 											<TrashIcon width={22} height={17} />
-										</span>
+										</TrashButton>
 									)}
-								</ItemWrapper>
+								</ItemWrapper>}
 							</li>
-						)
+						)}
 					)}
 			</List>
 		</div>

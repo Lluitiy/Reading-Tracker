@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getName } from 'Redux/Auth/authSelectors';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { LogoutBtn } from './LogOutBtn.styled';
 import { logOut } from 'Redux/Auth/authOperation';
@@ -8,7 +7,7 @@ import useTranslation from 'Hooks/useTranslations';
 
 const LogOutBtn = () => {
 	const translation = useTranslation();
-	const userName = useSelector(getName);
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -16,8 +15,13 @@ const LogOutBtn = () => {
 		dispatch(logOut())
 			.unwrap()
 			.then(() => {
-				Notify.warning(`${translation.header.notify} ${userName}`);
+				Notify.success(`${translation.header.notifyLogout}`);
 				navigate('/login');
+			})
+			.catch(err => {
+				Notify.failure(
+					`Unfortunately, the exit from the profile was not successful. Try again later.`
+				);
 			});
 	};
 	return (
