@@ -67,7 +67,7 @@ button {
 }
 
 .kSysTP {
-	border-radius: 1px !important;
+	/* border-radius: 1px !important; */
 	height: 42px;
 	background-color: transparent !important;
 
@@ -87,7 +87,7 @@ button {
 .ijMeVy::after,
 .gOhvuy,
 .hhYVLo {
-	color: orange !important;
+	color: #ffa500 !important;
 
 }
 
@@ -114,4 +114,16 @@ button {
 .GRndm,
 .gOhvuy::after {
 	background-color: orange !important;
+}
+
+.eNxZVL {
+	color: #898F9F !important;
+
+	font-size: 11px !important;
+	margin-bottom: 0.01rem !important;
+	margin-left: 0rem !important;
+}
+
+.bpqEVt[disabled] {
+	height: 42px !important;
 }
