@@ -36,7 +36,7 @@ import dayjs from 'dayjs';
 export default function Results() {
 	const [isShowModal, setIsShowModal] = useState(false);
 	const [isShowModalEndReading, setIsShowModalEndReading] = useState(false);
-	const [isdisabledBtn, setIsDisabledBtn] = useState(false)
+	const [isdisabledBtn, setIsDisabledBtn] = useState(false);
 
 	const readedPages = useSelector(selectorReadedPages);
 	const data = useSelector(selectorPlanFact);
@@ -45,22 +45,21 @@ export default function Results() {
 	const translation = useTranslation();
 
 	const dispatch = useDispatch();
-	const dateToday = `${dayjs().get('year')}-${
+	const dateToday = `${dayjs().get('date')}-${
 		dayjs().get('month') + 1
-	}-${dayjs().get('date')}`;
+	}-${dayjs().get('year')}`;
 	useEffect(() => {
 		const checkTotalPlan = () => {
 			const totalReadedPages = readedPages?.reduce(
 				(total, el) => total + el.pagesCount,
 				0
 			);
-			
+
 			if (data.length > 0 && data[data.length - 1].plan === totalReadedPages) {
-				setIsShowModalEndReading(true)
-				setIsDisabledBtn(true)
-					}
+				setIsShowModalEndReading(true);
+				setIsDisabledBtn(true);
 			}
-		
+		};
 
 		checkTotalPlan();
 	}, [data, dispatch, readedPages]);
@@ -71,10 +70,8 @@ export default function Results() {
 		const unreadPages = data[data.length - 1]?.plan - data[0]?.fact;
 
 		if (Number.isNaN(inputValue)) {
-			Notify.failure(
-				`Enter numbers`
-			);
-			return 
+			Notify.failure(`Enter numbers`);
+			return;
 		}
 
 		if (inputValue > unreadPages) {
@@ -84,9 +81,7 @@ export default function Results() {
 		}
 
 		if (inputValue === 0) {
-			return Notify.failure(
-				`You have entered 0. Enter correct data`
-			);
+			return Notify.failure(`You have entered 0. Enter correct data`);
 		}
 
 		dispatch(addReadingPage({ pages: inputValue }));
@@ -94,7 +89,6 @@ export default function Results() {
 		if (data[0].fact + inputValue < data[0].plan) {
 			setIsShowModal(true);
 		}
-		
 	};
 
 	useEffect(() => {
@@ -123,7 +117,9 @@ export default function Results() {
 							<ResultsInput type="text" name="page" />
 						</ResultsLabel>
 					</FormBox>
-					<ResultsBtn type="submit" disabled={isdisabledBtn} >{translation.results.btn}</ResultsBtn>
+					<ResultsBtn type="submit" disabled={isdisabledBtn}>
+						{translation.results.btn}
+					</ResultsBtn>
 				</ResultsForm>
 				<StatisticsPageBox>
 					<StatisticsPageTitle>{translation.results.stat}</StatisticsPageTitle>
@@ -139,7 +135,10 @@ export default function Results() {
 				</Modal>
 			)}
 			{isShowModalEndReading && (
-				<Modal onClose={() => setIsShowModalEndReading(false)} offBackdrop={isdisabledBtn}>
+				<Modal
+					onClose={() => setIsShowModalEndReading(false)}
+					offBackdrop={isdisabledBtn}
+				>
 					<ModalDone onClose={handleDoneBtnClick} />
 				</Modal>
 			)}
