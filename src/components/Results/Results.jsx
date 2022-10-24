@@ -24,14 +24,12 @@ import {
 	StatisticsPageBox,
 	StatisticsPageTitle,
 	ResultsPageList,
-	ResultsCalenderThumb,
 } from './Results.styled';
 import { useEffect } from 'react';
 import { resetPagesAndPlan } from 'Redux/Planning/planningSlice';
 import useTranslation from 'Hooks/useTranslations';
 import ModalFaster from './ModalsContent/ModalFaster';
 import ModalDone from './ModalsContent/ModalDone';
-import { DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
 
 export default function Results() {
@@ -97,17 +95,10 @@ export default function Results() {
 				<ResultsTitle>{translation.results.title}</ResultsTitle>
 				<ResultsForm onSubmit={handleFormSubmit}>
 					<FormBox>
-						<ResultsCalenderThumb>
-							<DatePicker
-								label={translation.results.label1}
-								labelAlignment="left"
-								value={new Date(dateToday)}
-								minDate={new Date(dateToday)}
-								maxDate={new Date(dateToday)}
-								icon={'.'}
-								disabled={true}
-							/>
-						</ResultsCalenderThumb>
+						<ResultsLabel>
+							{translation.results.label1}
+							<ResultsInput type="text" value={dateToday} disabled />
+						</ResultsLabel>
 						<ResultsLabel>
 							{translation.results.label2}
 							<ResultsInput type="text" name="page" />
@@ -118,11 +109,10 @@ export default function Results() {
 				<StatisticsPageBox>
 					<StatisticsPageTitle>{translation.results.stat}</StatisticsPageTitle>
 				</StatisticsPageBox>
-					<ResultsPageList>
+				<ResultsPageList>
 					{readedPages &&
 						readedPages.map((el, i) => <ResultsItem key={i} data={el} />)}
 				</ResultsPageList>
-			
 			</ResultsBox>
 			{isShowModal && (
 				<Modal onClose={() => setIsShowModal(false)}>
