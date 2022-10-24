@@ -26,12 +26,12 @@ const MyGoals = () => {
 			{isShowResultsSection ? (
 				<List startTraining>
 					<Item startTraining>
-						<Counter startTraining>{ids ? state.books.length : '0'}</Counter>
+						<Counter startTraining>{ids.length !== 0 ? state.books.length : '0'}</Counter>
 						<Text>{translation.myGoals.text1}</Text>
 					</Item>
 					<Item startTraining>
 						<Counter startTraining>
-							{ids ? state.duration * state.books.length : '0'}
+							{ids.length !== 0 ? state.duration : '0'}
 						</Counter>
 						<Text>{translation.myGoals.text2}</Text>
 					</Item>
@@ -45,11 +45,11 @@ const MyGoals = () => {
 			) : (
 				<List>
 					<Item>
-						<Counter>{ids ? state.books.length : '0'}</Counter>
+						<Counter>{ids.length !== 0 ? state.books.length : '0'}</Counter>
 						<Text>{translation.myGoals.text1}</Text>
 					</Item>
 					<Item>
-						<Counter>{ids ? state.duration * state.books.length : '0'}</Counter>
+						<Counter>{ids.length !== 0 ? state.duration : '0'}</Counter>
 						<Text>{translation.myGoals.text2}</Text>
 					</Item>
 				</List>
