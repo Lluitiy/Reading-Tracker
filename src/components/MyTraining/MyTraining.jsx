@@ -17,7 +17,6 @@ import { booksId } from 'Redux/Planning/planningSelectors';
 import { Application, DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
 
-
 const MyTraining = () => {
 	const translation = useTranslation();
 
@@ -71,6 +70,7 @@ const MyTraining = () => {
 			palette: {
 				brand: '#ffa500',
 				boxShadow: '0 0 2px #ffa500',
+				borderRadius: '1px',
 			},
 		},
 	};

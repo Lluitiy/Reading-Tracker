@@ -67,7 +67,7 @@ button {
 }
 
 .kSysTP {
-	border-radius: 1px !important;
+	/* border-radius: 1px !important; */
 	height: 42px;
 	background-color: transparent !important;
 
