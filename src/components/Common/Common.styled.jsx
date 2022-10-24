@@ -11,7 +11,7 @@ export const Section = styled.section`
 
 export const Container = styled.div`
 	width: 320px;
-	/* width: 100%; */
+
 	margin: 0px auto;
 	padding: 0px 20px;
 	@media screen and (min-width: 768px) {

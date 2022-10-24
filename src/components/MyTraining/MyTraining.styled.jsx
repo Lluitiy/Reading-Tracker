@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { ReactComponent as DataIcon } from '../../Assets/svg/calendar.svg';
 import { ReactComponent as ArrowIcon } from '../../Assets/svg/arrowDown.svg';
 
-export const Title = styled.h1`
+export const Title = styled.h2`
 	display: block;
 	font-family: 'Montserrat';
 	font-style: normal;
@@ -12,8 +12,8 @@ export const Title = styled.h1`
 	text-align: center;
 	margin-bottom: 20px;
 	padding: 18px;
-	background-color: ${p => p.theme.colors.trainingGrey};
-	color: ${p => p.theme.colors.white};
+	background-color: ${p => p.theme.colors.myTrainingBox};
+	color: ${p => p.theme.colors.trainingText};
 	@media screen and (min-width: 768px) {
 		margin-bottom: 28px;
 	}
@@ -121,4 +121,5 @@ export const Arrow = styled(ArrowIcon)`
 	transform: translateX(); */
 	left: 234px;
 	top: 45%;
+	color: #0d131c;
 `;

@@ -12,7 +12,7 @@ const en = {
 		p5: 'Improve your professional skills according to new knowledge',
 		p6: 'Become an interesting interlocutor',
 		logout: 'Logout',
-		notify: 'Hope to see you Soooon ',
+		notifyLogout: 'Hope to see you soon 😘',
 		mobBtnLog: 'Log in',
 		mobBtnReg: 'Register',
 	},
@@ -72,6 +72,10 @@ const en = {
 		title: 'My training',
 		option: 'Choose books from the library',
 		btn: 'Add',
+		warningFields: 'All fields must be filled!',
+		warningAdded: 'You already added this book',
+		start: 'Start',
+		end: 'Finish',
 	},
 	results: {
 		title: 'Results',
@@ -79,6 +83,8 @@ const en = {
 		label2: 'Amount of pages',
 		btn: 'Add result',
 		stat: 'Statistics',
+		notify1part: 'You have entered more pages than are left. Unread pages - ',
+		notify2part: ' pages. Enter correct data',
 	},
 	resumeModal: {
 		title: 'Choose book rating',
@@ -148,6 +154,15 @@ const en = {
 			position: 'Developer',
 			name: 'Anastasiia Svechnikova',
 		},
+	},
+	modalFaster: {
+		text: 'Well done! but you need to be a little bit faster. You can do it',
+		btnNew: 'New training',
+		btnBack: 'Back',
+	},
+	modalDone: {
+		text: 'Congratulations! Another book read.',
+		btnDone: 'Done',
 	},
 };
 export default en;

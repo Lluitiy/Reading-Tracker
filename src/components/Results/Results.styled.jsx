@@ -61,7 +61,7 @@ export const FormBox = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-top: 12px;
-	/* margin-left: 5px; */
+
 	gap: 20px;
 	font-size: 12px;
 	color: ${p => p.theme.colors.textMain};
@@ -81,6 +81,7 @@ export const ResultsInput = styled.input`
 	background: ${p => p.theme.colors.body};
 	border: 1px solid ${p => p.theme.colors.icons};
 	margin-top: 4px;
+	color: ${p => p.theme.colors.textMain};
 
 	@media screen and (min-width: 768px) {
 		width: 110px;
@@ -91,7 +92,7 @@ export const ResultsBtn = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 240px;
+	width: 100%;
 	height: 40px;
 	margin-bottom: 24px;
 
@@ -102,6 +103,12 @@ export const ResultsBtn = styled.button`
 	border: none;
 	color: ${p => p.theme.colors.white};
 	background-color: ${p => p.theme.colors.brand};
+	transition: ${p => p.theme.transition};
+	:hover {
+		border: 1px solid ${p => p.theme.colors.textMain};
+		background: transparent;
+		color: ${p => p.theme.colors.textMain};
+	}
 
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0px;
@@ -109,9 +116,6 @@ export const ResultsBtn = styled.button`
 	}
 	@media screen and (min-width: 1280px) {
 		height: 40px;
-	}
-	&:hover,
-	&:focus {
 	}
 `;
 
@@ -119,7 +123,7 @@ export const ResultsBackBtn = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 240px;
+	width: 100%;
 	height: 40px;
 	margin-bottom: 24px;
 
@@ -127,9 +131,15 @@ export const ResultsBackBtn = styled.button`
 	line-height: 1.21;
 	font-weight: 600px;
 
-	border: 1px soild ${p => p.theme.colors.black};
-	color: ${p => p.theme.colors.black};
-	background-color: ${p => p.theme.colors.white};
+	border: 1px solid ${p => p.theme.colors.textMain};
+	color: ${p => p.theme.colors.textMain};
+	background-color: ${p => p.theme.colors.transparent};
+	transition: ${p => p.theme.transition};
+	:hover {
+		border: none;
+		background: ${p => p.theme.colors.brand};
+		color: ${p => p.theme.colors.white};
+	}
 
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0px;
@@ -137,9 +147,6 @@ export const ResultsBackBtn = styled.button`
 	}
 	@media screen and (min-width: 1280px) {
 		height: 40px;
-	}
-	&:hover,
-	&:focus {
 	}
 `;
 export const StatisticsPageBox = styled.div`
@@ -234,9 +241,9 @@ export const StatisticsPageTitle = styled.h2`
 	}
 `;
 
-
 export const ResultsPageList = styled.ul`
-margin-top: 4px;`
+	margin-top: 4px;
+`;
 
 export const IconWrapper = styled.div`
 	/* margin-left: auto;
@@ -253,7 +260,6 @@ margin-right: auto; */
 
 export const BtnBox = styled.div`
 	margin-top: 24px;
-
 
 	@media screen and (min-width: 768px) {
 		display: flex;

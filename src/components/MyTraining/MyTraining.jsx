@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
 	Title,
 	Select,
@@ -39,10 +40,10 @@ const MyTraining = () => {
 		e.preventDefault();
 		const clone = ids.some(id => id === e.currentTarget.elements.select.value);
 		if (startValue === '' || endValue === '') {
-			return alert('All fields must be filled!');
+			return Notify.warning(`${translation.myTraining.warningFields}`);
 		}
 		if (clone) {
-			alert('You already added this book');
+			Notify.warning(`${translation.myTraining.warningAdded}`);
 			return;
 		}
 		const value = e.currentTarget.elements.select.value;
@@ -70,7 +71,7 @@ const MyTraining = () => {
 				<DateContainer>
 					<DatePicker
 						value={startValue}
-						placeholder="Start"
+						placeholder={translation.myTraining.start}
 						minDate={new Date(dateToday)}
 						onChange={handleChangeStart}
 						required={true}
@@ -78,7 +79,7 @@ const MyTraining = () => {
 					/>
 					<DatePicker
 						value={endValue}
-						placeholder="End"
+						placeholder={translation.myTraining.end}
 						minDate={new Date(dateToday)}
 						onChange={handleChangeEnd}
 						required={true}

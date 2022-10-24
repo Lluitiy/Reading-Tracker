@@ -7,7 +7,6 @@ export const Wrap = styled.div`
 	align-items: center;
 	width: 80px;
 	@media screen and (min-width: 768px) {
-		position: fixed;
-		right: 90px;
+		margin: 0;
 	}
 `;

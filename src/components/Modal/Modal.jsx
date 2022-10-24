@@ -10,8 +10,11 @@ function Modal({ onClose, children }) {
 				onClose();
 			}
 		};
+		document.body.style.overflow = 'hidden';
+
 		window.addEventListener('keydown', handeleClickDown);
 		return () => {
+			document.body.style.overflow = 'auto';
 			window.removeEventListener('keydown', handeleClickDown);
 		};
 		// eslint-disable-next-line

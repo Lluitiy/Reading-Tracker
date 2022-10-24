@@ -3,15 +3,15 @@ import Modal from 'components/Modal';
 import ResultsItem from 'components/Results/ResultsItem/ResultsItem';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReadingPage, getCurrentPlanning
- } from 'Redux/Planning/planningOperations';
+import {
+	addReadingPage,
+	getCurrentPlanning,
+} from 'Redux/Planning/planningOperations';
 import {
 	selectorPlanFact,
 	selectorReadedPages,
-	selectorPagesReaded
-
+	selectorPagesReaded,
 } from 'Redux/Planning/planningSelectors';
-
 
 import {
 	ResultsBox,
@@ -38,8 +38,7 @@ export default function Results() {
 
 	const readedPages = useSelector(selectorReadedPages);
 	const data = useSelector(selectorPlanFact);
-const pagesFinished = useSelector(selectorPagesReaded);
-
+	const pagesFinished = useSelector(selectorPagesReaded);
 
 	const translation = useTranslation();
 
@@ -65,10 +64,10 @@ const pagesFinished = useSelector(selectorPagesReaded);
 		e.preventDefault();
 		const inputValue = Number(e.target.elements[1].value);
 		const unreadPages = data[data.length - 1]?.plan - data[0]?.fact;
-		
+
 		if (inputValue > unreadPages) {
 			return Notify.failure(
-				`You have entered more pages than are left. Unread pages - ${unreadPages} pages. Enter correct data`
+				`${translation.results.notify1part} ${unreadPages} ${translation.results.notify2part}`
 			);
 		}
 
@@ -79,10 +78,9 @@ const pagesFinished = useSelector(selectorPagesReaded);
 		}
 	};
 
-	useEffect(()=>{
-		dispatch(getCurrentPlanning())	
-		},[pagesFinished,dispatch])
-
+	useEffect(() => {
+		dispatch(getCurrentPlanning());
+	}, [pagesFinished, dispatch]);
 
 	const handleDoneBtnClick = () => {
 		setIsShowModalEndReading(false);
@@ -122,12 +120,12 @@ const pagesFinished = useSelector(selectorPagesReaded);
 			</ResultsBox>
 			{isShowModal && (
 				<Modal onClose={() => setIsShowModal(false)}>
-					<ModalFaster onClose={() => setIsShowModal(false) } />
+					<ModalFaster onClose={() => setIsShowModal(false)} />
 				</Modal>
 			)}
 			{isShowModalEndReading && (
 				<Modal onClose={() => setIsShowModalEndReading(false)}>
-					<ModalDone onClose={handleDoneBtnClick}/>
+					<ModalDone onClose={handleDoneBtnClick} />
 				</Modal>
 			)}
 		</>
