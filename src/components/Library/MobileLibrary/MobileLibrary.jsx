@@ -16,7 +16,7 @@ const MobileLibrary = ({ isLibraryEmpty }) => {
 	return (
 		<>
 			{isFormOpen ? (
-				<LibraryForm handleFormOpen={toggleFormOpen} />
+				<LibraryForm isMobile={true} handleFormOpen={toggleFormOpen} />
 			) : isLibraryEmpty ? (
 				<EmptyLibraryInfo openFormHandler={toggleFormOpen} />
 			) : (
