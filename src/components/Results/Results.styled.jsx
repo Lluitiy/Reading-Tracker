@@ -91,11 +91,13 @@ export const FormBox = styled.div`
 
 export const ResultsLabel = styled.label`
 	position: relative;
+	width: 105px;
 	font-size: 11px;
 	color: ${p => p.theme.colors.textSecondary};
 
 	@media screen and (min-width: 768px) {
 		gap: 20px;
+		width: 110px;
 	}
 `;
 
@@ -107,7 +109,7 @@ export const CalenderResults = styled(ResultsCalender)`
 export const ResultsInput = styled.input`
 	width: 100%;
 	margin-top: 4px;
-	padding-left: 8px;
+	padding-left: 4px;
 	height: 42px;
 
 	background: ${p => p.theme.colors.body};
@@ -117,6 +119,7 @@ export const ResultsInput = styled.input`
 
 	@media screen and (min-width: 768px) {
 		width: 110px;
+		padding-left: 8px;
 	}
 `;
 
