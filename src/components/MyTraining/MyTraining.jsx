@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ReactComponent as BackArrow } from 'Assets/svg/backArrow.svg';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
 	Title,
@@ -17,8 +18,9 @@ import { startPlanning } from 'Redux/Planning/planningOperations';
 import { booksId } from 'Redux/Planning/planningSelectors';
 import { Application, DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
+import { BackBtn } from 'components/Library/LibraryForm/LibraryForm.styled';
 
-const MyTraining = () => {
+const MyTraining = ({ handleMyTrainingOpen = null, isMobile = false}) => {
 	const translation = useTranslation();
 
 	const books = useSelector(state => state.books.books.goingToRead);
@@ -57,6 +59,7 @@ const MyTraining = () => {
 				books: [...ids, value],
 			})
 		);
+		isMobile && handleMyTrainingOpen()
 	};
 	const handleChangeStart = value => {
 		const userDate = value.toLocaleDateString().split('.').reverse().join('-');
@@ -79,6 +82,15 @@ const MyTraining = () => {
 	};
 	return (
 		<>
+			{isMobile && (
+						<BackBtn
+							type="button"
+							onClick={handleMyTrainingOpen}
+							aria-label="Return button"
+						>
+							<BackArrow width="24" height="24" />
+						</BackBtn>
+					)}
 			<Title>{translation.myTraining.title}</Title>
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>
