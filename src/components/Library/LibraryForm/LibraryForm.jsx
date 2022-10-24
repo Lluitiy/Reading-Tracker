@@ -19,7 +19,7 @@ import useTranslation from 'Hooks/useTranslations';
 import { Formik, ErrorMessage } from 'formik';
 import { booksFormSchema } from 'Utils/validSchema';
 
-const LibraryForm = ({ handleFormOpen = null }) => {
+const LibraryForm = ({ handleFormOpen = null, isMobile }) => {
 	const translation = useTranslation();
 	const dispatch = useDispatch();
 
@@ -29,15 +29,15 @@ const LibraryForm = ({ handleFormOpen = null }) => {
 	) => {
 		dispatch(addUserBookThunk({ title, author, publishYear, pagesTotal }));
 		resetForm();
+		isMobile && handleFormOpen()
 	};
-
 	return (
 		<Section>
 			<Container>
 				<Wrapper>
-					<BackBtn type="button" onClick={handleFormOpen}>
+					{isMobile && <BackBtn type="button" onClick={handleFormOpen}>
 						<BackArrow width="24" height="24" />
-					</BackBtn>
+					</BackBtn>}
 					<Formik
 						onSubmit={handleFormSubmit}
 						initialValues={{
