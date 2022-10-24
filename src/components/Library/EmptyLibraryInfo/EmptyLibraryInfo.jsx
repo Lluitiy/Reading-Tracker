@@ -38,7 +38,7 @@ const EmptyLibraryInfo = ({ openFormHandler = null }) => {
 					</Guide>
 				</li>
 			</ul>
-			<OkBtn onClick={openFormHandler} type="button">
+			<OkBtn onClick={openFormHandler} type="button" aria-label="Add book button">
 				{translation.libraryEmpty.btn}
 			</OkBtn>
 		</Wrapper>
