@@ -71,7 +71,7 @@ const MyTraining = () => {
 				brand: '#ffa500',
 				boxShadow: '0 0 2px #ffa500',
 			},
-			radii: {
+			border: {
 				borderRadius: '1px',
 			},
 		},
