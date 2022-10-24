@@ -5,7 +5,7 @@ export const PlusBtn = styled.button`
     justify-content: center;
     align-items: center;
     position:fixed;
-    bottom: 50px;
+    bottom: 90px;
     left: 50%;
     transform: translateX(-50%);
     width: 52px;
