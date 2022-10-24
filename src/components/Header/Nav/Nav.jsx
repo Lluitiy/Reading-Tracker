@@ -3,10 +3,10 @@ import { Navi, IconLink, IconLib, IconHome } from './Nav.styled';
 const Nav = () => {
 	return (
 		<Navi>
-			<IconLink to={'/training'}>
+			<IconLink to={'/training'} aria-label="Training link">
 				<IconLib />
 			</IconLink>
-			<IconLink to={'/library'}>
+			<IconLink to={'/library'} aria-label="Library link">
 				<IconHome />
 			</IconLink>
 		</Navi>

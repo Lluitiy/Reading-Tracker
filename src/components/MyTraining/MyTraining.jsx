@@ -114,7 +114,7 @@ const MyTraining = () => {
 					</CalenderThumb>
 				</DateContainer>
 				<SelectContainer>
-					<Select name="select">
+					<Select name="select" aria-label="Select training">
 						<option disabled={true}>{translation.myTraining.option}</option>
 						{books.map(({ title, _id }) => {
 							return (
@@ -124,7 +124,9 @@ const MyTraining = () => {
 							);
 						})}
 					</Select>
-					<Button type={'submit'}>{translation.myTraining.btn}</Button>
+					<Button type={'submit'} aria-label="Add training button">
+						{translation.myTraining.btn}
+					</Button>
 				</SelectContainer>
 			</form>
 		</>
