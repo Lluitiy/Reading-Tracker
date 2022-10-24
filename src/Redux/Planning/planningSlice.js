@@ -9,6 +9,7 @@ import {
 } from '../Planning/planningOperations';
 
 const initialState = {
+	
 	books: [],
 	booksId: [],
 	startDate: '',
@@ -35,20 +36,16 @@ const planningSlice = createSlice({
 		showResults(state, { payload }) {
 			state.isShowResults = payload;
 		},
-
 		addPlanFact(state, { payload }) {
 			state.planFact = payload;
 		},
-
 		resetPagesAndPlan(state) {
 			state.planFact = [];
-			state.readedPages = null;
 			state.isShowResults = false;
 			state.readedPages = null;
 			state.booksId = [];
 			state.books = [];
 		},
-
 		clean(state, { payload }) {
 			state.booksId = payload;
 			state.books = payload;
