@@ -26,7 +26,7 @@ export const ResultsBox = styled.div`
 	::-webkit-scrollbar {
 		width: 2px; /* ширина для вертикального скролла */
 
-		background-color: ${p => p.theme.colors.brand};
+		background-color: ${p => p.theme.colors.icons};
 	}
 
 	/* ползунок скроллбара */
@@ -37,7 +37,7 @@ export const ResultsBox = styled.div`
 	}
 
 	::-webkit-scrollbar-thumb:hover {
-		background-color: ${p => p.theme.colors.brand};
+		background-color: ${p => p.theme.colors.icons};
 	}
 `;
 

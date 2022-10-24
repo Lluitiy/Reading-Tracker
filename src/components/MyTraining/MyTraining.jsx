@@ -20,7 +20,7 @@ import { Application, DatePicker } from 'react-rainbow-components';
 import dayjs from 'dayjs';
 import { BackBtn } from 'components/Library/LibraryForm/LibraryForm.styled';
 
-const MyTraining = ({ handleMyTrainingOpen = null, isMobile = false}) => {
+const MyTraining = ({ handleMyTrainingOpen = null, isMobile = false }) => {
 	const translation = useTranslation();
 
 	const books = useSelector(state => state.books.books.goingToRead);
@@ -59,7 +59,7 @@ const MyTraining = ({ handleMyTrainingOpen = null, isMobile = false}) => {
 				books: [...ids, value],
 			})
 		);
-		isMobile && handleMyTrainingOpen()
+		isMobile && handleMyTrainingOpen();
 	};
 	const handleChangeStart = value => {
 		const userDate = value.toLocaleDateString().split('.').reverse().join('-');
@@ -83,14 +83,14 @@ const MyTraining = ({ handleMyTrainingOpen = null, isMobile = false}) => {
 	return (
 		<>
 			{isMobile && (
-						<BackBtn
-							type="button"
-							onClick={handleMyTrainingOpen}
-							aria-label="Return button"
-						>
-							<BackArrow width="24" height="24" />
-						</BackBtn>
-					)}
+				<BackBtn
+					type="button"
+					onClick={handleMyTrainingOpen}
+					aria-label="Return button"
+				>
+					<BackArrow width="24" height="24" />
+				</BackBtn>
+			)}
 			<Title>{translation.myTraining.title}</Title>
 			<form action="" onSubmit={onSubmit}>
 				<DateContainer>

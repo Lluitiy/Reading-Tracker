@@ -11,12 +11,10 @@ import { useMediaQuery } from 'react-responsive';
 import MobileTrainingPage from 'components/MobileTrainingPage/MobileTrainingPage';
 
 const TrainingPage = () => {
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-	dispatch(getCurrentPlanning())
-
+		dispatch(getCurrentPlanning());
 	}, [dispatch]);
 	const isDesktopOrTablet = useMediaQuery({ minWidth: 768 });
 
@@ -28,7 +26,6 @@ const TrainingPage = () => {
 	// 		dispatch(getCurrentPlanning());
 	// 	}
 	// }, [dispatch, showResults]);
-
 
 	return (
 		<Section>
