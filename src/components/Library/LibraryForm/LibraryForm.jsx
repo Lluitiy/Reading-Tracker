@@ -18,6 +18,7 @@ import { addUserBookThunk } from 'Redux/Books/booksOperations';
 import useTranslation from 'Hooks/useTranslations';
 import { Formik, ErrorMessage } from 'formik';
 import { booksFormSchema } from 'Utils/validSchema';
+import { Notify } from 'notiflix';
 
 const LibraryForm = ({ handleFormOpen = null, isMobile }) => {
 	const translation = useTranslation();
@@ -27,10 +28,13 @@ const LibraryForm = ({ handleFormOpen = null, isMobile }) => {
 		{ title, author, publishYear, pagesTotal },
 		{ resetForm }
 	) => {
+		Notify.success(`Your book '${title}' has been successfully added!`)
 		dispatch(addUserBookThunk({ title, author, publishYear, pagesTotal }));
 		resetForm();
 		isMobile && handleFormOpen()
 	};
+
+
 	return (
 		<Section>
 			<Container>
