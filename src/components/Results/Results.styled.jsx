@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { ReactComponent as ResultsCalender } from 'Assets/svg/calendar.svg';
 
 export const ResultsBox = styled.div`
 	width: 280px;
@@ -89,6 +90,7 @@ export const FormBox = styled.div`
 `;
 
 export const ResultsLabel = styled.label`
+	position: relative;
 	font-size: 11px;
 	color: ${p => p.theme.colors.textSecondary};
 
@@ -96,9 +98,16 @@ export const ResultsLabel = styled.label`
 		gap: 20px;
 	}
 `;
+
+export const CalenderResults = styled(ResultsCalender)`
+	position: absolute;
+	top: 48%;
+	right: 6px;
+`;
 export const ResultsInput = styled.input`
 	width: 100%;
 	margin-top: 4px;
+	padding-left: 8px;
 	height: 42px;
 
 	background: ${p => p.theme.colors.body};

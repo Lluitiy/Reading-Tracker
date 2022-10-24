@@ -24,6 +24,7 @@ import {
 	StatisticsPageBox,
 	StatisticsPageTitle,
 	ResultsPageList,
+	CalenderResults,
 } from './Results.styled';
 import { useEffect } from 'react';
 import { resetPagesAndPlan } from 'Redux/Planning/planningSlice';
@@ -96,6 +97,7 @@ export default function Results() {
 						<ResultsLabel>
 							{translation.results.label1}
 							<ResultsInput type="text" value={dateToday} disabled />
+							<CalenderResults />
 						</ResultsLabel>
 						<ResultsLabel>
 							{translation.results.label2}
