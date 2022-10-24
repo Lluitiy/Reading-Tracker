@@ -15,6 +15,7 @@ import {
 	StatisticsText,
 	StartTraningBtn,
 	StartTraningBox,
+	StatisticDaysSpan,
 } from './Statistics.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import useTranslation from 'Hooks/useTranslations';
@@ -124,7 +125,7 @@ export default function Statistics() {
 				<StatisticsBox>
 					<StatisticsTitle>
 						{translation.statistics.statTitle}
-						<span> {data[0]?.plan && 0}</span>
+						<StatisticDaysSpan> {data[0]?.plan ? data[0]?.plan : 0}</StatisticDaysSpan>
 					</StatisticsTitle>
 					<ResponsiveContainer width={'99%'} height={215}>
 						<LineChart

@@ -25,6 +25,7 @@ export const Title = styled.h1`
 export const DateContainer = styled.div`
 	display: block;
 	margin-bottom: 20px;
+
 	@media screen and (min-width: 768px) {
 		margin-bottom: 24px;
 		display: flex;
@@ -59,6 +60,7 @@ export const DataInput = styled.input`
 
 export const SelectContainer = styled.div`
 	text-align: center;
+
 	@media screen and (min-width: 768px) {
 		margin-bottom: 40px;
 		display: flex;

@@ -8,8 +8,6 @@ import {
 	selectorPlanFact,
 	selectorReadedPages,
 } from 'Redux/Planning/planningSelectors';
-
-
 import {
 	ResultsBox,
 	ResultsTitle,
@@ -106,10 +104,11 @@ export default function Results() {
 				<StatisticsPageBox>
 					<StatisticsPageTitle>{translation.results.stat}</StatisticsPageTitle>
 				</StatisticsPageBox>
-				<ResultsPageList>
+					<ResultsPageList>
 					{readedPages &&
 						readedPages.map((el, i) => <ResultsItem key={i} data={el} />)}
 				</ResultsPageList>
+			
 			</ResultsBox>
 			{isShowModal && (
 				<Modal onClose={() => setIsShowModal(false)}>

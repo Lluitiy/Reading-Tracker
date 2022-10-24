@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
     }
 `
 export const NewBookForm = styled(Form)`
+
     width: 100%;
 	 @media screen and (min-width: 768px) {
 		display: flex;
