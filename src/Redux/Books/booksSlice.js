@@ -10,6 +10,7 @@ const initialStateBooks = {
 		finishedReading: [],
 	},
 	status: STATUS.idle,
+	backupUserName: '',
 };
 
 export const booksSlice = createSlice({
@@ -20,7 +21,8 @@ export const booksSlice = createSlice({
 		[getUserBooksThunk.fulfilled]: (state, { payload }) => {
 			state.books.goingToRead = payload.goingToRead;
 			state.books.finishedReading = payload.finishedReading;
-			state.status = STATUS.fulfilled
+			state.status = STATUS.fulfilled;
+			state.backupUserName = payload.name;
 		},
 		[getUserBooksThunk.pending]: state => {
 			state.status = STATUS.pending
