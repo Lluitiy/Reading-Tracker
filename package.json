@@ -39,6 +39,7 @@
 	"scripts": {
 		"start": "set PORT=7737 && react-scripts start",
 		"build": "react-scripts build",
+		"deploy": "npm run build&&git add .&&git commit -m 'rerun build'&&git push",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint:js": "eslint src/**/*.{js,jsx}"
