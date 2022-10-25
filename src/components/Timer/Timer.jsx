@@ -4,14 +4,18 @@ import useTranslation from 'Hooks/useTranslations';
 import { useSelector } from 'react-redux';
 import { endDate } from 'Redux/Planning/planningSelectors';
 
-
 const Timer = () => {
 	const translation = useTranslation();
-	const theEnd = useSelector(endDate)
-
+	const endDateTimer = useSelector(endDate);
 	const GET_EN_YEAR = new Date().getFullYear() + '-12-31';
-	const END_YEAR_MS = new Date(GET_EN_YEAR).getTime();
-	const END_TRAINING_MS = new Date(theEnd).getTime();
+
+	const userOffset = new Date().getTimezoneOffset() * 60 * 1000;
+
+	const localDateEndYear = new Date(GET_EN_YEAR).getTime();
+	const END_YEAR_MS = new Date(localDateEndYear + userOffset);
+
+	const localDate = new Date(endDateTimer).getTime();
+	const END_TRAINING_MS = new Date(localDate + userOffset);
 
 	return (
 		<TimerContainer>
